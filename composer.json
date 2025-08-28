@@ -1,0 +1,21 @@
+{
+    "name": "xiphias/bladefx-api-php",
+    "description": "BladeFX API Client for PHP/Symfony",
+    "autoload": {
+        "psr-4": {
+            "Xiphias\\BladeFxApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "skisic",
+            "email": "sara.kisic@xiphias.hr"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "guzzlehttp/guzzle": "^7.9",
+        "symfony/http-client": "^6.4 || ^7.0",
+        "psr/log": "^3.0"
+    }
+}
