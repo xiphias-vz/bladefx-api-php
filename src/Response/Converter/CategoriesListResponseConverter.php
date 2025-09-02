@@ -1,0 +1,38 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Xiphias\BladeFxApi\Response\Converter;
+
+use ArrayObject;
+use Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer;
+use Generated\Shared\Transfer\BladeFxCategoriesListResponseTransfer;
+use Generated\Shared\Transfer\BladeFxCategoryTransfer;
+
+class CategoriesListResponseConverter extends AbstractResponseConverter
+{
+    /**
+     * @param \Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
+     * @param array $responseData
+     *
+     * @return \Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer
+     */
+    public function expandConversionResponseTransfer(
+        BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer,
+        array $responseData
+    ): BladeFxApiResponseConversionResultTransfer {
+        $bladeFxCategoriesListResponseTransfer = new BladeFxCategoriesListResponseTransfer();
+        $bladeFxCategoryList = [];
+        foreach ($responseData as $category) {
+            if (is_array($category)) {
+                $bladeFxCategory = new BladeFxCategoryTransfer();
+                $bladeFxCategory->fromArray($category);
+                $bladeFxCategoryList[] = $bladeFxCategory;
+            }
+        }
+
+        $bladeFxCategoriesListResponseTransfer->setCategoriesList(new ArrayObject($bladeFxCategoryList));
+
+        return $apiResponseConversionResultTransfer->setBladeFxCategoriesListResponse($bladeFxCategoriesListResponseTransfer);
+    }
+}
