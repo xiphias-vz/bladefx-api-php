@@ -1,57 +1,109 @@
 <?php
 
+declare(strict_types=1);
 
-namespace Xiphias\Client\ReportsApi\Response;
+namespace Xiphias\BladeFxApi\Response;
 
-use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
-use Xiphias\Client\ReportsApi\Response\Converter\AuthenticationResponseConverter;
-use Xiphias\Client\ReportsApi\Response\Converter\CategoriesListResponseConverter;
-use Xiphias\Client\ReportsApi\Response\Converter\CreateOrUpdateUserOnBladeFxResponseConverter;
-use Xiphias\Client\ReportsApi\Response\Converter\ReportByFormatResponseConverter;
-use Xiphias\Client\ReportsApi\Response\Converter\ReportParameterListResponseConverter;
-use Xiphias\Client\ReportsApi\Response\Converter\ReportParamFormResponseConverter;
-use Xiphias\Client\ReportsApi\Response\Converter\ReportPreviewResponseConverter;
-use Xiphias\Client\ReportsApi\Response\Converter\ReportsListResponseConverter;
-use Xiphias\Client\ReportsApi\Response\Converter\ResponseConverterInterface;
-use Xiphias\Client\ReportsApi\Response\Converter\SetFavoriteReportResponseConverter;
-use Xiphias\Client\ReportsApi\Response\Converter\UpdatePasswordOnBladeFxResponseConverter;
-use Xiphias\Client\ReportsApi\Response\Validator\AuthenticationResponseValidator;
-use Xiphias\Client\ReportsApi\Response\Validator\CategoriesListResponseValidator;
-use Xiphias\Client\ReportsApi\Response\Validator\CreateOrUpdateUserOnBladeFxResponseValidator;
-use Xiphias\Client\ReportsApi\Response\Validator\ReportByFormatResponseValidator;
-use Xiphias\Client\ReportsApi\Response\Validator\ReportParameterListResponseValidator;
-use Xiphias\Client\ReportsApi\Response\Validator\ReportParamFormResponseValidator;
-use Xiphias\Client\ReportsApi\Response\Validator\ReportPreviewResponseValidator;
-use Xiphias\Client\ReportsApi\Response\Validator\ReportsListResponseValidator;
-use Xiphias\Client\ReportsApi\Response\Validator\ResponseValidatorInterface;
-use Xiphias\Client\ReportsApi\Response\Validator\SetFavoriteReportResponseValidator;
-use Xiphias\Client\ReportsApi\Response\Validator\UpdatePasswordOnBladeFxResponseValidator;
+use Psr\Log\LoggerInterface;
+use Xiphias\BladeFxApi\Response\Converter\AuthenticationResponseConverter;
+use Xiphias\BladeFxApi\Response\Converter\CategoriesListResponseConverter;
+use Xiphias\BladeFxApi\Response\Converter\ReportParamFormResponseConverter;
+use Xiphias\BladeFxApi\Response\Converter\ReportPreviewResponseConverter;
+use Xiphias\BladeFxApi\Response\Converter\ReportsListResponseConverter;
+use Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface;
+use Xiphias\BladeFxApi\Response\Validator\AuthenticationResponseValidator;
+use Xiphias\BladeFxApi\Response\Validator\CategoriesListResponseValidator;
+use Xiphias\BladeFxApi\Response\Validator\ReportParamFormResponseValidator;
+use Xiphias\BladeFxApi\Response\Validator\ReportPreviewResponseValidator;
+use Xiphias\BladeFxApi\Response\Validator\ReportsListResponseValidator;
+use Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface;
 
 class ResponseFactory implements ResponseFactoryInterface
 {
-//    private UtilEncodingServiceInterface $utilEncodingService;
-//
-//    /**
-//     * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
-//     */
-//    public function __construct(UtilEncodingServiceInterface $utilEncodingService)
-//    {
-//        $this->utilEncodingService = $utilEncodingService;
-//    }
+    private LoggerInterface $logger;
 
-    /**
-     * @return \Xiphias\Client\ReportsApi\Response\Converter\ResponseConverterInterface
-     */
-    public function createCategoriesListResponseConverter(): ResponseConverterInterface
+    public function __construct(LoggerInterface $logger)
     {
-        return new CategoriesListResponseConverter($this->utilEncodingService);
+        $this->logger = $logger;
     }
 
     /**
-     * @return \Xiphias\Client\ReportsApi\Response\Validator\ResponseValidatorInterface
+     * @return ResponseConverterInterface
+     */
+    public function createAuthenticationResponseConverter(): ResponseConverterInterface
+    {
+        return new AuthenticationResponseConverter($this->logger);
+    }
+
+    /**
+     * @return ResponseValidatorInterface
+     */
+    public function createAuthenticationResponseValidator(): ResponseValidatorInterface
+    {
+        return new AuthenticationResponseValidator($this->logger);
+    }
+
+    /**
+     * @return ResponseConverterInterface
+     */
+    public function createCategoriesListResponseConverter(): ResponseConverterInterface
+    {
+        return new CategoriesListResponseConverter($this->logger);
+    }
+
+    /**
+     * @return ResponseValidatorInterface
      */
     public function createCategoriesListResponseValidator(): ResponseValidatorInterface
     {
-        return new CategoriesListResponseValidator();
+        return new CategoriesListResponseValidator($this->logger);
+    }
+
+    /**
+     * @return ResponseConverterInterface
+     */
+    public function createReportsListResponseConverter(): ResponseConverterInterface
+    {
+        return new ReportsListResponseConverter($this->logger);
+    }
+
+    /**
+     * @return ResponseValidatorInterface
+     */
+    public function createReportsListResponseValidator(): ResponseValidatorInterface
+    {
+        return new ReportsListResponseValidator($this->logger);
+    }
+
+    /**
+     * @return ResponseConverterInterface
+     */
+    public function createReportParamFormRequestConverter(): ResponseConverterInterface
+    {
+        return new ReportParamFormResponseConverter($this->logger);
+    }
+
+    /**
+     * @return ResponseValidatorInterface
+     */
+    public function createReportParamFormResponseValidator(): ResponseValidatorInterface
+    {
+        return new ReportParamFormResponseValidator($this->logger);
+    }
+
+    /**
+     * @return ResponseConverterInterface
+     */
+    public function createReportPreviewResponseConverter(): ResponseConverterInterface
+    {
+        return new ReportPreviewResponseConverter($this->logger);
+    }
+
+    /**
+     * @return ResponseValidatorInterface
+     */
+    public function createResponsePreviewValidator(): ResponseValidatorInterface
+    {
+        return new ReportPreviewResponseValidator($this->logger);
     }
 }

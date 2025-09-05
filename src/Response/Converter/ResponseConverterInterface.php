@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Response\Converter;
 
-use Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
+use Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer;
 
 interface ResponseConverterInterface
 {
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
-     *
-     * @return \Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer
+     * @param ResponseInterface $response
+     * @return BladeFxApiResponseConversionResultTransfer
      */
     public function convert(ResponseInterface $response): BladeFxApiResponseConversionResultTransfer;
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
-class BladeFXCategoriesListResponseTransfer extends AbstractTransfer
+class BladeFxCategoriesListResponseTransfer extends AbstractTransfer
 {
     private int $statusCode;
     private array $categoriesList;
@@ -27,7 +27,7 @@ class BladeFXCategoriesListResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @return array<CategoryTransfer>
+     * @return array<BladeFxCategoryTransfer>
      */
     public function getCategoriesList(): array
     {
@@ -35,7 +35,7 @@ class BladeFXCategoriesListResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param array<CategoryTransfer> $categoriesList
+     * @param array<BladeFxCategoryTransfer> $categoriesList
      * @return void
      */
     public function setCategoriesList(array $categoriesList): void

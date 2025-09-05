@@ -8,8 +8,7 @@ use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 interface ResponseValidatorInterface
 {
     /**
-     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
-     *
+     * @param AbstractTransfer $responseTransfer
      * @return bool
      */
     public function isResponseValid(AbstractTransfer $responseTransfer): bool;

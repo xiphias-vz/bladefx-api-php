@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Response\Converter;
 
-use ArrayObject;
-use Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer;
-use Generated\Shared\Transfer\BladeFxCategoriesListResponseTransfer;
-use Generated\Shared\Transfer\BladeFxCategoryTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCategoryTransfer;
 
 class CategoriesListResponseConverter extends AbstractResponseConverter
 {
-    /**
-     * @param \Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
-     * @param array $responseData
-     *
-     * @return \Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer
-     */
     public function expandConversionResponseTransfer(
         BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer,
         array $responseData
@@ -26,13 +19,14 @@ class CategoriesListResponseConverter extends AbstractResponseConverter
         foreach ($responseData as $category) {
             if (is_array($category)) {
                 $bladeFxCategory = new BladeFxCategoryTransfer();
-                $bladeFxCategory->fromArray($category);
+                $bladeFxCategory->fromArray($category, true);
                 $bladeFxCategoryList[] = $bladeFxCategory;
             }
         }
 
-        $bladeFxCategoriesListResponseTransfer->setCategoriesList(new ArrayObject($bladeFxCategoryList));
+        $bladeFxCategoriesListResponseTransfer->setCategoriesList($bladeFxCategoryList);
+        $apiResponseConversionResultTransfer->setBladeFxCategoriesListResponse($bladeFxCategoriesListResponseTransfer);
 
-        return $apiResponseConversionResultTransfer->setBladeFxCategoriesListResponse($bladeFxCategoriesListResponseTransfer);
+        return $apiResponseConversionResultTransfer;
     }
 }

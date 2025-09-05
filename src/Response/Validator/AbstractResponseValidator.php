@@ -29,9 +29,9 @@ abstract class AbstractResponseValidator implements ResponseValidatorInterface
     /**
      * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
      *
+     * @return bool
      * @throws \Xiphias\BladeFxApi\Response\Exception\ReportsResponseException
      *
-     * @return bool
      */
     public function isResponseValid(AbstractTransfer $responseTransfer): bool
     {

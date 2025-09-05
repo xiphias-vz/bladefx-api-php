@@ -4,16 +4,24 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi;
 
+use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Xiphias\BladeFxApi\DTO\BladeFXCategoriesListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxReportDataRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxReportParamsRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxReportsListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\ReportParamsDefTransfer;
-use Xiphias\BladeFxApi\Resources\CategoryList;
-use Xiphias\BladeFxApi\Resources\ReportData\ReportData;
-use Xiphias\BladeFxApi\Resources\ReportList;
-use Xiphias\BladeFxApi\Resources\ReportParams;
+use Xiphias\BladeFxApi\Response\ResponseManager;
+use Xiphias\BladeFxApi\Response\ResponseManagerInterface;
 
 class BladeFxApiClient
 {
@@ -21,8 +29,10 @@ class BladeFxApiClient
     protected const string API_GET_REPORT_LIST = 'api/ReportData/GetReportList';
     protected const string API_GET_REPORT_DATA = 'api/ReportData/GetReportData';
     protected const string API_GET_REPORT_PARAMS = 'api/ReportData/GetReportParams';
-    protected const string API_GET_CATEGORY_LIST = 'api/ReportData/GetCategoryList';
+    protected const string API_GET_REPORT_URL = 'api/ReportData/GetReportURL';
     protected const string API_GET_REPORT_PREVIEW_URL = 'api/ReportData/GetReportPreviewURL';
+
+    protected const string API_GET_CATEGORY_LIST = 'api/ReportData/GetCategoryList';
 
     protected const string KEY_TOKEN = 'token';
 
@@ -32,6 +42,7 @@ class BladeFxApiClient
      * @param string $bladeFxUsername
      * @param string $bladeFxPassword
      * @param LoggerInterface|null $logger
+     * @param ResponseManagerInterface $responseManager
      */
     public function __construct(
         protected HttpClientInterface $httpClient,
@@ -39,14 +50,15 @@ class BladeFxApiClient
         protected string              $bladeFxUsername,
         protected string              $bladeFxPassword,
         protected ?LoggerInterface $logger = null,
+        protected ResponseManagerInterface $responseManager
     )
     {
     }
 
     /**
-     * @return string|null
+     * @return BladeFxAuthenticationResponseTransfer|null
      */
-    public function getBearerToken(): ?string
+    public function authenticateUser(): ?BladeFxAuthenticationResponseTransfer
     {
         $authUrl = $this->getUrl(static::API_AUTH);
 
@@ -58,19 +70,7 @@ class BladeFxApiClient
                 ]
             ]);
 
-            try {
-                $content = $response->getContent();
-            } catch (HttpExceptionInterface $e) {
-                $this->logger?->error('BladeFX API returned exception', ['exception' => $e->getMessage()]);
-                return null;
-            }
-
-            $data = json_decode($content, true);
-            if(!isset($data[static::KEY_TOKEN])) {
-                $this->logger?->error('BladeFX API did not return a token', ['response' => $data]);
-            }
-
-            return $data[static::KEY_TOKEN] ?? null;
+            return $this->responseManager->getAuthenticationUserResponseTransfer($response);
         } catch (\Exception|TransportExceptionInterface $e) {
             $this->logger?->error('Unexpected error when calling BladeFX API', [
                 'exception' => $e,
@@ -78,94 +78,103 @@ class BladeFxApiClient
             ]);
             return null;
         }
-
     }
 
     /**
-     * @param ReportList|null $reportList
-     * @return string|null
+     * @param BladeFxReportsListRequestTransfer|null $reportsListRequestTransfer
+     * @return BladeFxReportsListResponseTransfer
      */
     public function getReportList(
-        ?ReportList $reportList = (new ReportList())
-    ): ?string
+        ?BladeFxReportsListRequestTransfer $reportsListRequestTransfer = (new BladeFxReportsListRequestTransfer())
+    ): BladeFxReportsListResponseTransfer
     {
-        $bearerToken = $this->getBearerToken();
+        $bearerToken = $this->authenticateUser()->getToken();
         $url = $this->getUrl(static::API_GET_REPORT_LIST);
 
-        $response = $this->sendGetRequest($bearerToken, $url, $reportList);
+        $response = $this->sendGetRequest($bearerToken, $url, $reportsListRequestTransfer);
 
-        return '';
+        return $this->responseManager->getReportsListResponseTransfer($response);
     }
 
     /**
-     * @param ReportParams $reportParams
+     * @param BladeFxReportParamsRequestTransfer $reportParamsRequestTransfer
      * @return string|null
      */
     public function getReportParams(
-        ReportParams $reportParams
+        BladeFxReportParamsRequestTransfer $reportParamsRequestTransfer
     ): ?string
     {
-        $bearerToken = $this->getBearerToken();
+        $bearerToken = $this->authenticateUser()->getToken();
         $url = $this->getUrl(static::API_GET_REPORT_PARAMS);
 
-        $response = $this->sendGetRequest($bearerToken, $url, $reportParams);
+        $response = $this->sendGetRequest($bearerToken, $url, $reportParamsRequestTransfer);
 
         return '';
     }
 
+    /**
+     * @param BladeFxReportDataRequestTransfer $reportDataRequestTransfer
+     * @param ReportParamsDefTransfer $body
+     * @return string|null
+     */
     public function getReportData(
-        ReportData $reportData,
+        BladeFxReportDataRequestTransfer $reportDataRequestTransfer,
         ReportParamsDefTransfer $body
     ): ?string
     {
-        $bearerToken = $this->getBearerToken();
+        $bearerToken = $this->authenticateUser()->getToken();
         $url = $this->getUrl(static::API_GET_REPORT_DATA);
 
-        $response = $this->sendPostRequest($bearerToken, $url, $reportData, $body);
+        $response = $this->sendPostRequest($bearerToken, $url, $reportDataRequestTransfer, $body);
 
         return '';
     }
 
     /**
-     * @param CategoryList|null $categoryList
-     * @return BladeFXCategoriesListResponseTransfer
+     * @param BladeFxCategoriesListRequestTransfer|null $categoriesListRequestTransfer
+     * @return BladeFxCategoriesListResponseTransfer
      */
     public function getCategoryList(
-        ?CategoryList $categoryList = (new CategoryList())
-    ): BladeFXCategoriesListResponseTransfer
+        ?BladeFxCategoriesListRequestTransfer $categoriesListRequestTransfer = (new BladeFxCategoriesListRequestTransfer())
+    ): BladeFxCategoriesListResponseTransfer
     {
-        $bearerToken = $this->getBearerToken();
+        $bearerToken = $this->authenticateUser()->getToken();
         $url = $this->getUrl(static::API_GET_CATEGORY_LIST);
 
-        $response = $this->sendGetRequest($bearerToken, $url, $categoryList);
+        $response = $this->sendGetRequest($bearerToken, $url, $categoriesListRequestTransfer);
 
-        $bladeFxCategoriesListResponseTransfer = new BladeFxCategoriesListResponseTransfer();
-//        $bladeFxCategoriesListResponseTransfer->setStatusCode($response->getStatusCode());
-        $bladeFxCategoriesListResponseTransfer->setCategoriesList($response);
+        return $this->responseManager->getCategoriesListResponseTransfer($response);
+    }
 
-        return $bladeFxCategoriesListResponseTransfer;
-//        return $this->responseManager->getCategoriesListResponseTransfer($response);
+    public function getReportUrl(
+        ?BladeFxReportParamFormRequestTransfer $reportsParamFormRequestTransfer = (new BladeFxReportParamFormRequestTransfer())
+    ): BladeFxReportParamFormResponseTransfer
+    {
+        $bearerToken = $this->authenticateUser()->getToken();
+        $url = $this->getUrl(static::API_GET_REPORT_URL);
+
+        $reportsParamFormRequestTransfer->requireRootUrl();
+        $response = $this->sendGetRequest($bearerToken, $url, $reportsParamFormRequestTransfer);
+
+        return $this->responseManager->getReportParamFormResponseTransfer($response);
     }
 
     /**
-     * @param ReportData $reportData
+     * @param BladeFxReportDataRequestTransfer $reportDataRequestTransfer
      * @param ReportParamsDefTransfer $body
-     * @return string
+     * @return BladeFxReportPreviewResponseTransfer
      */
     public function getReportPreviewURL(
-        ReportData $reportData,
+        BladeFxReportDataRequestTransfer $reportDataRequestTransfer,
         ReportParamsDefTransfer $body
-    ): string
+    ): BladeFxReportPreviewResponseTransfer
     {
-        $bearerToken = $this->getBearerToken();
+        $bearerToken = $this->authenticateUser()->getToken();
         $url = $this->getUrl(static::API_GET_REPORT_PREVIEW_URL);
 
-        $response = $this->sendPostRequest($bearerToken, $url, $reportData, $body);
+        $response = $this->sendPostRequest($bearerToken, $url, $reportDataRequestTransfer, $body);
 
-//        $bladeFxCategoriesListResponseTransfer = new BladeFxCategoriesListResponseTransfer();
-//        $bladeFxCategoriesListResponseTransfer->setCategoriesList($response);
-
-        return $response;
+        return $this->responseManager->getReportPreviewResponseTransfer($response);
     }
 
     protected function getUrl(string $apiUrl): string
@@ -173,7 +182,7 @@ class BladeFxApiClient
         return $this->bladeFxBaseUrl . $apiUrl;
     }
 
-    protected function sendGetRequest(string $bearerToken, string $url, object $params): array|string
+    protected function sendGetRequest(string $bearerToken, string $url, object $params): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         $response = $this->httpClient->request(
             'GET',
@@ -186,16 +195,10 @@ class BladeFxApiClient
             ]
         );
 
-        $contentType = $response->getHeaders(false)['content-type'][0] ?? '';
-
-        if (str_contains($contentType, 'application/json')) {
-            return $response->toArray(false);
-        }
-
-        return $response->getContent(false);
+        return $response;
     }
 
-    protected function sendPostRequest(string $bearerToken, string $url, ?object $params, ReportParamsDefTransfer $body): array|string
+    protected function sendPostRequest(string $bearerToken, string $url, ?object $params, ReportParamsDefTransfer $body): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         $response = $this->httpClient->request(
             'POST',
@@ -211,20 +214,20 @@ class BladeFxApiClient
             ]
         );
 
-        $contentType = $response->getHeaders(false)['content-type'][0] ?? '';
-
-        if (str_contains($contentType, 'application/json')) {
-            return $response->toArray(false);
-        }
-
-        return $response->getContent(false);
+        return $response;
     }
 
     protected function buildQuery(object $params): array
     {
         $queryArray = [];
 
-        foreach (get_object_vars($params) as $key => $value) {
+        if (method_exists($params, 'toArray')) {
+            $data = $params->toArray(true, true);
+        } else {
+            $data = get_object_vars($params);
+        }
+
+        foreach ($data as $key => $value) {
             if ($value !== null) {
                 if (is_bool($value)) {
                     $value = $value ? 'true' : 'false';

@@ -4,38 +4,32 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Response\Converter;
 
-use Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer;
-use Psr\Http\Message\ResponseInterface;
-use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
-use Spryker\Shared\Log\LoggerTrait;
-use Xiphias\Client\ReportsApi\ReportsApiConfig;
+use Symfony\Contracts\HttpClient\ResponseInterface;
+use Psr\Log\LoggerInterface;
+use Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer;
 
 abstract class AbstractResponseConverter implements ResponseConverterInterface
 {
-    use LoggerTrait;
-
     /**
      * @var string
      */
     protected const ERROR_INVALID_RESPONSE_MISSING_PROPERTY = '%s Invalid Response: Missing response property values.';
 
     /**
-     * @var \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
+     * @var string
      */
-    private UtilEncodingServiceInterface $utilEncodingService;
+    protected const LOG_MESSAGE_PREFIX = 'BladeFxAPIClient: ';
 
-    /**
-     * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
-     */
-    public function __construct(UtilEncodingServiceInterface $utilEncodingService)
+    private LoggerInterface $logger;
+
+    public function __construct(LoggerInterface $logger)
     {
-        $this->utilEncodingService = $utilEncodingService;
+        $this->logger = $logger;
     }
 
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
-     *
-     * @return \Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer
+     * @param ResponseInterface $response
+     * @return BladeFxApiResponseConversionResultTransfer
      */
     public function convert(ResponseInterface $response): BladeFxApiResponseConversionResultTransfer
     {
@@ -50,10 +44,9 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
+     * @param BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
      * @param array $responseData
-     *
-     * @return \Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer
+     * @return BladeFxApiResponseConversionResultTransfer
      */
     abstract protected function expandConversionResponseTransfer(
         BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer,
@@ -67,7 +60,7 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
      */
     private function decodeResponse(ResponseInterface $response): array|string|null
     {
-        $bodyContent = $response->getBody()->getContents();
+        $bodyContent = $response->getContent(false);
         if (!$bodyContent) {
             $this->logError(
                 self::ERROR_INVALID_RESPONSE_MISSING_PROPERTY,
@@ -77,8 +70,37 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
             return [];
         }
 
-        return $this->utilEncodingService->decodeJson($bodyContent, true);
+        $contentType = $response->getHeaders(false)['content-type'][0] ?? '';
+
+        if (str_contains($contentType, 'application/json')) {
+            return $response->toArray(false);
+        }
+
+        return $response->getContent(false);
+
+
+//        return $this->utilEncodingService->decodeJson($bodyContent, true);
     }
+
+//    /**
+//     * @param \Psr\Http\Message\ResponseInterface $response
+//     *
+//     * @return array|string|null
+//     */
+//    private function decodeResponse(ResponseInterface $response): array|string|null
+//    {
+//        $bodyContent = $response->getBody()->getContents();
+//        if (!$bodyContent) {
+//            $this->logError(
+//                self::ERROR_INVALID_RESPONSE_MISSING_PROPERTY,
+//                $response,
+//            );
+//
+//            return [];
+//        }
+//
+//        return $this->utilEncodingService->decodeJson($bodyContent, true);
+//    }
 
     /**
      * @param string $errorMessage
@@ -88,7 +110,7 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
      */
     protected function logError(string $errorMessage, ResponseInterface $response): void
     {
-        $this->getLogger()->critical(
+        $this->logger->critical(
             $this->formatMessage($errorMessage),
             $this->createArrayWithResponseData($response),
         );
@@ -103,7 +125,7 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
     {
         return sprintf(
             $message,
-            ReportsApiConfig::LOG_MESSAGE_PREFIX,
+            self::LOG_MESSAGE_PREFIX,
         );
     }
 
@@ -120,7 +142,7 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
     }
 
     /**
-     * @return \Generated\Shared\Transfer\BladeFxApiResponseConversionResultTransfer
+     * @return BladeFxApiResponseConversionResultTransfer
      */
     protected function createConversionResultTransfer(): BladeFxApiResponseConversionResultTransfer
     {
