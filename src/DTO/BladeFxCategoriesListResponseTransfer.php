@@ -6,8 +6,15 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxCategoriesListResponseTransfer extends AbstractTransfer
 {
-    private int $statusCode;
-    private array $categoriesList;
+    /**
+     * @var int
+     */
+    protected int $statusCode = 0;
+
+    /**
+     * @var array
+     */
+    private array $categoriesList = [];
 
     /**
      * @return int

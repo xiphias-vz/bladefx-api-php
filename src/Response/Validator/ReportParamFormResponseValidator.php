@@ -27,7 +27,7 @@ class ReportParamFormResponseValidator extends AbstractResponseValidator
         try {
             /** @var BladeFxReportParamFormResponseTransfer $responseTransfer */
             $responseTransfer->requireIframeUrl();
-        } catch (TransferPropertyRequiredException) {
+        } catch (TransferPropertyRequiredException $ex) {
             return false;
         }
 

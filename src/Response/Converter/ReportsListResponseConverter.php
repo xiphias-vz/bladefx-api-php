@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Response\Converter;
 
@@ -9,7 +10,11 @@ use Xiphias\BladeFxApi\DTO\BladeFxReportTransfer;
 
 class ReportsListResponseConverter extends AbstractResponseConverter
 {
-
+    /**
+     * @param BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
+     * @param array $responseData
+     * @return BladeFxApiResponseConversionResultTransfer
+     */
     public function expandConversionResponseTransfer(
         BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer,
         array $responseData

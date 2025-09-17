@@ -8,7 +8,7 @@ use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 
-class ReportPreviewResponseValidator extends AbstractResponseValidator implements ResponseValidatorInterface
+class ReportPreviewResponseValidator extends AbstractResponseValidator
 {
     /**
      * @return string
@@ -18,13 +18,16 @@ class ReportPreviewResponseValidator extends AbstractResponseValidator implement
         return BladeFxReportPreviewResponseTransfer::class;
     }
 
-
+    /**
+     * @param AbstractTransfer $responseTransfer
+     * @return bool
+     */
     protected function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
             /** @var BladeFxReportPreviewResponseTransfer $responseTransfer */
             $responseTransfer->requireUrl();
-        } catch (TransferPropertyRequiredException) {
+        } catch (TransferPropertyRequiredException $ex) {
             return false;
         }
 

@@ -313,5 +313,4 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
         return $this;
     }
-
 }

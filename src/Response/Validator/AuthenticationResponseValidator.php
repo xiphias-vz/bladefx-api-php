@@ -33,7 +33,7 @@ class AuthenticationResponseValidator extends AbstractResponseValidator
                 ->requireFullname()
                 ->requireIdCompany()
                 ->requireIdLanguage();
-        } catch (TransferPropertyRequiredException) {
+        } catch (TransferPropertyRequiredException $ex) {
             return false;
         }
 

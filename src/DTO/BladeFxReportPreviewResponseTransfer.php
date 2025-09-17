@@ -6,8 +6,15 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxReportPreviewResponseTransfer extends AbstractTransfer
 {
-    protected ?int $statusCode;
-    protected ?string $url;
+    /**
+     * @var int
+     */
+    protected int $statusCode = 0;
+
+    /**
+     * @var string
+     */
+    protected string $url = "";
 
     /**
      * @return int

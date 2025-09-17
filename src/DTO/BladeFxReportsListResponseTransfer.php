@@ -6,8 +6,15 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxReportsListResponseTransfer extends AbstractTransfer
 {
-    private int $statusCode;
-    private array $reportsList;
+    /**
+     * @var int
+     */
+    protected int $statusCode = 0;
+
+    /**
+     * @var array
+     */
+    protected array $reportsList = [];
 
     /**
      * @return int
@@ -42,4 +49,21 @@ class BladeFxReportsListResponseTransfer extends AbstractTransfer
     {
         $this->reportsList = $reportsList;
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function toArray(): array
+    {
+        $transfers = [];
+        foreach ($this->getReportsList() as $transfer) {
+            $transfers[] = $transfer->toArray();
+        }
+
+        return [
+            'statusCode' => $this->getStatusCode() ?? null,
+            'reportsList' => $transfers,
+        ];
+    }
+
 }

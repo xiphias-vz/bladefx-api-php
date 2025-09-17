@@ -10,6 +10,11 @@ use Xiphias\BladeFxApi\DTO\BladeFxCategoryTransfer;
 
 class CategoriesListResponseConverter extends AbstractResponseConverter
 {
+    /**
+     * @param BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
+     * @param array $responseData
+     * @return BladeFxApiResponseConversionResultTransfer
+     */
     public function expandConversionResponseTransfer(
         BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer,
         array $responseData

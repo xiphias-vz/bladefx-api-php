@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Response;
 
-use Symfony\Contracts\HttpClient\ResponseInterface;
+use Psr\Http\Message\ResponseInterface;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportsListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
 
 interface ResponseManagerInterface
 {
@@ -42,4 +43,10 @@ interface ResponseManagerInterface
      * @return BladeFxReportPreviewResponseTransfer
      */
     public function getReportPreviewResponseTransfer(?ResponseInterface $response): BladeFxReportPreviewResponseTransfer;
+
+    /**
+     * @param ResponseInterface|null $response
+     * @return BladeFxSetFavoriteReportResponseTransfer
+     */
+    public function getSetFavoriteReportResponseTransfer(?ResponseInterface $response): BladeFxSetFavoriteReportResponseTransfer;
 }

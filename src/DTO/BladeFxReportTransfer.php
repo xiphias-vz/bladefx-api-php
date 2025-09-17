@@ -302,6 +302,35 @@ class BladeFxReportTransfer extends AbstractTransfer
     }
 
     /**
+     * @return array<string, mixed>
+     */
+    public function toArray(): array
+    {
+        return [
+            'rep_id' => $this->getRepId(),
+            'rep_name' => $this->getRepName(),
+            'rep_hash_code' => $this->getRepHashCode(),
+            'rep_desc' => $this->getRepDesc(),
+            'cat_name' => $this->getCatName(),
+            'is_active' => $this->getIsActive(),
+            'is_drilldown' => $this->getIsDrilldown(),
+            'is_webservice' => $this->getIsWebservice(),
+            'is_error_report' => $this->getIsErrorReport(),
+            'is_def' => $this->getIsDef(),
+            'is_metro' => $this->getIsMetro(),
+            'log_execution' => $this->getLogExecution(),
+            'log_history' => $this->getLogHistory(),
+            'is_favorite' => $this->getIsFavorite(),
+            'u_created' => $this->getUCreated(),
+            'd_created' => $this->getDCreated(),
+            'u_changed' => $this->getUChanged(),
+            'd_changed' => $this->getDChanged(),
+            'mobile_layout' => $this->getMobileLayout(),
+            'attribute' => $this->getAttribute(),
+        ];
+    }
+
+    /**
      * @param array<string, mixed> $data
      * @param bool $ignoreMissingProperties
      * @return $this
@@ -310,7 +339,7 @@ class BladeFxReportTransfer extends AbstractTransfer
     public function fromArray(array $data, bool $ignoreMissingProperties = false)
     {
         foreach ($data as $property => $value) {
-            $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
+            $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? $property;
 
             switch ($normalizedPropertyName) {
                 case 'repId':

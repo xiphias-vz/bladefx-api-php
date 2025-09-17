@@ -12,9 +12,11 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
 
     private BladeFxReportsListResponseTransfer $bladeFxReportsListResponse;
 
-    private BladeFxReportParamFormResponseTransfer $bladeFxReportParamFormResponseTransfer;
+    private BladeFxReportParamFormResponseTransfer $bladeFxReportParamFormResponse;
 
     private BladeFxReportPreviewResponseTransfer $bladeFxReportPreviewResponse;
+
+    private BladeFxSetFavoriteReportResponseTransfer $bladeFxSetFavoriteReportResponse;
 
     /**
      * @return BladeFxAuthenticationResponseTransfer
@@ -72,16 +74,17 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
      */
     public function getBladeFxReportParamFormResponse(): BladeFxReportParamFormResponseTransfer
     {
-        return $this->bladeFxReportParamFormResponseTransfer;
+        return $this->bladeFxReportParamFormResponse;
     }
 
     /**
-     * @param BladeFxReportParamFormResponseTransfer $bladeFxReportParamFormResponseTransfer
-     * @return void
+     * @param BladeFxReportParamFormResponseTransfer $bladeFxReportParamFormResponse
+     * @return $this
      */
-    public function setBladeFxReportParamFormResponse(BladeFxReportParamFormResponseTransfer $bladeFxReportParamFormResponseTransfer): void
+    public function setBladeFxReportParamFormResponse(BladeFxReportParamFormResponseTransfer $bladeFxReportParamFormResponse): self
     {
-        $this->bladeFxReportParamFormResponseTransfer = $bladeFxReportParamFormResponseTransfer;
+        $this->bladeFxReportParamFormResponse = $bladeFxReportParamFormResponse;
+        return $this;
     }
 
     /**
@@ -94,10 +97,29 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
 
     /**
      * @param BladeFxReportPreviewResponseTransfer $bladeFxReportPreviewResponse
-     * @return void
+     * @return $this
      */
-    public function setBladeFxReportPreviewResponse(BladeFxReportPreviewResponseTransfer $bladeFxReportPreviewResponse): void
+    public function setBladeFxReportPreviewResponse(BladeFxReportPreviewResponseTransfer $bladeFxReportPreviewResponse): self
     {
         $this->bladeFxReportPreviewResponse = $bladeFxReportPreviewResponse;
+        return $this;
+    }
+
+    /**
+     * @return BladeFxSetFavoriteReportResponseTransfer
+     */
+    public function getBladeFxSetFavoriteReportResponse(): BladeFxSetFavoriteReportResponseTransfer
+    {
+        return $this->bladeFxSetFavoriteReportResponse;
+    }
+
+    /**
+     * @param BladeFxSetFavoriteReportResponseTransfer $bladeFxSetFavoriteReportResponse
+     * @return $this
+     */
+    public function setBladeFxSetFavoriteReportResponse(BladeFxSetFavoriteReportResponseTransfer $bladeFxSetFavoriteReportResponse): self
+    {
+        $this->bladeFxSetFavoriteReportResponse = $bladeFxSetFavoriteReportResponse;
+        return $this;
     }
 }

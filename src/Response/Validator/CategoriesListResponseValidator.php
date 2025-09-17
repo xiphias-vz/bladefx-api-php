@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Response\Validator;
 
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
+use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 
 class CategoriesListResponseValidator extends AbstractResponseValidator
 {
@@ -29,7 +30,7 @@ class CategoriesListResponseValidator extends AbstractResponseValidator
                 $category
                     ->requireCatId();
             }
-        } catch (\Exception $ex) {
+        } catch (TransferPropertyRequiredException $ex) {
             return false;
         }
 

@@ -11,12 +11,14 @@ use Xiphias\BladeFxApi\Response\Converter\ReportParamFormResponseConverter;
 use Xiphias\BladeFxApi\Response\Converter\ReportPreviewResponseConverter;
 use Xiphias\BladeFxApi\Response\Converter\ReportsListResponseConverter;
 use Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface;
+use Xiphias\BladeFxApi\Response\Converter\SetFavoriteReportResponseConverter;
 use Xiphias\BladeFxApi\Response\Validator\AuthenticationResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\CategoriesListResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\ReportParamFormResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\ReportPreviewResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\ReportsListResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface;
+use Xiphias\BladeFxApi\Response\Validator\SetFavoriteReportResponseValidator;
 
 class ResponseFactory implements ResponseFactoryInterface
 {
@@ -105,5 +107,21 @@ class ResponseFactory implements ResponseFactoryInterface
     public function createResponsePreviewValidator(): ResponseValidatorInterface
     {
         return new ReportPreviewResponseValidator($this->logger);
+    }
+
+    /**
+     * @return ResponseConverterInterface
+     */
+    public function createSetFavoriteReportResponseConverter(): ResponseConverterInterface
+    {
+        return new SetFavoriteReportResponseConverter($this->logger);
+    }
+
+    /**
+     * @return ResponseValidatorInterface
+     */
+    public function createSetFavoriteReportResponseValidator(): ResponseValidatorInterface
+    {
+        return new SetFavoriteReportResponseValidator($this->logger);
     }
 }

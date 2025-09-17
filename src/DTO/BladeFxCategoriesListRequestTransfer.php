@@ -12,9 +12,23 @@ class BladeFxCategoriesListRequestTransfer extends AbstractTransfer
     protected ?int $catId = null;
 
     /**
+     * @var BladeFxTokenTransfer
+     */
+    protected BladeFxTokenTransfer $token;
+
+    /**
      * @var string
      */
     protected string $returnType = 'JSON';
+
+//    /**
+//     * @var array<string, string>
+//     */
+//    protected $transferPropertyNameMap = [
+//        'cat_id' => 'catId',
+//        'token' => 'token',
+//        'returnType' => 'returnType',
+//    ];
 
     /**
      * @return int
@@ -31,6 +45,35 @@ class BladeFxCategoriesListRequestTransfer extends AbstractTransfer
     public function setCatId(int $catId): void
     {
         $this->catId = $catId;
+    }
+
+    /**
+     * @return BladeFxTokenTransfer
+     */
+    public function getToken(): BladeFxTokenTransfer
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param BladeFxTokenTransfer $token
+     * @return void
+     */
+    public function setToken(BladeFxTokenTransfer $token): void
+    {
+        $this->token = $token;
+        $this->modifiedProperties['token'] = true;
+    }
+
+    /**
+     * @return $this
+     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
+     */
+    public function requireToken(): self
+    {
+        $this->assertPropertyIsSet('token');
+
+        return $this;
     }
 
     /**
@@ -51,12 +94,24 @@ class BladeFxCategoriesListRequestTransfer extends AbstractTransfer
     }
 
     /**
+     * @return $this
+     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
+     */
+    public function requireReturnType(): self
+    {
+        $this->assertPropertyIsSet('returnType');
+
+        return $this;
+    }
+
+    /**
      * @return array<string, mixed>
      */
     public function toArray(): array
     {
         return [
             'catId' => $this->catId,
+            'token' => $this->token,
             'returnType' => $this->returnType,
         ];
     }

@@ -58,4 +58,14 @@ interface ResponseFactoryInterface
      * @return ResponseValidatorInterface
      */
     public function createResponsePreviewValidator(): ResponseValidatorInterface;
+
+    /**
+     * @return ResponseConverterInterface
+     */
+    public function createSetFavoriteReportResponseConverter(): ResponseConverterInterface;
+
+    /**
+     * @return ResponseValidatorInterface
+     */
+    public function createSetFavoriteReportResponseValidator(): ResponseValidatorInterface;
 }

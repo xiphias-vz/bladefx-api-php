@@ -1,6 +1,5 @@
 <?php
 
-
 declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Response;
@@ -13,10 +12,10 @@ use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportsListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
 use Xiphias\BladeFxApi\Response\Exception\ReportsResponseException;
 use Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface;
-use Symfony\Contracts\HttpClient\ResponseInterface;
-use Xiphias\BladeFxApi\Response\ResponseManagerInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class ResponseManager implements ResponseManagerInterface
 {
@@ -30,10 +29,20 @@ class ResponseManager implements ResponseManagerInterface
      */
     private const LOG_MESSAGE_PREFIX = 'BladeFxAPIClient: ';
 
+    /**
+     * @var LoggerInterface
+     */
     private LoggerInterface $logger;
 
+    /**
+     * @var ResponseFactoryInterface
+     */
     private ResponseFactoryInterface $responseFactory;
 
+    /**
+     * @param LoggerInterface $logger
+     * @param ResponseFactoryInterface $responseFactory
+     */
     public function __construct(
         LoggerInterface $logger,
         ResponseFactoryInterface $responseFactory
@@ -122,8 +131,26 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param \Psr\Http\Message\ResponseInterface|null $response
-     *
+     * @param ResponseInterface|null $response
+     * @return BladeFxSetFavoriteReportResponseTransfer
+     */
+    public function getSetFavoriteReportResponseTransfer(?ResponseInterface $response): BladeFxSetFavoriteReportResponseTransfer
+    {
+        $this->validateRawResponse($response);
+        $converterResultTransfer = $this->responseFactory->createSetFavoriteReportResponseConverter()->convert($response);
+        $validator = $this->responseFactory->createSetFavoriteReportResponseValidator();
+
+        try {
+            $this->validateResponse($validator, $converterResultTransfer->getBladeFxSetFavoriteReportResponse());
+        } catch (ReportsResponseException $e) {
+            $converterResultTransfer->getBladeFxSetFavoriteReportResponse()->setSuccess(false);
+        }
+
+        return $converterResultTransfer->getBladeFxSetFavoriteReportResponse();
+    }
+
+    /**
+     * @param ResponseInterface|null $response
      * @return void
      */
     protected function validateRawResponse(?ResponseInterface $response): void
@@ -137,12 +164,9 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param \Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface $validator
-     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $response
-     *
+     * @param ResponseValidatorInterface $validator
+     * @param AbstractTransfer $response
      * @return void
-     * @throws \Xiphias\BladeFxApi\Response\Exception\ReportsResponseException
-     *
      */
     private function validateResponse(ResponseValidatorInterface $validator, AbstractTransfer $response): void
     {
@@ -155,8 +179,7 @@ class ResponseManager implements ResponseManagerInterface
 
     /**
      * @param string $errorMessage
-     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $response
-     *
+     * @param AbstractTransfer $response
      * @return void
      */
     protected function logError(string $errorMessage, AbstractTransfer $response): void
@@ -169,8 +192,7 @@ class ResponseManager implements ResponseManagerInterface
 
     /**
      * @param string $errorMessage
-     * @param \Psr\Http\Message\ResponseInterface $rawResponse
-     *
+     * @param ResponseInterface $rawResponse
      * @return void
      */
     protected function logRawDataError(string $errorMessage, ResponseInterface $rawResponse): void
@@ -195,9 +217,8 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $response
-     *
-     * @return array<\Xiphias\BladeFxApi\DTO\AbstractTransfer>
+     * @param AbstractTransfer $response
+     * @return AbstractTransfer[]
      */
     private function createArrayWithResponseData(AbstractTransfer $response): array
     {
@@ -207,9 +228,8 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param \Psr\Http\Message\ResponseInterface $rawResponse
-     *
-     * @return array<\Psr\Http\Message\ResponseInterface>
+     * @param ResponseInterface $rawResponse
+     * @return ResponseInterface[]
      */
     private function createArrayWithRawResponseData(ResponseInterface $rawResponse): array
     {

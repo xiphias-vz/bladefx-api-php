@@ -4,12 +4,19 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Response\Converter;
 
-use Symfony\Contracts\HttpClient\ResponseInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer;
 
 abstract class AbstractResponseConverter implements ResponseConverterInterface
 {
+    public const DEFAULT_OPTIONS = JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT | JSON_PARTIAL_OUTPUT_ON_ERROR;
+
+    /**
+     * @var int
+     */
+    public const DEFAULT_DEPTH = 512;
+
     /**
      * @var string
      */
@@ -33,7 +40,7 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
      */
     public function convert(ResponseInterface $response): BladeFxApiResponseConversionResultTransfer
     {
-        $responseData = $this->decodeResponse($response);
+        $responseData = $this->decodeResponse($response, true);
         $responseData = is_array($responseData) ? $responseData : [$responseData];
         $bladeFxApiResponseConversionResultTransfer = $this->createConversionResultTransfer();
 
@@ -54,13 +61,15 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
     ): BladeFxApiResponseConversionResultTransfer;
 
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
-     *
+     * @param ResponseInterface $response
+     * @param bool $assoc
+     * @param int|null $depth
+     * @param int|null $options
      * @return array|string|null
      */
-    private function decodeResponse(ResponseInterface $response): array|string|null
+    private function decodeResponse(ResponseInterface $response, bool $assoc = false, int $depth = null, int $options = null): array|string|null
     {
-        $bodyContent = $response->getContent(false);
+        $bodyContent = $response->getBody()->getContents();
         if (!$bodyContent) {
             $this->logError(
                 self::ERROR_INVALID_RESPONSE_MISSING_PROPERTY,
@@ -70,42 +79,20 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
             return [];
         }
 
-        $contentType = $response->getHeaders(false)['content-type'][0] ?? '';
-
-        if (str_contains($contentType, 'application/json')) {
-            return $response->toArray(false);
+        if ($options === null) {
+            $options = static::DEFAULT_OPTIONS;
         }
 
-        return $response->getContent(false);
+        if ($depth === null || $depth === 0) {
+            $depth = static::DEFAULT_DEPTH;
+        }
 
-
-//        return $this->utilEncodingService->decodeJson($bodyContent, true);
+        return json_decode((string)$bodyContent, $assoc, $depth, $options);
     }
-
-//    /**
-//     * @param \Psr\Http\Message\ResponseInterface $response
-//     *
-//     * @return array|string|null
-//     */
-//    private function decodeResponse(ResponseInterface $response): array|string|null
-//    {
-//        $bodyContent = $response->getBody()->getContents();
-//        if (!$bodyContent) {
-//            $this->logError(
-//                self::ERROR_INVALID_RESPONSE_MISSING_PROPERTY,
-//                $response,
-//            );
-//
-//            return [];
-//        }
-//
-//        return $this->utilEncodingService->decodeJson($bodyContent, true);
-//    }
 
     /**
      * @param string $errorMessage
-     * @param \Psr\Http\Message\ResponseInterface $response
-     *
+     * @param ResponseInterface $response
      * @return void
      */
     protected function logError(string $errorMessage, ResponseInterface $response): void
@@ -130,9 +117,8 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
     }
 
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
-     *
-     * @return array<\Psr\Http\Message\ResponseInterface>
+     * @param ResponseInterface $response
+     * @return ResponseInterface[]
      */
     private function createArrayWithResponseData(ResponseInterface $response): array
     {
