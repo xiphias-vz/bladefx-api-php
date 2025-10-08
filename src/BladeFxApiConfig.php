@@ -24,7 +24,7 @@ class BladeFxApiConfig
     /**
      * @var string
      */
-    public const BLADE_FX_REPORTS_HOST = 'https://api.blade-fx.com';
+    public const BLADE_FX_REPORTS_HOST = 'https://api.alabama.blade-fx.com';
 
     /**
      * @var string

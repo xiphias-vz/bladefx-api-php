@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi\DTO;
 
 use ArrayObject;
-use InvalidArgumentException;
 use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 
 class AbstractTransfer
