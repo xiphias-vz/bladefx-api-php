@@ -49,7 +49,7 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxReportPreviewRequestTransfer $reportPreviewRequestTransfer */
+        /** @var BladeFxReportPreviewRequestTransfer $requestTransfer */
         return $this->addAuthHeader($requestTransfer->getToken());
     }
 
@@ -64,6 +64,7 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
     ): RequestInterface {
         $uri = $this->buildUri(
             $resource,
+            $requestTransfer->getBaseUrl(),
             $this->getQueryParamsFromRequestTransfer(
                 $requestTransfer,
             )

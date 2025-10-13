@@ -30,12 +30,19 @@ use Xiphias\BladeFxApi\Request\RequestFactory;
 use Xiphias\BladeFxApi\Request\RequestManager;
 use Xiphias\BladeFxApi\Response\ResponseFactory;
 use Xiphias\BladeFxApi\Response\ResponseManager;
+use Xiphias\BladeFxApi\Storage\FileTokenStorage;
+use Xiphias\BladeFxApi\Storage\TokenStorageInterface;
 
 class BladeFxApiClient
 {
     protected ?LoggerInterface $logger;
 
     protected ApiHandlerInterface $apiHandler;
+
+    protected TokenStorageInterface $tokenStorage;
+
+    protected const AUTH_TOKEN_FILE_PATH = '/tmp/api_token.json';
+    protected const AUTH_TOKEN_EXPIRES_AT_SECONDS_DURATION = '+3600 seconds';
 
     /**
      * @param string $bladeFxBaseUrl
@@ -47,36 +54,79 @@ class BladeFxApiClient
         protected string                    $bladeFxBaseUrl,
         protected string                    $bladeFxUsername,
         protected string                    $bladeFxPassword,
-        ?LoggerInterface                    $logger = null
+        ?LoggerInterface                    $logger = null,
     )
     {
         $this->logger = $logger ?? new StdoutLogger();
         $this->apiHandler = $this->createApiHandler();
+        $this->tokenStorage = new FileTokenStorage(static::AUTH_TOKEN_FILE_PATH);
+    }
+
+    /**
+     * @return BladeFxTokenTransfer
+     * @throws \DateMalformedStringException
+     */
+    public function authenticateUser(): BladeFxTokenTransfer
+    {
+        $expiresAt = (new \DateTimeImmutable())->modify(static::AUTH_TOKEN_EXPIRES_AT_SECONDS_DURATION);
+        $tokenTransfer = new BladeFxTokenTransfer($this->callAuthenticateUserApi()->getToken(), $expiresAt);
+
+        $this->clearToken();
+        $this->tokenStorage->save($tokenTransfer);
+
+        return $tokenTransfer;
     }
 
     /**
      * @return BladeFxAuthenticationResponseTransfer|null
      */
-    public function authenticateUser(): ?BladeFxAuthenticationResponseTransfer
+    protected function callAuthenticateUserApi(): ?BladeFxAuthenticationResponseTransfer
     {
         $authRequestTransfer = new BladeFxAuthenticationRequestTransfer();
         $authRequestTransfer->setUsername($this->bladeFxUsername);
         $authRequestTransfer->setPassword($this->bladeFxPassword);
-        $this->logger->info("Authenticating user");
+        $authRequestTransfer->setBaseUrl($this->bladeFxBaseUrl);
 
         return $this->apiHandler->authenticateUser($authRequestTransfer);
     }
 
     /**
+     * @param AbstractTransfer $abstractTransfer
+     * @return AbstractTransfer
+     * @throws \DateMalformedStringException
+     */
+    protected function getAuthorizationToken(AbstractTransfer $abstractTransfer): AbstractTransfer
+    {
+        $tokenTransfer = $this->tokenStorage->load();
+
+        if (!$tokenTransfer || $tokenTransfer->isExpired()) {
+            $tokenTransfer = $this->authenticateUser();
+        }
+
+        $abstractTransfer->setToken($tokenTransfer);
+
+        return $abstractTransfer;
+    }
+
+    /**
+     * @return void
+     */
+    protected function clearToken(): void
+    {
+        $this->tokenStorage->clear();
+    }
+
+    /**
      * @param BladeFxReportsListRequestTransfer|null $reportsListRequestTransfer
      * @return BladeFxReportsListResponseTransfer
+     * @throws \DateMalformedStringException
      */
     public function getReportList(
         ?BladeFxReportsListRequestTransfer $reportsListRequestTransfer = (new BladeFxReportsListRequestTransfer())
     ): BladeFxReportsListResponseTransfer
     {
         /** @var BladeFxReportsListRequestTransfer $reportsListRequestTransfer */
-        $reportsListRequestTransfer = $this->mapTokenTransfer($reportsListRequestTransfer);
+        $reportsListRequestTransfer = $this->prepareRequest($reportsListRequestTransfer);
 
         return $this->apiHandler->getReportsList($reportsListRequestTransfer);
     }
@@ -84,24 +134,29 @@ class BladeFxApiClient
     /**
      * @param BladeFxCategoriesListRequestTransfer|null $categoriesListRequestTransfer
      * @return BladeFxCategoriesListResponseTransfer
+     * @throws \DateMalformedStringException
      */
     public function getCategoryList(
         ?BladeFxCategoriesListRequestTransfer $categoriesListRequestTransfer = (new BladeFxCategoriesListRequestTransfer())
     ): BladeFxCategoriesListResponseTransfer
     {
         /** @var BladeFxCategoriesListRequestTransfer $categoriesListRequestTransfer */
-        $categoriesListRequestTransfer = $this->mapTokenTransfer($categoriesListRequestTransfer);
+        $categoriesListRequestTransfer = $this->prepareRequest($categoriesListRequestTransfer);
 
         return $this->apiHandler->getCategoriesList($categoriesListRequestTransfer);
     }
 
-
+    /**
+     * @param BladeFxReportParamFormRequestTransfer|null $reportsParamFormRequestTransfer
+     * @return BladeFxReportParamFormResponseTransfer
+     * @throws \DateMalformedStringException
+     */
     public function getReportUrl(
         ?BladeFxReportParamFormRequestTransfer $reportsParamFormRequestTransfer = (new BladeFxReportParamFormRequestTransfer())
     ): BladeFxReportParamFormResponseTransfer
     {
         /** @var BladeFxReportParamFormRequestTransfer $reportsParamFormRequestTransfer */
-        $reportsParamFormRequestTransfer = $this->mapTokenTransfer($reportsParamFormRequestTransfer);
+        $reportsParamFormRequestTransfer = $this->prepareRequest($reportsParamFormRequestTransfer);
 
         return $this->apiHandler->getReportParamForm($reportsParamFormRequestTransfer);
     }
@@ -109,38 +164,48 @@ class BladeFxApiClient
     /**
      * @param BladeFxReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
      * @return BladeFxReportPreviewResponseTransfer
+     * @throws \DateMalformedStringException
      */
     public function getReportPreviewURL(
         BladeFxReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
     ): BladeFxReportPreviewResponseTransfer
     {
         /** @var BladeFxReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer */
-        $bladeFxReportPreviewRequestTransfer = $this->mapTokenTransfer($bladeFxReportPreviewRequestTransfer);
+        $bladeFxReportPreviewRequestTransfer = $this->prepareRequest($bladeFxReportPreviewRequestTransfer);
 
         return $this->apiHandler->getReportPreview($bladeFxReportPreviewRequestTransfer);
     }
 
+    /**
+     * @param BladeFxSetFavoriteReportRequestTransfer|null $bladeFxSetFavoriteReportRequestTransfer
+     * @return BladeFxSetFavoriteReportResponseTransfer
+     * @throws \DateMalformedStringException
+     */
     public function setFavoriteReport(
         ?BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer
     ): BladeFxSetFavoriteReportResponseTransfer
     {
         /** @var BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer */
-        $bladeFxSetFavoriteReportRequestTransfer = $this->mapTokenTransfer($bladeFxSetFavoriteReportRequestTransfer);
+        $bladeFxSetFavoriteReportRequestTransfer = $this->prepareRequest($bladeFxSetFavoriteReportRequestTransfer);
 
         return $this->apiHandler->setFavoriteReport($bladeFxSetFavoriteReportRequestTransfer);
     }
 
-    protected function mapTokenTransfer(AbstractTransfer $abstractTransfer): AbstractTransfer
+    /**
+     * @param AbstractTransfer $requestTransfer
+     * @return AbstractTransfer
+     * @throws \DateMalformedStringException
+     */
+    protected function prepareRequest(AbstractTransfer $requestTransfer): AbstractTransfer
     {
-        $tokenTransfer = new BladeFxTokenTransfer();
-        $tokenTransfer->setToken($this->authenticateUser()->getToken());
-        $abstractTransfer->setToken($tokenTransfer);
+        $bladeFxRequestTransfer = $this->getAuthorizationToken($requestTransfer);
+        $bladeFxRequestTransfer->setBaseUrl($this->bladeFxBaseUrl);
 
-        return $abstractTransfer;
+        return $bladeFxRequestTransfer;
     }
 
     /**
-     * @return \Xiphias\BladeFxApi\Handler\ApiHandler
+     * @return ApiHandler
      */
     protected function createApiHandler(): ApiHandler
     {
@@ -148,24 +213,26 @@ class BladeFxApiClient
             $this->createRequestManager(),
             $this->createResponseManager(),
             $this->createHttpClient(),
-            $this->createConfig(),
+            new BladeFxApiConfig(),
             $this->createRequestFactory(),
         );
     }
 
     /**
-     * @return \Xiphias\BladeFxApi\Http\Client\HttpApiClient
+     * @return HttpApiClient
      */
     protected function createHttpClient(): HttpApiClient
     {
         return new HttpApiClient(
-            $this->createGuzzleClient(),
+            new Client([
+                'timeout' => 30,
+            ]),
             $this->logger,
         );
     }
 
     /**
-     * @return \Xiphias\BladeFxApi\Request\RequestFactory
+     * @return RequestFactory
      */
     protected function createRequestFactory(): RequestFactory
     {
@@ -175,7 +242,7 @@ class BladeFxApiClient
     }
 
     /**
-     * @return \Xiphias\BladeFxApi\Request\RequestManager
+     * @return RequestManager
      */
     protected function createRequestManager(): RequestManager
     {
@@ -186,7 +253,7 @@ class BladeFxApiClient
     }
 
     /**
-     * @return \Xiphias\BladeFxApi\Response\ResponseManager
+     * @return ResponseManager
      */
     protected function createResponseManager(): ResponseManager
     {
@@ -197,30 +264,12 @@ class BladeFxApiClient
     }
 
     /**
-     * @return \Xiphias\BladeFxApi\Response\ResponseFactory
+     * @return ResponseFactory
      */
     protected function createResponseFactory(): ResponseFactory
     {
         return new ResponseFactory(
             $this->logger,
         );
-    }
-
-    /**
-     * @return \Xiphias\BladeFxApi\BladeFxApiConfig
-     */
-    protected function createConfig(): BladeFxApiConfig
-    {
-        return new BladeFxApiConfig();
-    }
-
-    /**
-     * @return \GuzzleHttp\ClientInterface
-     */
-    protected function createGuzzleClient(): ClientInterface
-    {
-        return new Client([
-            'timeout' => 30,
-        ]);
     }
 }

@@ -31,12 +31,10 @@ class BladeFxParameterTransfer extends AbstractTransfer
      */
     protected string $paramDefaultValue = "";
 
-
     /**
      * @var bool
      */
     protected bool $isList = true;
-
 
     /**
      * @var bool
@@ -161,7 +159,6 @@ class BladeFxParameterTransfer extends AbstractTransfer
     {
         $this->isCustomField = $isCustomField;
     }
-
 
     /**
      * @return array<string, mixed>

@@ -77,6 +77,9 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
         $this->modifiedProperties['userId'] = true;
     }
 
+    /**
+     * @return $this
+     */
     public function requireUserId(): self
     {
         $this->assertPropertyIsSet('userId');

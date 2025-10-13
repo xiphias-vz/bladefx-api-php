@@ -41,7 +41,7 @@ class SetFavoriteReportRequestBuilder extends AbstractRequestBuilder
         AbstractTransfer|BladeFxSetFavoriteReportRequestTransfer $requestTransfer,
         ?BladeFxParameterTransfer $parameterTransfer = null
     ): RequestInterface {
-        $uri = $this->buildUri($resource, $this->getQueryParamsFromRequestTransfer(
+        $uri = $this->buildUri($resource, $requestTransfer->getBaseUrl(), $this->getQueryParamsFromRequestTransfer(
             $requestTransfer,
         ));
         $headers = $this->getCombinedHeaders($requestTransfer);
