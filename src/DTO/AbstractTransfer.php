@@ -24,6 +24,11 @@ class AbstractTransfer
      */
     protected $modifiedProperties = [];
 
+    /**
+     * @var string
+     */
+    protected $baseUrl = '';
+
     public function __construct()
     {
         $this->initCollectionProperties();
@@ -50,5 +55,22 @@ class AbstractTransfer
                 static::class,
             ));
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getBaseUrl(): string
+    {
+        return $this->baseUrl;
+    }
+
+    /**
+     * @param string $baseUrl
+     * @return void
+     */
+    public function setBaseUrl(string $baseUrl): void
+    {
+        $this->baseUrl = $baseUrl;
     }
 }

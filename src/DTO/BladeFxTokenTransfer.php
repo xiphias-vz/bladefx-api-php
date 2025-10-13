@@ -4,67 +4,47 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
-class BladeFxTokenTransfer extends AbstractTransfer
+class BladeFxTokenTransfer
 {
-    protected string $token;
+    protected string $accessToken;
 
-//    /**
-//     * @var array<string, string>
-//     */
-//    protected $transferPropertyNameMap = [
-//        'token' => 'token',
-//    ];
+    private ?\DateTimeImmutable $expiresAt;
 
-    /**
-     * @return string
-     */
-    public function getToken(): string
+    public function __construct(string $accessToken, ?\DateTimeImmutable $expiresAt = null)
     {
-        return $this->token;
+        $this->accessToken = $accessToken;
+        $this->expiresAt = $expiresAt;
     }
 
-    /**
-     * @param string $token
-     * @return void
-     */
-    public function setToken(string $token): void
+    public function getAccessToken(): string
     {
-        $this->token = $token;
-        $this->modifiedProperties['token'] = true;
+        return $this->accessToken;
     }
 
-//    /**
-//     * @param array $data
-//     * @param bool $ignoreMissingProperties
-//     * @return $this
-//     */
-//    public function fromArray(array $data, bool $ignoreMissingProperties = false)
-//    {
-//        foreach ($data as $property => $value) {
-//            $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
-//
-//            switch ($normalizedPropertyName) {
-//                case 'token':
-//                case 'username':
-//                case 'fullname':
-//                case 'email':
-//                case 'avatar':
-//                case 'idUser':
-//                case 'idCompany':
-//                case 'idLanguage':
-//                case 'languageDescription':
-//                case 'licenceExp':
-//                    $this->$normalizedPropertyName = $value;
-//                    $this->modifiedProperties[$normalizedPropertyName] = true;
-//                    break;
-//
-//                default:
-//                    if (!$ignoreMissingProperties) {
-//                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
-//                    }
-//            }
-//        }
-//
-//        return $this;
-//    }
+    public function getExpiresAt(): ?\DateTimeImmutable
+    {
+        return $this->expiresAt;
+    }
+
+    public function isExpired(): bool
+    {
+        return $this->expiresAt !== null && $this->expiresAt <= new \DateTimeImmutable();
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'access_token' => $this->accessToken,
+            'expires_at' => $this->expiresAt?->format(DATE_ATOM),
+        ];
+    }
+
+    public static function fromArray(array $data): self
+    {
+        $expiresAt = isset($data['expires_at']) && $data['expires_at']
+            ? new \DateTimeImmutable($data['expires_at'])
+            : null;
+
+        return new self($data['access_token'], $expiresAt);
+    }
 }

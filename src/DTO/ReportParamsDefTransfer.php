@@ -8,23 +8,6 @@ use JsonSerializable;
 
 class ReportParamsDefTransfer extends AbstractTransfer implements JsonSerializable
 {
-//    protected int $rep_id;
-//    protected int $layout_id;
-//    protected string $imageFormat;
-//    protected array $params;
-
-//    protected array $defaultParams = [
-//        {
-//          "param_id": 0,
-//          "paramName": "string",
-//          "sqlDbType": "string",
-//          "paramValue": "string",
-//          "paramDefaultValue": "string",
-//          "isList": true,
-//          "isCustomField": true
-//        }
-//    ];
-
     /**
      * @param ReportParamsTransfer[] $params
      */
@@ -34,6 +17,8 @@ class ReportParamsDefTransfer extends AbstractTransfer implements JsonSerializab
         protected string $imageFormat  = '',
         protected ?array $params = null
     ) {
+        parent::__construct();
+
         if ($params === null) {
             $params = [
                 new ReportParamsTransfer(

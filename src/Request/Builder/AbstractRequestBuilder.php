@@ -88,7 +88,7 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
         string $resource,
         AbstractTransfer $requestTransfer
     ): RequestInterface {
-        $uri = $this->buildUri($resource, []);
+        $uri = $this->buildUri($resource, $requestTransfer->getBaseUrl(), []);
         $headers = $this->getCombinedHeaders($requestTransfer);
         $encodedData = $this->getEncodedData($requestTransfer);
 
@@ -97,27 +97,34 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
 
     /**
      * @param string $resource
+     * @param string $baseUrl
      * @param array $queryParams
      * @return Uri
      */
-    protected function buildUri(string $resource, array $queryParams = []): Uri
+    protected function buildUri(string $resource, string $baseUrl, array $queryParams = []): Uri
     {
-        $url = $this->buildFullRequestUrl($resource, $queryParams);
+        $url = $this->buildFullRequestUrl($resource, $baseUrl, $queryParams);
 
         return new Uri($url);
     }
 
     /**
      * @param string $resource
+     * @param string $baseUrl
      * @param array $queryParams
      * @return string
      */
-    private function buildFullRequestUrl(string $resource, array $queryParams = []): string
+    private function buildFullRequestUrl(string $resource, string $baseUrl, array $queryParams = []): string
     {
+        if($baseUrl === '')
+        {
+            $baseUrl = $this->apiClientConfig->getDefaultApiBaseUri();
+        }
+
         $url = strtr(
             self::FULL_URL_PATTERN,
             [
-                '{{baseUri}}' => $this->apiClientConfig->getApiBaseUri(),
+                '{{baseUri}}' => $baseUrl,
                 '{{resource}}' => $resource,
             ],
         );
@@ -188,7 +195,7 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     protected function addAuthHeader(BladeFxTokenTransfer $requestTransfer): array
     {
         return [
-            static::HEADER_TYPE_AUTHORIZATION => static::AUTHORIZATION_TYPE_BEARER . ' ' . $requestTransfer->getToken(),
+            static::HEADER_TYPE_AUTHORIZATION => static::AUTHORIZATION_TYPE_BEARER . ' ' . $requestTransfer->getAccessToken(),
         ];
     }
 }

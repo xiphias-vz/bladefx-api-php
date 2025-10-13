@@ -43,7 +43,7 @@ class ReportParamFormRequestBuilder extends AbstractRequestBuilder
         string $resource,
         AbstractTransfer $requestTransfer
     ): RequestInterface {
-        $uri = $this->buildUri($resource, $this->getUrlParamsFromRequestTransfer($requestTransfer));
+        $uri = $this->buildUri($resource, $requestTransfer->getBaseUrl(), $this->getUrlParamsFromRequestTransfer($requestTransfer));
         $headers = $this->getCombinedHeaders($requestTransfer);
         $encodedData = $this->getEncodedData($requestTransfer);
 

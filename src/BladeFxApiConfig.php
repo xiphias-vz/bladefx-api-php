@@ -24,7 +24,7 @@ class BladeFxApiConfig
     /**
      * @var string
      */
-    public const BLADE_FX_REPORTS_HOST = 'https://api.alabama.blade-fx.com';
+    public const DEFAULT_BLADE_FX_REPORTS_HOST = 'https://api.alabama.blade-fx.com';
 
     /**
      * @var string
@@ -71,9 +71,9 @@ class BladeFxApiConfig
     /**
      * @return string
      */
-    public function getApiBaseUri(): string
+    public function getDefaultApiBaseUri(): string
     {
-        return self::BLADE_FX_REPORTS_HOST;
+        return self::DEFAULT_BLADE_FX_REPORTS_HOST;
     }
 
     /**

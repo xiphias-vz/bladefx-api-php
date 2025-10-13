@@ -21,14 +21,6 @@ class BladeFxCategoriesListRequestTransfer extends AbstractTransfer
      */
     protected string $returnType = 'JSON';
 
-//    /**
-//     * @var array<string, string>
-//     */
-//    protected $transferPropertyNameMap = [
-//        'cat_id' => 'catId',
-//        'token' => 'token',
-//        'returnType' => 'returnType',
-//    ];
 
     /**
      * @return int

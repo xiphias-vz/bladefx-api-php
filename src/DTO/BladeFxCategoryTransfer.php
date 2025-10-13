@@ -39,25 +39,6 @@ class BladeFxCategoryTransfer extends AbstractTransfer
        'reportCount' => 'reportCount',
     ];
 
-//    /**
-//     * @var array<string, array<string, mixed>>
-//     */
-//    protected $transferMetadata = [
-//        self::CAT_ID => [
-//            'type' => 'string',
-//            'type_shim' => null,
-//            'name_underscore' => 'key',
-//            'is_collection' => false,
-//            'is_transfer' => false,
-//            'is_value_object' => false,
-//            'rest_request_parameter' => 'no',
-//            'is_associative' => false,
-//            'is_nullable' => false,
-//            'is_strict' => false,
-//            'is_primitive_array' => false,
-//        ],
-//    ];
-
     public function getCatId(): int
     {
         return $this->catId;

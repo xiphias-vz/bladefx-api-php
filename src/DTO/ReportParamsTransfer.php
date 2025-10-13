@@ -8,14 +8,6 @@ use JsonSerializable;
 
 class ReportParamsTransfer extends AbstractTransfer implements JsonSerializable
 {
-//    public int $param_id;
-//    public string $paramName;
-//    public string $sqlDbType;
-//    public string $paramValue;
-//    public string $paramDefaultValue;
-//    public bool $isList;
-//    public bool $isCustomField;
-
     public function __construct(
         public int $param_id = 0,
         public string $paramName = '',
@@ -24,7 +16,9 @@ class ReportParamsTransfer extends AbstractTransfer implements JsonSerializable
         public string $paramDefaultValue = '',
         public bool $isList = true,
         public bool $isCustomField = true,
-    ) {}
+    ) {
+        parent::__construct();
+    }
 
     /**
      * @return int
