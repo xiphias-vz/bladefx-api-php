@@ -17,6 +17,11 @@ class ReportParamFormRequestBuilder extends AbstractRequestBuilder
     protected const PARAM_ROOT_URL = 'rootUrl';
 
     /**
+     *
+     */
+    protected const PARAM_REP_ID = 'rep_id';
+
+    /**
      * @return string
      */
     public function getMethodName(): string
@@ -59,6 +64,7 @@ class ReportParamFormRequestBuilder extends AbstractRequestBuilder
         /** @var BladeFxReportParamFormRequestTransfer $requestTransfer */
         return [
             static::PARAM_ROOT_URL => $requestTransfer->getRootUrl(),
+            static::PARAM_REP_ID => $requestTransfer->getReportId(),
         ];
     }
 }

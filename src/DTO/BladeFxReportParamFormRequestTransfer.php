@@ -14,7 +14,7 @@ class BladeFxReportParamFormRequestTransfer extends AbstractTransfer
     /**
      * @var int|null
      */
-    protected ?int $reportId = null;
+    protected ?int $rep_id = null;
 
     /**
      * @var string
@@ -26,7 +26,7 @@ class BladeFxReportParamFormRequestTransfer extends AbstractTransfer
      */
     protected $transferPropertyNameMap = [
         'token' => 'token',
-        'rep_id' => 'reportId',
+        'rep_id' => 'rep_id',
         'rootUrl' => 'rootUrl'
     ];
 
@@ -66,17 +66,17 @@ class BladeFxReportParamFormRequestTransfer extends AbstractTransfer
      */
     public function getReportId(): ?int
     {
-        return $this->reportId;
+        return $this->rep_id;
     }
 
     /**
-     * @param int $reportId
+     * @param int $rep_id
      * @return void
      */
-    public function setReportId(int $reportId): void
+    public function setReportId(int $rep_id): void
     {
-        $this->reportId = $reportId;
-        $this->modifiedProperties['reportId'] = true;
+        $this->rep_id = $rep_id;
+        $this->modifiedProperties['rep_id'] = true;
     }
 
     /**
@@ -114,7 +114,7 @@ class BladeFxReportParamFormRequestTransfer extends AbstractTransfer
     {
         return [
             'token' => $this->token,
-            'reportId' => $this->reportId,
+            'rep_id' => $this->rep_id,
             'rootUrl' => $this->rootUrl,
         ];
     }
@@ -131,7 +131,7 @@ class BladeFxReportParamFormRequestTransfer extends AbstractTransfer
 
             switch ($normalizedPropertyName) {
                 case 'token':
-                case 'reportId':
+                case 'rep_id':
                 case 'rootUrl':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
