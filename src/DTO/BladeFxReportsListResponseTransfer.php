@@ -12,7 +12,7 @@ class BladeFxReportsListResponseTransfer extends AbstractTransfer
     protected int $statusCode = 0;
 
     /**
-     * @var array
+     * @var array<BladeFxReportTransfer>
      */
     protected array $reportsList = [];
 
@@ -61,7 +61,7 @@ class BladeFxReportsListResponseTransfer extends AbstractTransfer
         }
 
         return [
-            'statusCode' => $this->getStatusCode() ?? null,
+            'statusCode' => $this->getStatusCode(),
             'reportsList' => $transfers,
         ];
     }

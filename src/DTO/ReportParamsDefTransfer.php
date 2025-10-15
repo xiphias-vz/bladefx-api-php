@@ -88,7 +88,7 @@ class ReportParamsDefTransfer extends AbstractTransfer implements JsonSerializab
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     public function getParams(): array
     {
@@ -96,7 +96,7 @@ class ReportParamsDefTransfer extends AbstractTransfer implements JsonSerializab
     }
 
     /**
-     * @param array $params
+     * @param array<mixed> $params
      * @return void
      */
     public function setParams(array $params): void
@@ -104,13 +104,16 @@ class ReportParamsDefTransfer extends AbstractTransfer implements JsonSerializab
         $this->params = $params;
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function jsonSerialize(): array
     {
         return [
-            'rep_id' => $this->rep_id,
-            'layout_id' => $this->layout_id,
-            'imageFormat' => $this->imageFormat,
-            'params' => $this->params,
+            'rep_id' => $this->getRepId(),
+            'layout_id' => $this->getLayoutId(),
+            'imageFormat' => $this->getImageFormat(),
+            'params' => $this->getParams(),
         ];
     }
 
@@ -120,10 +123,10 @@ class ReportParamsDefTransfer extends AbstractTransfer implements JsonSerializab
     public function toArray(): array
     {
         return [
-            'rep_id' => $this->rep_id,
-            'layout_id' => $this->layout_id,
-            'imageFormat' => $this->imageFormat,
-            'params' => array_map(fn(ReportParamsTransfer $p) => $p->toArray(), $this->params),
+            'rep_id' => $this->getRepId(),
+            'layout_id' => $this->getLayoutId(),
+            'imageFormat' => $this->getImageFormat(),
+            'params' => array_map(fn(ReportParamsTransfer $p) => $p->toArray(), $this->getParams()),
         ];
     }
 }

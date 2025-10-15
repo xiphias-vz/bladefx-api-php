@@ -11,7 +11,7 @@ interface HttpApiClientInterface
 {
     /**
      * @param RequestInterface $request
-     * @param array $options
+     * @param array<mixed> $options
      * @return ResponseInterface
      */
     public function sendRequest(RequestInterface $request, array $options = []): ResponseInterface;

@@ -35,14 +35,15 @@ use Xiphias\BladeFxApi\Storage\TokenStorageInterface;
 
 class BladeFxApiClient
 {
-    protected ?LoggerInterface $logger;
+    /**
+     * @var ApiHandler|ApiHandlerInterface
+     */
+    protected ApiHandlerInterface|ApiHandler $apiHandler;
 
-    protected ApiHandlerInterface $apiHandler;
-
-    protected TokenStorageInterface $tokenStorage;
-
-    protected const AUTH_TOKEN_FILE_PATH = '/tmp/api_token.json';
-    protected const AUTH_TOKEN_EXPIRES_AT_SECONDS_DURATION = '+3600 seconds';
+    /**
+     * @var FileTokenStorage|TokenStorageInterface
+     */
+    protected TokenStorageInterface|FileTokenStorage $tokenStorage;
 
     /**
      * @param string $bladeFxBaseUrl
@@ -51,15 +52,14 @@ class BladeFxApiClient
      * @param LoggerInterface|null $logger
      */
     public function __construct(
-        protected string                    $bladeFxBaseUrl,
-        protected string                    $bladeFxUsername,
-        protected string                    $bladeFxPassword,
-        ?LoggerInterface                    $logger = null,
-    )
-    {
-        $this->logger = $logger ?? new StdoutLogger();
+        protected string $bladeFxBaseUrl,
+        protected string $bladeFxUsername,
+        protected string $bladeFxPassword,
+        protected ?LoggerInterface $logger = null,
+    ) {
+        $this->logger ??= new StdoutLogger();
         $this->apiHandler = $this->createApiHandler();
-        $this->tokenStorage = new FileTokenStorage(static::AUTH_TOKEN_FILE_PATH);
+        $this->tokenStorage = new FileTokenStorage(BladeFxApiConfig::AUTH_TOKEN_FILE_PATH);
     }
 
     /**
@@ -68,7 +68,7 @@ class BladeFxApiClient
      */
     public function authenticateUser(): BladeFxTokenTransfer
     {
-        $expiresAt = (new \DateTimeImmutable())->modify(static::AUTH_TOKEN_EXPIRES_AT_SECONDS_DURATION);
+        $expiresAt = (new \DateTimeImmutable())->modify(BladeFxApiConfig::AUTH_TOKEN_EXPIRES_AT_SECONDS_DURATION);
         $tokenTransfer = new BladeFxTokenTransfer($this->callAuthenticateUserApi()->getToken(), $expiresAt);
 
         $this->clearToken();
@@ -103,7 +103,7 @@ class BladeFxApiClient
             $tokenTransfer = $this->authenticateUser();
         }
 
-        $abstractTransfer->setToken($tokenTransfer);
+        $abstractTransfer->setToken($tokenTransfer->getAccessToken());
 
         return $abstractTransfer;
     }

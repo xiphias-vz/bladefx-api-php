@@ -17,6 +17,11 @@ class HttpApiClient extends AbstractHttpClient
      */
     private const ERROR_API_REQUEST_FAILED = '%s BladeFx API request failed! %s';
 
+    /**
+     * @param RequestInterface $request
+     * @param array<mixed> $options
+     * @return ResponseInterface
+     */
     public function sendRequest(RequestInterface $request, array $options = []): ResponseInterface
     {
         try {
@@ -58,7 +63,7 @@ class HttpApiClient extends AbstractHttpClient
     /**
      * @param Throwable $exception
      * @param RequestInterface $request
-     * @return array
+     * @return array<mixed>
      */
     private function getErrorContext(Throwable $exception, RequestInterface $request): array
     {

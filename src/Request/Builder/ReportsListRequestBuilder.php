@@ -21,7 +21,7 @@ class ReportsListRequestBuilder extends AbstractRequestBuilder
 
     /**
      * @param AbstractTransfer $requestTransfer
-     * @return array
+     * @return array<string, string>
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
@@ -49,7 +49,7 @@ class ReportsListRequestBuilder extends AbstractRequestBuilder
 
     /**
      * @param AbstractTransfer $requestTransfer
-     * @return array
+     * @return array<mixed>
      */
     protected function getQueryParamsFromRequestTransfer(AbstractTransfer $requestTransfer): array
     {

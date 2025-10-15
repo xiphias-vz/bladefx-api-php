@@ -196,7 +196,7 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
      * @return $this
      */

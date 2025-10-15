@@ -12,7 +12,7 @@ class CategoriesListResponseConverter extends AbstractResponseConverter
 {
     /**
      * @param BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
-     * @param array $responseData
+     * @param array<mixed> $responseData
      * @return BladeFxApiResponseConversionResultTransfer
      */
     public function expandConversionResponseTransfer(

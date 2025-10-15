@@ -31,6 +31,9 @@ class RequestFactory implements RequestFactoryInterface
      */
     private LoggerInterface $logger;
 
+    /**
+     * @param LoggerInterface $logger
+     */
     public function __construct(LoggerInterface $logger)
     {
         $this->logger = $logger;
@@ -84,6 +87,9 @@ class RequestFactory implements RequestFactoryInterface
         return new SetFavoriteReportRequestValidator($this->logger);
     }
 
+    /**
+     * @return RequestBuilderInterface
+     */
     public function createAuthenticationRequestBuilder(): RequestBuilderInterface
     {
         return new AuthenticationRequestBuilder(
@@ -93,7 +99,9 @@ class RequestFactory implements RequestFactoryInterface
         );
     }
 
-
+    /**
+     * @return RequestBuilderInterface
+     */
     public function createCategoriesListRequestBuilder(): RequestBuilderInterface
     {
         return new CategoriesListRequestBuilder(
@@ -102,7 +110,9 @@ class RequestFactory implements RequestFactoryInterface
         );
     }
 
-
+    /**
+     * @return RequestBuilderInterface
+     */
     public function createReportsListRequestBuilder(): RequestBuilderInterface
     {
         return new ReportsListRequestBuilder(
@@ -111,7 +121,9 @@ class RequestFactory implements RequestFactoryInterface
         );
     }
 
-
+    /**
+     * @return RequestBuilderInterface
+     */
     public function createReportParamFormRequestBuilder(): RequestBuilderInterface
     {
         return new ReportParamFormRequestBuilder(
@@ -120,7 +132,9 @@ class RequestFactory implements RequestFactoryInterface
         );
     }
 
-
+    /**
+     * @return RequestBuilderInterface
+     */
     public function createReportPreviewRequestBuilder(): RequestBuilderInterface
     {
         return new ReportPreviewRequestBuilder(
@@ -129,6 +143,9 @@ class RequestFactory implements RequestFactoryInterface
         );
     }
 
+    /**
+     * @return RequestBuilderInterface
+     */
     public function createSetFavoriteReportRequestBuilder(): RequestBuilderInterface
     {
         return new SetFavoriteReportRequestBuilder(
@@ -137,7 +154,9 @@ class RequestFactory implements RequestFactoryInterface
         );
     }
 
-
+    /**
+     * @return AuthenticationRequestFieldFormatterPlugin[]
+     */
     protected function getAuthenticationRequestFormatterPlugins(): array
     {
         return [
@@ -145,7 +164,9 @@ class RequestFactory implements RequestFactoryInterface
         ];
     }
 
-
+    /**
+     * @return RequestBodyFormatterInterface
+     */
     public function createRequestBodyFormatter(): RequestBodyFormatterInterface
     {
         return new RequestBodyFormatter(
@@ -153,6 +174,9 @@ class RequestFactory implements RequestFactoryInterface
         );
     }
 
+    /**
+     * @return BladeFxApiConfig
+     */
     protected function getConfig(): BladeFxApiConfig
     {
         return new BladeFxApiConfig();

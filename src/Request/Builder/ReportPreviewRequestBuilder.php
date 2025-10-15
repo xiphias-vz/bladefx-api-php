@@ -45,7 +45,7 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
 
     /**
      * @param AbstractTransfer $requestTransfer
-     * @return array
+     * @return array<string, string>
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
@@ -92,12 +92,12 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * @param $value
-     * @param $options
-     * @param $depth
+     * @param array<mixed> $value
+     * @param int|null $options
+     * @param int|null $depth
      * @return string|null
      */
-    protected function encodeJson($value, $options = null, $depth = null): ?string
+    protected function encodeJson(array $value, int $options = null, int $depth = null): ?string
     {
         if ($options === null) {
             $options = static::DEFAULT_OPTIONS;
@@ -131,7 +131,7 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
 
     /**
      * @param AbstractTransfer $requestTransfer
-     * @return array
+     * @return array<string, string>
      */
     protected function getQueryParamsFromRequestTransfer(AbstractTransfer $requestTransfer): array
     {

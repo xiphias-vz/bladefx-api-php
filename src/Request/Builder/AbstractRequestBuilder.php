@@ -75,7 +75,7 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
 
     /**
      * @param AbstractTransfer $requestTransfer
-     * @return array
+     * @return array<string, string>
      */
     abstract protected function getAdditionalHeaders(AbstractTransfer $requestTransfer): array;
 
@@ -98,7 +98,7 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     /**
      * @param string $resource
      * @param string $baseUrl
-     * @param array $queryParams
+     * @param array<mixed> $queryParams
      * @return Uri
      */
     protected function buildUri(string $resource, string $baseUrl, array $queryParams = []): Uri
@@ -111,7 +111,7 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     /**
      * @param string $resource
      * @param string $baseUrl
-     * @param array $queryParams
+     * @param array<mixed> $queryParams
      * @return string
      */
     private function buildFullRequestUrl(string $resource, string $baseUrl, array $queryParams = []): string
@@ -138,7 +138,7 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
 
     /**
      * @param AbstractTransfer $requestTransfer
-     * @return array
+     * @return array<mixed>
      */
     public function getCombinedHeaders(AbstractTransfer $requestTransfer): array
     {
@@ -154,18 +154,18 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
      */
     protected function getEncodedData(AbstractTransfer $requestTransfer): string
     {
-        $data = $requestTransfer->toArray(true, true);
+        $data = $requestTransfer->toArray();
 
         return $this->encodeJson($data);
     }
 
     /**
-     * @param $value
-     * @param $options
-     * @param $depth
+     * @param array<mixed> $value
+     * @param int|null $options
+     * @param int|null $depth
      * @return string|null
      */
-    protected function encodeJson($value, $options = null, $depth = null): ?string
+    protected function encodeJson(array $value, int $options = null, int $depth = null): ?string
     {
         if ($options === null) {
             $options = static::DEFAULT_OPTIONS;
@@ -189,13 +189,13 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     }
 
     /**
-     * @param BladeFxTokenTransfer $requestTransfer
+     * @param string $token
      * @return string[]
      */
-    protected function addAuthHeader(BladeFxTokenTransfer $requestTransfer): array
+    protected function addAuthHeader(string $token): array
     {
         return [
-            static::HEADER_TYPE_AUTHORIZATION => static::AUTHORIZATION_TYPE_BEARER . ' ' . $requestTransfer->getAccessToken(),
+            static::HEADER_TYPE_AUTHORIZATION => static::AUTHORIZATION_TYPE_BEARER . ' ' . $token,
         ];
     }
 }

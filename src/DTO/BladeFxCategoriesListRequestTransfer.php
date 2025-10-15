@@ -12,9 +12,9 @@ class BladeFxCategoriesListRequestTransfer extends AbstractTransfer
     protected ?int $catId = null;
 
     /**
-     * @var BladeFxTokenTransfer
+     * @var string
      */
-    protected BladeFxTokenTransfer $token;
+    protected string $token;
 
     /**
      * @var string
@@ -40,21 +40,23 @@ class BladeFxCategoriesListRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return BladeFxTokenTransfer
+     * @return string
      */
-    public function getToken(): BladeFxTokenTransfer
+    public function getToken(): string
     {
         return $this->token;
     }
 
     /**
-     * @param BladeFxTokenTransfer $token
-     * @return void
+     * @param string $token
+     * @return $this
      */
-    public function setToken(BladeFxTokenTransfer $token): void
+    public function setToken(string $token): self
     {
         $this->token = $token;
         $this->modifiedProperties['token'] = true;
+
+        return $this;
     }
 
     /**

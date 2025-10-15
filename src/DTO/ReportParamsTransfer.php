@@ -139,6 +139,9 @@ class ReportParamsTransfer extends AbstractTransfer implements JsonSerializable
         $this->isCustomField = $isCustomField;
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function jsonSerialize(): array
     {
         return get_object_vars($this);

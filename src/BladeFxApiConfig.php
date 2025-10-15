@@ -10,7 +10,7 @@ class BladeFxApiConfig
      * Specification:
      * - List of headers used in all BladeFx requests.
      *
-     * @var array
+     * @var array<string, string>
      */
     private const COMMON_API_REQUEST_HEADERS = [
         'Content-Type' => 'application/json',
@@ -57,7 +57,7 @@ class BladeFxApiConfig
     public const GET_REPORT_PARAMETER_FORM_API_RESOURCE = '/api/ReportData/GetReportURL';
 
     /**
-     * @var array
+     * @var array<string, int>
      */
     public const KEYS_TO_CHANGE_FROM_CAMEL_CASE = [
         'repId' => 1,
@@ -67,6 +67,16 @@ class BladeFxApiConfig
         'userId' => 1,
         'connId' => 1,
     ];
+
+    /**
+     * @var string
+     */
+    public const AUTH_TOKEN_FILE_PATH = '/tmp/api_token.json';
+
+    /**
+     * @var string
+     */
+    public const AUTH_TOKEN_EXPIRES_AT_SECONDS_DURATION = '+3600 seconds';
 
     /**
      * @return string

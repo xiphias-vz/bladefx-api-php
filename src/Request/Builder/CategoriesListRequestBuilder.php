@@ -19,7 +19,7 @@ class CategoriesListRequestBuilder extends AbstractRequestBuilder
 
     /**
      * @param AbstractTransfer $requestTransfer
-     * @return array
+     * @return array<string, string>
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {

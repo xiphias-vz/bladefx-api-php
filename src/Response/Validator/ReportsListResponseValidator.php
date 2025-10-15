@@ -26,7 +26,8 @@ class ReportsListResponseValidator extends AbstractResponseValidator
     {
         try {
             /** @var BladeFxReportsListResponseTransfer $responseTransfer */
-            foreach ($responseTransfer->getReportsList() as $report) {
+            $reportsList = $responseTransfer->getReportsList();
+            foreach ($reportsList as $report) {
                 $report
                     ->requireRepId()
                     ->requireRepName()

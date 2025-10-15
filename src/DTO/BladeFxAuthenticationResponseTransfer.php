@@ -6,15 +6,54 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 {
+    /**
+     * @var string
+     */
     protected string $token;
+
+    /**
+     * @var string
+     */
     protected string $username;
+
+    /**
+     * @var string
+     */
     protected string $fullname;
+
+    /**
+     * @var string
+     */
     protected string $email;
+
+    /**
+     * @var string|null
+     */
     protected ?string $avatar;
+
+    /**
+     * @var int
+     */
     protected int $idUser;
+
+    /**
+     * @var int
+     */
     protected int $idCompany;
+
+    /**
+     * @var int
+     */
     protected int $idLanguage;
+
+    /**
+     * @var string
+     */
     protected string $languageDescription;
+
+    /**
+     * @var bool
+     */
     protected bool $licenceExp;
 
     /**
@@ -43,12 +82,14 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param string $token
-     * @return void
+     * @return $this
      */
-    public function setToken(string $token): void
+    public function setToken(string $token): self
     {
         $this->token = $token;
         $this->modifiedProperties['token'] = true;
+
+        return $this;
     }
 
     /**
@@ -280,7 +321,7 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
      * @return $this
      */
