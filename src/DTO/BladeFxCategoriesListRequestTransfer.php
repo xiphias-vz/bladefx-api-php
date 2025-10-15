@@ -21,7 +21,6 @@ class BladeFxCategoriesListRequestTransfer extends AbstractTransfer
      */
     protected string $returnType = 'JSON';
 
-
     /**
      * @return int
      */

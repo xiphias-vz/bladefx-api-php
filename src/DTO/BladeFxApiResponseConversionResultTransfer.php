@@ -6,16 +6,34 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
 {
+    /**
+     * @var BladeFxAuthenticationResponseTransfer
+     */
     private BladeFxAuthenticationResponseTransfer $bladeFxAuthenticationResponse;
 
+    /**
+     * @var BladeFxCategoriesListResponseTransfer
+     */
     private BladeFxCategoriesListResponseTransfer $bladeFxCategoriesListResponse;
 
+    /**
+     * @var BladeFxReportsListResponseTransfer
+     */
     private BladeFxReportsListResponseTransfer $bladeFxReportsListResponse;
 
+    /**
+     * @var BladeFxReportParamFormResponseTransfer
+     */
     private BladeFxReportParamFormResponseTransfer $bladeFxReportParamFormResponse;
 
+    /**
+     * @var BladeFxReportPreviewResponseTransfer
+     */
     private BladeFxReportPreviewResponseTransfer $bladeFxReportPreviewResponse;
 
+    /**
+     * @var BladeFxSetFavoriteReportResponseTransfer
+     */
     private BladeFxSetFavoriteReportResponseTransfer $bladeFxSetFavoriteReportResponse;
 
     /**

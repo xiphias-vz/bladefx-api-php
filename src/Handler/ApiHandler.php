@@ -134,7 +134,8 @@ class ApiHandler implements ApiHandlerInterface
      * @param BladeFxReportParamFormRequestTransfer $requestTransfer
      * @return BladeFxReportParamFormResponseTransfer
      */
-    public function getReportParamForm(BladeFxReportParamFormRequestTransfer $requestTransfer): BladeFxReportParamFormResponseTransfer {
+    public function getReportParamForm(BladeFxReportParamFormRequestTransfer $requestTransfer): BladeFxReportParamFormResponseTransfer
+    {
         $this->requestManager->setRequestBuilder(
             $this->requestFactory->createReportParamFormRequestBuilder(),
         );

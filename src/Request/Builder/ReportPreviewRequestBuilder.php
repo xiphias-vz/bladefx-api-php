@@ -27,8 +27,7 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
     public function __construct(
         RequestBodyFormatterInterface $bodyFormatter,
         BladeFxApiConfig $config
-    )
-    {
+    ) {
         parent::__construct($config, $bodyFormatter);
 
         $this->bodyFormatter = $bodyFormatter;

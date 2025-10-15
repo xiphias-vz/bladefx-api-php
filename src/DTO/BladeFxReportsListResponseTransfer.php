@@ -65,5 +65,4 @@ class BladeFxReportsListResponseTransfer extends AbstractTransfer
             'reportsList' => $transfers,
         ];
     }
-
 }

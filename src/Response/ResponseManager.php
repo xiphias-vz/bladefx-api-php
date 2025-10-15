@@ -46,8 +46,7 @@ class ResponseManager implements ResponseManagerInterface
     public function __construct(
         LoggerInterface $logger,
         ResponseFactoryInterface $responseFactory
-    )
-    {
+    ) {
         $this->logger = $logger;
         $this->responseFactory = $responseFactory;
     }

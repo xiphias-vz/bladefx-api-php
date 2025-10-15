@@ -123,8 +123,7 @@ class BladeFxApiClient
      */
     public function getReportList(
         ?BladeFxReportsListRequestTransfer $reportsListRequestTransfer = (new BladeFxReportsListRequestTransfer())
-    ): BladeFxReportsListResponseTransfer
-    {
+    ): BladeFxReportsListResponseTransfer {
         /** @var BladeFxReportsListRequestTransfer $reportsListRequestTransfer */
         $reportsListRequestTransfer = $this->prepareRequest($reportsListRequestTransfer);
 
@@ -138,8 +137,7 @@ class BladeFxApiClient
      */
     public function getCategoryList(
         ?BladeFxCategoriesListRequestTransfer $categoriesListRequestTransfer = (new BladeFxCategoriesListRequestTransfer())
-    ): BladeFxCategoriesListResponseTransfer
-    {
+    ): BladeFxCategoriesListResponseTransfer {
         /** @var BladeFxCategoriesListRequestTransfer $categoriesListRequestTransfer */
         $categoriesListRequestTransfer = $this->prepareRequest($categoriesListRequestTransfer);
 
@@ -153,8 +151,7 @@ class BladeFxApiClient
      */
     public function getReportUrl(
         ?BladeFxReportParamFormRequestTransfer $reportsParamFormRequestTransfer = (new BladeFxReportParamFormRequestTransfer())
-    ): BladeFxReportParamFormResponseTransfer
-    {
+    ): BladeFxReportParamFormResponseTransfer {
         /** @var BladeFxReportParamFormRequestTransfer $reportsParamFormRequestTransfer */
         $reportsParamFormRequestTransfer = $this->prepareRequest($reportsParamFormRequestTransfer);
 
@@ -168,8 +165,7 @@ class BladeFxApiClient
      */
     public function getReportPreviewURL(
         BladeFxReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
-    ): BladeFxReportPreviewResponseTransfer
-    {
+    ): BladeFxReportPreviewResponseTransfer {
         /** @var BladeFxReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer */
         $bladeFxReportPreviewRequestTransfer = $this->prepareRequest($bladeFxReportPreviewRequestTransfer);
 
@@ -183,8 +179,7 @@ class BladeFxApiClient
      */
     public function setFavoriteReport(
         ?BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer
-    ): BladeFxSetFavoriteReportResponseTransfer
-    {
+    ): BladeFxSetFavoriteReportResponseTransfer {
         /** @var BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer */
         $bladeFxSetFavoriteReportRequestTransfer = $this->prepareRequest($bladeFxSetFavoriteReportRequestTransfer);
 

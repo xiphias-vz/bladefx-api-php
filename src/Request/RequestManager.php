@@ -52,8 +52,7 @@ class RequestManager implements RequestManagerInterface
     public function __construct(
         RequestFactoryInterface $requestFactory,
         LoggerInterface $logger
-    )
-    {
+    ) {
         $this->requestFactory = $requestFactory;
         $this->logger = $logger;
     }
@@ -141,8 +140,7 @@ class RequestManager implements RequestManagerInterface
     public function getSetFavoriteReportRequest(
         string $resource,
         BladeFxSetFavoriteReportRequestTransfer $requestTransfer
-    ): RequestInterface
-    {
+    ): RequestInterface {
         $validator = $this->requestFactory->createSetFavoriteReportRequestValidator();
         $this->validateRequest($validator, $requestTransfer);
 

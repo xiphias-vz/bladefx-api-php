@@ -25,9 +25,12 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require-dev": {
-        "phpstan/phpstan-symfony": "^2.0"
+        "phpstan/phpstan-symfony": "^2.0",
+        "squizlabs/php_codesniffer": "^4.0"
     },
     "scripts": {
-        "analyse": "phpstan analyse"
+        "analyse": "phpstan analyse",
+        "sniff": "phpcs",
+        "fix": "phpcbf"
     }
 }

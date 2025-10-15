@@ -20,8 +20,7 @@ class RequestBodyFormatter implements RequestBodyFormatterInterface
      */
     public function __construct(
         BladeFxApiConfig $config,
-    )
-    {
+    ) {
         $this->config = $config;
     }
 

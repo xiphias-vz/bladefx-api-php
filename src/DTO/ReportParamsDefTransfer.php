@@ -14,7 +14,7 @@ class ReportParamsDefTransfer extends AbstractTransfer implements JsonSerializab
     public function __construct(
         protected int $rep_id = 0,
         protected int $layout_id = 0,
-        protected string $imageFormat  = '',
+        protected string $imageFormat = '',
         protected ?array $params = null
     ) {
         parent::__construct();

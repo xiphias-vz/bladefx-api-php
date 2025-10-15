@@ -116,8 +116,7 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
      */
     private function buildFullRequestUrl(string $resource, string $baseUrl, array $queryParams = []): string
     {
-        if($baseUrl === '')
-        {
+        if ($baseUrl === '') {
             $baseUrl = $this->apiClientConfig->getDefaultApiBaseUri();
         }
 
