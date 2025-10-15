@@ -51,7 +51,9 @@ class BladeFxReportPreviewResponseTransfer extends AbstractTransfer
         $this->modifiedProperties['url'] = true;
     }
 
-
+    /**
+     * @return $this
+     */
     public function requireUrl(): self
     {
         $this->assertPropertyIsSet('url');

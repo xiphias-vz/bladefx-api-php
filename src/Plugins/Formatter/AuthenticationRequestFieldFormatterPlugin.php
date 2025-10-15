@@ -17,9 +17,9 @@ class AuthenticationRequestFieldFormatterPlugin implements AuthenticationRequest
     protected const DEFAULT_REGEX = '/(?=[A-Z])/';
 
     /**
-     * @param array $requestData
+     * @param array<mixed> $requestData
      *
-     * @return array
+     * @return array<mixed>
      */
     public function format(array $requestData): array
     {

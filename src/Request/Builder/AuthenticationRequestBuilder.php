@@ -6,19 +6,20 @@ namespace Xiphias\BladeFxApi\Request\Builder;
 
 use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
 use Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface;
 
 class AuthenticationRequestBuilder extends AbstractRequestBuilder
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected array $fieldFormatterPlugins;
 
     /**
      * @param BladeFxApiConfig $apiClientConfig
      * @param RequestBodyFormatterInterface $bodyFormatter
-     * @param array $fieldFormatterPlugins
+     * @param array<mixed> $fieldFormatterPlugins
      */
     public function __construct(
         BladeFxApiConfig $apiClientConfig,
@@ -40,7 +41,7 @@ class AuthenticationRequestBuilder extends AbstractRequestBuilder
 
     /**
      * @param AbstractTransfer $requestTransfer
-     * @return array
+     * @return array<string, string>
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
@@ -53,7 +54,8 @@ class AuthenticationRequestBuilder extends AbstractRequestBuilder
      */
     protected function getEncodedData(AbstractTransfer $requestTransfer): string
     {
-        $data = $requestTransfer->toArray(true, true);
+        /** @var BladeFxAuthenticationRequestTransfer $requestTransfer */
+        $data = $requestTransfer->toArray();
 
         $this->executeFormatterPlugins($data);
 
@@ -61,9 +63,9 @@ class AuthenticationRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function executeFormatterPlugins(array $data): array
     {

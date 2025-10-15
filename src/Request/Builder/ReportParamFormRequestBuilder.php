@@ -26,7 +26,7 @@ class ReportParamFormRequestBuilder extends AbstractRequestBuilder
 
     /**
      * @param AbstractTransfer $requestTransfer
-     * @return array
+     * @return array<string, string>
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
@@ -52,7 +52,7 @@ class ReportParamFormRequestBuilder extends AbstractRequestBuilder
 
     /**
      * @param AbstractTransfer $requestTransfer
-     * @return array
+     * @return array<string, string>
      */
     protected function getUrlParamsFromRequestTransfer(AbstractTransfer $requestTransfer): array
     {

@@ -19,9 +19,9 @@ class BladeFxReportsListRequestTransfer extends AbstractTransfer
     protected ?string $search = null;
 
     /**
-     * @var BladeFxTokenTransfer
+     * @var string
      */
-    protected BladeFxTokenTransfer $token;
+    protected string $token;
 
     /**
      * @var string
@@ -80,21 +80,23 @@ class BladeFxReportsListRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return BladeFxTokenTransfer
+     * @return string
      */
-    public function getToken(): BladeFxTokenTransfer
+    public function getToken(): string
     {
         return $this->token;
     }
 
     /**
-     * @param BladeFxTokenTransfer $token
-     * @return void
+     * @param string $token
+     * @return $this
      */
-    public function setToken(BladeFxTokenTransfer $token): void
+    public function setToken(string $token): self
     {
         $this->token = $token;
         $this->modifiedProperties['token'] = true;
+
+        return $this;
     }
 
     /**
@@ -170,11 +172,11 @@ class BladeFxReportsListRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
      * @return $this
      */
-    public function fromArray(array $data, bool $ignoreMissingProperties = false)
+    public function fromArray(array $data, bool $ignoreMissingProperties = false): static
     {
         foreach ($data as $property => $value) {
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;

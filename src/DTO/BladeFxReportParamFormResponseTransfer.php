@@ -6,6 +6,9 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxReportParamFormResponseTransfer extends AbstractTransfer
 {
+    /**
+     * @var string|null
+     */
     protected ?string $iframeUrl;
 
     /**
@@ -28,7 +31,9 @@ class BladeFxReportParamFormResponseTransfer extends AbstractTransfer
         return $this;
     }
 
-
+    /**
+     * @return $this
+     */
     public function requireIframeUrl(): self
     {
         $this->assertPropertyIsSet('iframeUrl');

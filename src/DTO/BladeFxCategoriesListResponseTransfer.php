@@ -12,7 +12,7 @@ class BladeFxCategoriesListResponseTransfer extends AbstractTransfer
     protected int $statusCode = 0;
 
     /**
-     * @var array
+     * @var array<BladeFxCategoryTransfer>
      */
     private array $categoriesList = [];
 

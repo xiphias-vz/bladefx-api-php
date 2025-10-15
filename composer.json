@@ -23,5 +23,14 @@
         "symfony/config": "^6.4 || ^7.0"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require-dev": {
+        "phpstan/phpstan-symfony": "^2.0",
+        "squizlabs/php_codesniffer": "^4.0"
+    },
+    "scripts": {
+        "analyse": "phpstan analyse",
+        "sniff": "phpcs",
+        "fix": "phpcbf"
+    }
 }

@@ -6,25 +6,104 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxReportTransfer extends AbstractTransfer
 {
+    /**
+     * @var int
+     */
     protected int $repId;
+
+    /**
+     * @var string|null
+     */
     protected ?string $repName = null;
+
+    /**
+     * @var string|null
+     */
     protected ?string $repHashCode = null;
+
+    /**
+     * @var string|null
+     */
     protected ?string $repDesc = null;
+
+    /**
+     * @var string|null
+     */
     protected ?string $catName = null;
+
+    /**
+     * @var bool|null
+     */
     protected ?bool $isActive = null;
+
+    /**
+     * @var bool|null
+     */
     protected ?bool $isDrilldown = null;
+
+    /**
+     * @var bool|null
+     */
     protected ?bool $isWebservice = null;
+
+    /**
+     * @var bool|null
+     */
     protected ?bool $isErrorReport = null;
+
+    /**
+     * @var bool|null
+     */
     protected ?bool $isDef = null;
+
+    /**
+     * @var bool|null
+     */
     protected ?bool $isMetro = null;
+
+    /**
+     * @var bool|null
+     */
     protected ?bool $logExecution = null;
+
+    /**
+     * @var bool|null
+     */
     protected ?bool $logHistory = null;
+
+    /**
+     * @var bool|null
+     */
     protected ?bool $isFavorite = null;
+
+    /**
+     * @var string|null
+     */
     protected ?string $uCreated = null;
+
+    /**
+     * @var string|null
+     */
     protected ?string $dCreated = null;
+
+    /**
+     * @var string|null
+     */
     protected ?string $uChanged = null;
+
+    /**
+     * @var string|null
+     */
     protected ?string $dChanged = null;
+
+    /**
+     * @var bool|null
+     */
     protected ?bool $mobileLayout = null;
+
+    /**
+     * @var int|null
+     */
     protected ?int $attribute = null;
 
     /**
@@ -53,17 +132,27 @@ class BladeFxReportTransfer extends AbstractTransfer
         'attribute' => 'attribute',
     ];
 
+    /**
+     * @return int
+     */
     public function getRepId(): int
     {
         return $this->repId;
     }
 
+    /**
+     * @param int $repId
+     * @return void
+     */
     public function setRepId(int $repId): void
     {
         $this->repId = $repId;
         $this->modifiedProperties['repId'] = true;
     }
 
+    /**
+     * @return $this
+     */
     public function requireRepId(): self
     {
         $this->assertPropertyIsSet('repId');
@@ -71,17 +160,27 @@ class BladeFxReportTransfer extends AbstractTransfer
         return $this;
     }
 
+    /***
+     * @return string|null
+     */
     public function getRepName(): ?string
     {
         return $this->repName;
     }
 
+    /**
+     * @param string|null $repName
+     * @return void
+     */
     public function setRepName(?string $repName): void
     {
         $this->repName = $repName;
         $this->modifiedProperties['repName'] = true;
     }
 
+    /**
+     * @return $this
+     */
     public function requireRepName(): self
     {
         $this->assertPropertyIsSet('repName');
@@ -89,17 +188,27 @@ class BladeFxReportTransfer extends AbstractTransfer
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getRepHashCode(): ?string
     {
         return $this->repHashCode;
     }
 
+    /**
+     * @param string|null $repHashCode
+     * @return void
+     */
     public function setRepHashCode(?string $repHashCode): void
     {
         $this->repHashCode = $repHashCode;
         $this->modifiedProperties['repHashCode'] = true;
     }
 
+    /**
+     * @return $this
+     */
     public function requireRepHashCode(): self
     {
         $this->assertPropertyIsSet('repHashCode');
@@ -107,17 +216,27 @@ class BladeFxReportTransfer extends AbstractTransfer
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getRepDesc(): ?string
     {
         return $this->repDesc;
     }
 
+    /**
+     * @param string|null $repDesc
+     * @return void
+     */
     public function setRepDesc(?string $repDesc): void
     {
         $this->repDesc = $repDesc;
         $this->modifiedProperties['repDesc'] = true;
     }
 
+    /**
+     * @return $this
+     */
     public function requireRepDesc(): self
     {
         $this->assertPropertyIsSet('repDesc');
@@ -125,176 +244,288 @@ class BladeFxReportTransfer extends AbstractTransfer
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getCatName(): ?string
     {
         return $this->catName;
     }
 
+    /**
+     * @param string|null $catName
+     * @return void
+     */
     public function setCatName(?string $catName): void
     {
         $this->catName = $catName;
         $this->modifiedProperties['catName'] = true;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsActive(): ?bool
     {
         return $this->isActive;
     }
 
+    /**
+     * @param bool|null $isActive
+     * @return void
+     */
     public function setIsActive(?bool $isActive): void
     {
         $this->isActive = $isActive;
         $this->modifiedProperties['isActive'] = true;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsDrilldown(): ?bool
     {
         return $this->isDrilldown;
     }
 
+    /**
+     * @param bool|null $isDrilldown
+     * @return void
+     */
     public function setIsDrilldown(?bool $isDrilldown): void
     {
         $this->isDrilldown = $isDrilldown;
         $this->modifiedProperties['isDrilldown'] = true;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsWebservice(): ?bool
     {
         return $this->isWebservice;
     }
 
+    /**
+     * @param bool|null $isWebservice
+     * @return void
+     */
     public function setIsWebservice(?bool $isWebservice): void
     {
         $this->isWebservice = $isWebservice;
         $this->modifiedProperties['isWebservice'] = true;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsErrorReport(): ?bool
     {
         return $this->isErrorReport;
     }
 
+    /**
+     * @param bool|null $isErrorReport
+     * @return void
+     */
     public function setIsErrorReport(?bool $isErrorReport): void
     {
         $this->isErrorReport = $isErrorReport;
         $this->modifiedProperties['isErrorReport'] = true;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsDef(): ?bool
     {
         return $this->isDef;
     }
 
+    /**
+     * @param bool|null $isDef
+     * @return void
+     */
     public function setIsDef(?bool $isDef): void
     {
         $this->isDef = $isDef;
         $this->modifiedProperties['isDef'] = true;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsMetro(): ?bool
     {
         return $this->isMetro;
     }
 
+    /**
+     * @param bool|null $isMetro
+     * @return void
+     */
     public function setIsMetro(?bool $isMetro): void
     {
         $this->isMetro = $isMetro;
         $this->modifiedProperties['isMetro'] = true;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getLogExecution(): ?bool
     {
         return $this->logExecution;
     }
 
+    /**
+     * @param bool|null $logExecution
+     * @return void
+     */
     public function setLogExecution(?bool $logExecution): void
     {
         $this->logExecution = $logExecution;
         $this->modifiedProperties['logExecution'] = true;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getLogHistory(): ?bool
     {
         return $this->logHistory;
     }
 
+    /**
+     * @param bool|null $logHistory
+     * @return void
+     */
     public function setLogHistory(?bool $logHistory): void
     {
         $this->logHistory = $logHistory;
         $this->modifiedProperties['logHistory'] = true;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsFavorite(): ?bool
     {
         return $this->isFavorite;
     }
 
+    /**
+     * @param bool|null $isFavorite
+     * @return void
+     */
     public function setIsFavorite(?bool $isFavorite): void
     {
         $this->isFavorite = $isFavorite;
         $this->modifiedProperties['isFavorite'] = true;
     }
 
+    /**
+     * @return string|null
+     */
     public function getUCreated(): ?string
     {
         return $this->uCreated;
     }
 
+    /**
+     * @param string|null $uCreated
+     * @return void
+     */
     public function setUCreated(?string $uCreated): void
     {
         $this->uCreated = $uCreated;
         $this->modifiedProperties['uCreated'] = true;
     }
 
+    /**
+     * @return string|null
+     */
     public function getDCreated(): ?string
     {
         return $this->dCreated;
     }
 
+    /**
+     * @param string|null $dCreated
+     * @return void
+     */
     public function setDCreated(?string $dCreated): void
     {
         $this->dCreated = $dCreated;
         $this->modifiedProperties['dCreated'] = true;
     }
 
+    /**
+     * @return string|null
+     */
     public function getUChanged(): ?string
     {
         return $this->uChanged;
     }
 
+    /**
+     * @param string|null $uChanged
+     * @return void
+     */
     public function setUChanged(?string $uChanged): void
     {
         $this->uChanged = $uChanged;
         $this->modifiedProperties['uChanged'] = true;
     }
 
+    /**
+     * @return string|null
+     */
     public function getDChanged(): ?string
     {
         return $this->dChanged;
     }
 
+    /**
+     * @param string|null $dChanged
+     * @return void
+     */
     public function setDChanged(?string $dChanged): void
     {
         $this->dChanged = $dChanged;
         $this->modifiedProperties['dChanged'] = true;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getMobileLayout(): ?bool
     {
         return $this->mobileLayout;
     }
 
+    /**
+     * @param bool|null $mobileLayout
+     * @return void
+     */
     public function setMobileLayout(?bool $mobileLayout): void
     {
         $this->mobileLayout = $mobileLayout;
         $this->modifiedProperties['mobileLayout'] = true;
     }
 
+    /**
+     * @return int|null
+     */
     public function getAttribute(): ?int
     {
         return $this->attribute;
     }
 
+    /**
+     * @param int|null $attribute
+     * @return void
+     */
     public function setAttribute(?int $attribute): void
     {
         $this->attribute = $attribute;
@@ -376,4 +607,3 @@ class BladeFxReportTransfer extends AbstractTransfer
         return $this;
     }
 }
-

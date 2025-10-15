@@ -26,8 +26,7 @@ abstract class AbstractHttpClient implements HttpApiClientInterface
     public function __construct(
         ClientInterface $client,
         LoggerInterface $logger
-    )
-    {
+    ) {
         $this->client = $client;
         $this->logger = $logger;
     }

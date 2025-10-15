@@ -26,7 +26,8 @@ class CategoriesListResponseValidator extends AbstractResponseValidator
     {
         try {
             /** @var BladeFxCategoriesListResponseTransfer $responseTransfer */
-            foreach ($responseTransfer->getCategoriesList() as $category) {
+            $categoriesList = $responseTransfer->getCategoriesList();
+            foreach ($categoriesList as $category) {
                 $category
                     ->requireCatId();
             }

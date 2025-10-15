@@ -20,14 +20,13 @@ class RequestBodyFormatter implements RequestBodyFormatterInterface
      */
     public function __construct(
         BladeFxApiConfig $config,
-    )
-    {
+    ) {
         $this->config = $config;
     }
 
     /**
      * @param BladeFxReportPreviewRequestTransfer $requestTransfer
-     * @return array
+     * @return array<mixed>
      */
     public function formatDataBeforeEncoding(BladeFxReportPreviewRequestTransfer $requestTransfer): array
     {
@@ -58,9 +57,9 @@ class RequestBodyFormatter implements RequestBodyFormatterInterface
     }
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      * @param BladeFxParameterTransfer|null $parameterTransfer
-     * @return array
+     * @return array<mixed>
      */
     public function mergeParametersWithData(array $data, ?BladeFxParameterTransfer $parameterTransfer): array
     {
@@ -72,9 +71,9 @@ class RequestBodyFormatter implements RequestBodyFormatterInterface
     }
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      *
-     * @return array
+     * @return array<mixed>
      */
     public function changeArrayFromCamelCaseToSnakeCase(array $data): array
     {

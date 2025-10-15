@@ -7,9 +7,9 @@ namespace Xiphias\BladeFxApi\Plugins\Formatter;
 interface AuthenticationRequestFormatterPluginInterface
 {
     /**
-     * @param array $requestData
+     * @param array<mixed> $requestData
      *
-     * @return array
+     * @return array<mixed>
      */
     public function format(array $requestData): array;
 }

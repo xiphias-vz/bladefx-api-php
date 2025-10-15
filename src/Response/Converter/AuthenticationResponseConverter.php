@@ -11,7 +11,7 @@ class AuthenticationResponseConverter extends AbstractResponseConverter
 {
     /**
      * @param BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
-     * @param array $responseData
+     * @param array<mixed> $responseData
      * @return BladeFxApiResponseConversionResultTransfer
      */
     protected function expandConversionResponseTransfer(

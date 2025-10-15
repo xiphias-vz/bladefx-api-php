@@ -52,7 +52,7 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
 
     /**
      * @param BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
-     * @param array $responseData
+     * @param array<mixed> $responseData
      * @return BladeFxApiResponseConversionResultTransfer
      */
     abstract protected function expandConversionResponseTransfer(
@@ -65,7 +65,7 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
      * @param bool $assoc
      * @param int|null $depth
      * @param int|null $options
-     * @return array|string|null
+     * @return array<mixed>|string|null
      */
     private function decodeResponse(ResponseInterface $response, bool $assoc = false, int $depth = null, int $options = null): array|string|null
     {

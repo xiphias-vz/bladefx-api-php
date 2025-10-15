@@ -6,10 +6,19 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
 {
+    /**
+     * @var string
+     */
     protected string $username;
 
+    /**
+     * @var string
+     */
     protected string $password;
 
+    /**
+     * @var bool
+     */
     protected bool $licenceExp = false;
 
     /**
@@ -110,7 +119,7 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
      * @return $this
      */

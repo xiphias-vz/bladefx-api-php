@@ -11,14 +11,14 @@ interface RequestBodyFormatterInterface
 {
     /**
      * @param BladeFxReportPreviewRequestTransfer $requestTransfer
-     * @return array
+     * @return array<mixed>
      */
     public function formatDataBeforeEncoding(BladeFxReportPreviewRequestTransfer $requestTransfer): array;
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      * @param BladeFxParameterTransfer|null $parameterTransfer
-     * @return array
+     * @return array<mixed>
      */
     public function mergeParametersWithData(array $data, ?BladeFxParameterTransfer $parameterTransfer): array;
 
@@ -29,8 +29,8 @@ interface RequestBodyFormatterInterface
     public function parameterTransferIsValid(?BladeFxParameterTransfer $parameterTransfer): bool;
 
     /**
-     * @param array $data
-     * @return array
+     * @param array<mixed> $data
+     * @return array<mixed>
      */
     public function changeArrayFromCamelCaseToSnakeCase(array $data): array;
 }

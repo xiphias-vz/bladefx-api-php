@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Storage;
 
+use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\BladeFxTokenTransfer;
 
 class FileTokenStorage implements TokenStorageInterface
 {
-    public function __construct(private string $filePath = '/tmp/api_token.json') {}
+    public function __construct(
+        private string $filePath = BladeFxApiConfig::AUTH_TOKEN_FILE_PATH
+    ) {
+    }
 
     public function save(BladeFxTokenTransfer $token): void
     {

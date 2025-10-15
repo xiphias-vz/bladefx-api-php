@@ -29,6 +29,11 @@ class AbstractTransfer
      */
     protected $baseUrl = '';
 
+    /**
+     * @var string
+     */
+    protected string $token;
+
     public function __construct()
     {
         $this->initCollectionProperties();
@@ -46,7 +51,11 @@ class AbstractTransfer
         }
     }
 
-    protected function assertPropertyIsSet($property): void
+    /**
+     * @param string $property
+     * @return void
+     */
+    protected function assertPropertyIsSet(string $property): void
     {
         if ($this->$property === null || (is_array($this->$property) && $this->$property === [] && $this->transferMetadata[$property]['is_strict'])) {
             throw new TransferPropertyRequiredException(sprintf(
@@ -72,5 +81,34 @@ class AbstractTransfer
     public function setBaseUrl(string $baseUrl): void
     {
         $this->baseUrl = $baseUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getToken(): string
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param string $token
+     * @return $this
+     */
+    public function setToken(string $token): self
+    {
+        $this->token = $token;
+        return $this;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function toArray(): array
+    {
+        return [
+            'baseUrl' => $this->getBaseUrl(),
+            'token'   => $this->getToken()
+        ];
     }
 }
