@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi\Request\Validator;
 
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 
 class CategoriesListRequestValidator extends AbstractRequestValidator
@@ -15,7 +15,7 @@ class CategoriesListRequestValidator extends AbstractRequestValidator
      */
     public function getRequestTransferClass(): string
     {
-        return BladeFxCategoriesListRequestTransfer::class;
+        return BladeFxGetCategoriesListRequestTransfer::class;
     }
 
     /**
@@ -25,7 +25,7 @@ class CategoriesListRequestValidator extends AbstractRequestValidator
     public function validateRequest(AbstractTransfer $requestTransfer): bool
     {
         try {
-            /** @var BladeFxCategoriesListRequestTransfer $requestTransfer */
+            /** @var BladeFxGetCategoriesListRequestTransfer $requestTransfer */
             $requestTransfer
                 ->requireToken()
                 ->requireReturnType();

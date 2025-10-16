@@ -11,13 +11,13 @@ use Psr\Log\NullLogger;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportsListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
@@ -117,56 +117,56 @@ class BladeFxApiClient implements ReportsApiClientInterface
     }
 
     /**
-     * @param BladeFxReportsListRequestTransfer|null $reportsListRequestTransfer
+     * @param BladeFxGetReportsListRequestTransfer|null $reportsListRequestTransfer
      * @return BladeFxReportsListResponseTransfer
      * @throws \DateMalformedStringException
      */
     public function sendGetReportsListRequest(
-        ?BladeFxReportsListRequestTransfer $reportsListRequestTransfer = (new BladeFxReportsListRequestTransfer())
+        ?BladeFxGetReportsListRequestTransfer $reportsListRequestTransfer = (new BladeFxGetReportsListRequestTransfer())
     ): BladeFxReportsListResponseTransfer {
-        /** @var BladeFxReportsListRequestTransfer $reportsListRequestTransfer */
+        /** @var BladeFxGetReportsListRequestTransfer $reportsListRequestTransfer */
         $reportsListRequestTransfer = $this->prepareRequest($reportsListRequestTransfer);
 
         return $this->apiHandler->getReportsList($reportsListRequestTransfer);
     }
 
     /**
-     * @param BladeFxCategoriesListRequestTransfer|null $categoriesListRequestTransfer
+     * @param BladeFxGetCategoriesListRequestTransfer|null $categoriesListRequestTransfer
      * @return BladeFxCategoriesListResponseTransfer
      * @throws \DateMalformedStringException
      */
     public function sendGetCategoriesListRequest(
-        ?BladeFxCategoriesListRequestTransfer $categoriesListRequestTransfer = (new BladeFxCategoriesListRequestTransfer())
+        ?BladeFxGetCategoriesListRequestTransfer $categoriesListRequestTransfer = (new BladeFxGetCategoriesListRequestTransfer())
     ): BladeFxCategoriesListResponseTransfer {
-        /** @var BladeFxCategoriesListRequestTransfer $categoriesListRequestTransfer */
+        /** @var BladeFxGetCategoriesListRequestTransfer $categoriesListRequestTransfer */
         $categoriesListRequestTransfer = $this->prepareRequest($categoriesListRequestTransfer);
 
         return $this->apiHandler->getCategoriesList($categoriesListRequestTransfer);
     }
 
     /**
-     * @param BladeFxReportParamFormRequestTransfer|null $reportsParamFormRequestTransfer
+     * @param BladeFxGetReportParamFormRequestTransfer|null $reportsParamFormRequestTransfer
      * @return BladeFxReportParamFormResponseTransfer
      * @throws \DateMalformedStringException
      */
     public function sendGetReportParamFormRequest(
-        ?BladeFxReportParamFormRequestTransfer $reportsParamFormRequestTransfer = (new BladeFxReportParamFormRequestTransfer())
+        ?BladeFxGetReportParamFormRequestTransfer $reportsParamFormRequestTransfer = (new BladeFxGetReportParamFormRequestTransfer())
     ): BladeFxReportParamFormResponseTransfer {
-        /** @var BladeFxReportParamFormRequestTransfer $reportsParamFormRequestTransfer */
+        /** @var BladeFxGetReportParamFormRequestTransfer $reportsParamFormRequestTransfer */
         $reportsParamFormRequestTransfer = $this->prepareRequest($reportsParamFormRequestTransfer);
 
         return $this->apiHandler->getReportParamForm($reportsParamFormRequestTransfer);
     }
 
     /**
-     * @param BladeFxReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
+     * @param BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
      * @return BladeFxReportPreviewResponseTransfer
      * @throws \DateMalformedStringException
      */
     public function sendGetReportPreviewRequest(
-        BladeFxReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
+        BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
     ): BladeFxReportPreviewResponseTransfer {
-        /** @var BladeFxReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer */
+        /** @var BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer */
         $bladeFxReportPreviewRequestTransfer = $this->prepareRequest($bladeFxReportPreviewRequestTransfer);
 
         return $this->apiHandler->getReportPreview($bladeFxReportPreviewRequestTransfer);

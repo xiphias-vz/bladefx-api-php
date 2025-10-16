@@ -8,10 +8,10 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Log\LoggerInterface;
 use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportsListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
 use Xiphias\BladeFxApi\Exception\ReportsRequestException;
 use Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface;
@@ -74,12 +74,12 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxCategoriesListRequestTransfer $requestTransfer
+     * @param BladeFxGetCategoriesListRequestTransfer $requestTransfer
      * @return RequestInterface
      */
     public function getCategoriesListRequest(
         string $resource,
-        BladeFxCategoriesListRequestTransfer $requestTransfer
+        BladeFxGetCategoriesListRequestTransfer $requestTransfer
     ): RequestInterface {
         $validator = $this->requestFactory->createCategoriesListRequestValidator();
         $this->validateRequest($validator, $requestTransfer);
@@ -89,12 +89,12 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxReportsListRequestTransfer $requestTransfer
+     * @param BladeFxGetReportsListRequestTransfer $requestTransfer
      * @return RequestInterface
      */
     public function getReportsListRequest(
         string $resource,
-        BladeFxReportsListRequestTransfer $requestTransfer
+        BladeFxGetReportsListRequestTransfer $requestTransfer
     ): RequestInterface {
         $validator = $this->requestFactory->createReportsListRequestValidator();
         $this->validateRequest($validator, $requestTransfer);
@@ -104,12 +104,12 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxReportParamFormRequestTransfer $requestTransfer
+     * @param BladeFxGetReportParamFormRequestTransfer $requestTransfer
      * @return RequestInterface
      */
     public function getReportParamFormRequest(
         string $resource,
-        BladeFxReportParamFormRequestTransfer $requestTransfer
+        BladeFxGetReportParamFormRequestTransfer $requestTransfer
     ): RequestInterface {
         $validator = $this->requestFactory->createReportParamFormRequestValidator();
         $this->validateRequest($validator, $requestTransfer);
@@ -119,12 +119,12 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxReportPreviewRequestTransfer $requestTransfer
+     * @param BladeFxGetReportPreviewRequestTransfer $requestTransfer
      * @return RequestInterface
      */
     public function getReportPreview(
         string $resource,
-        BladeFxReportPreviewRequestTransfer $requestTransfer
+        BladeFxGetReportPreviewRequestTransfer $requestTransfer
     ): RequestInterface {
         $validator = $this->requestFactory->createReportPreviewRequestValidator();
         $this->validateRequest($validator, $requestTransfer);

@@ -7,7 +7,7 @@ namespace Xiphias\BladeFxApi\Request\Builder;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 
 class ReportParamFormRequestBuilder extends AbstractRequestBuilder
 {
@@ -35,7 +35,7 @@ class ReportParamFormRequestBuilder extends AbstractRequestBuilder
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxReportParamFormRequestTransfer $requestTransfer */
+        /** @var BladeFxGetReportParamFormRequestTransfer $requestTransfer */
         return $this->addAuthHeader($requestTransfer->getToken());
     }
 
@@ -61,7 +61,7 @@ class ReportParamFormRequestBuilder extends AbstractRequestBuilder
      */
     protected function getUrlParamsFromRequestTransfer(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxReportParamFormRequestTransfer $requestTransfer */
+        /** @var BladeFxGetReportParamFormRequestTransfer $requestTransfer */
         return [
             static::PARAM_ROOT_URL => $requestTransfer->getRootUrl(),
             static::PARAM_REP_ID => $requestTransfer->getReportId(),

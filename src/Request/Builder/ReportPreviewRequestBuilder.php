@@ -8,7 +8,7 @@ use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\BladeFxApiConfig;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 use Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface;
 
 class ReportPreviewRequestBuilder extends AbstractRequestBuilder
@@ -48,7 +48,7 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxReportPreviewRequestTransfer $requestTransfer */
+        /** @var BladeFxGetReportPreviewRequestTransfer $requestTransfer */
         return $this->addAuthHeader($requestTransfer->getToken());
     }
 
@@ -80,7 +80,7 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
      */
     protected function getEncodedData(AbstractTransfer $requestTransfer): string
     {
-        /** @var BladeFxReportPreviewRequestTransfer $requestTransfer */
+        /** @var BladeFxGetReportPreviewRequestTransfer $requestTransfer */
         $data = $this->bodyFormatter->formatDataBeforeEncoding(
             $requestTransfer,
         );
@@ -134,7 +134,7 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
      */
     protected function getQueryParamsFromRequestTransfer(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxReportPreviewRequestTransfer $requestTransfer */
+        /** @var BladeFxGetReportPreviewRequestTransfer $requestTransfer */
         return [
             'rootUrl' => $requestTransfer->getRootUrl(),
         ];

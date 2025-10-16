@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
-class BladeFxCategoriesListRequestTransfer extends AbstractTransfer
+class BladeFxGetCategoriesListRequestTransfer extends AbstractTransfer
 {
     /**
      * @var int|null
