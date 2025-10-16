@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Request\Builder;
 
-use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 
 class CategoriesListRequestBuilder extends AbstractRequestBuilder
@@ -23,7 +23,7 @@ class CategoriesListRequestBuilder extends AbstractRequestBuilder
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxCategoriesListRequestTransfer $requestTransfer */
+        /** @var BladeFxGetCategoriesListRequestTransfer $requestTransfer */
         return $this->addAuthHeader($requestTransfer->getToken());
     }
 }

@@ -6,7 +6,7 @@ namespace Xiphias\BladeFxApi\Request\Formatter;
 
 use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 
 class RequestBodyFormatter implements RequestBodyFormatterInterface
 {
@@ -25,10 +25,10 @@ class RequestBodyFormatter implements RequestBodyFormatterInterface
     }
 
     /**
-     * @param BladeFxReportPreviewRequestTransfer $requestTransfer
+     * @param BladeFxGetReportPreviewRequestTransfer $requestTransfer
      * @return array<mixed>
      */
-    public function formatDataBeforeEncoding(BladeFxReportPreviewRequestTransfer $requestTransfer): array
+    public function formatDataBeforeEncoding(BladeFxGetReportPreviewRequestTransfer $requestTransfer): array
     {
         $data = $requestTransfer->toArray();
 

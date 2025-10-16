@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi\Request\Validator;
 
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 
 class ReportPreviewRequestValidator extends AbstractRequestValidator implements RequestValidatorInterface
@@ -15,7 +15,7 @@ class ReportPreviewRequestValidator extends AbstractRequestValidator implements 
      */
     public function getRequestTransferClass(): string
     {
-        return BladeFxReportPreviewRequestTransfer::class;
+        return BladeFxGetReportPreviewRequestTransfer::class;
     }
 
     /**
@@ -26,7 +26,7 @@ class ReportPreviewRequestValidator extends AbstractRequestValidator implements 
     {
         try {
             /**
-             * @var BladeFxReportPreviewRequestTransfer $requestTransfer
+             * @var BladeFxGetReportPreviewRequestTransfer $requestTransfer
              */
             $requestTransfer
                 ->requireRootUrl()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
-class BladeFxReportPreviewRequestTransfer extends AbstractTransfer
+class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
 {
     /**
      * @var string

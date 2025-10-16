@@ -4,80 +4,31 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
-use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-
-class BladeFxReportsListRequestTransfer extends AbstractTransfer
+class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
 {
-    /**
-     * @var int|null
-     */
-    protected ?int $catId = null;
-
-    /**
-     * @var string|null
-     */
-    protected ?string $search = null;
-
     /**
      * @var string
      */
     protected string $token;
 
     /**
-     * @var string
+     * @var int|null
      */
-    protected string $attribute = '';
+    protected ?int $rep_id = null;
 
     /**
      * @var string
      */
-    protected string $returnType = 'JSON';
+    protected string $rootUrl;
 
     /**
      * @var array<string, string>
      */
     protected $transferPropertyNameMap = [
-        'cat_id' => 'catId',
-        'search' => 'search',
         'token' => 'token',
-        'attribute' => 'attribute',
-        'returnType' => 'returnType',
+        'rep_id' => 'rep_id',
+        'rootUrl' => 'rootUrl'
     ];
-
-    /**
-     * @return int
-     */
-    public function getCatId(): int
-    {
-        return $this->catId;
-    }
-
-    /**
-     * @param int $catId
-     * @return void
-     */
-    public function setCatId(int $catId): void
-    {
-        $this->catId = $catId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSearch(): string
-    {
-        return $this->search;
-    }
-
-    /**
-     * @param string $search
-     * @return void
-     */
-    public function setSearch(string $search): void
-    {
-        $this->search = $search;
-        $this->modifiedProperties['search'] = true;
-    }
 
     /**
      * @return string
@@ -111,48 +62,47 @@ class BladeFxReportsListRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string
+     * @return int|null
      */
-    public function getAttribute(): string
+    public function getReportId(): ?int
     {
-        return $this->attribute;
+        return $this->rep_id;
     }
 
     /**
-     * @param string $attribute
+     * @param int $rep_id
      * @return void
      */
-    public function setAttribute(string $attribute): void
+    public function setReportId(int $rep_id): void
     {
-        $this->attribute = $attribute;
-        $this->modifiedProperties['attribute'] = true;
+        $this->rep_id = $rep_id;
+        $this->modifiedProperties['rep_id'] = true;
     }
 
     /**
      * @return string
      */
-    public function getReturnType(): string
+    public function getRootUrl(): string
     {
-        return $this->returnType;
+        return $this->rootUrl;
     }
 
     /**
-     * @param string $returnType
+     * @param string $rootUrl
      * @return void
      */
-    public function setReturnType(string $returnType): void
+    public function setRootUrl(string $rootUrl): void
     {
-        $this->returnType = $returnType;
-        $this->modifiedProperties['returnType'] = true;
+        $this->rootUrl = $rootUrl;
+        $this->modifiedProperties['rootUrl'] = true;
     }
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requireReturnType(): self
+    public function requireRootUrl(): self
     {
-        $this->assertPropertyIsSet('returnType');
+        $this->assertPropertyIsSet('rootUrl');
 
         return $this;
     }
@@ -163,11 +113,9 @@ class BladeFxReportsListRequestTransfer extends AbstractTransfer
     public function toArray(): array
     {
         return [
-            'catId' => $this->catId,
-            'search' => $this->search,
             'token' => $this->token,
-            'attribute' => $this->attribute,
-            'returnType' => $this->returnType,
+            'rep_id' => $this->rep_id,
+            'rootUrl' => $this->rootUrl,
         ];
     }
 
@@ -182,11 +130,9 @@ class BladeFxReportsListRequestTransfer extends AbstractTransfer
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
 
             switch ($normalizedPropertyName) {
-                case 'catId':
-                case 'search':
                 case 'token':
-                case 'attribute':
-                case 'returnType':
+                case 'rep_id':
+                case 'rootUrl':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
                     break;

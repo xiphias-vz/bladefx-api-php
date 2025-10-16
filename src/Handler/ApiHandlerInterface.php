@@ -6,13 +6,13 @@ namespace Xiphias\BladeFxApi\Handler;
 
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportsListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
@@ -26,28 +26,28 @@ interface ApiHandlerInterface
     public function authenticateUser(BladeFxAuthenticationRequestTransfer $requestTransfer): BladeFxAuthenticationResponseTransfer;
 
     /**
-     * @param BladeFxReportsListRequestTransfer $requestTransfer
+     * @param BladeFxGetReportsListRequestTransfer $requestTransfer
      * @return BladeFxReportsListResponseTransfer
      */
-    public function getReportsList(BladeFxReportsListRequestTransfer $requestTransfer): BladeFxReportsListResponseTransfer;
+    public function getReportsList(BladeFxGetReportsListRequestTransfer $requestTransfer): BladeFxReportsListResponseTransfer;
 
     /**
-     * @param BladeFxCategoriesListRequestTransfer $requestTransfer
+     * @param BladeFxGetCategoriesListRequestTransfer $requestTransfer
      * @return BladeFxCategoriesListResponseTransfer
      */
-    public function getCategoriesList(BladeFxCategoriesListRequestTransfer $requestTransfer): BladeFxCategoriesListResponseTransfer;
+    public function getCategoriesList(BladeFxGetCategoriesListRequestTransfer $requestTransfer): BladeFxCategoriesListResponseTransfer;
 
     /**
-     * @param BladeFxReportParamFormRequestTransfer $requestTransfer
+     * @param BladeFxGetReportParamFormRequestTransfer $requestTransfer
      * @return BladeFxReportParamFormResponseTransfer
      */
-    public function getReportParamForm(BladeFxReportParamFormRequestTransfer $requestTransfer): BladeFxReportParamFormResponseTransfer;
+    public function getReportParamForm(BladeFxGetReportParamFormRequestTransfer $requestTransfer): BladeFxReportParamFormResponseTransfer;
 
     /**
-     * @param BladeFxReportPreviewRequestTransfer $requestTransfer
+     * @param BladeFxGetReportPreviewRequestTransfer $requestTransfer
      * @return BladeFxReportPreviewResponseTransfer
      */
-    public function getReportPreview(BladeFxReportPreviewRequestTransfer $requestTransfer): BladeFxReportPreviewResponseTransfer;
+    public function getReportPreview(BladeFxGetReportPreviewRequestTransfer $requestTransfer): BladeFxReportPreviewResponseTransfer;
 
     /**
      * @param BladeFxSetFavoriteReportRequestTransfer $requestTransfer

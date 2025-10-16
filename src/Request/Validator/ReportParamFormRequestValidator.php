@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi\Request\Validator;
 
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 
 class ReportParamFormRequestValidator extends AbstractRequestValidator
@@ -15,7 +15,7 @@ class ReportParamFormRequestValidator extends AbstractRequestValidator
      */
     public function getRequestTransferClass(): string
     {
-        return BladeFxReportParamFormRequestTransfer::class;
+        return BladeFxGetReportParamFormRequestTransfer::class;
     }
 
     /**
@@ -25,7 +25,7 @@ class ReportParamFormRequestValidator extends AbstractRequestValidator
     public function validateRequest(AbstractTransfer $requestTransfer): bool
     {
         try {
-            /** @var BladeFxReportParamFormRequestTransfer $requestTransfer */
+            /** @var BladeFxGetReportParamFormRequestTransfer $requestTransfer */
             $requestTransfer
                 ->requireToken()
                 ->requireRootUrl();

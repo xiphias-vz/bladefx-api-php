@@ -7,7 +7,7 @@ namespace Xiphias\BladeFxApi\Request\Builder;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportsListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 
 class ReportsListRequestBuilder extends AbstractRequestBuilder
 {
@@ -25,18 +25,18 @@ class ReportsListRequestBuilder extends AbstractRequestBuilder
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxReportsListRequestTransfer $requestTransfer */
+        /** @var BladeFxGetReportsListRequestTransfer $requestTransfer */
         return $this->addAuthHeader($requestTransfer->getToken());
     }
 
     /**
      * @param string $resource
-     * @param AbstractTransfer|BladeFxReportsListRequestTransfer $requestTransfer
+     * @param AbstractTransfer|BladeFxGetReportsListRequestTransfer $requestTransfer
      * @return RequestInterface
      */
     public function buildRequest(
         string $resource,
-        AbstractTransfer|BladeFxReportsListRequestTransfer $requestTransfer
+        AbstractTransfer|BladeFxGetReportsListRequestTransfer $requestTransfer
     ): RequestInterface {
         $uri = $this->buildUri($resource, $requestTransfer->getBaseUrl(), $this->getQueryParamsFromRequestTransfer(
             $requestTransfer,
@@ -53,7 +53,7 @@ class ReportsListRequestBuilder extends AbstractRequestBuilder
      */
     protected function getQueryParamsFromRequestTransfer(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxReportsListRequestTransfer $requestTransfer */
+        /** @var BladeFxGetReportsListRequestTransfer $requestTransfer */
         return [
             'catId' => $requestTransfer->getCatId(),
             'attribute' => $requestTransfer->getAttribute(),
