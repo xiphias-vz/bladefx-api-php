@@ -33,7 +33,7 @@ use Xiphias\BladeFxApi\Response\ResponseManager;
 use Xiphias\BladeFxApi\Storage\FileTokenStorage;
 use Xiphias\BladeFxApi\Storage\TokenStorageInterface;
 
-class BladeFxApiClient
+class BladeFxApiClient implements ReportsApiClientInterface
 {
     /**
      * @var ApiHandler|ApiHandlerInterface
@@ -66,7 +66,7 @@ class BladeFxApiClient
      * @return BladeFxTokenTransfer
      * @throws \DateMalformedStringException
      */
-    public function authenticateUser(): BladeFxTokenTransfer
+    public function sendAuthenticateUserRequest(): BladeFxTokenTransfer
     {
         $expiresAt = (new \DateTimeImmutable())->modify(BladeFxApiConfig::AUTH_TOKEN_EXPIRES_AT_SECONDS_DURATION);
         $tokenTransfer = new BladeFxTokenTransfer($this->callAuthenticateUserApi()->getToken(), $expiresAt);
@@ -100,7 +100,7 @@ class BladeFxApiClient
         $tokenTransfer = $this->tokenStorage->load();
 
         if (!$tokenTransfer || $tokenTransfer->isExpired()) {
-            $tokenTransfer = $this->authenticateUser();
+            $tokenTransfer = $this->sendAuthenticateUserRequest();
         }
 
         $abstractTransfer->setToken($tokenTransfer->getAccessToken());
@@ -121,7 +121,7 @@ class BladeFxApiClient
      * @return BladeFxReportsListResponseTransfer
      * @throws \DateMalformedStringException
      */
-    public function getReportList(
+    public function sendGetReportsListRequest(
         ?BladeFxReportsListRequestTransfer $reportsListRequestTransfer = (new BladeFxReportsListRequestTransfer())
     ): BladeFxReportsListResponseTransfer {
         /** @var BladeFxReportsListRequestTransfer $reportsListRequestTransfer */
@@ -135,7 +135,7 @@ class BladeFxApiClient
      * @return BladeFxCategoriesListResponseTransfer
      * @throws \DateMalformedStringException
      */
-    public function getCategoryList(
+    public function sendGetCategoriesListRequest(
         ?BladeFxCategoriesListRequestTransfer $categoriesListRequestTransfer = (new BladeFxCategoriesListRequestTransfer())
     ): BladeFxCategoriesListResponseTransfer {
         /** @var BladeFxCategoriesListRequestTransfer $categoriesListRequestTransfer */
@@ -149,7 +149,7 @@ class BladeFxApiClient
      * @return BladeFxReportParamFormResponseTransfer
      * @throws \DateMalformedStringException
      */
-    public function getReportUrl(
+    public function sendGetReportParamFormRequest(
         ?BladeFxReportParamFormRequestTransfer $reportsParamFormRequestTransfer = (new BladeFxReportParamFormRequestTransfer())
     ): BladeFxReportParamFormResponseTransfer {
         /** @var BladeFxReportParamFormRequestTransfer $reportsParamFormRequestTransfer */
@@ -163,7 +163,7 @@ class BladeFxApiClient
      * @return BladeFxReportPreviewResponseTransfer
      * @throws \DateMalformedStringException
      */
-    public function getReportPreviewURL(
+    public function sendGetReportPreviewRequest(
         BladeFxReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
     ): BladeFxReportPreviewResponseTransfer {
         /** @var BladeFxReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer */
@@ -177,7 +177,7 @@ class BladeFxApiClient
      * @return BladeFxSetFavoriteReportResponseTransfer
      * @throws \DateMalformedStringException
      */
-    public function setFavoriteReport(
+    public function sendSetFavoriteReportRequest(
         ?BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer
     ): BladeFxSetFavoriteReportResponseTransfer {
         /** @var BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer */
