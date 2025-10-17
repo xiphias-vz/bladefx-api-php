@@ -63,18 +63,19 @@ class BladeFxApiClient implements ReportsApiClientInterface
     }
 
     /**
-     * @return BladeFxTokenTransfer
+     * @return BladeFxAuthenticationResponseTransfer|null
      * @throws \DateMalformedStringException
      */
-    public function sendAuthenticateUserRequest(): BladeFxTokenTransfer
+    public function sendAuthenticateUserRequest(): ?BladeFxAuthenticationResponseTransfer
     {
         $expiresAt = (new \DateTimeImmutable())->modify(BladeFxApiConfig::AUTH_TOKEN_EXPIRES_AT_SECONDS_DURATION);
-        $tokenTransfer = new BladeFxTokenTransfer($this->callAuthenticateUserApi()->getToken(), $expiresAt);
+        $authenticationResponseTransfer = $this->callAuthenticateUserApi();
+        $tokenTransfer = new BladeFxTokenTransfer($authenticationResponseTransfer->getToken(), $expiresAt);
 
         $this->clearToken();
         $this->tokenStorage->save($tokenTransfer);
 
-        return $tokenTransfer;
+        return $authenticationResponseTransfer;
     }
 
     /**

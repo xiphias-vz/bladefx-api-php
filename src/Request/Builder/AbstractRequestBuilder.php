@@ -9,7 +9,6 @@ use GuzzleHttp\Psr7\Uri;
 use Psr\Http\Message\RequestInterface;
 use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxTokenTransfer;
 use Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface;
 
 abstract class AbstractRequestBuilder implements RequestBuilderInterface
