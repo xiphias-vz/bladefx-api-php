@@ -16,10 +16,10 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
      */
     protected string $userId;
 
-    /**
-     * @var string
-     */
-    protected string $token;
+//    /**
+//     * @var string
+//     */
+//    protected string $token;
 
     /**
      * @var array<string, string>
@@ -27,7 +27,7 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
     protected $transferPropertyNameMap = [
         'repId' => 'repId',
         'userId' => 'userId',
-        'token' => 'token'
+        'token' => 'accessToken'
     ];
 
     /**
@@ -87,25 +87,25 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getToken(): string
-    {
-        return $this->token;
-    }
-
-    /**
-     * @param string $token
-     * @return $this
-     */
-    public function setToken(string $token): self
-    {
-        $this->token = $token;
-        $this->modifiedProperties['token'] = true;
-
-        return $this;
-    }
+//    /**
+//     * @return string
+//     */
+//    public function getToken(): string
+//    {
+//        return $this->token;
+//    }
+//
+//    /**
+//     * @param string $token
+//     * @return $this
+//     */
+//    public function setToken(string $token): self
+//    {
+//        $this->token = $token;
+//        $this->modifiedProperties['token'] = true;
+//
+//        return $this;
+//    }
 
     /**
      * @return $this
@@ -113,7 +113,7 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
      */
     public function requireToken(): self
     {
-        $this->assertPropertyIsSet('token');
+        $this->assertPropertyIsSet('accessToken');
 
         return $this;
     }
@@ -126,7 +126,7 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
         return [
             'repId' => $this->getRepId(),
             'userId' => $this->getUserId(),
-            'token' => $this->getToken(),
+//            'token' => $this->getAccessToken(),
         ];
     }
 
@@ -143,7 +143,7 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
             switch ($normalizedPropertyName) {
                 case 'repId':
                 case 'userId':
-                case 'token':
+                case 'accessToken':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
                     break;

@@ -6,10 +6,10 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 {
-    /**
-     * @var string
-     */
-    protected string $token;
+//    /**
+//     * @var string
+//     */
+//    protected string $token;
 
     /**
      * @var string
@@ -60,7 +60,7 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
      * @var array<string, string>
      */
     protected $transferPropertyNameMap = [
-        'token' => 'token',
+        'token' => 'accessToken',
         'username' => 'username',
         'fullname' => 'fullname',
         'email' => 'email',
@@ -72,33 +72,33 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
         'licence_exp' => 'licenceExp',
     ];
 
-    /**
-     * @return string
-     */
-    public function getToken(): string
-    {
-        return $this->token;
-    }
-
-    /**
-     * @param string $token
-     * @return $this
-     */
-    public function setToken(string $token): self
-    {
-        $this->token = $token;
-        $this->modifiedProperties['token'] = true;
-
-        return $this;
-    }
-
+//    /**
+//     * @return string
+//     */
+//    public function getToken(): string
+//    {
+//        return $this->token;
+//    }
+//
+//    /**
+//     * @param string $token
+//     * @return $this
+//     */
+//    public function setToken(string $token): self
+//    {
+//        $this->token = $token;
+//        $this->modifiedProperties['token'] = true;
+//
+//        return $this;
+//    }
+//
     /**
      * @return $this
      * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
     public function requireToken(): self
     {
-        $this->assertPropertyIsSet('token');
+        $this->assertPropertyIsSet('accessToken');
 
         return $this;
     }
@@ -331,7 +331,7 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
 
             switch ($normalizedPropertyName) {
-                case 'token':
+                case 'accessToken':
                 case 'username':
                 case 'fullname':
                 case 'email':

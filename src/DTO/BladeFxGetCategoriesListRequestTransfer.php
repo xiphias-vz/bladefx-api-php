@@ -11,10 +11,10 @@ class BladeFxGetCategoriesListRequestTransfer extends AbstractTransfer
      */
     protected ?int $catId = null;
 
-    /**
-     * @var string
-     */
-    protected string $token;
+//    /**
+//     * @var string
+//     */
+//    protected string $token;
 
     /**
      * @var string
@@ -31,32 +31,33 @@ class BladeFxGetCategoriesListRequestTransfer extends AbstractTransfer
 
     /**
      * @param int $catId
-     * @return void
-     */
-    public function setCatId(int $catId): void
-    {
-        $this->catId = $catId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getToken(): string
-    {
-        return $this->token;
-    }
-
-    /**
-     * @param string $token
      * @return $this
      */
-    public function setToken(string $token): self
+    public function setCatId(int $catId): self
     {
-        $this->token = $token;
-        $this->modifiedProperties['token'] = true;
-
+        $this->catId = $catId;
         return $this;
     }
+
+//    /**
+//     * @return string
+//     */
+//    public function getToken(): string
+//    {
+//        return $this->token;
+//    }
+//
+//    /**
+//     * @param string $token
+//     * @return $this
+//     */
+//    public function setToken(string $token): self
+//    {
+//        $this->token = $token;
+//        $this->modifiedProperties['token'] = true;
+//
+//        return $this;
+//    }
 
     /**
      * @return $this
@@ -64,7 +65,7 @@ class BladeFxGetCategoriesListRequestTransfer extends AbstractTransfer
      */
     public function requireToken(): self
     {
-        $this->assertPropertyIsSet('token');
+        $this->assertPropertyIsSet('accessToken');
 
         return $this;
     }
@@ -79,11 +80,12 @@ class BladeFxGetCategoriesListRequestTransfer extends AbstractTransfer
 
     /**
      * @param string $returnType
-     * @return void
+     * @return $this
      */
-    public function setReturnType(string $returnType): void
+    public function setReturnType(string $returnType): self
     {
         $this->returnType = $returnType;
+        return $this;
     }
 
     /**
@@ -103,9 +105,9 @@ class BladeFxGetCategoriesListRequestTransfer extends AbstractTransfer
     public function toArray(): array
     {
         return [
-            'catId' => $this->catId,
-            'token' => $this->token,
-            'returnType' => $this->returnType,
+            'catId' => $this->getCatId(),
+            'accessToken' => $this->getAccessToken(),
+            'returnType' => $this->getReturnType(),
         ];
     }
 }
