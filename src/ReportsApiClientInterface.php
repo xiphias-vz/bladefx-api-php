@@ -21,15 +21,28 @@ use Xiphias\BladeFxApi\DTO\BladeFxTokenTransfer;
 
 interface ReportsApiClientInterface
 {
-    public function sendAuthenticateUserRequest(): BladeFxTokenTransfer;
+    /**
+     * @return BladeFxAuthenticationResponseTransfer|null
+     * @throws \DateMalformedStringException
+     */
+    public function sendAuthenticateUserRequest(): ?BladeFxAuthenticationResponseTransfer;
 
-
+    /**
+     * @param BladeFxGetCategoriesListRequestTransfer|null $categoriesListRequestTransfer
+     * @return BladeFxCategoriesListResponseTransfer
+     */
     public function sendGetCategoriesListRequest(?BladeFxGetCategoriesListRequestTransfer $categoriesListRequestTransfer): BladeFxCategoriesListResponseTransfer;
 
-
+    /**
+     * @param BladeFxGetReportsListRequestTransfer|null $reportsListRequestTransfer
+     * @return BladeFxReportsListResponseTransfer
+     */
     public function sendGetReportsListRequest(?BladeFxGetReportsListRequestTransfer $reportsListRequestTransfer): BladeFxReportsListResponseTransfer;
 
-
+    /**
+     * @param BladeFxSetFavoriteReportRequestTransfer|null $bladeFxSetFavoriteReportRequestTransfer
+     * @return BladeFxSetFavoriteReportResponseTransfer
+     */
     public function sendSetFavoriteReportRequest(?BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer): BladeFxSetFavoriteReportResponseTransfer;
 
 //
@@ -37,10 +50,16 @@ interface ReportsApiClientInterface
 //        BladeFxGetReportByFormatRequestTransfer $requestTransfer
 //    ): BladeFxGetReportByFormatResponseTransfer;
 
-
+    /**
+     * @param BladeFxGetReportParamFormRequestTransfer|null $reportsParamFormRequestTransfer
+     * @return BladeFxReportParamFormResponseTransfer
+     */
     public function sendGetReportParamFormRequest(?BladeFxGetReportParamFormRequestTransfer $reportsParamFormRequestTransfer): BladeFxReportParamFormResponseTransfer;
 
-
+    /**
+     * @param BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
+     * @return BladeFxReportPreviewResponseTransfer
+     */
     public function sendGetReportPreviewRequest(BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer): BladeFxReportPreviewResponseTransfer;
 
 //
