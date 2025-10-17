@@ -6,10 +6,10 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
 {
-    /**
-     * @var string
-     */
-    protected string $token;
+//    /**
+//     * @var string
+//     */
+//    protected string $token;
 
     /**
      * @var int|null
@@ -25,30 +25,30 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
      * @var array<string, string>
      */
     protected $transferPropertyNameMap = [
-        'token' => 'token',
+        'token' => 'accessToken',
         'rep_id' => 'rep_id',
         'rootUrl' => 'rootUrl'
     ];
 
-    /**
-     * @return string
-     */
-    public function getToken(): string
-    {
-        return $this->token;
-    }
-
-    /**
-     * @param string $token
-     * @return $this
-     */
-    public function setToken(string $token): self
-    {
-        $this->token = $token;
-        $this->modifiedProperties['token'] = true;
-
-        return $this;
-    }
+//    /**
+//     * @return string
+//     */
+//    public function getToken(): string
+//    {
+//        return $this->token;
+//    }
+//
+//    /**
+//     * @param string $token
+//     * @return $this
+//     */
+//    public function setToken(string $token): self
+//    {
+//        $this->token = $token;
+//        $this->modifiedProperties['token'] = true;
+//
+//        return $this;
+//    }
 
     /**
      * @return $this
@@ -56,7 +56,7 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
      */
     public function requireToken(): self
     {
-        $this->assertPropertyIsSet('token');
+        $this->assertPropertyIsSet('accessToken');
 
         return $this;
     }
@@ -113,9 +113,9 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
     public function toArray(): array
     {
         return [
-            'token' => $this->token,
-            'rep_id' => $this->rep_id,
-            'rootUrl' => $this->rootUrl,
+            'accessToken' => $this->getAccessToken(),
+            'rep_id' => $this->getReportId(),
+            'rootUrl' => $this->getRootUrl(),
         ];
     }
 
@@ -130,7 +130,7 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
 
             switch ($normalizedPropertyName) {
-                case 'token':
+                case 'accessToken':
                 case 'rep_id':
                 case 'rootUrl':
                     $this->$normalizedPropertyName = $value;

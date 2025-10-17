@@ -49,7 +49,7 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
         /** @var BladeFxGetReportPreviewRequestTransfer $requestTransfer */
-        return $this->addAuthHeader($requestTransfer->getToken());
+        return $this->addAuthHeader($requestTransfer->getAccessToken());
     }
 
     /**

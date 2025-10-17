@@ -32,7 +32,12 @@ class AbstractTransfer
     /**
      * @var string
      */
-    protected string $token;
+    protected string $accessToken;
+
+    /**
+     * @var BladeFxTokenTransfer|null
+     */
+    protected ?BladeFxTokenTransfer $bladeFxTokenTransfer;
 
     public function __construct()
     {
@@ -86,18 +91,36 @@ class AbstractTransfer
     /**
      * @return string
      */
-    public function getToken(): string
+    public function getAccessToken(): string
     {
-        return $this->token;
+        return $this->accessToken;
     }
 
     /**
-     * @param string $token
+     * @param string $accessToken
      * @return $this
      */
-    public function setToken(string $token): self
+    public function setAccessToken(string $accessToken): self
     {
-        $this->token = $token;
+        $this->accessToken = $accessToken;
+        return $this;
+    }
+
+    /**
+     * @return BladeFxTokenTransfer|null
+     */
+    public function getToken(): ?BladeFxTokenTransfer
+    {
+        return $this->bladeFxTokenTransfer;
+    }
+
+    /**
+     * @param BladeFxTokenTransfer|null $bladeFxTokenTransfer
+     * @return $this
+     */
+    public function setToken(?BladeFxTokenTransfer $bladeFxTokenTransfer = null): self
+    {
+        $this->bladeFxTokenTransfer = $bladeFxTokenTransfer;
         return $this;
     }
 
@@ -107,8 +130,9 @@ class AbstractTransfer
     public function toArray(): array
     {
         return [
-            'baseUrl' => $this->getBaseUrl(),
-            'token'   => $this->getToken()
+            'baseUrl'       => $this->getBaseUrl(),
+            'accessToken'   => $this->getAccessToken(),
+            'token'         => $this->getToken(),
         ];
     }
 }

@@ -6,10 +6,10 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
 {
-    /**
-     * @var string
-     */
-    protected string $token;
+//    /**
+//     * @var string
+//     */
+//    protected string $token;
 
     /**
      * @var string
@@ -41,30 +41,30 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
      */
     protected BladeFxParameterTransfer $params;
 
-    /**
-     * @return string
-     */
-    public function getToken(): string
-    {
-        return $this->token;
-    }
-
-    /**
-     * @param string $token
-     * @return $this
-     */
-    public function setToken(string $token): self
-    {
-        $this->token = $token;
-        return $this;
-    }
+//    /**
+//     * @return string
+//     */
+//    public function getToken(): string
+//    {
+//        return $this->token;
+//    }
+//
+//    /**
+//     * @param string $token
+//     * @return $this
+//     */
+//    public function setToken(string $token): self
+//    {
+//        $this->token = $token;
+//        return $this;
+//    }
 
     /**
      * @return $this
      */
     public function requireToken(): self
     {
-        $this->assertPropertyIsSet('token');
+        $this->assertPropertyIsSet('accessToken');
 
         return $this;
     }
@@ -223,7 +223,7 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
     public function toArray(): array
     {
         return [
-            'token' => $this->getToken(),
+            'accessToken' => $this->getAccessToken(),
             'returnType' => $this->getReturnType(),
             'repId' => $this->getRepId(),
             'layoutId' => $this->getLayoutId(),

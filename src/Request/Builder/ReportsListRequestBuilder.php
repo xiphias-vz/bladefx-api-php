@@ -26,7 +26,7 @@ class ReportsListRequestBuilder extends AbstractRequestBuilder
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
         /** @var BladeFxGetReportsListRequestTransfer $requestTransfer */
-        return $this->addAuthHeader($requestTransfer->getToken());
+        return $this->addAuthHeader($requestTransfer->getAccessToken());
     }
 
     /**

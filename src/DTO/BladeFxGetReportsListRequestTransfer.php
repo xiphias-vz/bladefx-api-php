@@ -18,10 +18,10 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
      */
     protected ?string $search = null;
 
-    /**
-     * @var string
-     */
-    protected string $token;
+//    /**
+//     * @var string
+//     */
+//    protected string $token;
 
     /**
      * @var string
@@ -39,7 +39,7 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
     protected $transferPropertyNameMap = [
         'cat_id' => 'catId',
         'search' => 'search',
-        'token' => 'token',
+        'token' => 'accessToken',
         'attribute' => 'attribute',
         'returnType' => 'returnType',
     ];
@@ -79,25 +79,25 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
         $this->modifiedProperties['search'] = true;
     }
 
-    /**
-     * @return string
-     */
-    public function getToken(): string
-    {
-        return $this->token;
-    }
-
-    /**
-     * @param string $token
-     * @return $this
-     */
-    public function setToken(string $token): self
-    {
-        $this->token = $token;
-        $this->modifiedProperties['token'] = true;
-
-        return $this;
-    }
+//    /**
+//     * @return string
+//     */
+//    public function getToken(): string
+//    {
+//        return $this->token;
+//    }
+//
+//    /**
+//     * @param string $token
+//     * @return $this
+//     */
+//    public function setToken(string $token): self
+//    {
+//        $this->token = $token;
+//        $this->modifiedProperties['token'] = true;
+//
+//        return $this;
+//    }
 
     /**
      * @return $this
@@ -105,7 +105,7 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
      */
     public function requireToken(): self
     {
-        $this->assertPropertyIsSet('token');
+        $this->assertPropertyIsSet('accessToken');
 
         return $this;
     }
@@ -163,11 +163,11 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
     public function toArray(): array
     {
         return [
-            'catId' => $this->catId,
-            'search' => $this->search,
-            'token' => $this->token,
-            'attribute' => $this->attribute,
-            'returnType' => $this->returnType,
+            'catId' => $this->getCatId(),
+            'search' => $this->getSearch(),
+            'accessToken' => $this->getAccessToken(),
+            'attribute' => $this->getAttribute(),
+            'returnType' => $this->getReturnType(),
         ];
     }
 
@@ -184,7 +184,7 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
             switch ($normalizedPropertyName) {
                 case 'catId':
                 case 'search':
-                case 'token':
+                case 'accessToken':
                 case 'attribute':
                 case 'returnType':
                     $this->$normalizedPropertyName = $value;

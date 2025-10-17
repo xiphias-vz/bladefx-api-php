@@ -27,7 +27,7 @@ class SetFavoriteReportRequestBuilder extends AbstractRequestBuilder
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
         /** @var BladeFxSetFavoriteReportRequestTransfer $requestTransfer */
-        return $this->addAuthHeader($requestTransfer->getToken());
+        return $this->addAuthHeader($requestTransfer->getAccessToken());
     }
 
     /**

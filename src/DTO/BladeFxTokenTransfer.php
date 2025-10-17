@@ -9,29 +9,29 @@ class BladeFxTokenTransfer
     /**
      * @var string
      */
-    protected string $accessToken;
+    protected string $token;
 
     /**
      * @var \DateTimeImmutable|null
      */
-    private ?\DateTimeImmutable $expiresAt;
-
-    /**
-     * @param string $accessToken
-     * @param \DateTimeImmutable|null $expiresAt
-     */
-    public function __construct(string $accessToken, ?\DateTimeImmutable $expiresAt = null)
-    {
-        $this->accessToken = $accessToken;
-        $this->expiresAt = $expiresAt;
-    }
+    protected ?\DateTimeImmutable $expiresAt;
 
     /**
      * @return string
      */
-    public function getAccessToken(): string
+    public function getToken(): string
     {
-        return $this->accessToken;
+        return $this->token;
+    }
+
+    /**
+     * @param string $token
+     * @return $this
+     */
+    public function setToken(string $token): self
+    {
+        $this->token = $token;
+        return $this;
     }
 
     /**
@@ -40,6 +40,16 @@ class BladeFxTokenTransfer
     public function getExpiresAt(): ?\DateTimeImmutable
     {
         return $this->expiresAt;
+    }
+
+    /**
+     * @param \DateTimeImmutable $expiresAt
+     * @return $this
+     */
+    public function setExpiresAt(\DateTimeImmutable $expiresAt = null): self
+    {
+        $this->expiresAt = $expiresAt;
+        return $this;
     }
 
     /**
@@ -56,22 +66,42 @@ class BladeFxTokenTransfer
     public function toArray(): array
     {
         return [
-            'access_token' => $this->getAccessToken(),
+            'access_token' => $this->getToken(),
             'expires_at' => $this->getExpiresAt()?->format(DATE_ATOM),
         ];
     }
 
     /**
-     * @param array<mixed> $data
-     * @return self
+     * @param array<string, mixed> $data
+     * @param bool $ignoreMissingProperties
+     * @return $this
+     * @throws \InvalidArgumentException
      * @throws \DateMalformedStringException
      */
-    public static function fromArray(array $data): self
+    public function fromArray(array $data, bool $ignoreMissingProperties = false)
     {
-        $expiresAt = isset($data['expires_at']) && $data['expires_at']
-            ? new \DateTimeImmutable($data['expires_at'])
-            : null;
+        foreach ($data as $property => $value) {
+            $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? $property;
 
-        return new self($data['access_token'], $expiresAt);
+            switch ($normalizedPropertyName) {
+                case 'expires_at':
+                    $expiresAt = isset($value) && $value
+                        ? new \DateTimeImmutable($value)
+                        : null;
+
+                    $this->$normalizedPropertyName = $expiresAt;
+                    break;
+                case 'access_token':
+                    $this->$normalizedPropertyName = $value;
+                    break;
+
+                default:
+                    if (!$ignoreMissingProperties) {
+                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                    }
+            }
+        }
+
+        return $this;
     }
 }
