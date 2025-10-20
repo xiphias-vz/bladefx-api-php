@@ -7,6 +7,106 @@ namespace Xiphias\BladeFxApi\DTO;
 class BladeFxReportTransfer extends AbstractTransfer
 {
     /**
+     * @var string
+     */
+    public const REP_ID = 'repId';
+
+    /**
+     * @var string
+     */
+    public const REP_NAME = 'repName';
+
+    /**
+     * @var string
+     */
+    public const REP_HASH_CODE = 'repHashCode';
+
+    /**
+     * @var string
+     */
+    public const REP_DESC = 'repDesc';
+
+    /**
+     * @var string
+     */
+    public const CAT_NAME = 'catName';
+
+    /**
+     * @var string
+     */
+    public const IS_ACTIVE = 'isActive';
+
+    /**
+     * @var string
+     */
+    public const IS_DRILLDOWN = 'isDrilldown';
+
+    /**
+     * @var string
+     */
+    public const IS_WEBSERVICE = 'isWebservice';
+
+    /**
+     * @var string
+     */
+    public const IS_ERROR_REPORT = 'isErrorReport';
+
+    /**
+     * @var string
+     */
+    public const IS_DEF = 'isDef';
+
+    /**
+     * @var string
+     */
+    public const IS_METRO = 'isMetro';
+
+    /**
+     * @var string
+     */
+    public const LOG_EXECUTION = 'logExecution';
+
+    /**
+     * @var string
+     */
+    public const LOG_HISTORY = 'logHistory';
+
+    /**
+     * @var string
+     */
+    public const IS_FAVORITE = 'isFavorite';
+
+    /**
+     * @var string
+     */
+    public const U_CREATED = 'uCreated';
+
+    /**
+     * @var string
+     */
+    public const D_CREATED = 'dCreated';
+
+    /**
+     * @var string
+     */
+    public const U_CHANGED = 'uChanged';
+
+    /**
+     * @var string
+     */
+    public const D_CHANGED = 'dChanged';
+
+    /**
+     * @var string
+     */
+    public const MOBILE_LAYOUT = 'mobileLayout';
+
+    /**
+     * @var string
+     */
+    public const ATTRIBUTE = 'attribute';
+
+    /**
      * @var int
      */
     protected int $repId;
@@ -175,7 +275,7 @@ class BladeFxReportTransfer extends AbstractTransfer
     public function setRepName(?string $repName): void
     {
         $this->repName = $repName;
-        $this->modifiedProperties['repName'] = true;
+        $this->modifiedProperties[static::REP_NAME] = true;
     }
 
     /**
@@ -183,7 +283,7 @@ class BladeFxReportTransfer extends AbstractTransfer
      */
     public function requireRepName(): self
     {
-        $this->assertPropertyIsSet('repName');
+        $this->assertPropertyIsSet(static::REP_NAME);
 
         return $this;
     }
@@ -421,7 +521,7 @@ class BladeFxReportTransfer extends AbstractTransfer
     public function setIsFavorite(?bool $isFavorite): void
     {
         $this->isFavorite = $isFavorite;
-        $this->modifiedProperties['isFavorite'] = true;
+        $this->modifiedProperties[static::IS_FAVORITE] = true;
     }
 
     /**

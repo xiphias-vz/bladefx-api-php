@@ -7,7 +7,7 @@ namespace Xiphias\BladeFxApi\Response;
 use Psr\Http\Message\ResponseInterface;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
@@ -34,9 +34,9 @@ interface ResponseManagerInterface
 
     /**
      * @param ResponseInterface|null $response
-     * @return BladeFxReportParamFormResponseTransfer
+     * @return BladeFxGetReportParamFormResponseTransfer
      */
-    public function getReportParamFormResponseTransfer(?ResponseInterface $response): BladeFxReportParamFormResponseTransfer;
+    public function getReportParamFormResponseTransfer(?ResponseInterface $response): BladeFxGetReportParamFormResponseTransfer;
 
     /**
      * @param ResponseInterface|null $response

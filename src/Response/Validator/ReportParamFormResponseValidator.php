@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi\Response\Validator;
 
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 
 class ReportParamFormResponseValidator extends AbstractResponseValidator
@@ -15,7 +15,7 @@ class ReportParamFormResponseValidator extends AbstractResponseValidator
      */
     public function getResponseTransferClass(): string
     {
-        return BladeFxReportParamFormResponseTransfer::class;
+        return BladeFxGetReportParamFormResponseTransfer::class;
     }
 
     /**
@@ -25,7 +25,7 @@ class ReportParamFormResponseValidator extends AbstractResponseValidator
     public function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
-            /** @var BladeFxReportParamFormResponseTransfer $responseTransfer */
+            /** @var BladeFxGetReportParamFormResponseTransfer $responseTransfer */
             $responseTransfer->requireIframeUrl();
         } catch (TransferPropertyRequiredException $ex) {
             return false;

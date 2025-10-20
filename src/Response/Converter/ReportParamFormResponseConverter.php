@@ -6,7 +6,7 @@ namespace Xiphias\BladeFxApi\Response\Converter;
 
 use Psr\Http\Message\ResponseInterface;
 use Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 
 class ReportParamFormResponseConverter extends AbstractResponseConverter
 {
@@ -41,7 +41,7 @@ class ReportParamFormResponseConverter extends AbstractResponseConverter
 
         return $bladeFxApiResponseConversionResultTransfer
             ->setBladeFxReportParamFormResponse(
-                (new BladeFxReportParamFormResponseTransfer())
+                (new BladeFxGetReportParamFormResponseTransfer())
                     ->setIframeUrl($paramFormIframeUrl),
             );
     }

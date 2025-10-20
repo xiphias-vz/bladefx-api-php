@@ -12,9 +12,9 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
     protected ?int $repId = null;
 
     /**
-     * @var string
+     * @var int|null
      */
-    protected string $userId;
+    protected ?int $userId;
 
 //    /**
 //     * @var string
@@ -42,10 +42,12 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
      * @param int $repId
      * @return void
      */
-    public function setRepId(int $repId): void
+    public function setRepId(int $repId): self
     {
         $this->repId = $repId;
         $this->modifiedProperties['repId'] = true;
+
+        return $this;
     }
 
     /**
@@ -60,21 +62,23 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string
+     * @return int|null
      */
-    public function getUserId(): string
+    public function getUserId(): ?int
     {
         return $this->userId;
     }
 
     /**
-     * @param string $userId
-     * @return void
+     * @param int|null $userId
+     * @return $this
      */
-    public function setUserId(string $userId): void
+    public function setUserId(?int $userId): self
     {
         $this->userId = $userId;
         $this->modifiedProperties['userId'] = true;
+
+        return $this;
     }
 
     /**
