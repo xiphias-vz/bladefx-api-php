@@ -20,7 +20,7 @@ use Xiphias\BladeFxApi\Request\RequestFactoryInterface;
 use Xiphias\BladeFxApi\Request\RequestManagerInterface;
 use Xiphias\BladeFxApi\Response\ResponseManagerInterface;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 
 class ApiHandler implements ApiHandlerInterface
 {
@@ -132,9 +132,9 @@ class ApiHandler implements ApiHandlerInterface
 
     /**
      * @param BladeFxGetReportParamFormRequestTransfer $requestTransfer
-     * @return BladeFxReportParamFormResponseTransfer
+     * @return BladeFxGetReportParamFormResponseTransfer
      */
-    public function getReportParamForm(BladeFxGetReportParamFormRequestTransfer $requestTransfer): BladeFxReportParamFormResponseTransfer
+    public function getReportParamForm(BladeFxGetReportParamFormRequestTransfer $requestTransfer): BladeFxGetReportParamFormResponseTransfer
     {
         $this->requestManager->setRequestBuilder(
             $this->requestFactory->createReportParamFormRequestBuilder(),

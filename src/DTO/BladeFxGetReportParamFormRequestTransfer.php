@@ -73,10 +73,12 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
      * @param int $rep_id
      * @return void
      */
-    public function setReportId(int $rep_id): void
+    public function setReportId(int $rep_id): self
     {
         $this->rep_id = $rep_id;
         $this->modifiedProperties['rep_id'] = true;
+
+        return $this;
     }
 
     /**
@@ -91,10 +93,12 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
      * @param string $rootUrl
      * @return void
      */
-    public function setRootUrl(string $rootUrl): void
+    public function setRootUrl(string $rootUrl): self
     {
         $this->rootUrl = $rootUrl;
         $this->modifiedProperties['rootUrl'] = true;
+
+        return $this;
     }
 
     /**

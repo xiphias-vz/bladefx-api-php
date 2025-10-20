@@ -14,7 +14,7 @@ use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
@@ -149,12 +149,12 @@ class BladeFxApiClient implements ReportsApiClientInterface
 
     /**
      * @param BladeFxGetReportParamFormRequestTransfer|null $reportsParamFormRequestTransfer
-     * @return BladeFxReportParamFormResponseTransfer
+     * @return BladeFxGetReportParamFormResponseTransfer
      * @throws \DateMalformedStringException
      */
     public function sendGetReportParamFormRequest(
         ?BladeFxGetReportParamFormRequestTransfer $reportsParamFormRequestTransfer = (new BladeFxGetReportParamFormRequestTransfer())
-    ): BladeFxReportParamFormResponseTransfer {
+    ): BladeFxGetReportParamFormResponseTransfer {
         /** @var BladeFxGetReportParamFormRequestTransfer $reportsParamFormRequestTransfer */
         $reportsParamFormRequestTransfer = $this->prepareRequest($reportsParamFormRequestTransfer);
 
