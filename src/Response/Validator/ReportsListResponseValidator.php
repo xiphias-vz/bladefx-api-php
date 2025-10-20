@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi\Response\Validator;
 
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportsListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 
 class ReportsListResponseValidator extends AbstractResponseValidator
@@ -15,7 +15,7 @@ class ReportsListResponseValidator extends AbstractResponseValidator
      */
     public function getResponseTransferClass(): string
     {
-        return BladeFxReportsListResponseTransfer::class;
+        return BladeFxGetReportsListResponseTransfer::class;
     }
 
     /**
@@ -25,7 +25,7 @@ class ReportsListResponseValidator extends AbstractResponseValidator
     protected function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
-            /** @var BladeFxReportsListResponseTransfer $responseTransfer */
+            /** @var BladeFxGetReportsListResponseTransfer $responseTransfer */
             $reportsList = $responseTransfer->getReportsList();
             foreach ($reportsList as $report) {
                 $report

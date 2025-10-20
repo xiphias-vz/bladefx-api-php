@@ -9,12 +9,12 @@ class BladeFxTokenTransfer
     /**
      * @var string
      */
-    protected string $token;
+    protected string $token = '';
 
     /**
      * @var \DateTimeImmutable|null
      */
-    protected ?\DateTimeImmutable $expiresAt;
+    protected ?\DateTimeImmutable $expiresAt = null;
 
     /**
      * @return string

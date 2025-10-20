@@ -11,7 +11,7 @@ use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportsListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
 use Xiphias\BladeFxApi\Response\Exception\ReportsResponseException;
 use Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface;
@@ -89,9 +89,9 @@ class ResponseManager implements ResponseManagerInterface
 
     /**
      * @param ResponseInterface|null $response
-     * @return BladeFxReportsListResponseTransfer
+     * @return BladeFxGetReportsListResponseTransfer
      */
-    public function getReportsListResponseTransfer(?ResponseInterface $response): BladeFxReportsListResponseTransfer
+    public function getReportsListResponseTransfer(?ResponseInterface $response): BladeFxGetReportsListResponseTransfer
     {
         $this->validateRawResponse($response);
         $converterResultTransfer = $this->responseFactory->createReportsListResponseConverter()->convert($response);
