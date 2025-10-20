@@ -12,58 +12,58 @@ class BladeFxCategoryTransfer extends AbstractTransfer
     public const CAT_ID = 'catId';
 
     /**
-     * @var int
+     * @var int|null
      */
-    protected int $catId;
+    protected ?int $catId = null;
 
     /**
      * @var int|null
      */
-    protected ?int $companyId;
+    protected ?int $companyId = null;
 
     /**
      * @var int|null
      */
-    protected ?int $catParentId;
+    protected ?int $catParentId = null;
 
     /**
      * @var string|null
      */
-    protected ?string $catName;
+    protected ?string $catName = null;
 
     /**
      * @var string|null
      */
-    protected ?string $catDescription;
+    protected ?string $catDescription = null;
     /**
      * @var int|null
      */
-    protected ?int $catSort;
+    protected ?int $catSort = null;
 
     /**
      * @var bool|null
      */
-    protected ?bool $catActive;
+    protected ?bool $catActive = null;
 
     /**
      * @var string|null
      */
-    protected ?string $dCreated;
+    protected ?string $dCreated = null;
 
     /**
      * @var string|null
      */
-    protected ?string $dChanged;
+    protected ?string $dChanged = null;
 
     /**
      * @var int|null
      */
-    protected ?int $reportCount;
+    protected ?int $reportCount = null;
 
     /**
      * @var bool|null
      */
-    protected ?bool $isActiveTree;
+    protected ?bool $isActiveTree = null;
 
     /**
      * @var array<string, string>
@@ -79,24 +79,27 @@ class BladeFxCategoryTransfer extends AbstractTransfer
        'dCreated' => 'dCreated',
        'dChanged' => 'dChanged',
        'reportCount' => 'reportCount',
+       'isActiveTree' => 'isActiveTree'
     ];
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCatId(): int
+    public function getCatId(): ?int
     {
         return $this->catId;
     }
 
     /**
-     * @param int $catId
-     * @return void
+     * @param int|null $catId
+     * @return $this
      */
-    public function setCatId(int $catId): void
+    public function setCatId(?int $catId = null): self
     {
         $this->catId = $catId;
         $this->modifiedProperties[self::CAT_ID] = true;
+
+        return $this;
     }
 
     /**
@@ -110,173 +113,204 @@ class BladeFxCategoryTransfer extends AbstractTransfer
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCompanyId(): int
+    public function getCompanyId(): ?int
     {
         return $this->companyId;
     }
 
     /**
-     * @param int $companyId
-     * @return void
+     * @param int|null $companyId
+     * @return $this
      */
-    public function setCompanyId(int $companyId): void
+    public function setCompanyId(?int $companyId = null): self
     {
         $this->companyId = $companyId;
+
+        return $this;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCatParentId(): int
+    public function getCatParentId(): ?int
     {
         return $this->catParentId;
     }
 
     /**
-     * @param int $catParentId
-     * @return void
+     * @param int|null $catParentId
+     * @return $this
      */
-    public function setCatParentId(int $catParentId): void
+    public function setCatParentId(?int $catParentId = null): self
     {
         $this->catParentId = $catParentId;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCatName(): string
+    public function getCatName(): ?string
     {
         return $this->catName;
     }
 
     /**
-     * @param string $catName
-     * @return void
+     * @param string|null $catName
+     * @return $this
      */
-    public function setCatName(string $catName): void
+    public function setCatName(?string $catName = null): self
     {
         $this->catName = $catName;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCatDescription(): string
+    public function getCatDescription(): ?string
     {
         return $this->catDescription;
     }
 
     /**
-     * @param string $catDescription
-     * @return void
+     * @param string|null $catDescription
+     * @return $this
      */
-    public function setCatDescription(string $catDescription): void
+    public function setCatDescription(?string $catDescription = null): self
     {
         $this->catDescription = $catDescription;
+        return $this;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCatSort(): int
+    public function getCatSort(): ?int
     {
         return $this->catSort;
     }
 
     /**
-     * @param int $catSort
-     * @return void
+     * @param int|null $catSort
+     * @return $this
      */
-    public function setCatSort(int $catSort): void
+    public function setCatSort(?int $catSort = null): self
     {
         $this->catSort = $catSort;
+        return $this;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isCatActive(): bool
+    public function getCatActive(): ?bool
     {
         return $this->catActive;
     }
 
     /**
-     * @param bool $catActive
-     * @return void
+     * @param bool|null $catActive
+     * @return $this
      */
-    public function setCatActive(bool $catActive): void
+    public function setCatActive(?bool $catActive = null): self
     {
         $this->catActive = $catActive;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDCreated(): string
+    public function getDCreated(): ?string
     {
         return $this->dCreated;
     }
 
     /**
-     * @param string $dCreated
-     * @return void
+     * @param string|null $dCreated
+     * @return $this
      */
-    public function setDCreated(string $dCreated): void
+    public function setDCreated(?string $dCreated = null): self
     {
         $this->dCreated = $dCreated;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDChanged(): string
+    public function getDChanged(): ?string
     {
         return $this->dChanged;
     }
 
     /**
-     * @param string $dChanged
-     * @return void
+     * @param string|null $dChanged
+     * @return $this
      */
-    public function setDChanged(string $dChanged): void
+    public function setDChanged(?string $dChanged = null): self
     {
         $this->dChanged = $dChanged;
+        return $this;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getReportCount(): int
+    public function getReportCount(): ?int
     {
         return $this->reportCount;
     }
 
     /**
-     * @param int $reportCount
-     * @return void
+     * @param int|null $reportCount
+     * @return $this
      */
-    public function setReportCount(int $reportCount): void
+    public function setReportCount(?int $reportCount = null): self
     {
         $this->reportCount = $reportCount;
+        return $this;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isActiveTree(): bool
+    public function getIsActiveTree(): ?bool
     {
         return $this->isActiveTree;
     }
 
     /**
-     * @param bool $isActiveTree
-     * @return void
+     * @param bool|null $isActiveTree
+     * @return $this
      */
-    public function setIsActiveTree(bool $isActiveTree): void
+    public function setIsActiveTree(?bool $isActiveTree = null): self
     {
         $this->isActiveTree = $isActiveTree;
+        return $this;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function toArray(): array
+    {
+        return [
+            'catId'             => $this->getCatId(),
+            'companyId'         => $this->getCompanyId(),
+            'catParentId'       => $this->getCatParentId(),
+            'catName'           => $this->getCatName(),
+            'catDescription'    => $this->getCatDescription(),
+            'catSort'           => $this->getCatSort(),
+            'catActive'         => $this->getCatActive(),
+            'dCreated'          => $this->getDCreated(),
+            'dChanged'          => $this->getDChanged(),
+            'reportCount'       => $this->getReportCount(),
+            'isActiveTree'      => $this->getIsActiveTree(),
+        ];
     }
 
     /**

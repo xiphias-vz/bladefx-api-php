@@ -54,29 +54,32 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
 
     /**
      * @param int $catId
-     * @return void
+     * @return $this
      */
-    public function setCatId(int $catId): void
+    public function setCatId(int $catId): self
     {
         $this->catId = $catId;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSearch(): string
+    public function getSearch(): ?string
     {
         return $this->search;
     }
 
     /**
      * @param string $search
-     * @return void
+     * @return $this
      */
-    public function setSearch(string $search): void
+    public function setSearch(string $search): self
     {
         $this->search = $search;
         $this->modifiedProperties['search'] = true;
+
+        return $this;
     }
 
 //    /**
@@ -120,12 +123,14 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
 
     /**
      * @param string $attribute
-     * @return void
+     * @return $this
      */
-    public function setAttribute(string $attribute): void
+    public function setAttribute(string $attribute): self
     {
         $this->attribute = $attribute;
         $this->modifiedProperties['attribute'] = true;
+
+        return $this;
     }
 
     /**
@@ -138,17 +143,18 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
 
     /**
      * @param string $returnType
-     * @return void
+     * @return $this
      */
-    public function setReturnType(string $returnType): void
+    public function setReturnType(string $returnType): self
     {
         $this->returnType = $returnType;
         $this->modifiedProperties['returnType'] = true;
+
+        return $this;
     }
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
     public function requireReturnType(): self
     {

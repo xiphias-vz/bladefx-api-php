@@ -18,7 +18,7 @@ use Xiphias\BladeFxApi\DTO\BladeFxReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportsListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxTokenTransfer;
@@ -121,12 +121,12 @@ class BladeFxApiClient implements ReportsApiClientInterface
 
     /**
      * @param BladeFxGetReportsListRequestTransfer|null $reportsListRequestTransfer
-     * @return BladeFxReportsListResponseTransfer
+     * @return BladeFxGetReportsListResponseTransfer
      * @throws \DateMalformedStringException
      */
     public function sendGetReportsListRequest(
         ?BladeFxGetReportsListRequestTransfer $reportsListRequestTransfer = (new BladeFxGetReportsListRequestTransfer())
-    ): BladeFxReportsListResponseTransfer {
+    ): BladeFxGetReportsListResponseTransfer {
         /** @var BladeFxGetReportsListRequestTransfer $reportsListRequestTransfer */
         $reportsListRequestTransfer = $this->prepareRequest($reportsListRequestTransfer);
 

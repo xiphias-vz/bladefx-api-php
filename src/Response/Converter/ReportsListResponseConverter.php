@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi\Response\Converter;
 
 use Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportsListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxReportTransfer;
 
 class ReportsListResponseConverter extends AbstractResponseConverter
@@ -19,7 +19,7 @@ class ReportsListResponseConverter extends AbstractResponseConverter
         BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer,
         array $responseData
     ): BladeFxApiResponseConversionResultTransfer {
-        $bladeFxReportsListResponseTransfer = new BladeFxReportsListResponseTransfer();
+        $bladeFxReportsListResponseTransfer = new BladeFxGetReportsListResponseTransfer();
         $bladeFxReportsList = [];
         foreach ($responseData as $report) {
             if (is_array($report)) {
