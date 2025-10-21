@@ -6,11 +6,6 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
 {
-//    /**
-//     * @var string
-//     */
-//    protected string $token;
-
     /**
      * @var int|null
      */
@@ -29,26 +24,6 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
         'rep_id' => 'rep_id',
         'rootUrl' => 'rootUrl'
     ];
-
-//    /**
-//     * @return string
-//     */
-//    public function getToken(): string
-//    {
-//        return $this->token;
-//    }
-//
-//    /**
-//     * @param string $token
-//     * @return $this
-//     */
-//    public function setToken(string $token): self
-//    {
-//        $this->token = $token;
-//        $this->modifiedProperties['token'] = true;
-//
-//        return $this;
-//    }
 
     /**
      * @return $this
@@ -71,7 +46,7 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
 
     /**
      * @param int $rep_id
-     * @return void
+     * @return $this
      */
     public function setReportId(int $rep_id): self
     {
@@ -91,7 +66,7 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
 
     /**
      * @param string $rootUrl
-     * @return void
+     * @return $this
      */
     public function setRootUrl(string $rootUrl): self
     {

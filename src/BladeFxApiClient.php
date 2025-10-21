@@ -71,7 +71,7 @@ class BladeFxApiClient implements ReportsApiClientInterface
         $expiresAt = (new \DateTimeImmutable())->modify(BladeFxApiConfig::AUTH_TOKEN_EXPIRES_AT_SECONDS_DURATION);
         $authenticationResponseTransfer = $this->callAuthenticateUserApi();
         $tokenTransfer = (new BladeFxTokenTransfer())
-            ->setToken($authenticationResponseTransfer->getAccessToken())
+            ->setAccessToken($authenticationResponseTransfer->getAccessToken())
             ->setExpiresAt($expiresAt);
 
         $this->clearToken();
@@ -106,7 +106,7 @@ class BladeFxApiClient implements ReportsApiClientInterface
             $tokenTransfer = $this->sendAuthenticateUserRequest();
         }
 
-        $abstractTransfer->setAccessToken($tokenTransfer->getToken());
+        $abstractTransfer->setAccessToken($tokenTransfer->getAccessToken());
 
         return $abstractTransfer;
     }

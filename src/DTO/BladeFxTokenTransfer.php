@@ -9,7 +9,7 @@ class BladeFxTokenTransfer
     /**
      * @var string
      */
-    protected string $token = '';
+    protected string $accessToken = '';
 
     /**
      * @var \DateTimeImmutable|null
@@ -17,20 +17,28 @@ class BladeFxTokenTransfer
     protected ?\DateTimeImmutable $expiresAt = null;
 
     /**
+     * @var array<string, string>
+     */
+    protected $transferPropertyNameMap = [
+        'access_token' => 'accessToken',
+        'expires_at' => 'expiresAt',
+    ];
+
+    /**
      * @return string
      */
-    public function getToken(): string
+    public function getAccessToken(): string
     {
-        return $this->token;
+        return $this->accessToken;
     }
 
     /**
-     * @param string $token
+     * @param string $accessToken
      * @return $this
      */
-    public function setToken(string $token): self
+    public function setAccessToken(string $accessToken): self
     {
-        $this->token = $token;
+        $this->accessToken = $accessToken;
         return $this;
     }
 
@@ -66,8 +74,8 @@ class BladeFxTokenTransfer
     public function toArray(): array
     {
         return [
-            'access_token' => $this->getToken(),
-            'expires_at' => $this->getExpiresAt()?->format(DATE_ATOM),
+            'accessToken' => $this->getAccessToken(),
+            'expiresAt' => $this->getExpiresAt()?->format(DATE_ATOM),
         ];
     }
 
@@ -84,14 +92,14 @@ class BladeFxTokenTransfer
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? $property;
 
             switch ($normalizedPropertyName) {
-                case 'expires_at':
+                case 'expiresAt':
                     $expiresAt = isset($value) && $value
                         ? new \DateTimeImmutable($value)
                         : null;
 
                     $this->$normalizedPropertyName = $expiresAt;
                     break;
-                case 'access_token':
+                case 'accessToken':
                     $this->$normalizedPropertyName = $value;
                     break;
 

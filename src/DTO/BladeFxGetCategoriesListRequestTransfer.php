@@ -11,53 +11,28 @@ class BladeFxGetCategoriesListRequestTransfer extends AbstractTransfer
      */
     protected ?int $catId = null;
 
-//    /**
-//     * @var string
-//     */
-//    protected string $token;
-
     /**
      * @var string
      */
     protected string $returnType = 'JSON';
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCatId(): int
+    public function getCatId(): ?int
     {
         return $this->catId;
     }
 
     /**
-     * @param int $catId
+     * @param int|null $catId
      * @return $this
      */
-    public function setCatId(int $catId): self
+    public function setCatId(?int $catId): self
     {
         $this->catId = $catId;
         return $this;
     }
-
-//    /**
-//     * @return string
-//     */
-//    public function getToken(): string
-//    {
-//        return $this->token;
-//    }
-//
-//    /**
-//     * @param string $token
-//     * @return $this
-//     */
-//    public function setToken(string $token): self
-//    {
-//        $this->token = $token;
-//        $this->modifiedProperties['token'] = true;
-//
-//        return $this;
-//    }
 
     /**
      * @return $this
@@ -71,18 +46,18 @@ class BladeFxGetCategoriesListRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getReturnType(): string
+    public function getReturnType(): ?string
     {
         return $this->returnType;
     }
 
     /**
-     * @param string $returnType
+     * @param string|null $returnType
      * @return $this
      */
-    public function setReturnType(string $returnType): self
+    public function setReturnType(?string $returnType = null): self
     {
         $this->returnType = $returnType;
         return $this;

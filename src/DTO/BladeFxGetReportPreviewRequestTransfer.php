@@ -6,11 +6,6 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
 {
-//    /**
-//     * @var string
-//     */
-//    protected string $token;
-
     /**
      * @var string
      */
@@ -40,24 +35,6 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
      * @var BladeFxParameterTransfer
      */
     protected BladeFxParameterTransfer $params;
-
-//    /**
-//     * @return string
-//     */
-//    public function getToken(): string
-//    {
-//        return $this->token;
-//    }
-//
-//    /**
-//     * @param string $token
-//     * @return $this
-//     */
-//    public function setToken(string $token): self
-//    {
-//        $this->token = $token;
-//        return $this;
-//    }
 
     /**
      * @return $this

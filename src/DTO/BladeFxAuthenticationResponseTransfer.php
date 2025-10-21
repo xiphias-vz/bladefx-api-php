@@ -6,11 +6,6 @@ namespace Xiphias\BladeFxApi\DTO;
 
 class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 {
-//    /**
-//     * @var string
-//     */
-//    protected string $token;
-
     /**
      * @var string
      */
@@ -72,26 +67,6 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
         'licence_exp' => 'licenceExp',
     ];
 
-//    /**
-//     * @return string
-//     */
-//    public function getToken(): string
-//    {
-//        return $this->token;
-//    }
-//
-//    /**
-//     * @param string $token
-//     * @return $this
-//     */
-//    public function setToken(string $token): self
-//    {
-//        $this->token = $token;
-//        $this->modifiedProperties['token'] = true;
-//
-//        return $this;
-//    }
-//
     /**
      * @return $this
      * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException

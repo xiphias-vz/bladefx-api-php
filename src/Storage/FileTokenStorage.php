@@ -29,7 +29,7 @@ class FileTokenStorage implements TokenStorageInterface
         }
 
         $data = json_decode(file_get_contents($this->filePath), true);
-        if (empty($data['access_token'])) {
+        if (empty($data['accessToken'])) {
             return null;
         }
 
