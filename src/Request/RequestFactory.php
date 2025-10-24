@@ -9,20 +9,24 @@ use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\Plugins\Formatter\AuthenticationRequestFieldFormatterPlugin;
 use Xiphias\BladeFxApi\Request\Builder\AuthenticationRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\CategoriesListRequestBuilder;
+use Xiphias\BladeFxApi\Request\Builder\CreateOrUpdateUserOnBladeFxRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\ReportParamFormRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\ReportPreviewRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\ReportsListRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface;
 use Xiphias\BladeFxApi\Request\Builder\SetFavoriteReportRequestBuilder;
+use Xiphias\BladeFxApi\Request\Builder\UpdatePasswordOnBladeFxRequestBuilder;
 use Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatter;
 use Xiphias\BladeFxApi\Request\Validator\AuthenticationRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\CategoriesListRequestValidator;
+use Xiphias\BladeFxApi\Request\Validator\CreateOrUpdateUserOnBladeFxRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\ReportParamFormRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\ReportPreviewRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\ReportsListRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface;
 use Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface;
 use Xiphias\BladeFxApi\Request\Validator\SetFavoriteReportRequestValidator;
+use Xiphias\BladeFxApi\Request\Validator\UpdatePasswordOnBladeFxRequestValidator;
 
 class RequestFactory implements RequestFactoryInterface
 {
@@ -88,6 +92,22 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
+     * @return RequestValidatorInterface
+     */
+    public function createCreateOrUpdateUserOnBladeFxRequestValidator(): RequestValidatorInterface
+    {
+        return new CreateOrUpdateUserOnBladeFxRequestValidator($this->logger);
+    }
+
+    /**
+     * @return RequestValidatorInterface
+     */
+    public function createUpdatePasswordOnBladeFxRequestValidator(): RequestValidatorInterface
+    {
+        return new UpdatePasswordOnBladeFxRequestValidator($this->logger);
+    }
+
+    /**
      * @return RequestBuilderInterface
      */
     public function createAuthenticationRequestBuilder(): RequestBuilderInterface
@@ -149,6 +169,28 @@ class RequestFactory implements RequestFactoryInterface
     public function createSetFavoriteReportRequestBuilder(): RequestBuilderInterface
     {
         return new SetFavoriteReportRequestBuilder(
+            $this->getConfig(),
+            $this->createRequestBodyFormatter(),
+        );
+    }
+
+    /**
+     * @return RequestBuilderInterface
+     */
+    public function createCreateOrUpdateUserOnBladeFxRequestBuilder(): RequestBuilderInterface
+    {
+        return new CreateOrUpdateUserOnBladeFxRequestBuilder(
+            $this->getConfig(),
+            $this->createRequestBodyFormatter(),
+        );
+    }
+
+    /**
+     * @return RequestBuilderInterface
+     */
+    public function createUpdatePasswordOnBladeFxRequestBuilder(): RequestBuilderInterface
+    {
+        return new UpdatePasswordOnBladeFxRequestBuilder(
             $this->getConfig(),
             $this->createRequestBodyFormatter(),
         );

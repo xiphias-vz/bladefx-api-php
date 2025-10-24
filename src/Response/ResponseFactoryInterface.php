@@ -68,4 +68,24 @@ interface ResponseFactoryInterface
      * @return ResponseValidatorInterface
      */
     public function createSetFavoriteReportResponseValidator(): ResponseValidatorInterface;
+
+    /**
+     * @return ResponseConverterInterface
+     */
+    public function createCreateOrUpdateUserOnBfxResponseConverter(): ResponseConverterInterface;
+
+    /**
+     * @return ResponseValidatorInterface
+     */
+    public function createCreateOrUpdateUserOnBfxResponseValidator(): ResponseValidatorInterface;
+
+    /**
+     * @return ResponseConverterInterface
+     */
+    public function createUpdatePasswordOnBladeFxResponseConverter(): ResponseConverterInterface;
+
+    /**
+     * @return ResponseValidatorInterface
+     */
+    public function createUpdatePasswordOnBladeFxResponseValidator(): ResponseValidatorInterface;
 }

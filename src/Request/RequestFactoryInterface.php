@@ -74,4 +74,24 @@ interface RequestFactoryInterface
      * @return RequestValidatorInterface
      */
     public function createSetFavoriteReportRequestValidator(): RequestValidatorInterface;
+
+    /**
+     * @return RequestBuilderInterface
+     */
+    public function createCreateOrUpdateUserOnBladeFxRequestBuilder(): RequestBuilderInterface;
+
+    /**
+     * @return RequestValidatorInterface
+     */
+    public function createCreateOrUpdateUserOnBladeFxRequestValidator(): RequestValidatorInterface;
+
+    /**
+     * @return RequestBuilderInterface
+     */
+    public function createUpdatePasswordOnBladeFxRequestBuilder(): RequestBuilderInterface;
+
+    /**
+     * @return RequestValidatorInterface
+     */
+    public function createUpdatePasswordOnBladeFxRequestValidator(): RequestValidatorInterface;
 }

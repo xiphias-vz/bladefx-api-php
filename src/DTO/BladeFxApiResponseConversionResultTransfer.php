@@ -37,6 +37,16 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     private BladeFxSetFavoriteReportResponseTransfer $bladeFxSetFavoriteReportResponse;
 
     /**
+     * @var BladeFxCreateOrUpdateUserResponseTransfer
+     */
+    private BladeFxCreateOrUpdateUserResponseTransfer $bladeFxCreateOrUpdateUserResponse;
+
+    /**
+     * @var BladeFxUpdatePasswordResponseTransfer
+     */
+    private BladeFxUpdatePasswordResponseTransfer $bladeFxUpdatePasswordResponse;
+
+    /**
      * @return BladeFxAuthenticationResponseTransfer
      */
     public function getBladeFxAuthenticationResponse(): BladeFxAuthenticationResponseTransfer
@@ -138,6 +148,43 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     public function setBladeFxSetFavoriteReportResponse(BladeFxSetFavoriteReportResponseTransfer $bladeFxSetFavoriteReportResponse): self
     {
         $this->bladeFxSetFavoriteReportResponse = $bladeFxSetFavoriteReportResponse;
+        return $this;
+    }
+
+    /**
+     * @return BladeFxCreateOrUpdateUserResponseTransfer
+     */
+    public function getBladeFxCreateOrUpdateUserResponse(): BladeFxCreateOrUpdateUserResponseTransfer
+    {
+        return $this->bladeFxCreateOrUpdateUserResponse;
+    }
+
+    /**
+     * @param BladeFxCreateOrUpdateUserResponseTransfer $bladeFxCreateOrUpdateUserResponse
+     * @return $this
+     */
+    public function setBladeFxCreateOrUpdateUserResponse(BladeFxCreateOrUpdateUserResponseTransfer $bladeFxCreateOrUpdateUserResponse): self
+    {
+        $this->bladeFxCreateOrUpdateUserResponse = $bladeFxCreateOrUpdateUserResponse;
+        return $this;
+    }
+
+
+    /**
+     * @return BladeFxUpdatePasswordResponseTransfer
+     */
+    public function getBladeFxUpdatePasswordResponse(): BladeFxUpdatePasswordResponseTransfer
+    {
+        return $this->bladeFxUpdatePasswordResponse;
+    }
+
+    /**
+     * @param BladeFxUpdatePasswordResponseTransfer $bladeFxUpdatePasswordResponse
+     * @return $this
+     */
+    public function setBladeFxUpdatePasswordResponse(BladeFxUpdatePasswordResponseTransfer $bladeFxUpdatePasswordResponse): self
+    {
+        $this->bladeFxUpdatePasswordResponse = $bladeFxUpdatePasswordResponse;
         return $this;
     }
 }

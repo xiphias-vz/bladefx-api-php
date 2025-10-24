@@ -11,6 +11,8 @@ use Psr\Log\NullLogger;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
@@ -22,6 +24,8 @@ use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxTokenTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 use Xiphias\BladeFxApi\Handler\ApiHandler;
 use Xiphias\BladeFxApi\Handler\ApiHandlerInterface;
 use Xiphias\BladeFxApi\Http\Client\HttpApiClient;
@@ -187,6 +191,35 @@ class BladeFxApiClient implements ReportsApiClientInterface
         $bladeFxSetFavoriteReportRequestTransfer = $this->prepareRequest($bladeFxSetFavoriteReportRequestTransfer);
 
         return $this->apiHandler->setFavoriteReport($bladeFxSetFavoriteReportRequestTransfer);
+    }
+
+    /**
+     * @param BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer
+     * @return BladeFxCreateOrUpdateUserResponseTransfer
+     * @throws \DateMalformedStringException
+     */
+    public function sendCreateOrUpdateUserOnBfxRequest(
+        BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer
+    ): BladeFxCreateOrUpdateUserResponseTransfer {
+        /** @var BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer */
+        $bladeFxCreateOrUpdateUserRequestTransfer = $this->prepareRequest($bladeFxCreateOrUpdateUserRequestTransfer);
+
+        return $this->apiHandler->createOrUpdateUserOnBladeFx($bladeFxCreateOrUpdateUserRequestTransfer);
+    }
+
+
+    /**
+     * @param BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer
+     * @return BladeFxUpdatePasswordResponseTransfer
+     * @throws \DateMalformedStringException
+     */
+    public function sendUpdatePasswordOnBladeFxRequest(
+        BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer
+    ): BladeFxUpdatePasswordResponseTransfer {
+        /** @var BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer */
+        $bladeFxUpdatePasswordRequestTransfer = $this->prepareRequest($bladeFxUpdatePasswordRequestTransfer);
+
+        return $this->apiHandler->sendUpdatePasswordOnBladeFx($bladeFxUpdatePasswordRequestTransfer);
     }
 
     /**

@@ -7,6 +7,8 @@ namespace Xiphias\BladeFxApi\Handler;
 use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
@@ -15,6 +17,8 @@ use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 use Xiphias\BladeFxApi\Http\Client\HttpApiClientInterface;
 use Xiphias\BladeFxApi\Request\RequestFactoryInterface;
 use Xiphias\BladeFxApi\Request\RequestManagerInterface;
@@ -188,5 +192,45 @@ class ApiHandler implements ApiHandlerInterface
         $response = $this->httpClient->sendRequest($request);
 
         return $this->responseManager->getSetFavoriteReportResponseTransfer($response);
+    }
+
+    /**
+     * @param BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
+     * @return BladeFxCreateOrUpdateUserResponseTransfer
+     */
+    public function createOrUpdateUserOnBladeFx(BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer): BladeFxCreateOrUpdateUserResponseTransfer
+    {
+        $this->requestManager->setRequestBuilder(
+            $this->requestFactory->createCreateOrUpdateUserOnBladeFxRequestBuilder(),
+        );
+
+        $request = $this->requestManager->getCreateOrUpdateUserOnBladeFxRequest(
+            $this->apiClientConfig->getCreateOrUpdateUserOnBfxResourceParameter(),
+            $requestTransfer,
+        );
+
+        $response = $this->httpClient->sendRequest($request);
+
+        return $this->responseManager->getCreateOrUpdateUserOnBladeFxResponseTransfer($response);
+    }
+
+    /**
+     * @param BladeFxUpdatePasswordRequestTransfer $requestTransfer
+     * @return BladeFxUpdatePasswordResponseTransfer
+     */
+    public function sendUpdatePasswordOnBladeFx(BladeFxUpdatePasswordRequestTransfer $requestTransfer): BladeFxUpdatePasswordResponseTransfer
+    {
+        $this->requestManager->setRequestBuilder(
+            $this->requestFactory->createUpdatePasswordOnBladeFxRequestBuilder(),
+        );
+
+        $request = $this->requestManager->getUpdatePasswordOnBladeFxRequest(
+            $this->apiClientConfig->getUpdatePasswordOnBladeFxResourceParameter(),
+            $requestTransfer,
+        );
+
+        $response = $this->httpClient->sendRequest($request);
+
+        return $this->responseManager->getUpdatePasswordOnBladeFxRequest($response);
     }
 }

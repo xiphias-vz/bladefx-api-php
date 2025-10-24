@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi;
 
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
@@ -15,6 +17,8 @@ use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 
 interface ReportsApiClientInterface
 {
@@ -52,4 +56,20 @@ interface ReportsApiClientInterface
      * @return BladeFxReportPreviewResponseTransfer
      */
     public function sendGetReportPreviewRequest(BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer): BladeFxReportPreviewResponseTransfer;
+
+    /**
+     * @param BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer
+     * @return BladeFxCreateOrUpdateUserResponseTransfer
+     */
+    public function sendCreateOrUpdateUserOnBfxRequest(
+        BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer
+    ): BladeFxCreateOrUpdateUserResponseTransfer;
+
+    /**
+     * @param BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer
+     * @return BladeFxUpdatePasswordResponseTransfer
+     */
+    public function sendUpdatePasswordOnBladeFxRequest(
+        BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer
+    ): BladeFxUpdatePasswordResponseTransfer;
 }
