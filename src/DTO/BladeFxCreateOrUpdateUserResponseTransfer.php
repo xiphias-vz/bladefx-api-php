@@ -96,7 +96,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     /**
      * @var string|null
      */
-    protected ?string $errorMessage;
+    protected ?string $errorMessage = null;
 
     /**
      * @var array<string, string>

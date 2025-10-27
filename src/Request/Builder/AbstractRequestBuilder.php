@@ -158,7 +158,7 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     }
 
     /**
-     * @param array<mixed> $value
+     * @param array $value
      * @param int|null $options
      * @param int|null $depth
      * @return string|null
@@ -166,16 +166,45 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     protected function encodeJson(array $value, int $options = null, int $depth = null): ?string
     {
         if ($options === null) {
-            $options = static::DEFAULT_OPTIONS;
+            $options = JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE;
         }
 
         if ($depth === null || $depth === 0) {
-            $depth = static::DEFAULT_DEPTH;
+            $depth = 512;
         }
 
-        $value = json_encode($value, $options, $depth);
+        $value = $this->normalizeData($value);
 
-        return $value !== false ? $value : null;
+        $json = json_encode($value, $options, $depth);
+
+        return $json !== false ? $json : null;
+    }
+
+    /**
+     * @param mixed $data
+     * @return mixed
+     */
+    protected function normalizeData(mixed $data): mixed
+    {
+        if ($data instanceof \ArrayObject) {
+            $data = $data->getArrayCopy();
+        }
+
+        if (is_object($data)) {
+            if (method_exists($data, 'toArray')) {
+                $data = $data->toArray();
+            } else {
+                $data = get_object_vars($data);
+            }
+        }
+
+        if (is_array($data)) {
+            foreach ($data as $key => $value) {
+                $data[$key] = $this->normalizeData($value);
+            }
+        }
+
+        return $data;
     }
 
     /**
