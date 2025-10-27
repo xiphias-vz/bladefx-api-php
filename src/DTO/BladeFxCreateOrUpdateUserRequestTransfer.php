@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserCustomFieldsTransfer;
 use Xiphias\BladeFxApi\DTO;
 
 class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
@@ -104,9 +105,9 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     protected ?bool $isActive;
 
     /**
-     * @var \ArrayObject<int, BladeFxCreateOrUpdateUserCustomFieldsTransfer>
+     * @var array<mixed>
      */
-    protected \ArrayObject $customFields;
+    protected array $customFields;
 
     /**
      * @var array<string, string>
@@ -382,21 +383,29 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return \ArrayObject<int, BladeFxCreateOrUpdateUserCustomFieldsTransfer>
+     * @return array<mixed>
      */
-    public function getCustomFields(): \ArrayObject
+    public function getCustomFields(): array
     {
         return $this->customFields;
     }
 
     /**
-     * @param \ArrayObject<int, BladeFxCreateOrUpdateUserCustomFieldsTransfer> $customFields
+     * @param array $customFields
      * @return $this
      */
-    public function setCustomFields(\ArrayObject $customFields): self
+    public function setCustomFields(array $customFields): self
     {
         $this->customFields = $customFields;
         $this->modifiedProperties[static::CUSTOM_FIELDS] = true;
+
+        return $this;
+    }
+
+    public function addCustomFields(BladeFxCreateOrUpdateUserCustomFieldsTransfer $customFields): self
+    {
+        $this->customFields[] = $customFields;
+        $this->modifiedProperties[self::CUSTOM_FIELDS] = true;
 
         return $this;
     }
