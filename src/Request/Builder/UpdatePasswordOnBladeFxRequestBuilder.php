@@ -50,7 +50,7 @@ class UpdatePasswordOnBladeFxRequestBuilder extends AbstractRequestBuilder
     /**
      * @param AbstractTransfer $requestTransfer
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getUrlParamsFromRequestTransfer(AbstractTransfer $requestTransfer): array
     {

@@ -104,7 +104,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     protected ?bool $isActive;
 
     /**
-     * @var \ArrayObject<BladeFxCreateOrUpdateUserCustomFieldsTransfer>
+     * @var \ArrayObject<int, BladeFxCreateOrUpdateUserCustomFieldsTransfer>
      */
     protected \ArrayObject $customFields;
 
@@ -352,18 +352,18 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return int|null
+     * @return bool|null
      */
-    public function getIsActive(): ?int
+    public function getIsActive(): ?bool
     {
         return $this->isActive;
     }
 
     /**
-     * @param int|null $isActive
+     * @param bool|null $isActive
      * @return $this
      */
-    public function setIsActive(?int $isActive): self
+    public function setIsActive(?bool $isActive): self
     {
         $this->isActive = $isActive;
         $this->modifiedProperties[static::IS_ACTIVE] = true;
@@ -382,7 +382,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return \ArrayObject<BladeFxCreateOrUpdateUserCustomFieldsTransfer>
+     * @return \ArrayObject<int, BladeFxCreateOrUpdateUserCustomFieldsTransfer>
      */
     public function getCustomFields(): \ArrayObject
     {
@@ -390,7 +390,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param \ArrayObject<BladeFxCreateOrUpdateUserCustomFieldsTransfer> $customFields
+     * @param \ArrayObject<int, BladeFxCreateOrUpdateUserCustomFieldsTransfer> $customFields
      * @return $this
      */
     public function setCustomFields(\ArrayObject $customFields): self

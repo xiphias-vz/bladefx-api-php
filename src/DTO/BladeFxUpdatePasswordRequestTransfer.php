@@ -38,18 +38,18 @@ class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
     ];
 
     /**
-     * @return bool|null
+     * @return int|null
      */
-    public function getBladeFxUserId(): ?bool
+    public function getBladeFxUserId(): ?int
     {
         return $this->bladeFxUserId;
     }
 
     /**
-     * @param bool|null $bladeFxUserId
+     * @param int|null $bladeFxUserId
      * @return $this
      */
-    public function setBladeFxUserId(?bool $bladeFxUserId): self
+    public function setBladeFxUserId(?int $bladeFxUserId): self
     {
         $this->bladeFxUserId = $bladeFxUserId;
         $this->modifiedProperties[static::BLADE_FX_USER_ID] = true;
