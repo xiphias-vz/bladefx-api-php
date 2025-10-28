@@ -158,7 +158,7 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     }
 
     /**
-     * @param array $value
+     * @param array<mixed> $value
      * @param int|null $options
      * @param int|null $depth
      * @return string|null

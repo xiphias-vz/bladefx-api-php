@@ -383,7 +383,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return array<mixed>
+     * @return array<BladeFxCreateOrUpdateUserCustomFieldsTransfer>
      */
     public function getCustomFields(): array
     {
@@ -391,7 +391,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param array $customFields
+     * @param array<BladeFxCreateOrUpdateUserCustomFieldsTransfer> $customFields
      * @return $this
      */
     public function setCustomFields(array $customFields): self
@@ -402,6 +402,10 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
         return $this;
     }
 
+    /**
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserCustomFieldsTransfer $customFields
+     * @return $this
+     */
     public function addCustomFields(BladeFxCreateOrUpdateUserCustomFieldsTransfer $customFields): self
     {
         $this->customFields[] = $customFields;
