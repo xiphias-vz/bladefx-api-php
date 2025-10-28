@@ -20,7 +20,7 @@ use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 
-interface ReportsApiClientInterface
+interface BladeFxApiClientInterface
 {
     /**
      * @return BladeFxAuthenticationResponseTransfer|null

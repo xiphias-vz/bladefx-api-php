@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
 use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
@@ -37,7 +35,7 @@ use Xiphias\BladeFxApi\Response\ResponseManager;
 use Xiphias\BladeFxApi\Storage\FileTokenStorage;
 use Xiphias\BladeFxApi\Storage\TokenStorageInterface;
 
-class BladeFxApiClient implements ReportsApiClientInterface
+class BladeFxApiClient implements BladeFxApiClientInterface
 {
     /**
      * @var ApiHandler|ApiHandlerInterface
@@ -257,6 +255,7 @@ class BladeFxApiClient implements ReportsApiClientInterface
         return new HttpApiClient(
             new Client([
                 'timeout' => 30,
+                'connect_timeout' => 5,
             ]),
             $this->logger,
         );

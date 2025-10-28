@@ -39,6 +39,9 @@ class FileTokenStorage implements TokenStorageInterface
         return $bladeFxTokenTransfer;
     }
 
+    /**
+     * @return void
+     */
     public function clear(): void
     {
         if (file_exists($this->filePath)) {

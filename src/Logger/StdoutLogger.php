@@ -9,12 +9,10 @@ use Psr\Log\AbstractLogger;
 class StdoutLogger extends AbstractLogger
 {
     /**
-     * Logs with an arbitrary level.
-     *
      * @param mixed $level
-     * @param mixed[] $context
-     *
-     * @throws \Psr\Log\InvalidArgumentException
+     * @param string|\Stringable $message
+     * @param array<mixed> $context
+     * @return void
      */
     public function log($level, string|\Stringable $message, array $context = []): void
     {

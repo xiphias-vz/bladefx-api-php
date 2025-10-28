@@ -8,7 +8,6 @@ use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 
 class ReportParamFormRequestBuilder extends AbstractRequestBuilder
 {

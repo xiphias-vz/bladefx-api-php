@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi\Response\Validator;
 
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 

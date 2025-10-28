@@ -6,8 +6,6 @@ namespace Xiphias\BladeFxApi\Response\Validator;
 
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 
 class CreateOrUpdateUserOnBladeFxResponseValidator extends AbstractResponseValidator

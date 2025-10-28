@@ -26,20 +26,20 @@ class UpdatePasswordOnBladeFxRequestBuilder extends AbstractRequestBuilder
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxGetReportParamFormRequestTransfer $requestTransfer */
+        /** @var BladeFxUpdatePasswordRequestTransfer $requestTransfer */
         return $this->addAuthHeader($requestTransfer->getAccessToken());
     }
 
     /**
      * @param string $resource
-     * @param AbstractTransfer|BladeFxGetReportParamFormRequestTransfer $requestTransfer
+     * @param AbstractTransfer|BladeFxUpdatePasswordRequestTransfer $requestTransfer
      * @return RequestInterface
      */
     public function buildRequest(
         string $resource,
-        AbstractTransfer|BladeFxGetReportParamFormRequestTransfer $requestTransfer
+        AbstractTransfer|BladeFxUpdatePasswordRequestTransfer $requestTransfer
     ): RequestInterface {
-        /** @var BladeFxGetReportParamFormRequestTransfer $requestTransfer */
+        /** @var BladeFxUpdatePasswordRequestTransfer $requestTransfer */
         $uri = $this->buildUri($resource, $requestTransfer->getBaseUrl(), $this->getUrlParamsFromRequestTransfer($requestTransfer));
         $headers = $this->getCombinedHeaders($requestTransfer);
         $encodedData = $this->getEncodedData($requestTransfer);

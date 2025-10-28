@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi\Request\Builder;
 
 use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
@@ -42,18 +41,9 @@ class CreateOrUpdateUserOnBladeFxRequestBuilder extends AbstractRequestBuilder
         /** @var BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer */
         $uri = $this->buildUri($resource, $requestTransfer->getBaseUrl());
 
-
         $headers = $this->getCombinedHeaders($requestTransfer);
-//        $modifiedRequestTransfer = $this->mapCreateOrUpdateUserRequestTransferWithoutToken($createOrUpdateUserRequestTransfer);
         $encodedData = $this->getEncodedData($requestTransfer);
 
         return new Request($this->getMethodName(), $uri, $headers, $encodedData);
     }
-//
-//    protected function mapCreateOrUpdateUserRequestTransferWithoutToken(
-//        BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
-//    ): BladeFxCreateOrUpdateUserRequestWithoutTokenTransfer {
-//        return (new BladeFxCreateOrUpdateUserRequestWithoutTokenTransfer())
-//            ->fromArray($requestTransfer->toArray(), true);
-//    }
 }

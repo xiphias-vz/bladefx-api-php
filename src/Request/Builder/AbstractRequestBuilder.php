@@ -166,11 +166,11 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     protected function encodeJson(array $value, int $options = null, int $depth = null): ?string
     {
         if ($options === null) {
-            $options = JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE;
+            $options = static::DEFAULT_OPTIONS;
         }
 
         if ($depth === null || $depth === 0) {
-            $depth = 512;
+            $depth = static::DEFAULT_DEPTH;
         }
 
         $value = $this->normalizeData($value);
