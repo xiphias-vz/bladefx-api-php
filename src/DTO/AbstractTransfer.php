@@ -12,22 +12,22 @@ class AbstractTransfer
     /**
      * @var array<string, array<string, mixed>>
      */
-    protected $transferMetadata = [];
+    protected array $transferMetadata = [];
 
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [];
+    protected array $transferPropertyNameMap = [];
 
     /**
      * @var array<string, bool>
      */
-    protected $modifiedProperties = [];
+    protected array $modifiedProperties = [];
 
     /**
      * @var string
      */
-    protected $baseUrl = '';
+    protected string $baseUrl = '';
 
     /**
      * @var string
