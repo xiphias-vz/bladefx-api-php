@@ -12,7 +12,7 @@ use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
@@ -53,9 +53,9 @@ interface ReportsApiClientInterface
 
     /**
      * @param BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
-     * @return BladeFxReportPreviewResponseTransfer
+     * @return BladeFxGetReportPreviewResponseTransfer
      */
-    public function sendGetReportPreviewRequest(BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer): BladeFxReportPreviewResponseTransfer;
+    public function sendGetReportPreviewRequest(BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer): BladeFxGetReportPreviewResponseTransfer;
 
     /**
      * @param BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer

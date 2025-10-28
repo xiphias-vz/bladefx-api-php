@@ -12,7 +12,7 @@ use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
@@ -156,9 +156,9 @@ class ApiHandler implements ApiHandlerInterface
 
     /**
      * @param BladeFxGetReportPreviewRequestTransfer $requestTransfer
-     * @return BladeFxReportPreviewResponseTransfer
+     * @return BladeFxGetReportPreviewResponseTransfer
      */
-    public function getReportPreview(BladeFxGetReportPreviewRequestTransfer $requestTransfer): BladeFxReportPreviewResponseTransfer
+    public function getReportPreview(BladeFxGetReportPreviewRequestTransfer $requestTransfer): BladeFxGetReportPreviewResponseTransfer
     {
         $this->requestManager->setRequestBuilder(
             $this->requestFactory->createReportPreviewRequestBuilder(),

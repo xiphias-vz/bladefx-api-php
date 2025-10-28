@@ -9,7 +9,7 @@ use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
@@ -42,9 +42,9 @@ interface ResponseManagerInterface
 
     /**
      * @param ResponseInterface|null $response
-     * @return BladeFxReportPreviewResponseTransfer
+     * @return BladeFxGetReportPreviewResponseTransfer
      */
-    public function getReportPreviewResponseTransfer(?ResponseInterface $response): BladeFxReportPreviewResponseTransfer;
+    public function getReportPreviewResponseTransfer(?ResponseInterface $response): BladeFxGetReportPreviewResponseTransfer;
 
     /**
      * @param ResponseInterface|null $response

@@ -27,9 +27,9 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     private BladeFxGetReportParamFormResponseTransfer $bladeFxReportParamFormResponse;
 
     /**
-     * @var BladeFxReportPreviewResponseTransfer
+     * @var BladeFxGetReportPreviewResponseTransfer
      */
-    private BladeFxReportPreviewResponseTransfer $bladeFxReportPreviewResponse;
+    private BladeFxGetReportPreviewResponseTransfer $bladeFxReportPreviewResponse;
 
     /**
      * @var BladeFxSetFavoriteReportResponseTransfer
@@ -116,18 +116,18 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @return BladeFxReportPreviewResponseTransfer
+     * @return BladeFxGetReportPreviewResponseTransfer
      */
-    public function getBladeFxReportPreviewResponse(): BladeFxReportPreviewResponseTransfer
+    public function getBladeFxReportPreviewResponse(): BladeFxGetReportPreviewResponseTransfer
     {
         return $this->bladeFxReportPreviewResponse;
     }
 
     /**
-     * @param BladeFxReportPreviewResponseTransfer $bladeFxReportPreviewResponse
+     * @param BladeFxGetReportPreviewResponseTransfer $bladeFxReportPreviewResponse
      * @return $this
      */
-    public function setBladeFxReportPreviewResponse(BladeFxReportPreviewResponseTransfer $bladeFxReportPreviewResponse): self
+    public function setBladeFxReportPreviewResponse(BladeFxGetReportPreviewResponseTransfer $bladeFxReportPreviewResponse): self
     {
         $this->bladeFxReportPreviewResponse = $bladeFxReportPreviewResponse;
         return $this;
