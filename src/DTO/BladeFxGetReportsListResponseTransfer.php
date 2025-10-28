@@ -44,7 +44,7 @@ class BladeFxGetReportsListResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param array $reportsList
+     * @param array<BladeFxReportTransfer> $reportsList
      * @return $this
      */
     public function setReportsList(array $reportsList): self

@@ -44,7 +44,7 @@ class BladeFxCategoriesListResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param array $categoriesList
+     * @param array<BladeFxCategoryTransfer> $categoriesList
      * @return $this
      */
     public function setCategoriesList(array $categoriesList): self
