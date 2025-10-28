@@ -26,11 +26,13 @@ class BladeFxGetReportPreviewResponseTransfer extends AbstractTransfer
 
     /**
      * @param int $statusCode
-     * @return void
+     * @return $this
      */
-    public function setStatusCode(int $statusCode): void
+    public function setStatusCode(int $statusCode): self
     {
         $this->statusCode = $statusCode;
+
+        return $this;
     }
 
     /**
@@ -43,12 +45,14 @@ class BladeFxGetReportPreviewResponseTransfer extends AbstractTransfer
 
     /**
      * @param string $url
-     * @return void
+     * @return $this
      */
-    public function setUrl(string $url): void
+    public function setUrl(string $url): self
     {
         $this->url = $url;
         $this->modifiedProperties['url'] = true;
+
+        return $this;
     }
 
     /**

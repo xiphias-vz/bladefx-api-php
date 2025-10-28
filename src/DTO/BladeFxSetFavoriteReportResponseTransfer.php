@@ -70,11 +70,13 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param int $statusCode
-     * @return void
+     * @return self
      */
-    public function setStatusCode(int $statusCode): void
+    public function setStatusCode(int $statusCode): self
     {
         $this->statusCode = $statusCode;
+
+        return $this;
     }
 
     /**
@@ -87,12 +89,14 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param bool $success
-     * @return void
+     * @return self
      */
-    public function setSuccess(bool $success): void
+    public function setSuccess(bool $success): self
     {
         $this->success = $success;
         $this->modifiedProperties['success'] = true;
+
+        return $this;
     }
 
     /**
@@ -105,12 +109,14 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param string $rMessage
-     * @return void
+     * @return self
      */
-    public function setRMessage(string $rMessage): void
+    public function setRMessage(string $rMessage): self
     {
         $this->rMessage = $rMessage;
         $this->modifiedProperties['rMessage'] = true;
+
+        return $this;
     }
 
     /**
@@ -133,12 +139,14 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param string $causer
-     * @return void
+     * @return self
      */
-    public function setCauser(string $causer): void
+    public function setCauser(string $causer): self
     {
         $this->causer = $causer;
         $this->modifiedProperties['causer'] = true;
+
+        return $this;
     }
 
     /**
@@ -151,12 +159,14 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param bool $areUsure
-     * @return void
+     * @return self
      */
-    public function setAreUsure(bool $areUsure): void
+    public function setAreUsure(bool $areUsure): self
     {
         $this->areUsure = $areUsure;
         $this->modifiedProperties['areUsure'] = true;
+
+        return $this;
     }
 
     /**
@@ -169,12 +179,14 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $optionValue
-     * @return void
+     * @return self
      */
-    public function setOptionValue(?string $optionValue): void
+    public function setOptionValue(?string $optionValue): self
     {
         $this->optionValue = $optionValue;
         $this->modifiedProperties['optionValue'] = true;
+
+        return $this;
     }
 
     /**
@@ -187,12 +199,14 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param bool $licenceIssue
-     * @return void
+     * @return self
      */
-    public function setLicenceIssue(bool $licenceIssue): void
+    public function setLicenceIssue(bool $licenceIssue): self
     {
         $this->licenceIssue = $licenceIssue;
         $this->modifiedProperties['licenceIssue'] = true;
+
+        return $this;
     }
 
     /**

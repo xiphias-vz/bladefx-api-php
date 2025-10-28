@@ -81,11 +81,13 @@ class AbstractTransfer
 
     /**
      * @param string $baseUrl
-     * @return void
+     * @return $this
      */
-    public function setBaseUrl(string $baseUrl): void
+    public function setBaseUrl(string $baseUrl): self
     {
         $this->baseUrl = $baseUrl;
+
+        return $this;
     }
 
     /**

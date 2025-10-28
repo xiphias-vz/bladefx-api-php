@@ -56,11 +56,13 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
 
     /**
      * @param BladeFxAuthenticationResponseTransfer $bladeFxAuthenticationResponse
-     * @return void
+     * @return $this
      */
-    public function setBladeFxAuthenticationResponse(BladeFxAuthenticationResponseTransfer $bladeFxAuthenticationResponse): void
+    public function setBladeFxAuthenticationResponse(BladeFxAuthenticationResponseTransfer $bladeFxAuthenticationResponse): self
     {
         $this->bladeFxAuthenticationResponse = $bladeFxAuthenticationResponse;
+
+        return $this;
     }
 
     /**
@@ -73,11 +75,13 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
 
     /**
      * @param BladeFxCategoriesListResponseTransfer $bladeFxCategoriesListResponse
-     * @return void
+     * @return $this
      */
-    public function setBladeFXCategoriesListResponse(BladeFxCategoriesListResponseTransfer $bladeFxCategoriesListResponse): void
+    public function setBladeFXCategoriesListResponse(BladeFxCategoriesListResponseTransfer $bladeFxCategoriesListResponse): self
     {
         $this->bladeFxCategoriesListResponse = $bladeFxCategoriesListResponse;
+
+        return $this;
     }
 
     /**
@@ -90,11 +94,13 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
 
     /**
      * @param BladeFxGetReportsListResponseTransfer $bladeFxReportsListResponse
-     * @return void
+     * @return $this
      */
-    public function setBladeFXReportsListResponse(BladeFxGetReportsListResponseTransfer $bladeFxReportsListResponse): void
+    public function setBladeFXReportsListResponse(BladeFxGetReportsListResponseTransfer $bladeFxReportsListResponse): self
     {
         $this->bladeFxReportsListResponse = $bladeFxReportsListResponse;
+
+        return $this;
     }
 
     /**

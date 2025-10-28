@@ -88,12 +88,14 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param string $username
-     * @return void
+     * @return $this
      */
-    public function setUsername(string $username): void
+    public function setUsername(string $username): self
     {
         $this->username = $username;
         $this->modifiedProperties['username'] = true;
+
+        return $this;
     }
 
     /**
@@ -117,12 +119,14 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param string $fullname
-     * @return void
+     * @return $this
      */
-    public function setFullname(string $fullname): void
+    public function setFullname(string $fullname): self
     {
         $this->fullname = $fullname;
         $this->modifiedProperties['fullname'] = true;
+
+        return $this;
     }
 
     /**
@@ -146,12 +150,14 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param string $email
-     * @return void
+     * @return $this
      */
-    public function setEmail(string $email): void
+    public function setEmail(string $email): self
     {
         $this->email = $email;
         $this->modifiedProperties['email'] = true;
+
+        return $this;
     }
 
     /**
@@ -175,12 +181,14 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $avatar
-     * @return void
+     * @return $this
      */
-    public function setAvatar(?string $avatar): void
+    public function setAvatar(?string $avatar): self
     {
         $this->avatar = $avatar;
         $this->modifiedProperties['avatar'] = true;
+
+        return $this;
     }
 
     /**
@@ -193,12 +201,14 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param int $idUser
-     * @return void
+     * @return $this
      */
-    public function setIdUser(int $idUser): void
+    public function setIdUser(int $idUser): self
     {
         $this->idUser = $idUser;
         $this->modifiedProperties['idUser'] = true;
+
+        return $this;
     }
 
     /**
@@ -211,12 +221,14 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param int $idCompany
-     * @return void
+     * @return $this
      */
-    public function setIdCompany(int $idCompany): void
+    public function setIdCompany(int $idCompany): self
     {
         $this->idCompany = $idCompany;
         $this->modifiedProperties['idCompany'] = true;
+
+        return $this;
     }
 
     /**
@@ -240,12 +252,14 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param int $idLanguage
-     * @return void
+     * @return $this
      */
-    public function setIdLanguage(int $idLanguage): void
+    public function setIdLanguage(int $idLanguage): self
     {
         $this->idLanguage = $idLanguage;
         $this->modifiedProperties['idLanguage'] = true;
+
+        return $this;
     }
 
     /**
@@ -269,12 +283,14 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param string $languageDescription
-     * @return void
+     * @return $this
      */
-    public function setLanguageDescription(string $languageDescription): void
+    public function setLanguageDescription(string $languageDescription): self
     {
         $this->languageDescription = $languageDescription;
         $this->modifiedProperties['languageDescription'] = true;
+
+        return $this;
     }
 
     /**
@@ -287,12 +303,14 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param bool $licenceExp
-     * @return void
+     * @return $this
      */
-    public function setLicenceExp(bool $licenceExp): void
+    public function setLicenceExp(bool $licenceExp): self
     {
         $this->licenceExp = $licenceExp;
         $this->modifiedProperties['licenceExp'] = true;
+
+        return $this;
     }
 
     /**

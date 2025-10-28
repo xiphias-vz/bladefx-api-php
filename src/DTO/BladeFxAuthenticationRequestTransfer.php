@@ -40,12 +40,14 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
 
     /**
      * @param string $username
-     * @return void
+     * @return $this
      */
-    public function setUsername(string $username): void
+    public function setUsername(string $username): self
     {
         $this->username = $username;
         $this->modifiedProperties['username'] = true;
+
+        return $this;
     }
 
     /**
@@ -69,12 +71,14 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
 
     /**
      * @param string $password
-     * @return void
+     * @return $this
      */
-    public function setPassword(string $password): void
+    public function setPassword(string $password): self
     {
         $this->password = $password;
         $this->modifiedProperties['password'] = true;
+
+        return $this;
     }
 
     /**
@@ -98,12 +102,14 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
 
     /**
      * @param bool $licenceExp
-     * @return void
+     * @return $this
      */
-    public function setLicenceExp(bool $licenceExp): void
+    public function setLicenceExp(bool $licenceExp): self
     {
         $this->licenceExp = $licenceExp;
         $this->modifiedProperties['licenceExp'] = true;
+
+        return $this;
     }
 
     /**

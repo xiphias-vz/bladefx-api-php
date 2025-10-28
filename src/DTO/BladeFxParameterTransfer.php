@@ -51,11 +51,13 @@ class BladeFxParameterTransfer extends AbstractTransfer
 
     /**
      * @param int $param_id
-     * @return void
+     * @return self
      */
-    public function setParamId(int $param_id): void
+    public function setParamId(int $param_id): self
     {
         $this->param_id = $param_id;
+
+        return $this;
     }
 
     /**
@@ -68,11 +70,13 @@ class BladeFxParameterTransfer extends AbstractTransfer
 
     /**
      * @param string $paramName
-     * @return void
+     * @return $this
      */
-    public function setParamName(string $paramName): void
+    public function setParamName(string $paramName): self
     {
         $this->paramName = $paramName;
+
+        return $this;
     }
 
     /**
@@ -85,11 +89,13 @@ class BladeFxParameterTransfer extends AbstractTransfer
 
     /**
      * @param string $paramValue
-     * @return void
+     * @return $this
      */
-    public function setParamValue(string $paramValue): void
+    public function setParamValue(string $paramValue): self
     {
         $this->paramValue = $paramValue;
+
+        return $this;
     }
 
     /**
@@ -102,11 +108,13 @@ class BladeFxParameterTransfer extends AbstractTransfer
 
     /**
      * @param string $sqlDbType
-     * @return void
+     * @return $this
      */
-    public function setSqlDbType(string $sqlDbType): void
+    public function setSqlDbType(string $sqlDbType): self
     {
         $this->sqlDbType = $sqlDbType;
+
+        return $this;
     }
 
     /**
@@ -119,11 +127,13 @@ class BladeFxParameterTransfer extends AbstractTransfer
 
     /**
      * @param string $paramDefaultValue
-     * @return void
+     * @return $this
      */
-    public function setParamDefaultValue(string $paramDefaultValue): void
+    public function setParamDefaultValue(string $paramDefaultValue): self
     {
         $this->paramDefaultValue = $paramDefaultValue;
+
+        return $this;
     }
 
     /**
@@ -136,11 +146,13 @@ class BladeFxParameterTransfer extends AbstractTransfer
 
     /**
      * @param bool $isList
-     * @return void
+     * @return $this
      */
-    public function setIsList(bool $isList): void
+    public function setIsList(bool $isList): self
     {
         $this->isList = $isList;
+
+        return $this;
     }
 
     /**
@@ -153,11 +165,13 @@ class BladeFxParameterTransfer extends AbstractTransfer
 
     /**
      * @param bool $isCustomField
-     * @return void
+     * @return $this
      */
-    public function setIsCustomField(bool $isCustomField): void
+    public function setIsCustomField(bool $isCustomField): self
     {
         $this->isCustomField = $isCustomField;
+
+        return $this;
     }
 
     /**
