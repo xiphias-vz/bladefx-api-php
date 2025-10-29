@@ -5,23 +5,25 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
 use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxTokenTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 use Xiphias\BladeFxApi\Handler\ApiHandler;
 use Xiphias\BladeFxApi\Handler\ApiHandlerInterface;
 use Xiphias\BladeFxApi\Http\Client\HttpApiClient;
@@ -33,7 +35,7 @@ use Xiphias\BladeFxApi\Response\ResponseManager;
 use Xiphias\BladeFxApi\Storage\FileTokenStorage;
 use Xiphias\BladeFxApi\Storage\TokenStorageInterface;
 
-class BladeFxApiClient implements ReportsApiClientInterface
+class BladeFxApiClient implements BladeFxApiClientInterface
 {
     /**
      * @var ApiHandler|ApiHandlerInterface
@@ -71,7 +73,7 @@ class BladeFxApiClient implements ReportsApiClientInterface
         $expiresAt = (new \DateTimeImmutable())->modify(BladeFxApiConfig::AUTH_TOKEN_EXPIRES_AT_SECONDS_DURATION);
         $authenticationResponseTransfer = $this->callAuthenticateUserApi();
         $tokenTransfer = (new BladeFxTokenTransfer())
-            ->setToken($authenticationResponseTransfer->getAccessToken())
+            ->setAccessToken($authenticationResponseTransfer->getAccessToken())
             ->setExpiresAt($expiresAt);
 
         $this->clearToken();
@@ -106,7 +108,7 @@ class BladeFxApiClient implements ReportsApiClientInterface
             $tokenTransfer = $this->sendAuthenticateUserRequest();
         }
 
-        $abstractTransfer->setAccessToken($tokenTransfer->getToken());
+        $abstractTransfer->setAccessToken($tokenTransfer->getAccessToken());
 
         return $abstractTransfer;
     }
@@ -163,12 +165,12 @@ class BladeFxApiClient implements ReportsApiClientInterface
 
     /**
      * @param BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
-     * @return BladeFxReportPreviewResponseTransfer
+     * @return BladeFxGetReportPreviewResponseTransfer
      * @throws \DateMalformedStringException
      */
     public function sendGetReportPreviewRequest(
         BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
-    ): BladeFxReportPreviewResponseTransfer {
+    ): BladeFxGetReportPreviewResponseTransfer {
         /** @var BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer */
         $bladeFxReportPreviewRequestTransfer = $this->prepareRequest($bladeFxReportPreviewRequestTransfer);
 
@@ -187,6 +189,35 @@ class BladeFxApiClient implements ReportsApiClientInterface
         $bladeFxSetFavoriteReportRequestTransfer = $this->prepareRequest($bladeFxSetFavoriteReportRequestTransfer);
 
         return $this->apiHandler->setFavoriteReport($bladeFxSetFavoriteReportRequestTransfer);
+    }
+
+    /**
+     * @param BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer
+     * @return BladeFxCreateOrUpdateUserResponseTransfer
+     * @throws \DateMalformedStringException
+     */
+    public function sendCreateOrUpdateUserOnBfxRequest(
+        BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer
+    ): BladeFxCreateOrUpdateUserResponseTransfer {
+        /** @var BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer */
+        $bladeFxCreateOrUpdateUserRequestTransfer = $this->prepareRequest($bladeFxCreateOrUpdateUserRequestTransfer);
+
+        return $this->apiHandler->createOrUpdateUserOnBladeFx($bladeFxCreateOrUpdateUserRequestTransfer);
+    }
+
+
+    /**
+     * @param BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer
+     * @return BladeFxUpdatePasswordResponseTransfer
+     * @throws \DateMalformedStringException
+     */
+    public function sendUpdatePasswordOnBladeFxRequest(
+        BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer
+    ): BladeFxUpdatePasswordResponseTransfer {
+        /** @var BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer */
+        $bladeFxUpdatePasswordRequestTransfer = $this->prepareRequest($bladeFxUpdatePasswordRequestTransfer);
+
+        return $this->apiHandler->sendUpdatePasswordOnBladeFx($bladeFxUpdatePasswordRequestTransfer);
     }
 
     /**
@@ -224,6 +255,7 @@ class BladeFxApiClient implements ReportsApiClientInterface
         return new HttpApiClient(
             new Client([
                 'timeout' => 30,
+                'connect_timeout' => 5,
             ]),
             $this->logger,
         );

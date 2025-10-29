@@ -26,11 +26,13 @@ class BladeFxCategoriesListResponseTransfer extends AbstractTransfer
 
     /**
      * @param int $statusCode
-     * @return void
+     * @return $this
      */
-    public function setStatusCode(int $statusCode): void
+    public function setStatusCode(int $statusCode): self
     {
         $this->statusCode = $statusCode;
+
+        return $this;
     }
 
     /**
@@ -43,10 +45,12 @@ class BladeFxCategoriesListResponseTransfer extends AbstractTransfer
 
     /**
      * @param array<BladeFxCategoryTransfer> $categoriesList
-     * @return void
+     * @return $this
      */
-    public function setCategoriesList(array $categoriesList): void
+    public function setCategoriesList(array $categoriesList): self
     {
         $this->categoriesList = $categoriesList;
+
+        return $this;
     }
 }

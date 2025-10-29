@@ -6,15 +6,18 @@ namespace Xiphias\BladeFxApi\Response;
 
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 use Xiphias\BladeFxApi\Response\Exception\ReportsResponseException;
 use Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Psr\Http\Message\ResponseInterface;
 
 class ResponseManager implements ResponseManagerInterface
@@ -117,9 +120,9 @@ class ResponseManager implements ResponseManagerInterface
 
     /**
      * @param ResponseInterface|null $response
-     * @return BladeFxReportPreviewResponseTransfer
+     * @return BladeFxGetReportPreviewResponseTransfer
      */
-    public function getReportPreviewResponseTransfer(?ResponseInterface $response): BladeFxReportPreviewResponseTransfer
+    public function getReportPreviewResponseTransfer(?ResponseInterface $response): BladeFxGetReportPreviewResponseTransfer
     {
         $this->validateRawResponse($response);
         $converterResultTransfer = $this->responseFactory->createReportPreviewResponseConverter()->convert($response);
@@ -146,6 +149,43 @@ class ResponseManager implements ResponseManagerInterface
         }
 
         return $converterResultTransfer->getBladeFxSetFavoriteReportResponse();
+    }
+
+    /**
+     * @param ResponseInterface|null $response
+     * @return BladeFxCreateOrUpdateUserResponseTransfer
+     */
+    public function getCreateOrUpdateUserOnBladeFxResponseTransfer(?ResponseInterface $response): BladeFxCreateOrUpdateUserResponseTransfer
+    {
+        $this->validateRawResponse($response);
+        $converterResultTransfer = $this->responseFactory->createCreateOrUpdateUserOnBfxResponseConverter()->convert($response);
+        $validator = $this->responseFactory->createCreateOrUpdateUserOnBfxResponseValidator();
+
+        try {
+            $this->validateResponse($validator, $converterResultTransfer->getBladeFxCreateOrUpdateUserResponse());
+        } catch (ReportsResponseException $e) {
+            $bladeFxCreateOrUpdateUserResponseTransfer = $converterResultTransfer->getBladeFxCreateOrUpdateUserResponse();
+            $bladeFxCreateOrUpdateUserResponseTransfer
+                ->setSuccess(false)
+                ->setErrorMessage(BladeFxApiConfig::USER_CREATE_UPDATE_DELETE_FAILED_GENERAL_ERROR);
+        }
+
+        return $converterResultTransfer->getBladeFxCreateOrUpdateUserResponse();
+    }
+
+    /**
+     * @param ResponseInterface|null $response
+     * @return BladeFxUpdatePasswordResponseTransfer
+     */
+    public function getUpdatePasswordOnBladeFxRequest(?ResponseInterface $response): BladeFxUpdatePasswordResponseTransfer
+    {
+        $this->validateRawResponse($response);
+        $converterResultTransfer = $this->responseFactory->createUpdatePasswordOnBladeFxResponseConverter()->convert($response);
+        $validator = $this->responseFactory->createUpdatePasswordOnBladeFxResponseValidator();
+
+        $this->validateResponse($validator, $converterResultTransfer->getBladeFxUpdatePasswordResponse());
+
+        return $converterResultTransfer->getBladeFxUpdatePasswordResponse();
     }
 
     /**

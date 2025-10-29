@@ -4,79 +4,95 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
-class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
+class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
 {
     /**
      * @var string
      */
-    protected string $username;
+    public const BLADE_FX_USER_ID = 'bladeFxUserId';
 
     /**
      * @var string
      */
-    protected string $password;
+    public const PASSWORD = 'password';
 
     /**
-     * @var bool
+     * @var int|null
      */
-    protected bool $licenceExp = false;
+    protected ?int $bladeFxUserId;
+
+    /**
+     * @var string|null
+     */
+    protected ?string $password;
 
     /**
      * @var array<string, string>
      */
     protected array $transferPropertyNameMap = [
-        'username' => 'username',
+        'blade_fx_user_id' => 'bladeFxUserId',
+        'bladeFxUserId' => 'bladeFxUserId',
+        'BladeFxUserId' => 'bladeFxUserId',
         'password' => 'password',
-        'licence_exp' => 'licenceExp',
+        'Password' => 'password',
     ];
 
     /**
-     * @return string
+     * @return int|null
      */
-    public function getUsername(): string
+    public function getBladeFxUserId(): ?int
     {
-        return $this->username;
+        return $this->bladeFxUserId;
     }
 
     /**
-     * @param string $username
+     * @param int|null $bladeFxUserId
      * @return $this
      */
-    public function setUsername(string $username): self
+    public function setBladeFxUserId(?int $bladeFxUserId): self
     {
-        $this->username = $username;
-        $this->modifiedProperties['username'] = true;
+        $this->bladeFxUserId = $bladeFxUserId;
+        $this->modifiedProperties[static::BLADE_FX_USER_ID] = true;
 
         return $this;
     }
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requireUsername(): self
+    public function requireBladeFxUserId(): self
     {
-        $this->assertPropertyIsSet('username');
+        $this->assertPropertyIsSet(static::BLADE_FX_USER_ID);
 
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
     /**
-     * @param string $password
+     * @param ?string $password
      * @return $this
      */
-    public function setPassword(string $password): self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
-        $this->modifiedProperties['password'] = true;
+        $this->modifiedProperties[static::PASSWORD] = true;
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function requirePassword(): self
+    {
+        $this->assertPropertyIsSet(static::PASSWORD);
 
         return $this;
     }
@@ -85,29 +101,9 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
      * @return $this
      * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requirePassword(): self
+    public function requireToken(): self
     {
-        $this->assertPropertyIsSet('password');
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getLicenceExp(): bool
-    {
-        return $this->licenceExp;
-    }
-
-    /**
-     * @param bool $licenceExp
-     * @return $this
-     */
-    public function setLicenceExp(bool $licenceExp): self
-    {
-        $this->licenceExp = $licenceExp;
-        $this->modifiedProperties['licenceExp'] = true;
+        $this->assertPropertyIsSet('accessToken');
 
         return $this;
     }
@@ -118,9 +114,9 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
     public function toArray(): array
     {
         return [
-            'username' => $this->getUsername(),
+            'bladeFxUserId' => $this->getBladeFxUserId(),
             'password' => $this->getPassword(),
-            'licenceExp' => $this->getLicenceExp(),
+            'token' => $this->getToken(),
         ];
     }
 
@@ -129,15 +125,14 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
      * @param bool $ignoreMissingProperties
      * @return $this
      */
-    public function fromArray(array $data, bool $ignoreMissingProperties = false)
+    public function fromArray(array $data, bool $ignoreMissingProperties = false): static
     {
         foreach ($data as $property => $value) {
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
 
             switch ($normalizedPropertyName) {
-                case 'username':
+                case 'bladeFxUserId':
                 case 'password':
-                case 'licenceExp':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
                     break;

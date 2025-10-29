@@ -7,10 +7,12 @@ namespace Xiphias\BladeFxApi\Response;
 use Psr\Http\Message\ResponseInterface;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 
 interface ResponseManagerInterface
 {
@@ -40,13 +42,25 @@ interface ResponseManagerInterface
 
     /**
      * @param ResponseInterface|null $response
-     * @return BladeFxReportPreviewResponseTransfer
+     * @return BladeFxGetReportPreviewResponseTransfer
      */
-    public function getReportPreviewResponseTransfer(?ResponseInterface $response): BladeFxReportPreviewResponseTransfer;
+    public function getReportPreviewResponseTransfer(?ResponseInterface $response): BladeFxGetReportPreviewResponseTransfer;
 
     /**
      * @param ResponseInterface|null $response
      * @return BladeFxSetFavoriteReportResponseTransfer
      */
     public function getSetFavoriteReportResponseTransfer(?ResponseInterface $response): BladeFxSetFavoriteReportResponseTransfer;
+
+    /**
+     * @param ResponseInterface|null $response
+     * @return BladeFxCreateOrUpdateUserResponseTransfer
+     */
+    public function getCreateOrUpdateUserOnBladeFxResponseTransfer(?ResponseInterface $response): BladeFxCreateOrUpdateUserResponseTransfer;
+
+    /**
+     * @param ResponseInterface|null $response
+     * @return BladeFxUpdatePasswordResponseTransfer
+     */
+    public function getUpdatePasswordOnBladeFxRequest(?ResponseInterface $response): BladeFxUpdatePasswordResponseTransfer;
 }

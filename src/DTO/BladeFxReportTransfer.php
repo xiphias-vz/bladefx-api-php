@@ -209,7 +209,7 @@ class BladeFxReportTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'rep_id' => 'repId',
         'rep_name' => 'repName',
         'rep_hash_code' => 'repHashCode',
@@ -242,12 +242,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param int $repId
-     * @return void
+     * @return self
      */
-    public function setRepId(int $repId): void
+    public function setRepId(int $repId): self
     {
         $this->repId = $repId;
         $this->modifiedProperties['repId'] = true;
+
+        return $this;
     }
 
     /**
@@ -270,12 +272,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $repName
-     * @return void
+     * @return self
      */
-    public function setRepName(?string $repName): void
+    public function setRepName(?string $repName): self
     {
         $this->repName = $repName;
         $this->modifiedProperties[static::REP_NAME] = true;
+
+        return $this;
     }
 
     /**
@@ -298,12 +302,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $repHashCode
-     * @return void
+     * @return self
      */
-    public function setRepHashCode(?string $repHashCode): void
+    public function setRepHashCode(?string $repHashCode): self
     {
         $this->repHashCode = $repHashCode;
         $this->modifiedProperties['repHashCode'] = true;
+
+        return $this;
     }
 
     /**
@@ -326,12 +332,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $repDesc
-     * @return void
+     * @return self
      */
-    public function setRepDesc(?string $repDesc): void
+    public function setRepDesc(?string $repDesc): self
     {
         $this->repDesc = $repDesc;
         $this->modifiedProperties['repDesc'] = true;
+
+        return $this;
     }
 
     /**
@@ -354,12 +362,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $catName
-     * @return void
+     * @return self
      */
-    public function setCatName(?string $catName): void
+    public function setCatName(?string $catName): self
     {
         $this->catName = $catName;
         $this->modifiedProperties['catName'] = true;
+
+        return $this;
     }
 
     /**
@@ -372,12 +382,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isActive
-     * @return void
+     * @return self
      */
-    public function setIsActive(?bool $isActive): void
+    public function setIsActive(?bool $isActive): self
     {
         $this->isActive = $isActive;
         $this->modifiedProperties['isActive'] = true;
+
+        return $this;
     }
 
     /**
@@ -390,12 +402,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isDrilldown
-     * @return void
+     * @return self
      */
-    public function setIsDrilldown(?bool $isDrilldown): void
+    public function setIsDrilldown(?bool $isDrilldown): self
     {
         $this->isDrilldown = $isDrilldown;
         $this->modifiedProperties['isDrilldown'] = true;
+
+        return $this;
     }
 
     /**
@@ -408,12 +422,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isWebservice
-     * @return void
+     * @return self
      */
-    public function setIsWebservice(?bool $isWebservice): void
+    public function setIsWebservice(?bool $isWebservice): self
     {
         $this->isWebservice = $isWebservice;
         $this->modifiedProperties['isWebservice'] = true;
+
+        return $this;
     }
 
     /**
@@ -426,12 +442,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isErrorReport
-     * @return void
+     * @return self
      */
-    public function setIsErrorReport(?bool $isErrorReport): void
+    public function setIsErrorReport(?bool $isErrorReport): self
     {
         $this->isErrorReport = $isErrorReport;
         $this->modifiedProperties['isErrorReport'] = true;
+
+        return $this;
     }
 
     /**
@@ -444,12 +462,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isDef
-     * @return void
+     * @return self
      */
-    public function setIsDef(?bool $isDef): void
+    public function setIsDef(?bool $isDef): self
     {
         $this->isDef = $isDef;
         $this->modifiedProperties['isDef'] = true;
+
+        return $this;
     }
 
     /**
@@ -462,12 +482,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isMetro
-     * @return void
+     * @return self
      */
-    public function setIsMetro(?bool $isMetro): void
+    public function setIsMetro(?bool $isMetro): self
     {
         $this->isMetro = $isMetro;
         $this->modifiedProperties['isMetro'] = true;
+
+        return $this;
     }
 
     /**
@@ -480,12 +502,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $logExecution
-     * @return void
+     * @return self
      */
-    public function setLogExecution(?bool $logExecution): void
+    public function setLogExecution(?bool $logExecution): self
     {
         $this->logExecution = $logExecution;
         $this->modifiedProperties['logExecution'] = true;
+
+        return $this;
     }
 
     /**
@@ -498,12 +522,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $logHistory
-     * @return void
+     * @return self
      */
-    public function setLogHistory(?bool $logHistory): void
+    public function setLogHistory(?bool $logHistory): self
     {
         $this->logHistory = $logHistory;
         $this->modifiedProperties['logHistory'] = true;
+
+        return $this;
     }
 
     /**
@@ -516,12 +542,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isFavorite
-     * @return void
+     * @return self
      */
-    public function setIsFavorite(?bool $isFavorite): void
+    public function setIsFavorite(?bool $isFavorite): self
     {
         $this->isFavorite = $isFavorite;
         $this->modifiedProperties[static::IS_FAVORITE] = true;
+
+        return $this;
     }
 
     /**
@@ -534,12 +562,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $uCreated
-     * @return void
+     * @return self
      */
-    public function setUCreated(?string $uCreated): void
+    public function setUCreated(?string $uCreated): self
     {
         $this->uCreated = $uCreated;
         $this->modifiedProperties['uCreated'] = true;
+
+        return $this;
     }
 
     /**
@@ -552,12 +582,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $dCreated
-     * @return void
+     * @return self
      */
-    public function setDCreated(?string $dCreated): void
+    public function setDCreated(?string $dCreated): self
     {
         $this->dCreated = $dCreated;
         $this->modifiedProperties['dCreated'] = true;
+
+        return $this;
     }
 
     /**
@@ -570,12 +602,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $uChanged
-     * @return void
+     * @return self
      */
-    public function setUChanged(?string $uChanged): void
+    public function setUChanged(?string $uChanged): self
     {
         $this->uChanged = $uChanged;
         $this->modifiedProperties['uChanged'] = true;
+
+        return $this;
     }
 
     /**
@@ -588,12 +622,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $dChanged
-     * @return void
+     * @return self
      */
-    public function setDChanged(?string $dChanged): void
+    public function setDChanged(?string $dChanged): self
     {
         $this->dChanged = $dChanged;
         $this->modifiedProperties['dChanged'] = true;
+
+        return $this;
     }
 
     /**
@@ -606,12 +642,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $mobileLayout
-     * @return void
+     * @return self
      */
-    public function setMobileLayout(?bool $mobileLayout): void
+    public function setMobileLayout(?bool $mobileLayout): self
     {
         $this->mobileLayout = $mobileLayout;
         $this->modifiedProperties['mobileLayout'] = true;
+
+        return $this;
     }
 
     /**
@@ -624,12 +662,14 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param int|null $attribute
-     * @return void
+     * @return self
      */
-    public function setAttribute(?int $attribute): void
+    public function setAttribute(?int $attribute): self
     {
         $this->attribute = $attribute;
         $this->modifiedProperties['attribute'] = true;
+
+        return $this;
     }
 
     /**

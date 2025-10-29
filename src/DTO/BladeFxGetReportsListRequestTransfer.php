@@ -18,11 +18,6 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
      */
     protected ?string $search = null;
 
-//    /**
-//     * @var string
-//     */
-//    protected string $token;
-
     /**
      * @var string
      */
@@ -36,7 +31,7 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'cat_id' => 'catId',
         'search' => 'search',
         'token' => 'accessToken',
@@ -81,26 +76,6 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
 
         return $this;
     }
-
-//    /**
-//     * @return string
-//     */
-//    public function getToken(): string
-//    {
-//        return $this->token;
-//    }
-//
-//    /**
-//     * @param string $token
-//     * @return $this
-//     */
-//    public function setToken(string $token): self
-//    {
-//        $this->token = $token;
-//        $this->modifiedProperties['token'] = true;
-//
-//        return $this;
-//    }
 
     /**
      * @return $this

@@ -57,6 +57,21 @@ class BladeFxApiConfig
     public const GET_REPORT_PARAMETER_FORM_API_RESOURCE = '/api/ReportData/GetReportURL';
 
     /**
+     * @var string
+     */
+    public const GET_CREATE_OR_UPDATE_USER_ON_BFX_API_RESOURCE = '/api/Users/SetUser';
+
+    /**
+     * @var string
+     */
+    public const GET_UPDATE_PASSWORD_API_RESOURCE = '/api/Users/UserSetNewPwdClean';
+
+    /**
+     * @var string
+     */
+    public const USER_CREATE_UPDATE_DELETE_FAILED_GENERAL_ERROR = "There's been an issue with updating the user on BladeFx, please try again at a later time";
+
+    /**
      * @var array<string, int>
      */
     public const KEYS_TO_CHANGE_FROM_CAMEL_CASE = [
@@ -124,6 +139,22 @@ class BladeFxApiConfig
     public function getSetFavoriteReportResourceParameter(): string
     {
         return static::SET_FAVORITE_REPORT_API_RESOURCE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreateOrUpdateUserOnBfxResourceParameter(): string
+    {
+        return static::GET_CREATE_OR_UPDATE_USER_ON_BFX_API_RESOURCE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpdatePasswordOnBladeFxResourceParameter(): string
+    {
+        return static::GET_UPDATE_PASSWORD_API_RESOURCE;
     }
 
     /**

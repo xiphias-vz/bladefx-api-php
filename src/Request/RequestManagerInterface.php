@@ -6,11 +6,13 @@ namespace Xiphias\BladeFxApi\Request;
 
 use Psr\Http\Message\RequestInterface;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer;
 use Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface;
 
 interface RequestManagerInterface
@@ -79,5 +81,25 @@ interface RequestManagerInterface
     public function getSetFavoriteReportRequest(
         string $resource,
         BladeFxSetFavoriteReportRequestTransfer $requestTransfer
+    ): RequestInterface;
+
+    /**
+     * @param string $resource
+     * @param BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
+     * @return RequestInterface
+     */
+    public function getCreateOrUpdateUserOnBladeFxRequest(
+        string $resource,
+        BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
+    ): RequestInterface;
+
+    /**
+     * @param string $resource
+     * @param BladeFxUpdatePasswordRequestTransfer $requestTransfer
+     * @return RequestInterface
+     */
+    public function getUpdatePasswordOnBladeFxRequest(
+        string $resource,
+        BladeFxUpdatePasswordRequestTransfer $requestTransfer
     ): RequestInterface;
 }

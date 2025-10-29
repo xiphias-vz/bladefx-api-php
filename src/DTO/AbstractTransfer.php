@@ -12,22 +12,22 @@ class AbstractTransfer
     /**
      * @var array<string, array<string, mixed>>
      */
-    protected $transferMetadata = [];
+    protected array $transferMetadata = [];
 
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [];
+    protected array $transferPropertyNameMap = [];
 
     /**
      * @var array<string, bool>
      */
-    protected $modifiedProperties = [];
+    protected array $modifiedProperties = [];
 
     /**
      * @var string
      */
-    protected $baseUrl = '';
+    protected string $baseUrl = '';
 
     /**
      * @var string
@@ -81,11 +81,13 @@ class AbstractTransfer
 
     /**
      * @param string $baseUrl
-     * @return void
+     * @return $this
      */
-    public function setBaseUrl(string $baseUrl): void
+    public function setBaseUrl(string $baseUrl): self
     {
         $this->baseUrl = $baseUrl;
+
+        return $this;
     }
 
     /**

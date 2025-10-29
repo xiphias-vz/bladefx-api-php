@@ -1,5 +1,0 @@
-#services:
-#  Xiphias\BladeFxApi\Response\ResponseManager: ~
-#
-#  Xiphias\BladeFxApi\Response\ResponseManagerInterface:
-#    alias: Xiphias\BladeFxApi\Response\ResponseManager

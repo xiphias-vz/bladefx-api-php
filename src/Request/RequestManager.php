@@ -13,10 +13,12 @@ use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer;
 use Xiphias\BladeFxApi\Exception\ReportsRequestException;
 use Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface;
 use Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
 
 class RequestManager implements RequestManagerInterface
 {
@@ -142,6 +144,32 @@ class RequestManager implements RequestManagerInterface
         BladeFxSetFavoriteReportRequestTransfer $requestTransfer
     ): RequestInterface {
         $validator = $this->requestFactory->createSetFavoriteReportRequestValidator();
+        $this->validateRequest($validator, $requestTransfer);
+
+        return $this->requestBuilder->buildRequest($resource, $requestTransfer);
+    }
+
+    /**
+     * @param string $resource
+     * @param BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
+     * @return RequestInterface
+     */
+    public function getCreateOrUpdateUserOnBladeFxRequest(string $resource, BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer): RequestInterface
+    {
+        $validator = $this->requestFactory->createCreateOrUpdateUserOnBladeFxRequestValidator();
+        $this->validateRequest($validator, $requestTransfer);
+
+        return $this->requestBuilder->buildRequest($resource, $requestTransfer);
+    }
+
+    /**
+     * @param string $resource
+     * @param BladeFxUpdatePasswordRequestTransfer $requestTransfer
+     * @return RequestInterface
+     */
+    public function getUpdatePasswordOnBladeFxRequest(string $resource, BladeFxUpdatePasswordRequestTransfer $requestTransfer): RequestInterface
+    {
+        $validator = $this->requestFactory->createUpdatePasswordOnBladeFxRequestValidator();
         $this->validateRequest($validator, $requestTransfer);
 
         return $this->requestBuilder->buildRequest($resource, $requestTransfer);

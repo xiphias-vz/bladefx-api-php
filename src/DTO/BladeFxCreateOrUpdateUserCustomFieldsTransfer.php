@@ -4,74 +4,58 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
-class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
+use Xiphias\BladeFxApi\DTO\BladeFxTokenTransfer;
+
+class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
 {
     /**
-     * @var int|null
+     * @var string
      */
-    protected ?int $repId = null;
+    public const FIELD_NAME = 'fieldName';
 
     /**
-     * @var int|null
+     * @var string
      */
-    protected ?int $userId;
+    public const FIELD_VALUE = 'fieldValue';
+
+    /**
+     * @var string|null
+     */
+    protected ?string $fieldName;
+
+    /**
+     * @var string|null
+     */
+    protected ?string $fieldValue;
 
     /**
      * @var array<string, string>
      */
     protected array $transferPropertyNameMap = [
-        'repId' => 'repId',
-        'userId' => 'userId',
-        'token' => 'accessToken'
+        'field_name' => 'fieldName',
+        'fieldName' => 'fieldName',
+        'FieldName' => 'fieldName',
+        'field_value' => 'fieldValue',
+        'fieldValue' => 'fieldValue',
+        'FieldValue' => 'fieldValue',
     ];
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getRepId(): ?int
+    public function getFieldName(): ?string
     {
-        return $this->repId;
+        return $this->fieldName;
     }
 
     /**
-     * @param int $repId
+     * @param ?string $fieldName
      * @return $this
      */
-    public function setRepId(int $repId): self
+    public function setFieldName(?string $fieldName): self
     {
-        $this->repId = $repId;
-        $this->modifiedProperties['repId'] = true;
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
-     */
-    public function requireRepId(): self
-    {
-        $this->assertPropertyIsSet('repId');
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getUserId(): ?int
-    {
-        return $this->userId;
-    }
-
-    /**
-     * @param int|null $userId
-     * @return $this
-     */
-    public function setUserId(?int $userId): self
-    {
-        $this->userId = $userId;
-        $this->modifiedProperties['userId'] = true;
+        $this->fieldName = $fieldName;
+        $this->modifiedProperties[static::FIELD_NAME] = true;
 
         return $this;
     }
@@ -79,9 +63,39 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireUserId(): self
+    public function requireFieldName(): self
     {
-        $this->assertPropertyIsSet('userId');
+        $this->assertPropertyIsSet(static::FIELD_NAME);
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFieldValue(): ?string
+    {
+        return $this->fieldValue;
+    }
+
+    /**
+     * @param ?string $fieldValue
+     * @return $this
+     */
+    public function setFieldValue(?string $fieldValue): self
+    {
+        $this->fieldValue = $fieldValue;
+        $this->modifiedProperties[static::FIELD_VALUE] = true;
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function requireFieldValue(): self
+    {
+        $this->assertPropertyIsSet(static::FIELD_VALUE);
 
         return $this;
     }
@@ -103,8 +117,8 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
     public function toArray(): array
     {
         return [
-            'repId' => $this->getRepId(),
-            'userId' => $this->getUserId(),
+            'fieldName' => $this->getFieldName(),
+            'fieldValue' => $this->getFieldValue(),
         ];
     }
 
@@ -119,9 +133,8 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
 
             switch ($normalizedPropertyName) {
-                case 'repId':
-                case 'userId':
-                case 'accessToken':
+                case 'fieldName':
+                case 'fieldValue':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
                     break;

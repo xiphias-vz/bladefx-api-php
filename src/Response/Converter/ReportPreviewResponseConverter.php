@@ -6,7 +6,7 @@ namespace Xiphias\BladeFxApi\Response\Converter;
 
 use Psr\Http\Message\ResponseInterface;
 use Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer;
 
 class ReportPreviewResponseConverter extends AbstractResponseConverter
 {
@@ -19,12 +19,12 @@ class ReportPreviewResponseConverter extends AbstractResponseConverter
         BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer,
         array $responseData
     ): BladeFxApiResponseConversionResultTransfer {
-        $bladeFxReportPreviewResponseTransfer = new BladeFxReportPreviewResponseTransfer();
-        $bladeFxReportPreviewResponseTransfer->setUrl(
+        $bladeFxGetReportPreviewResponseTransfer = new BladeFxGetReportPreviewResponseTransfer();
+        $bladeFxGetReportPreviewResponseTransfer->setUrl(
             implode('', $responseData),
         );
 
-        $apiResponseConversionResultTransfer->setBladeFxReportPreviewResponse($bladeFxReportPreviewResponseTransfer);
+        $apiResponseConversionResultTransfer->setBladeFxReportPreviewResponse($bladeFxGetReportPreviewResponseTransfer);
 
         return $apiResponseConversionResultTransfer;
     }

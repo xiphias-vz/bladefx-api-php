@@ -173,9 +173,38 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
             $depth = static::DEFAULT_DEPTH;
         }
 
-        $value = json_encode($value, $options, $depth);
+        $value = $this->normalizeData($value);
 
-        return $value !== false ? $value : null;
+        $json = json_encode($value, $options, $depth);
+
+        return $json !== false ? $json : null;
+    }
+
+    /**
+     * @param mixed $data
+     * @return mixed
+     */
+    protected function normalizeData(mixed $data): mixed
+    {
+        if ($data instanceof \ArrayObject) {
+            $data = $data->getArrayCopy();
+        }
+
+        if (is_object($data)) {
+            if (method_exists($data, 'toArray')) {
+                $data = $data->toArray();
+            } else {
+                $data = get_object_vars($data);
+            }
+        }
+
+        if (is_array($data)) {
+            foreach ($data as $key => $value) {
+                $data[$key] = $this->normalizeData($value);
+            }
+        }
+
+        return $data;
     }
 
     /**

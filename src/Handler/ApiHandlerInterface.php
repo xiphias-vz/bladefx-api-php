@@ -6,16 +6,20 @@ namespace Xiphias\BladeFxApi\Handler;
 
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxReportPreviewResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 
 interface ApiHandlerInterface
 {
@@ -45,13 +49,25 @@ interface ApiHandlerInterface
 
     /**
      * @param BladeFxGetReportPreviewRequestTransfer $requestTransfer
-     * @return BladeFxReportPreviewResponseTransfer
+     * @return BladeFxGetReportPreviewResponseTransfer
      */
-    public function getReportPreview(BladeFxGetReportPreviewRequestTransfer $requestTransfer): BladeFxReportPreviewResponseTransfer;
+    public function getReportPreview(BladeFxGetReportPreviewRequestTransfer $requestTransfer): BladeFxGetReportPreviewResponseTransfer;
 
     /**
      * @param BladeFxSetFavoriteReportRequestTransfer $requestTransfer
      * @return BladeFxSetFavoriteReportResponseTransfer
      */
     public function setFavoriteReport(BladeFxSetFavoriteReportRequestTransfer $requestTransfer): BladeFxSetFavoriteReportResponseTransfer;
+
+    /**
+     * @param BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
+     * @return BladeFxCreateOrUpdateUserResponseTransfer
+     */
+    public function createOrUpdateUserOnBladeFx(BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer): BladeFxCreateOrUpdateUserResponseTransfer;
+
+    /**
+     * @param BladeFxUpdatePasswordRequestTransfer $requestTransfer
+     * @return BladeFxUpdatePasswordResponseTransfer
+     */
+    public function sendUpdatePasswordOnBladeFx(BladeFxUpdatePasswordRequestTransfer $requestTransfer): BladeFxUpdatePasswordResponseTransfer;
 }

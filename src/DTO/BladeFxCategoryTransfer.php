@@ -68,7 +68,7 @@ class BladeFxCategoryTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
        'cat_id' => 'catId',
        'company_id' => 'companyId',
        'cat_parent_id' => 'catParentId',

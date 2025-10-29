@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi\Response\Validator;
 
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 
-class ReportPreviewResponseValidator extends AbstractResponseValidator
+class CreateOrUpdateUserOnBladeFxResponseValidator extends AbstractResponseValidator
 {
     /**
      * @return string
      */
     protected function getResponseTransferClass(): string
     {
-        return BladeFxGetReportPreviewResponseTransfer::class;
+        return BladeFxCreateOrUpdateUserResponseTransfer::class;
     }
 
     /**
@@ -25,8 +25,12 @@ class ReportPreviewResponseValidator extends AbstractResponseValidator
     protected function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
-            /** @var BladeFxGetReportPreviewResponseTransfer $responseTransfer */
-            $responseTransfer->requireUrl();
+            /**
+             * @var BladeFxCreateOrUpdateUserResponseTransfer $responseTransfer
+             */
+            $responseTransfer->requireSuccess();
+            $responseTransfer->requireId();
+            $responseTransfer->requireLicenceIssue();
         } catch (TransferPropertyRequiredException $ex) {
             return false;
         }

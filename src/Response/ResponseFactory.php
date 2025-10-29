@@ -12,6 +12,8 @@ use Xiphias\BladeFxApi\Response\Converter\ReportPreviewResponseConverter;
 use Xiphias\BladeFxApi\Response\Converter\ReportsListResponseConverter;
 use Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface;
 use Xiphias\BladeFxApi\Response\Converter\SetFavoriteReportResponseConverter;
+use Xiphias\BladeFxApi\Response\Converter\CreateOrUpdateUserOnBladeFxResponseConverter;
+use Xiphias\BladeFxApi\Response\Converter\UpdatePasswordOnBladeFxResponseConverter;
 use Xiphias\BladeFxApi\Response\Validator\AuthenticationResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\CategoriesListResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\ReportParamFormResponseValidator;
@@ -19,6 +21,8 @@ use Xiphias\BladeFxApi\Response\Validator\ReportPreviewResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\ReportsListResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface;
 use Xiphias\BladeFxApi\Response\Validator\SetFavoriteReportResponseValidator;
+use Xiphias\BladeFxApi\Response\Validator\CreateOrUpdateUserOnBladeFxResponseValidator;
+use Xiphias\BladeFxApi\Response\Validator\UpdatePasswordOnBladeFxResponseValidator;
 
 class ResponseFactory implements ResponseFactoryInterface
 {
@@ -123,5 +127,37 @@ class ResponseFactory implements ResponseFactoryInterface
     public function createSetFavoriteReportResponseValidator(): ResponseValidatorInterface
     {
         return new SetFavoriteReportResponseValidator($this->logger);
+    }
+
+    /**
+     * @return ResponseConverterInterface
+     */
+    public function createCreateOrUpdateUserOnBfxResponseConverter(): ResponseConverterInterface
+    {
+        return new CreateOrUpdateUserOnBladeFxResponseConverter($this->logger);
+    }
+
+    /**
+     * @return ResponseValidatorInterface
+     */
+    public function createCreateOrUpdateUserOnBfxResponseValidator(): ResponseValidatorInterface
+    {
+        return new CreateOrUpdateUserOnBladeFxResponseValidator($this->logger);
+    }
+
+    /**
+     * @return ResponseConverterInterface
+     */
+    public function createUpdatePasswordOnBladeFxResponseConverter(): ResponseConverterInterface
+    {
+        return new UpdatePasswordOnBladeFxResponseConverter($this->logger);
+    }
+
+    /**
+     * @return ResponseValidatorInterface
+     */
+    public function createUpdatePasswordOnBladeFxResponseValidator(): ResponseValidatorInterface
+    {
+        return new UpdatePasswordOnBladeFxResponseValidator($this->logger);
     }
 }
