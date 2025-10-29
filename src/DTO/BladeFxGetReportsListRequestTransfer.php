@@ -40,18 +40,18 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
     ];
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCatId(): int
+    public function getCatId(): ?int
     {
         return $this->catId;
     }
 
     /**
-     * @param int $catId
+     * @param int|null $catId
      * @return $this
      */
-    public function setCatId(int $catId): self
+    public function setCatId(?int $catId): self
     {
         $this->catId = $catId;
         return $this;

@@ -7,72 +7,57 @@ namespace Xiphias\BladeFxApi\DTO;
 class BladeFxParameterTransfer extends AbstractTransfer
 {
     /**
-     * @var int
+     * @var int|null
      */
-    protected int $param_id;
+    protected ?int $reportId;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $paramName;
+    protected ?string $paramName;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $paramValue;
+    protected ?string $paramValue;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $sqlDbType;
+    protected ?string $sqlDbType;
 
     /**
-     * @var string
+     * @return int|null
      */
-    protected string $paramDefaultValue = "";
-
-    /**
-     * @var bool
-     */
-    protected bool $isList = true;
-
-    /**
-     * @var bool
-     */
-    protected bool $isCustomField = true;
-
-    /**
-     * @return int
-     */
-    public function getParamId(): int
+    public function getReportId(): ?int
     {
-        return $this->param_id;
+        return $this->reportId;
     }
 
     /**
-     * @param int $param_id
-     * @return self
+     * @param int|null $reportId
+     * @return $this
      */
-    public function setParamId(int $param_id): self
+    public function setReportId(?int $reportId): self
     {
-        $this->param_id = $param_id;
+        $this->reportId = $reportId;
 
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getParamName(): string
+    public function getParamName(): ?string
     {
         return $this->paramName;
     }
 
     /**
-     * @param string $paramName
+     * @param string|null $paramName
      * @return $this
      */
-    public function setParamName(string $paramName): self
+    public function setParamName(?string $paramName): self
     {
         $this->paramName = $paramName;
 
@@ -80,18 +65,18 @@ class BladeFxParameterTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string
+     * @return ?string
      */
-    public function getParamValue(): string
+    public function getParamValue(): ?string
     {
         return $this->paramValue;
     }
 
     /**
-     * @param string $paramValue
+     * @param ?string $paramValue
      * @return $this
      */
-    public function setParamValue(string $paramValue): self
+    public function setParamValue(?string $paramValue): self
     {
         $this->paramValue = $paramValue;
 
@@ -99,77 +84,20 @@ class BladeFxParameterTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSqlDbType(): string
+    public function getSqlDbType(): ?string
     {
         return $this->sqlDbType;
     }
 
     /**
-     * @param string $sqlDbType
+     * @param string|null $sqlDbType
      * @return $this
      */
-    public function setSqlDbType(string $sqlDbType): self
+    public function setSqlDbType(?string $sqlDbType): self
     {
         $this->sqlDbType = $sqlDbType;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getParamDefaultValue(): string
-    {
-        return $this->paramDefaultValue;
-    }
-
-    /**
-     * @param string $paramDefaultValue
-     * @return $this
-     */
-    public function setParamDefaultValue(string $paramDefaultValue): self
-    {
-        $this->paramDefaultValue = $paramDefaultValue;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getIsList(): bool
-    {
-        return $this->isList;
-    }
-
-    /**
-     * @param bool $isList
-     * @return $this
-     */
-    public function setIsList(bool $isList): self
-    {
-        $this->isList = $isList;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getIsCustomField(): bool
-    {
-        return $this->isCustomField;
-    }
-
-    /**
-     * @param bool $isCustomField
-     * @return $this
-     */
-    public function setIsCustomField(bool $isCustomField): self
-    {
-        $this->isCustomField = $isCustomField;
 
         return $this;
     }
@@ -180,13 +108,10 @@ class BladeFxParameterTransfer extends AbstractTransfer
     public function toArray(): array
     {
         return [
-            'param_id' => $this->getParamId(),
+            'reportId' => $this->getReportId(),
             'paramName' => $this->getParamName(),
             'paramValue' => $this->getParamValue(),
             'sqlDbType' => $this->getSqlDbType(),
-            'paramDefaultValue' => $this->getParamDefaultValue(),
-            'isList' => $this->getIsList(),
-            'isCustomField' => $this->getIsCustomField(),
         ];
     }
 }

@@ -10,6 +10,7 @@ use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 use Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface;
+use Xiphias\Shared\Reports\ReportsConstants;
 
 class ReportPreviewRequestBuilder extends AbstractRequestBuilder
 {
@@ -85,8 +86,7 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
             $requestTransfer,
         );
 
-        $data = $this->cleanDataOfUnneededParameters($data);
-
+        $data = $this->cleanDataOfUnneededParameters($requestTransfer->getParams()->getParamValue());
         return $this->encodeJson($data);
     }
 
@@ -106,7 +106,6 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
             $depth = static::DEFAULT_DEPTH;
         }
 
-        $value['params'] = [$value['params']->toArray(true, true)];
         $encodedValue = json_encode($value, $options, $depth);
 
         return $encodedValue !== false ? $encodedValue : null;
@@ -117,15 +116,9 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
      *
      * @return array<string, string>
      */
-    protected function cleanDataOfUnneededParameters(array $data): array
+    protected function cleanDataOfUnneededParameters(string $paramValue): array
     {
-        foreach ($data as $key => $value) {
-            if ($key === 'returnType' || $key === 'rootUrl' || $key === 'token') {
-                unset($data[$key]);
-            }
-        }
-
-        return $data;
+        return ["entryText" => $paramValue];
     }
 
     /**
