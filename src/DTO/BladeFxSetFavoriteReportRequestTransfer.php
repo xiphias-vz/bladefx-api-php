@@ -19,7 +19,7 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'repId' => 'repId',
         'userId' => 'userId',
         'token' => 'accessToken'

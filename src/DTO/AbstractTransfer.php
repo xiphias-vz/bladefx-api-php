@@ -54,13 +54,6 @@ class AbstractTransfer
                 $this->$property = new ArrayObject();
             }
         }
-
-        if (isset($this->baseUrl) && $this->getBaseUrl() === '') {
-            unset($this->baseUrl);
-        }
-        if (isset($this->errorMessage) && $this->getErrorMessage() === null) {
-            unset($this->errorMessage);
-        }
     }
 
     /**

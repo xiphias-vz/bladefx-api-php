@@ -49,7 +49,7 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'statusCode' => 'statusCode',
         'success' => 'success',
         'rMessage' => 'rMessage',

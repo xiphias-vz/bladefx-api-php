@@ -112,7 +112,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'token' => 'token',
         'Token' => 'token',
         'email' => 'email',

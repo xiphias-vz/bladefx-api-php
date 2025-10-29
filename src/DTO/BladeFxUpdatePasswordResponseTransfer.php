@@ -91,7 +91,7 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'status_code' => 'statusCode',
         'statusCode' => 'statusCode',
         'StatusCode' => 'statusCode',

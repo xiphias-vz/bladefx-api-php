@@ -31,7 +31,7 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'cat_id' => 'catId',
         'search' => 'search',
         'token' => 'accessToken',

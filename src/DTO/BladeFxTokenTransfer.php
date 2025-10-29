@@ -19,7 +19,7 @@ class BladeFxTokenTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'access_token' => 'accessToken',
         'expires_at' => 'expiresAt',
     ];

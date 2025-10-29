@@ -29,7 +29,7 @@ class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'blade_fx_user_id' => 'bladeFxUserId',
         'bladeFxUserId' => 'bladeFxUserId',
         'BladeFxUserId' => 'bladeFxUserId',

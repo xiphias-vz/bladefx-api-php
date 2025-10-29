@@ -19,7 +19,7 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'token' => 'accessToken',
         'rep_id' => 'rep_id',
         'rootUrl' => 'rootUrl'

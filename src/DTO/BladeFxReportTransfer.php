@@ -209,7 +209,7 @@ class BladeFxReportTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'rep_id' => 'repId',
         'rep_name' => 'repName',
         'rep_hash_code' => 'repHashCode',

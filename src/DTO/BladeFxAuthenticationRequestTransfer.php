@@ -24,7 +24,7 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'username' => 'username',
         'password' => 'password',
         'licence_exp' => 'licenceExp',

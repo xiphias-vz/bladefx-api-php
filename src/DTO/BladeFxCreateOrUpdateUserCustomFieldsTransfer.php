@@ -31,7 +31,7 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
     /**
      * @var array<string, string>
      */
-    protected $transferPropertyNameMap = [
+    protected array $transferPropertyNameMap = [
         'field_name' => 'fieldName',
         'fieldName' => 'fieldName',
         'FieldName' => 'fieldName',
