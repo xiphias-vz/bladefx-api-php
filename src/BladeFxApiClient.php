@@ -65,13 +65,14 @@ class BladeFxApiClient implements BladeFxApiClientInterface
     }
 
     /**
+     * @param BladeFxAuthenticationRequestTransfer|null $bladeFxAuthenticationRequestTransfer
      * @return BladeFxAuthenticationResponseTransfer|null
      * @throws \DateMalformedStringException
      */
-    public function sendAuthenticateUserRequest(): ?BladeFxAuthenticationResponseTransfer
+    public function sendAuthenticateUserRequest(?BladeFxAuthenticationRequestTransfer $bladeFxAuthenticationRequestTransfer): ?BladeFxAuthenticationResponseTransfer
     {
         $expiresAt = (new \DateTimeImmutable())->modify(BladeFxApiConfig::AUTH_TOKEN_EXPIRES_AT_SECONDS_DURATION);
-        $authenticationResponseTransfer = $this->callAuthenticateUserApi();
+        $authenticationResponseTransfer = $this->callAuthenticateUserApi($bladeFxAuthenticationRequestTransfer);
         $tokenTransfer = (new BladeFxTokenTransfer())
             ->setAccessToken($authenticationResponseTransfer->getAccessToken())
             ->setExpiresAt($expiresAt);
@@ -83,14 +84,16 @@ class BladeFxApiClient implements BladeFxApiClientInterface
     }
 
     /**
+     * @param BladeFxAuthenticationRequestTransfer|null $bladeFxAuthenticationRequestTransfer
      * @return BladeFxAuthenticationResponseTransfer|null
      */
-    protected function callAuthenticateUserApi(): ?BladeFxAuthenticationResponseTransfer
+    protected function callAuthenticateUserApi(?BladeFxAuthenticationRequestTransfer $bladeFxAuthenticationRequestTransfer): ?BladeFxAuthenticationResponseTransfer
     {
         $authRequestTransfer = new BladeFxAuthenticationRequestTransfer();
-        $authRequestTransfer->setUsername($this->bladeFxUsername);
-        $authRequestTransfer->setPassword($this->bladeFxPassword);
+        $authRequestTransfer->setUsername($bladeFxAuthenticationRequestTransfer?->getUsername() ? : $this->bladeFxUsername);
+        $authRequestTransfer->setPassword($bladeFxAuthenticationRequestTransfer?->getPassword() ? : $this->bladeFxPassword);
         $authRequestTransfer->setBaseUrl($this->bladeFxBaseUrl);
+        $authRequestTransfer->setLicenceExp(true);
 
         return $this->apiHandler->authenticateUser($authRequestTransfer);
     }
@@ -105,7 +108,7 @@ class BladeFxApiClient implements BladeFxApiClientInterface
         $tokenTransfer = $this->tokenStorage->load();
 
         if (!$tokenTransfer || $tokenTransfer->isExpired()) {
-            $tokenTransfer = $this->sendAuthenticateUserRequest();
+            $tokenTransfer = $this->sendAuthenticateUserRequest(null);
         }
 
         $abstractTransfer->setAccessToken($tokenTransfer->getAccessToken());

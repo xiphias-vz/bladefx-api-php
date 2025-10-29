@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi;
 
+use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
@@ -23,9 +24,11 @@ use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 interface BladeFxApiClientInterface
 {
     /**
+     * @param BladeFxAuthenticationRequestTransfer $bladeFxAuthenticationRequestTransfer
      * @return BladeFxAuthenticationResponseTransfer|null
+     * @throws \DateMalformedStringException
      */
-    public function sendAuthenticateUserRequest(): ?BladeFxAuthenticationResponseTransfer;
+    public function sendAuthenticateUserRequest(BladeFxAuthenticationRequestTransfer $bladeFxAuthenticationRequestTransfer): ?BladeFxAuthenticationResponseTransfer;
 
     /**
      * @param BladeFxGetCategoriesListRequestTransfer|null $categoriesListRequestTransfer
