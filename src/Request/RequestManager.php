@@ -185,7 +185,7 @@ class RequestManager implements RequestManagerInterface
         string $resource,
         BladeFxGetReportByFormatRequestTransfer $requestTransfer
     ): RequestInterface {
-        $validator = $this->requestFactory->createUpdatePasswordOnBladeFxRequestValidator();
+        $validator = $this->requestFactory->createReportByFormatRequestValidator();
         $this->validateRequest($validator, $requestTransfer);
 
         return $this->requestBuilder->buildRequest($resource, $requestTransfer);
