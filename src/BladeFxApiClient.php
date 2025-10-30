@@ -13,6 +13,8 @@ use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
@@ -221,6 +223,20 @@ class BladeFxApiClient implements BladeFxApiClientInterface
         $bladeFxUpdatePasswordRequestTransfer = $this->prepareRequest($bladeFxUpdatePasswordRequestTransfer);
 
         return $this->apiHandler->sendUpdatePasswordOnBladeFx($bladeFxUpdatePasswordRequestTransfer);
+    }
+
+    /**
+     * @param BladeFxGetReportByFormatRequestTransfer $bladeFxGetReportByFormatRequestTransfer
+     * @return BladeFxGetReportByFormatResponseTransfer
+     * @throws \DateMalformedStringException
+     */
+    public function sendGetReportByFormatRequest(
+        BladeFxGetReportByFormatRequestTransfer $bladeFxGetReportByFormatRequestTransfer
+    ): BladeFxGetReportByFormatResponseTransfer {
+        /** @var BladeFxGetReportByFormatRequestTransfer $bladeFxGetReportByFormatRequestTransfer */
+        $bladeFxGetReportByFormatRequestTransfer = $this->prepareRequest($bladeFxGetReportByFormatRequestTransfer);
+
+        return $this->apiHandler->getReportByFormat($bladeFxGetReportByFormatRequestTransfer);
     }
 
     /**

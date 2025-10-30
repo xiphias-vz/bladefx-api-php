@@ -69,6 +69,51 @@ class BladeFxApiConfig
     /**
      * @var string
      */
+    public const GET_REPORT_HTML_API_RESOURCE = '/api/ReportData/GetReportHTML';
+
+    /**
+     * @var string
+     */
+    public const GET_REPORT_PDF_API_RESOURCE = '/api/ReportData/GetReportPDF';
+
+    /**
+     * @var string
+     */
+    public const GET_REPORT_CSV_API_RESOURCE = '/api/ReportData/GetReportCSV';
+
+    /**
+     * @var string
+     */
+    public const GET_REPORT_PPTX_API_RESOURCE = '/api/ReportData/GetReportPPTX';
+
+    /**
+     * @var string
+     */
+    public const GET_REPORT_DOCX_API_RESOURCE = '/api/ReportData/GetReportDOCX';
+
+    /**
+     * @var string
+     */
+    public const GET_REPORT_XLSX_API_RESOURCE = '/api/ReportData/GetReportXLSX';
+
+    /**
+     * @var string
+     */
+    public const GET_REPORT_MHT_API_RESOURCE = '/api/ReportData/GetReportMHT';
+
+    /**
+     * @var string
+     */
+    public const GET_REPORT_RTF_API_RESOURCE = '/api/ReportData/GetReportRTF';
+
+    /**
+     * @var string
+     */
+    public const GET_REPORT_IMG_API_RESOURCE = '/api/ReportData/GetReportIMG';
+
+    /**
+     * @var string
+     */
     public const USER_CREATE_UPDATE_DELETE_FAILED_GENERAL_ERROR = "There's been an issue with updating the user on BladeFx, please try again at a later time";
 
     /**
@@ -179,5 +224,77 @@ class BladeFxApiConfig
     public function getKeysToChangeFromCamelCaseToSnakeCase(): array
     {
         return static::KEYS_TO_CHANGE_FROM_CAMEL_CASE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReportHTMLResourceParameter(): string
+    {
+        return static::GET_REPORT_HTML_API_RESOURCE;
+    }
+
+    /**
+     * @return String
+     */
+    public function getReportPDFResourceParameter(): string
+    {
+        return static::GET_REPORT_PDF_API_RESOURCE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReportCSVResourceParameter(): string
+    {
+        return static::GET_REPORT_CSV_API_RESOURCE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReportPPTXResourceParameter(): string
+    {
+        return static::GET_REPORT_PPTX_API_RESOURCE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReportDOCXResourceParameter(): string
+    {
+        return static::GET_REPORT_DOCX_API_RESOURCE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReportXLSXResourceParameter(): string
+    {
+        return static::GET_REPORT_XLSX_API_RESOURCE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReportMHTResourceParameter(): string
+    {
+        return static::GET_REPORT_MHT_API_RESOURCE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReportRTFResourceParameter(): string
+    {
+        return static::GET_REPORT_RTF_API_RESOURCE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReportIMGResourceParameter(): string
+    {
+        return static::GET_REPORT_IMG_API_RESOURCE;
     }
 }

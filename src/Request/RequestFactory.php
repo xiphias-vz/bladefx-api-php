@@ -16,6 +16,7 @@ use Xiphias\BladeFxApi\Request\Builder\ReportsListRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface;
 use Xiphias\BladeFxApi\Request\Builder\SetFavoriteReportRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\UpdatePasswordOnBladeFxRequestBuilder;
+use Xiphias\BladeFxApi\Request\Builder\ReportByFormatRequestBuilder;
 use Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatter;
 use Xiphias\BladeFxApi\Request\Validator\AuthenticationRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\CategoriesListRequestValidator;
@@ -27,6 +28,7 @@ use Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface;
 use Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface;
 use Xiphias\BladeFxApi\Request\Validator\SetFavoriteReportRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\UpdatePasswordOnBladeFxRequestValidator;
+use Xiphias\BladeFxApi\Request\Validator\ReportByFormatRequestValidator;
 
 class RequestFactory implements RequestFactoryInterface
 {
@@ -105,6 +107,14 @@ class RequestFactory implements RequestFactoryInterface
     public function createUpdatePasswordOnBladeFxRequestValidator(): RequestValidatorInterface
     {
         return new UpdatePasswordOnBladeFxRequestValidator($this->logger);
+    }
+
+    /**
+     * @return RequestValidatorInterface
+     */
+    public function createReportByFormatRequestValidator(): RequestValidatorInterface
+    {
+        return new ReportByFormatRequestValidator($this->logger);
     }
 
     /**
@@ -191,6 +201,17 @@ class RequestFactory implements RequestFactoryInterface
     public function createUpdatePasswordOnBladeFxRequestBuilder(): RequestBuilderInterface
     {
         return new UpdatePasswordOnBladeFxRequestBuilder(
+            $this->getConfig(),
+            $this->createRequestBodyFormatter(),
+        );
+    }
+
+    /**
+     * @return RequestBuilderInterface
+     */
+    public function createReportByFormatRequestBuilder(): RequestBuilderInterface
+    {
+        return new ReportByFormatRequestBuilder(
             $this->getConfig(),
             $this->createRequestBodyFormatter(),
         );

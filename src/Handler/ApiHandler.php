@@ -11,6 +11,8 @@ use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
@@ -232,5 +234,50 @@ class ApiHandler implements ApiHandlerInterface
         $response = $this->httpClient->sendRequest($request);
 
         return $this->responseManager->getUpdatePasswordOnBladeFxRequest($response);
+    }
+
+    /**
+     * @param BladeFxGetReportByFormatRequestTransfer $requestTransfer
+     * @return BladeFxGetReportByFormatResponseTransfer
+     */
+    public function getReportByFormat(
+        BladeFxGetReportByFormatRequestTransfer $requestTransfer
+    ): BladeFxGetReportByFormatResponseTransfer {
+        $this->requestManager->setRequestBuilder(
+            $this->requestFactory->createReportByFormatRequestBuilder(),
+        );
+
+        $fileFormat = $requestTransfer->getFileFormat();
+        $resource = $this->getResourceParameterByFileFormat($fileFormat);
+
+        $request = $this->requestManager->getReportByFormatRequest(
+            $resource,
+            $requestTransfer,
+        );
+
+        $response = $this->httpClient->sendRequest($request);
+
+        return $this->responseManager->getReportByFormatResponseTransfer($response, $fileFormat);
+    }
+
+    /**
+     * @param string $format
+     *
+     * @return string
+     */
+    protected function getResourceParameterByFileFormat(string $format): string
+    {
+        return match ($format) {
+            'html' => $this->apiClientConfig->getReportHTMLResourceParameter(),
+            'pdf' => $this->apiClientConfig->getReportPDFResourceParameter(),
+            'csv' => $this->apiClientConfig->getReportCSVResourceParameter(),
+            'pptx' => $this->apiClientConfig->getReportPPTXResourceParameter(),
+            'docx' => $this->apiClientConfig->getReportDOCXResourceParameter(),
+            'xlsx' => $this->apiClientConfig->getReportXLSXResourceParameter(),
+            'mht' => $this->apiClientConfig->getReportMHTResourceParameter(),
+            'rtf' => $this->apiClientConfig->getReportRTFResourceParameter(),
+            'jpg' => $this->apiClientConfig->getReportIMGResourceParameter(),
+            default => 'error',
+        };
     }
 }

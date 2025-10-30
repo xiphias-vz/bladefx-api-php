@@ -8,6 +8,7 @@ use Psr\Http\Message\RequestInterface;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
@@ -101,5 +102,15 @@ interface RequestManagerInterface
     public function getUpdatePasswordOnBladeFxRequest(
         string $resource,
         BladeFxUpdatePasswordRequestTransfer $requestTransfer
+    ): RequestInterface;
+
+    /**
+     * @param string $resource
+     * @param BladeFxGetReportByFormatRequestTransfer $requestTransfer
+     * @return RequestInterface
+     */
+    public function getReportByFormatRequest(
+        string $resource,
+        BladeFxGetReportByFormatRequestTransfer $requestTransfer
     ): RequestInterface;
 }

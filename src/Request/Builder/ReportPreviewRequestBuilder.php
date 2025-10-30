@@ -112,9 +112,8 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * @param array<string, mixed> $data
-     *
-     * @return array<string, string>
+     * @param string $paramValue
+     * @return array<mixed>
      */
     protected function cleanDataOfUnneededParameters(string $paramValue): array
     {

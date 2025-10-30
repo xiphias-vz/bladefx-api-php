@@ -47,6 +47,11 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     private BladeFxUpdatePasswordResponseTransfer $bladeFxUpdatePasswordResponse;
 
     /**
+     * @var BladeFxGetReportByFormatResponseTransfer
+     */
+    private BladeFxGetReportByFormatResponseTransfer $bladeFxGetReportByFormatResponse;
+
+    /**
      * @return BladeFxAuthenticationResponseTransfer
      */
     public function getBladeFxAuthenticationResponse(): BladeFxAuthenticationResponseTransfer
@@ -175,7 +180,6 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
         return $this;
     }
 
-
     /**
      * @return BladeFxUpdatePasswordResponseTransfer
      */
@@ -191,6 +195,24 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     public function setBladeFxUpdatePasswordResponse(BladeFxUpdatePasswordResponseTransfer $bladeFxUpdatePasswordResponse): self
     {
         $this->bladeFxUpdatePasswordResponse = $bladeFxUpdatePasswordResponse;
+        return $this;
+    }
+
+    /**
+     * @return BladeFxGetReportByFormatResponseTransfer
+     */
+    public function getBladeFxGetReportByFormatResponse(): BladeFxGetReportByFormatResponseTransfer
+    {
+        return $this->bladeFxGetReportByFormatResponse;
+    }
+
+    /**
+     * @param BladeFxGetReportByFormatResponseTransfer $bladeFxGetReportByFormatResponse
+     * @return $this
+     */
+    public function setBladeFxGetReportByFormatResponse(BladeFxGetReportByFormatResponseTransfer $bladeFxGetReportByFormatResponse): self
+    {
+        $this->bladeFxGetReportByFormatResponse = $bladeFxGetReportByFormatResponse;
         return $this;
     }
 }

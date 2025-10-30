@@ -10,6 +10,7 @@ use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer;
@@ -186,6 +187,21 @@ class ResponseManager implements ResponseManagerInterface
         $this->validateResponse($validator, $converterResultTransfer->getBladeFxUpdatePasswordResponse());
 
         return $converterResultTransfer->getBladeFxUpdatePasswordResponse();
+    }
+
+    /**
+     * @param ResponseInterface|null $response
+     * @param string $format
+     * @return BladeFxGetReportByFormatResponseTransfer
+     */
+    public function getReportByFormatResponseTransfer(?ResponseInterface $response, string $format): BladeFxGetReportByFormatResponseTransfer
+    {
+        $this->validateRawResponse($response);
+        $converterResultTransfer = $this->responseFactory->createReportByFormatResponseConverter()->decodeFromBase64($response);
+        $validator = $this->responseFactory->createReportByFormatResponseValidator();
+        $this->validateResponse($validator, $converterResultTransfer->getBladeFxGetReportByFormatResponse());
+
+        return $converterResultTransfer->getBladeFxGetReportByFormatResponse();
     }
 
     /**

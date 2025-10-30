@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
+use Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer;
+
 class BladeFxParameterListTransfer extends AbstractTransfer
 {
     /**
@@ -31,6 +33,18 @@ class BladeFxParameterListTransfer extends AbstractTransfer
     public function setParameterList(array $parameterList): self
     {
         $this->parameterList = $parameterList;
+
+        return $this;
+    }
+
+    /**
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer $bladeFxParameter
+     * @return $this
+     */
+    public function addBladeFxParameter(BladeFxParameterTransfer $bladeFxParameter): self
+    {
+        $this->parameterList[] = $bladeFxParameter;
+        $this->modifiedProperties[self::PARAMETER_LIST] = true;
 
         return $this;
     }
