@@ -54,12 +54,12 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
     /**
      * @var string|null
      */
-    protected ?string $imageFormat;
+    protected ?string $imageFormat = null;
 
     /**
      * @var string|null
      */
-    protected ?string $fileFormat;
+    protected ?string $fileFormat = null;
 
     /**
      * @var BladeFxParameterListTransfer|null
