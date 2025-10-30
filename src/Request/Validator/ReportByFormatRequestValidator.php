@@ -6,7 +6,6 @@ namespace Xiphias\BladeFxApi\Request\Validator;
 
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer;
 use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 
 class ReportByFormatRequestValidator extends AbstractRequestValidator
@@ -20,10 +19,10 @@ class ReportByFormatRequestValidator extends AbstractRequestValidator
     }
 
     /**
-     * @param AbstractTransfer|BladeFxUpdatePasswordRequestTransfer $requestTransfer
+     * @param AbstractTransfer|BladeFxGetReportByFormatRequestTransfer $requestTransfer
      * @return bool
      */
-    protected function validateRequest(AbstractTransfer|BladeFxUpdatePasswordRequestTransfer $requestTransfer): bool
+    protected function validateRequest(AbstractTransfer|BladeFxGetReportByFormatRequestTransfer $requestTransfer): bool
     {
         try {
             /**
