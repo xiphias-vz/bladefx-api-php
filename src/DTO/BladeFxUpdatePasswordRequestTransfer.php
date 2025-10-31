@@ -19,12 +19,12 @@ class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
     /**
      * @var int|null
      */
-    protected ?int $bladeFxUserId;
+    protected ?int $bladeFxUserId = null;
 
     /**
      * @var string|null
      */
-    protected ?string $password;
+    protected ?string $password = null;
 
     /**
      * @var array<string, string>
@@ -93,17 +93,6 @@ class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
     public function requirePassword(): self
     {
         $this->assertPropertyIsSet(static::PASSWORD);
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
-     */
-    public function requireToken(): self
-    {
-        $this->assertPropertyIsSet('accessToken');
 
         return $this;
     }

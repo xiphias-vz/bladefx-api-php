@@ -10,6 +10,8 @@ use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
@@ -70,4 +72,10 @@ interface ApiHandlerInterface
      * @return BladeFxUpdatePasswordResponseTransfer
      */
     public function sendUpdatePasswordOnBladeFx(BladeFxUpdatePasswordRequestTransfer $requestTransfer): BladeFxUpdatePasswordResponseTransfer;
+
+    /**
+     * @param BladeFxGetReportByFormatRequestTransfer $requestTransfer
+     * @return BladeFxGetReportByFormatResponseTransfer
+     */
+    public function getReportByFormat(BladeFxGetReportByFormatRequestTransfer $requestTransfer): BladeFxGetReportByFormatResponseTransfer;
 }

@@ -7,28 +7,28 @@ namespace Xiphias\BladeFxApi\DTO;
 class BladeFxGetReportsListResponseTransfer extends AbstractTransfer
 {
     /**
-     * @var int
+     * @var int|null
      */
-    protected int $statusCode = 0;
+    protected ?int $statusCode = 0;
 
     /**
-     * @var array<BladeFxReportTransfer>
+     * @var array<BladeFxReportTransfer>|null
      */
-    protected array $reportsList = [];
+    protected ?array $reportsList = [];
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getStatusCode(): int
+    public function getStatusCode(): ?int
     {
         return $this->statusCode;
     }
 
     /**
-     * @param int $statusCode
+     * @param int|null $statusCode
      * @return $this
      */
-    public function setStatusCode(int $statusCode): self
+    public function setStatusCode(?int $statusCode): self
     {
         $this->statusCode = $statusCode;
 
@@ -36,18 +36,18 @@ class BladeFxGetReportsListResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @return array<BladeFxReportTransfer>
+     * @return array<BladeFxReportTransfer>|null
      */
-    public function getReportsList(): array
+    public function getReportsList(): ?array
     {
         return $this->reportsList;
     }
 
     /**
-     * @param array<BladeFxReportTransfer> $reportsList
+     * @param array<BladeFxReportTransfer>|null $reportsList
      * @return $this
      */
-    public function setReportsList(array $reportsList): self
+    public function setReportsList(?array $reportsList): self
     {
         $this->reportsList = $reportsList;
 

@@ -29,7 +29,7 @@ class CreateOrUpdateUserOnBladeFxRequestValidator extends AbstractRequestValidat
              * @var BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
              */
             $requestTransfer
-                ->requireToken();
+                ->requireAccessToken();
         } catch (TransferPropertyRequiredException $ex) {
             return false;
         }

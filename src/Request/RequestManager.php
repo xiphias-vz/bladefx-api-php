@@ -9,6 +9,7 @@ use Psr\Log\LoggerInterface;
 use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
@@ -170,6 +171,21 @@ class RequestManager implements RequestManagerInterface
     public function getUpdatePasswordOnBladeFxRequest(string $resource, BladeFxUpdatePasswordRequestTransfer $requestTransfer): RequestInterface
     {
         $validator = $this->requestFactory->createUpdatePasswordOnBladeFxRequestValidator();
+        $this->validateRequest($validator, $requestTransfer);
+
+        return $this->requestBuilder->buildRequest($resource, $requestTransfer);
+    }
+
+    /**
+     * @param string $resource
+     * @param BladeFxGetReportByFormatRequestTransfer $requestTransfer
+     * @return RequestInterface
+     */
+    public function getReportByFormatRequest(
+        string $resource,
+        BladeFxGetReportByFormatRequestTransfer $requestTransfer
+    ): RequestInterface {
+        $validator = $this->requestFactory->createReportByFormatRequestValidator();
         $this->validateRequest($validator, $requestTransfer);
 
         return $this->requestBuilder->buildRequest($resource, $requestTransfer);

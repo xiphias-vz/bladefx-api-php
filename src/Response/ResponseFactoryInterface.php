@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Response;
 
+use Xiphias\BladeFxApi\Response\Converter\ReportByFormatResponseConverterInterface;
 use Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface;
 use Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface;
 
@@ -88,4 +89,14 @@ interface ResponseFactoryInterface
      * @return ResponseValidatorInterface
      */
     public function createUpdatePasswordOnBladeFxResponseValidator(): ResponseValidatorInterface;
+
+    /**
+     * @return ReportByFormatResponseConverterInterface
+     */
+    public function createReportByFormatResponseConverter(): ReportByFormatResponseConverterInterface;
+
+    /**
+     * @return ResponseValidatorInterface
+     */
+    public function createReportByFormatResponseValidator(): ResponseValidatorInterface;
 }

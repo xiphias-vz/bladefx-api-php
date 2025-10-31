@@ -7,28 +7,28 @@ namespace Xiphias\BladeFxApi\DTO;
 class BladeFxCategoriesListResponseTransfer extends AbstractTransfer
 {
     /**
-     * @var int
+     * @var int|null
      */
-    protected int $statusCode = 0;
+    protected ?int $statusCode = 0;
 
     /**
-     * @var array<BladeFxCategoryTransfer>
+     * @var array<BladeFxCategoryTransfer>|null
      */
-    private array $categoriesList = [];
+    private ?array $categoriesList = [];
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getStatusCode(): int
+    public function getStatusCode(): ?int
     {
         return $this->statusCode;
     }
 
     /**
-     * @param int $statusCode
+     * @param int|null $statusCode
      * @return $this
      */
-    public function setStatusCode(int $statusCode): self
+    public function setStatusCode(?int $statusCode): self
     {
         $this->statusCode = $statusCode;
 
@@ -36,18 +36,18 @@ class BladeFxCategoriesListResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @return array<BladeFxCategoryTransfer>
+     * @return array<BladeFxCategoryTransfer>|null
      */
-    public function getCategoriesList(): array
+    public function getCategoriesList(): ?array
     {
         return $this->categoriesList;
     }
 
     /**
-     * @param array<BladeFxCategoryTransfer> $categoriesList
+     * @param array<BladeFxCategoryTransfer>|null $categoriesList
      * @return $this
      */
-    public function setCategoriesList(array $categoriesList): self
+    public function setCategoriesList(?array $categoriesList): self
     {
         $this->categoriesList = $categoriesList;
 

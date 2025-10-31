@@ -29,7 +29,7 @@ class ReportsListRequestValidator extends AbstractRequestValidator
              * @var BladeFxGetReportsListRequestTransfer $requestTransfer
              */
             $requestTransfer
-                ->requireToken()
+                ->requireAccessToken()
                 ->requireReturnType();
         } catch (TransferPropertyRequiredException $ex) {
             return false;

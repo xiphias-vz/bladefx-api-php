@@ -10,6 +10,11 @@ use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
 class AbstractTransfer
 {
     /**
+     * @var string
+     */
+    public const ACCESS_TOKEN = 'accessToken';
+
+    /**
      * @var array<string, array<string, mixed>>
      */
     protected array $transferMetadata = [];
@@ -30,9 +35,9 @@ class AbstractTransfer
     protected string $baseUrl = '';
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $accessToken;
+    protected ?string $accessToken = '';
 
     /**
      * @var BladeFxTokenTransfer|null
@@ -105,6 +110,16 @@ class AbstractTransfer
     public function setAccessToken(string $accessToken): self
     {
         $this->accessToken = $accessToken;
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function requireAccessToken(): self
+    {
+        $this->assertPropertyIsSet(static::ACCESS_TOKEN);
+
         return $this;
     }
 

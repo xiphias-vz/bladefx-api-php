@@ -35,17 +35,6 @@ class BladeFxGetCategoriesListRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
-     */
-    public function requireToken(): self
-    {
-        $this->assertPropertyIsSet('accessToken');
-
-        return $this;
-    }
-
-    /**
      * @return string|null
      */
     public function getReturnType(): ?string

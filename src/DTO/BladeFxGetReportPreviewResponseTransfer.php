@@ -7,28 +7,28 @@ namespace Xiphias\BladeFxApi\DTO;
 class BladeFxGetReportPreviewResponseTransfer extends AbstractTransfer
 {
     /**
-     * @var int
+     * @var int|null
      */
-    protected int $statusCode = 0;
+    protected ?int $statusCode = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $url = "";
+    protected ?string $url = "";
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getStatusCode(): int
+    public function getStatusCode(): ?int
     {
         return $this->statusCode;
     }
 
     /**
-     * @param int $statusCode
+     * @param int|null $statusCode
      * @return $this
      */
-    public function setStatusCode(int $statusCode): self
+    public function setStatusCode(?int $statusCode): self
     {
         $this->statusCode = $statusCode;
 
@@ -36,18 +36,18 @@ class BladeFxGetReportPreviewResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
     /**
-     * @param string $url
+     * @param string|null $url
      * @return $this
      */
-    public function setUrl(string $url): self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
         $this->modifiedProperties['url'] = true;

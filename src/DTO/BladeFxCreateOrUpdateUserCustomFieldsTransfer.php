@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
-use Xiphias\BladeFxApi\DTO\BladeFxTokenTransfer;
-
 class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
 {
     /**
@@ -21,12 +19,12 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
     /**
      * @var string|null
      */
-    protected ?string $fieldName;
+    protected ?string $fieldName = null;
 
     /**
      * @var string|null
      */
-    protected ?string $fieldValue;
+    protected ?string $fieldValue = null;
 
     /**
      * @var array<string, string>
@@ -52,7 +50,7 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
      * @param ?string $fieldName
      * @return $this
      */
-    public function setFieldName(?string $fieldName): self
+    public function setFieldName(?string $fieldName = null): self
     {
         $this->fieldName = $fieldName;
         $this->modifiedProperties[static::FIELD_NAME] = true;
@@ -82,7 +80,7 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
      * @param ?string $fieldValue
      * @return $this
      */
-    public function setFieldValue(?string $fieldValue): self
+    public function setFieldValue(?string $fieldValue = null): self
     {
         $this->fieldValue = $fieldValue;
         $this->modifiedProperties[static::FIELD_VALUE] = true;
@@ -96,17 +94,6 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
     public function requireFieldValue(): self
     {
         $this->assertPropertyIsSet(static::FIELD_VALUE);
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
-     */
-    public function requireToken(): self
-    {
-        $this->assertPropertyIsSet('accessToken');
 
         return $this;
     }

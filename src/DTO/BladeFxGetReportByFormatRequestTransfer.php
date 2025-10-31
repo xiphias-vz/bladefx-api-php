@@ -4,12 +4,42 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
-class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
+class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
 {
+    /**
+     * @var string
+     */
+    public const RETURN_TYPE = 'returnType';
+
+    /**
+     * @var string
+     */
+    public const REP_ID = 'repId';
+
+    /**
+     * @var string
+     */
+    public const LAYOUT_ID = 'layoutId';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_FORMAT = 'imageFormat';
+
+    /**
+     * @var string
+     */
+    public const FILE_FORMAT = 'fileFormat';
+
+    /**
+     * @var string
+     */
+    public const PARAMS = 'params';
+
     /**
      * @var string|null
      */
-    protected ?string $returnType = 'JSON';
+    protected ?string $returnType = null;
 
     /**
      * @var int|null
@@ -19,22 +49,22 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
     /**
      * @var int|null
      */
-    protected ?int $layoutId = 0;
+    protected ?int $layoutId = null;
 
     /**
      * @var string|null
      */
-    protected ?string $imageFormat = '';
+    protected ?string $imageFormat = null;
 
     /**
      * @var string|null
      */
-    protected ?string $rootUrl = null;
+    protected ?string $fileFormat = null;
 
     /**
-     * @var BladeFxParameterTransfer|null
+     * @var BladeFxParameterListTransfer|null
      */
-    protected ?BladeFxParameterTransfer $params = null;
+    protected ?BladeFxParameterListTransfer $params = null;
 
     /**
      * @return string|null
@@ -48,7 +78,7 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
      * @param string|null $returnType
      * @return $this
      */
-    public function setReturnType(?string $returnType): self
+    public function setReturnType(?string $returnType = null): self
     {
         $this->returnType = $returnType;
         return $this;
@@ -59,7 +89,7 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
      */
     public function requireReturnType(): self
     {
-        $this->assertPropertyIsSet('returnType');
+        $this->assertPropertyIsSet(static::RETURN_TYPE);
 
         return $this;
     }
@@ -79,6 +109,7 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
     public function setRepId(?int $repId): self
     {
         $this->repId = $repId;
+
         return $this;
     }
 
@@ -87,7 +118,7 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
      */
     public function requireRepId(): self
     {
-        $this->assertPropertyIsSet('repId');
+        $this->assertPropertyIsSet(self::REP_ID);
 
         return $this;
     }
@@ -111,9 +142,19 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string
+     * @return $this
      */
-    public function getImageFormat(): string
+    public function requireLayoutId(): self
+    {
+        $this->assertPropertyIsSet(self::LAYOUT_ID);
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImageFormat(): ?string
     {
         return $this->imageFormat;
     }
@@ -122,53 +163,63 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
      * @param string|null $imageFormat
      * @return $this
      */
-    public function setImageFormat(?string $imageFormat): self
+    public function setImageFormat(?string $imageFormat = null): self
     {
         $this->imageFormat = $imageFormat;
         return $this;
     }
 
     /**
+     * @return $this
+     */
+    public function requireImageFormat(): self
+    {
+        $this->assertPropertyIsSet(static::IMAGE_FORMAT);
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
-    public function getRootUrl(): ?string
+    public function getFileFormat(): ?string
     {
-        return $this->rootUrl;
+        return $this->fileFormat;
     }
 
     /**
-     * @param string|null $rootUrl
+     * @param string|null $fileFormat
      * @return $this
      */
-    public function setRootUrl(?string $rootUrl): self
+    public function setFileFormat(?string $fileFormat = null): self
     {
-        $this->rootUrl = $rootUrl;
+        $this->fileFormat = $fileFormat;
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function requireRootUrl(): self
+    public function requireFileFormat(): self
     {
-        $this->assertPropertyIsSet('rootUrl');
+        $this->assertPropertyIsSet(static::FILE_FORMAT);
 
         return $this;
     }
 
     /**
-     * @return BladeFxParameterTransfer|null
+     * @return BladeFxParameterListTransfer|null
      */
-    public function getParams(): ?BladeFxParameterTransfer
+    public function getParams(): ?BladeFxParameterListTransfer
     {
         return $this->params;
     }
 
     /**
-     * @param BladeFxParameterTransfer|null $params
+     * @param BladeFxParameterListTransfer|null $params
      * @return $this
      */
-    public function setParams(?BladeFxParameterTransfer $params): self
+    public function setParams(?BladeFxParameterListTransfer $params = null): self
     {
         $this->params = $params;
         return $this;
@@ -179,7 +230,7 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
      */
     public function requireParams(): self
     {
-        $this->assertPropertyIsSet('params');
+        $this->assertPropertyIsSet(static::PARAMS);
 
         return $this;
     }
@@ -190,13 +241,13 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
     public function toArray(): array
     {
         return [
-            'accessToken' => $this->getAccessToken(),
             'returnType' => $this->getReturnType(),
             'repId' => $this->getRepId(),
             'layoutId' => $this->getLayoutId(),
             'imageFormat' => $this->getImageFormat(),
-            'rootUrl' => $this->getRootUrl(),
-            'params' => $this->getParams(),
+            'fileFormat' => $this->getFileFormat(),
+            'token' => $this->getToken(),
+            'params' => $this->getParams()->toArray(),
         ];
     }
 }

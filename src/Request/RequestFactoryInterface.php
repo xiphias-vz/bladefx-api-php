@@ -94,4 +94,14 @@ interface RequestFactoryInterface
      * @return RequestValidatorInterface
      */
     public function createUpdatePasswordOnBladeFxRequestValidator(): RequestValidatorInterface;
+
+    /**
+     * @return RequestBuilderInterface
+     */
+    public function createReportByFormatRequestBuilder(): RequestBuilderInterface;
+
+    /**
+     * @return RequestValidatorInterface
+     */
+    public function createReportByFormatRequestValidator(): RequestValidatorInterface;
 }

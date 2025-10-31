@@ -29,7 +29,7 @@ class UpdatePasswordOnBladeFxRequestValidator extends AbstractRequestValidator
              * @var BladeFxUpdatePasswordRequestTransfer $requestTransfer
              */
             $requestTransfer
-                ->requireToken()
+                ->requireAccessToken()
                 ->requirePassword()
                 ->requireBladeFxUserId();
         } catch (TransferPropertyRequiredException $ex) {

@@ -29,7 +29,7 @@ class SetFavoriteReportRequestValidator extends AbstractRequestValidator
              * @var BladeFxSetFavoriteReportRequestTransfer $requestTransfer
              */
             $requestTransfer
-                ->requireToken()
+                ->requireAccessToken()
                 ->requireRepId()
                 ->requireUserId();
         } catch (TransferPropertyRequiredException $ex) {

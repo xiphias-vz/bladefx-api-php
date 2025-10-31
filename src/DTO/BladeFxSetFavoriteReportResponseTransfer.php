@@ -7,34 +7,34 @@ namespace Xiphias\BladeFxApi\DTO;
 class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 {
     /**
-     * @var int
+     * @var int|null
      */
-    protected int $statusCode = 0;
+    protected ?int $statusCode = 0;
 
     /**
-     * @var bool
+     * @var bool|null
      */
-    protected bool $success = false;
+    protected ?bool $success = false;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $rMessage = "";
+    protected ?string $rMessage = "";
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $causer = "";
+    protected ?string $causer = "";
 
     /**
-     * @var int
+     * @var int|null
      */
-    protected int $id = 0;
+    protected ?int $id = 0;
 
     /**
-     * @var bool
+     * @var bool|null
      */
-    protected bool $areUsure = false;
+    protected ?bool $areYouSure = false;
 
     /**
      * @var string|null
@@ -42,9 +42,9 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
     protected ?string $optionValue = "";
 
     /**
-     * @var bool
+     * @var bool|null
      */
-    protected bool $licenceIssue = false;
+    protected ?bool $licenceIssue = false;
 
     /**
      * @var array<string, string>
@@ -61,18 +61,18 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
     ];
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getStatusCode(): int
+    public function getStatusCode(): ?int
     {
         return $this->statusCode;
     }
 
     /**
-     * @param int $statusCode
-     * @return self
+     * @param int|null $statusCode
+     * @return $this
      */
-    public function setStatusCode(int $statusCode): self
+    public function setStatusCode(?int $statusCode): self
     {
         $this->statusCode = $statusCode;
 
@@ -80,18 +80,18 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getSuccess(): bool
+    public function getSuccess(): ?bool
     {
         return $this->success;
     }
 
     /**
-     * @param bool $success
-     * @return self
+     * @param bool|null $success
+     * @return $this
      */
-    public function setSuccess(bool $success): self
+    public function setSuccess(?bool $success): self
     {
         $this->success = $success;
         $this->modifiedProperties['success'] = true;
@@ -100,18 +100,18 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRMessage(): string
+    public function getRMessage(): ?string
     {
         return $this->rMessage;
     }
 
     /**
-     * @param string $rMessage
-     * @return self
+     * @param string|null $rMessage
+     * @return $this
      */
-    public function setRMessage(string $rMessage): self
+    public function setRMessage(?string $rMessage): self
     {
         $this->rMessage = $rMessage;
         $this->modifiedProperties['rMessage'] = true;
@@ -130,18 +130,18 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCauser(): string
+    public function getCauser(): ?string
     {
         return $this->causer;
     }
 
     /**
-     * @param string $causer
-     * @return self
+     * @param string|null $causer
+     * @return $this
      */
-    public function setCauser(string $causer): self
+    public function setCauser(?string $causer): self
     {
         $this->causer = $causer;
         $this->modifiedProperties['causer'] = true;
@@ -150,21 +150,21 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getAreUsure(): bool
+    public function getAreYouSure(): ?bool
     {
-        return $this->areUsure;
+        return $this->areYouSure;
     }
 
     /**
-     * @param bool $areUsure
-     * @return self
+     * @param bool|null $areYouSure
+     * @return $this
      */
-    public function setAreUsure(bool $areUsure): self
+    public function setAreYouSure(?bool $areYouSure): self
     {
-        $this->areUsure = $areUsure;
-        $this->modifiedProperties['areUsure'] = true;
+        $this->areYouSure = $areYouSure;
+        $this->modifiedProperties['areYouSure'] = true;
 
         return $this;
     }
@@ -190,18 +190,18 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getLicenceIssue(): bool
+    public function getLicenceIssue(): ?bool
     {
         return $this->licenceIssue;
     }
 
     /**
-     * @param bool $licenceIssue
-     * @return self
+     * @param bool|null $licenceIssue
+     * @return $this
      */
-    public function setLicenceIssue(bool $licenceIssue): self
+    public function setLicenceIssue(?bool $licenceIssue): self
     {
         $this->licenceIssue = $licenceIssue;
         $this->modifiedProperties['licenceIssue'] = true;

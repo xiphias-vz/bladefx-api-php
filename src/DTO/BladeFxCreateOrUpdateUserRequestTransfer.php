@@ -62,52 +62,52 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     /**
      * @var BladeFxTokenTransfer|null
      */
-    protected ?BladeFxTokenTransfer $token;
+    protected ?BladeFxTokenTransfer $token = null;
 
     /**
      * @var string|null
      */
-    protected ?string $email;
+    protected ?string $email = null;
 
     /**
      * @var string|null
      */
-    protected ?string $firstName;
+    protected ?string $firstName = null;
 
     /**
      * @var string|null
      */
-    protected ?string $lastName;
+    protected ?string $lastName = null;
 
     /**
      * @var string|null
      */
-    protected ?string $password;
+    protected ?string $password = null;
 
     /**
      * @var string|null
      */
-    protected ?string $roleName;
+    protected ?string $roleName = null;
 
     /**
      * @var int|null
      */
-    protected ?int $companyId;
+    protected ?int $companyId = null;
 
     /**
      * @var int|null
      */
-    protected ?int $languageId;
+    protected ?int $languageId = null;
 
     /**
      * @var bool|null
      */
-    protected ?bool $isActive;
+    protected ?bool $isActive = null;
 
     /**
-     * @var array<mixed>
+     * @var array<mixed>|null
      */
-    protected array $customFields;
+    protected ?array $customFields = null;
 
     /**
      * @var array<string, string>
@@ -383,18 +383,18 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return array<BladeFxCreateOrUpdateUserCustomFieldsTransfer>
+     * @return array<BladeFxCreateOrUpdateUserCustomFieldsTransfer>|null
      */
-    public function getCustomFields(): array
+    public function getCustomFields(): ?array
     {
         return $this->customFields;
     }
 
     /**
-     * @param array<BladeFxCreateOrUpdateUserCustomFieldsTransfer> $customFields
+     * @param array<BladeFxCreateOrUpdateUserCustomFieldsTransfer>|null $customFields
      * @return $this
      */
-    public function setCustomFields(array $customFields): self
+    public function setCustomFields(?array $customFields): self
     {
         $this->customFields = $customFields;
         $this->modifiedProperties[static::CUSTOM_FIELDS] = true;
@@ -420,17 +420,6 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     public function requireCustomFields(): self
     {
         $this->assertPropertyIsSet(static::CUSTOM_FIELDS);
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
-     */
-    public function requireToken(): self
-    {
-        $this->assertPropertyIsSet('accessToken');
 
         return $this;
     }
