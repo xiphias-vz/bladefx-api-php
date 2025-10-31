@@ -27,7 +27,7 @@ class AuthenticationResponseValidator extends AbstractResponseValidator
         try {
             /** @var BladeFxAuthenticationResponseTransfer $responseTransfer */
             $responseTransfer
-                ->requireToken()
+                ->requireAccessToken()
                 ->requireUsername()
                 ->requireEmail()
                 ->requireFullname()

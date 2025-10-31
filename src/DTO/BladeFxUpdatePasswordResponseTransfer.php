@@ -36,7 +36,7 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
     /**
      * @var string
      */
-    public const ARE_USURE = 'areUsure';
+    public const ARE_YOU_SURE = 'areYouSure';
 
     /**
      * @var string
@@ -51,42 +51,42 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
     /**
      * @var int|null
      */
-    protected ?int $statusCode;
+    protected ?int $statusCode = null;
 
     /**
      * @var bool|null
      */
-    protected ?bool $success;
+    protected ?bool $success = null;
 
     /**
      * @var string|null
      */
-    protected ?string $rMessage;
+    protected ?string $rMessage = null;
 
     /**
      * @var string|null
      */
-    protected ?string $causer;
+    protected ?string $causer = null;
 
     /**
      * @var int|null
      */
-    protected ?int $id;
+    protected ?int $id = null;
 
     /**
      * @var bool|null
      */
-    protected ?bool $areUsure;
+    protected ?bool $areYouSure = false;
 
     /**
      * @var string|null
      */
-    protected ?string $optionValue;
+    protected ?string $optionValue = null;
 
     /**
      * @var bool|null
      */
-    protected ?bool $licenceIssue;
+    protected ?bool $licenceIssue = null;
 
     /**
      * @var array<string, string>
@@ -104,9 +104,9 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
         'Causer' => 'causer',
         'id' => 'id',
         'Id' => 'id',
-        'are_usure' => 'areUsure',
-        'areUsure' => 'areUsure',
-        'AreUsure' => 'areUsure',
+        'are_usure' => 'areYouSure',
+        'areUsure' => 'areYouSure',
+        'AreUsure' => 'areYouSure',
         'option_value' => 'optionValue',
         'optionValue' => 'optionValue',
         'OptionValue' => 'optionValue',
@@ -270,7 +270,7 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
      */
     public function getAreYouSure(): ?bool
     {
-        return $this->areUsure;
+        return $this->areYouSure;
     }
 
     /**
@@ -279,8 +279,8 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
      */
     public function setAreYouSure(?bool $areYouSure): self
     {
-        $this->areUsure = $areYouSure;
-        $this->modifiedProperties[static::ARE_USURE] = true;
+        $this->areYouSure = $areYouSure;
+        $this->modifiedProperties[static::ARE_YOU_SURE] = true;
 
         return $this;
     }
@@ -290,7 +290,7 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
      */
     public function requireAreYouSure(): self
     {
-        $this->assertPropertyIsSet(static::ARE_USURE);
+        $this->assertPropertyIsSet(static::ARE_YOU_SURE);
 
         return $this;
     }
@@ -356,17 +356,6 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
-     */
-    public function requireToken(): self
-    {
-        $this->assertPropertyIsSet('accessToken');
-
-        return $this;
-    }
-
-    /**
      * @return array<string, mixed>
      */
     public function toArray(): array
@@ -377,7 +366,7 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
             'rMessage' => $this->getRMessage(),
             'causer' => $this->getCauser(),
             'id' => $this->getId(),
-            'areUsure' => $this->getAreYouSure(),
+            'areYouSure' => $this->getAreYouSure(),
             'optionValue' => $this->getOptionValue(),
             'licenceIssue' => $this->getLicenceIssue(),
         ];
@@ -399,7 +388,7 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
                 case 'rMessage':
                 case 'causer':
                 case 'id':
-                case 'areUsure':
+                case 'areYouSure':
                 case 'optionValue':
                 case 'licenceIssue':
                 case 'errorMessage':

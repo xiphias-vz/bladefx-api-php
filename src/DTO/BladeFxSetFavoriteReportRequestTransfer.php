@@ -14,7 +14,7 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
     /**
      * @var int|null
      */
-    protected ?int $userId;
+    protected ?int $userId = null;
 
     /**
      * @var array<string, string>
@@ -34,10 +34,10 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param int $repId
+     * @param int|null $repId
      * @return $this
      */
-    public function setRepId(int $repId): self
+    public function setRepId(?int $repId): self
     {
         $this->repId = $repId;
         $this->modifiedProperties['repId'] = true;
@@ -82,17 +82,6 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
     public function requireUserId(): self
     {
         $this->assertPropertyIsSet('userId');
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
-     */
-    public function requireToken(): self
-    {
-        $this->assertPropertyIsSet('accessToken');
 
         return $this;
     }

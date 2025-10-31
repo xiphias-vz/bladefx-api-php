@@ -7,19 +7,19 @@ namespace Xiphias\BladeFxApi\DTO;
 class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
 {
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $username;
+    protected ?string $username = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $password;
+    protected ?string $password = null;
 
     /**
      * @var bool
      */
-    protected bool $licenceExp = false;
+    protected ?bool $licenceExp = null;
 
     /**
      * @var array<string, string>
@@ -31,18 +31,18 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
     ];
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
     /**
-     * @param string $username
+     * @param string|null $username
      * @return $this
      */
-    public function setUsername(string $username): self
+    public function setUsername(?string $username): self
     {
         $this->username = $username;
         $this->modifiedProperties['username'] = true;
@@ -62,18 +62,18 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
     /**
-     * @param string $password
+     * @param string|null $password
      * @return $this
      */
-    public function setPassword(string $password): self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
         $this->modifiedProperties['password'] = true;
@@ -93,18 +93,18 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getLicenceExp(): bool
+    public function getLicenceExp(): ?bool
     {
         return $this->licenceExp;
     }
 
     /**
-     * @param bool $licenceExp
+     * @param bool|null $licenceExp
      * @return $this
      */
-    public function setLicenceExp(bool $licenceExp): self
+    public function setLicenceExp(?bool $licenceExp): self
     {
         $this->licenceExp = $licenceExp;
         $this->modifiedProperties['licenceExp'] = true;

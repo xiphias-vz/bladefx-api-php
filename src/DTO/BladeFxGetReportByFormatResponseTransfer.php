@@ -19,12 +19,12 @@ class BladeFxGetReportByFormatResponseTransfer extends AbstractTransfer
     /**
      * @var int|null
      */
-    protected ?int $statusCode;
+    protected ?int $statusCode = null;
 
     /**
      * @var string|null
      */
-    protected ?string $report;
+    protected ?string $report = null;
 
     /**
      * @return int|null

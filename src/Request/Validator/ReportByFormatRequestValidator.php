@@ -29,7 +29,7 @@ class ReportByFormatRequestValidator extends AbstractRequestValidator
              * @var BladeFxGetReportByFormatRequestTransfer $requestTransfer
              */
             $requestTransfer
-                ->requireToken()
+                ->requireAccessToken()
                 ->requireRepId()
                 ->requireReturnType();
         } catch (TransferPropertyRequiredException $ex) {

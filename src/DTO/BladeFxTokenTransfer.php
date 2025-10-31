@@ -7,9 +7,9 @@ namespace Xiphias\BladeFxApi\DTO;
 class BladeFxTokenTransfer
 {
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $accessToken = '';
+    protected ?string $accessToken = '';
 
     /**
      * @var \DateTimeImmutable|null
@@ -25,18 +25,18 @@ class BladeFxTokenTransfer
     ];
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAccessToken(): string
+    public function getAccessToken(): ?string
     {
         return $this->accessToken;
     }
 
     /**
-     * @param string $accessToken
+     * @param string|null $accessToken
      * @return $this
      */
-    public function setAccessToken(string $accessToken): self
+    public function setAccessToken(?string $accessToken): self
     {
         $this->accessToken = $accessToken;
         return $this;
@@ -51,7 +51,7 @@ class BladeFxTokenTransfer
     }
 
     /**
-     * @param \DateTimeImmutable $expiresAt
+     * @param \DateTimeImmutable|null $expiresAt
      * @return $this
      */
     public function setExpiresAt(\DateTimeImmutable $expiresAt = null): self
@@ -61,9 +61,9 @@ class BladeFxTokenTransfer
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isExpired(): bool
+    public function isExpired(): ?bool
     {
         return $this->expiresAt !== null && $this->expiresAt <= new \DateTimeImmutable();
     }

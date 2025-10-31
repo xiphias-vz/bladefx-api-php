@@ -30,7 +30,7 @@ class ReportPreviewRequestValidator extends AbstractRequestValidator implements 
              */
             $requestTransfer
                 ->requireRootUrl()
-                ->requireToken()
+                ->requireAccessToken()
                 ->requireRepId()
                 ->requireParams()
                 ->requireReturnType();

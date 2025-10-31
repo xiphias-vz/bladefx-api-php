@@ -9,21 +9,21 @@ class BladeFxGetReportParamFormResponseTransfer extends AbstractTransfer
     /**
      * @var string|null
      */
-    protected ?string $iframeUrl;
+    protected ?string $iframeUrl = null;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getIframeUrl(): string
+    public function getIframeUrl(): ?string
     {
         return $this->iframeUrl;
     }
 
     /**
-     * @param string $iframeUrl
+     * @param string|null $iframeUrl
      * @return $this
      */
-    public function setIframeUrl(string $iframeUrl): self
+    public function setIframeUrl(?string $iframeUrl): self
     {
         $this->iframeUrl = $iframeUrl;
         $this->modifiedProperties['iframeUrl'] = true;

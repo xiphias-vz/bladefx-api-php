@@ -9,47 +9,47 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
     /**
      * @var string|null
      */
-    protected ?string $username;
+    protected ?string $username = null;
 
     /**
      * @var string|null
      */
-    protected ?string $fullname;
+    protected ?string $fullname = null;
 
     /**
      * @var string|null
      */
-    protected ?string $email;
+    protected ?string $email = null;
 
     /**
      * @var string|null
      */
-    protected ?string $avatar;
+    protected ?string $avatar = null;
 
     /**
      * @var int|null
      */
-    protected ?int $idUser;
+    protected ?int $idUser = null;
 
     /**
      * @var int|null
      */
-    protected ?int $idCompany;
+    protected ?int $idCompany = null;
 
     /**
      * @var int|null
      */
-    protected ?int $idLanguage;
+    protected ?int $idLanguage = null;
 
     /**
      * @var string|null
      */
-    protected ?string $languageDescription;
+    protected ?string $languageDescription = null;
 
     /**
      * @var bool|null
      */
-    protected ?bool $licenceExp;
+    protected ?bool $licenceExp = null;
 
     /**
      * @var array<string, string>
@@ -66,17 +66,6 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
         'languageDescription' => 'languageDescription',
         'licence_exp' => 'licenceExp',
     ];
-
-    /**
-     * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
-     */
-    public function requireToken(): self
-    {
-        $this->assertPropertyIsSet('accessToken');
-
-        return $this;
-    }
 
     /**
      * @return string|null

@@ -19,14 +19,14 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
     protected ?string $search = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $attribute = '';
+    protected ?string $attribute = '';
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $returnType = 'JSON';
+    protected ?string $returnType = 'JSON';
 
     /**
      * @var array<string, string>
@@ -66,10 +66,10 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param string $search
+     * @param string|null $search
      * @return $this
      */
-    public function setSearch(string $search): self
+    public function setSearch(?string $search): self
     {
         $this->search = $search;
         $this->modifiedProperties['search'] = true;
@@ -78,29 +78,18 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
+     * @return string|null
      */
-    public function requireToken(): self
-    {
-        $this->assertPropertyIsSet('accessToken');
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAttribute(): string
+    public function getAttribute(): ?string
     {
         return $this->attribute;
     }
 
     /**
-     * @param string $attribute
+     * @param string|null $attribute
      * @return $this
      */
-    public function setAttribute(string $attribute): self
+    public function setAttribute(?string $attribute): self
     {
         $this->attribute = $attribute;
         $this->modifiedProperties['attribute'] = true;
@@ -109,18 +98,18 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getReturnType(): string
+    public function getReturnType(): ?string
     {
         return $this->returnType;
     }
 
     /**
-     * @param string $returnType
+     * @param string|null $returnType
      * @return $this
      */
-    public function setReturnType(string $returnType): self
+    public function setReturnType(?string $returnType): self
     {
         $this->returnType = $returnType;
         $this->modifiedProperties['returnType'] = true;

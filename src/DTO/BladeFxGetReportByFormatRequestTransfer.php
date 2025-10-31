@@ -39,17 +39,17 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
     /**
      * @var string|null
      */
-    protected ?string $returnType;
+    protected ?string $returnType = null;
 
     /**
      * @var int|null
      */
-    protected ?int $repId;
+    protected ?int $repId = null;
 
     /**
      * @var int|null
      */
-    protected ?int $layoutId;
+    protected ?int $layoutId = null;
 
     /**
      * @var string|null
@@ -64,7 +64,7 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
     /**
      * @var BladeFxParameterListTransfer|null
      */
-    protected ?BladeFxParameterListTransfer $params;
+    protected ?BladeFxParameterListTransfer $params = null;
 
     /**
      * @return string|null
@@ -231,16 +231,6 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
     public function requireParams(): self
     {
         $this->assertPropertyIsSet(static::PARAMS);
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function requireToken(): self
-    {
-        $this->assertPropertyIsSet('accessToken');
 
         return $this;
     }

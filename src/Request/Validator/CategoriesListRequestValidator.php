@@ -27,7 +27,7 @@ class CategoriesListRequestValidator extends AbstractRequestValidator
         try {
             /** @var BladeFxGetCategoriesListRequestTransfer $requestTransfer */
             $requestTransfer
-                ->requireToken()
+                ->requireAccessToken()
                 ->requireReturnType();
         } catch (TransferPropertyRequiredException $ex) {
             return false;

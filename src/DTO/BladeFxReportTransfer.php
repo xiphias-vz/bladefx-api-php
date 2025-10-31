@@ -107,9 +107,9 @@ class BladeFxReportTransfer extends AbstractTransfer
     public const ATTRIBUTE = 'attribute';
 
     /**
-     * @var int
+     * @var int|null
      */
-    protected int $repId;
+    protected ?int $repId = null;
 
     /**
      * @var string|null
@@ -233,18 +233,18 @@ class BladeFxReportTransfer extends AbstractTransfer
     ];
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getRepId(): int
+    public function getRepId(): ?int
     {
         return $this->repId;
     }
 
     /**
-     * @param int $repId
-     * @return self
+     * @param int|null $repId
+     * @return $this
      */
-    public function setRepId(int $repId): self
+    public function setRepId(?int $repId): self
     {
         $this->repId = $repId;
         $this->modifiedProperties['repId'] = true;

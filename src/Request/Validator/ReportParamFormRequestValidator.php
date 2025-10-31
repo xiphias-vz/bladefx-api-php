@@ -27,7 +27,7 @@ class ReportParamFormRequestValidator extends AbstractRequestValidator
         try {
             /** @var BladeFxGetReportParamFormRequestTransfer $requestTransfer */
             $requestTransfer
-                ->requireToken()
+                ->requireAccessToken()
                 ->requireRootUrl();
         } catch (TransferPropertyRequiredException $ex) {
             return false;

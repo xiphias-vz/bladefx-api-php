@@ -12,9 +12,9 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
     protected ?int $rep_id = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $rootUrl;
+    protected ?string $rootUrl = null;
 
     /**
      * @var array<string, string>
@@ -26,17 +26,6 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
     ];
 
     /**
-     * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
-     */
-    public function requireToken(): self
-    {
-        $this->assertPropertyIsSet('accessToken');
-
-        return $this;
-    }
-
-    /**
      * @return int|null
      */
     public function getReportId(): ?int
@@ -45,10 +34,10 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param int $rep_id
+     * @param int|null $rep_id
      * @return $this
      */
-    public function setReportId(int $rep_id): self
+    public function setReportId(?int $rep_id): self
     {
         $this->rep_id = $rep_id;
         $this->modifiedProperties['rep_id'] = true;
@@ -57,18 +46,18 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRootUrl(): string
+    public function getRootUrl(): ?string
     {
         return $this->rootUrl;
     }
 
     /**
-     * @param string $rootUrl
+     * @param string|null $rootUrl
      * @return $this
      */
-    public function setRootUrl(string $rootUrl): self
+    public function setRootUrl(?string $rootUrl): self
     {
         $this->rootUrl = $rootUrl;
         $this->modifiedProperties['rootUrl'] = true;

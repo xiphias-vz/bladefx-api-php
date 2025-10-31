@@ -9,22 +9,22 @@ class BladeFxParameterTransfer extends AbstractTransfer
     /**
      * @var int|null
      */
-    protected ?int $reportId;
+    protected ?int $reportId = null;
 
     /**
      * @var string|null
      */
-    protected ?string $paramName;
+    protected ?string $paramName = null;
 
     /**
      * @var string|null
      */
-    protected ?string $paramValue;
+    protected ?string $paramValue = null;
 
     /**
      * @var string|null
      */
-    protected ?string $sqlDbType;
+    protected ?string $sqlDbType = null;
 
     /**
      * @return int|null
