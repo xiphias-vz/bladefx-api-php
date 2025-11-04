@@ -10,13 +10,16 @@ class StdoutLogger extends AbstractLogger
 {
     /**
      * @param mixed $level
-     * @param string|\Stringable $message
+     * @param \Stringable|string $message
      * @param array<mixed> $context
+     *
      * @return void
      */
+    // phpcs:disable
     public function log($level, string|\Stringable $message, array $context = []): void
     {
-        $contextString = !empty($context) ? json_encode($context) : '';
+        // phpcs:enable
+        $contextString = (bool)$context ? json_encode($context) : '';
         echo sprintf("[%s] %s %s\n", strtoupper($level), $message, $contextString);
     }
 }

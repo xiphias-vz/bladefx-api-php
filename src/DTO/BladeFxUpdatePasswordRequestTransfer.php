@@ -76,7 +76,7 @@ class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $password
+     * @param string|null $password
      * @return $this
      */
     public function setPassword(?string $password): self

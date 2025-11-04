@@ -30,7 +30,7 @@
     },
     "scripts": {
         "analyse": "phpstan analyse",
-        "sniff": "phpcs",
-        "fix": "phpcbf"
+        "sniff": "phpcs --standard=PSR12 src",
+        "fix": "phpcbf --standard=PSR12 src"
     }
 }

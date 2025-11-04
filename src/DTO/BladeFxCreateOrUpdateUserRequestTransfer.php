@@ -151,7 +151,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $email
+     * @param string|null $email
      * @return $this
      */
     public function setEmail(?string $email): self
@@ -181,7 +181,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $firstName
+     * @param string|null $firstName
      * @return $this
      */
     public function setFirstName(?string $firstName): self
@@ -211,7 +211,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $lastName
+     * @param string|null $lastName
      * @return $this
      */
     public function setLastName(?string $lastName): self
@@ -241,7 +241,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $password
+     * @param string|null $password
      * @return $this
      */
     public function setPassword(?string $password): self
@@ -271,7 +271,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $roleName
+     * @param string|null $roleName
      * @return $this
      */
     public function setRoleName(?string $roleName): self

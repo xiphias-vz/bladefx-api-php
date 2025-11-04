@@ -197,7 +197,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $rMessage
+     * @param string|null $rMessage
      * @return $this
      */
     public function setRMessage(?string $rMessage): self
@@ -227,7 +227,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $causer
+     * @param string|null $causer
      * @return $this
      */
     public function setCauser(?string $causer): self
@@ -317,7 +317,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $optionValue
+     * @param string|null $optionValue
      * @return $this
      */
     public function setOptionValue(?string $optionValue): self
@@ -377,7 +377,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $errorMessage
+     * @param string|null $errorMessage
      * @return $this
      */
     public function setErrorMessage(?string $errorMessage): self

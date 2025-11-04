@@ -47,7 +47,7 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $fieldName
+     * @param string|null $fieldName
      * @return $this
      */
     public function setFieldName(?string $fieldName = null): self
@@ -77,7 +77,7 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $fieldValue
+     * @param string|null $fieldValue
      * @return $this
      */
     public function setFieldValue(?string $fieldValue = null): self

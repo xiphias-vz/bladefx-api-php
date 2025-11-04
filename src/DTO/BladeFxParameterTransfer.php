@@ -65,7 +65,7 @@ class BladeFxParameterTransfer extends AbstractTransfer
     }
 
     /**
-     * @return ?string
+     * @return string|null
      */
     public function getParamValue(): ?string
     {
@@ -73,7 +73,7 @@ class BladeFxParameterTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $paramValue
+     * @param string|null $paramValue
      * @return $this
      */
     public function setParamValue(?string $paramValue): self

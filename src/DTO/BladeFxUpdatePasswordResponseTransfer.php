@@ -184,7 +184,7 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $rMessage
+     * @param string|null $rMessage
      * @return $this
      */
     public function setRMessage(?string $rMessage): self
@@ -214,7 +214,7 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $causer
+     * @param string|null $causer
      * @return $this
      */
     public function setCauser(?string $causer): self
@@ -304,7 +304,7 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $optionValue
+     * @param string|null $optionValue
      * @return $this
      */
     public function setOptionValue(?string $optionValue): self
