@@ -11,9 +11,10 @@ use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer;
 class ReportByFormatResponseConverter extends AbstractResponseConverter implements ReportByFormatResponseConverterInterface
 {
     /**
-     * @param BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
      * @param array<mixed> $responseData
-     * @return BladeFxApiResponseConversionResultTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer
      */
     protected function expandConversionResponseTransfer(
         BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer,
@@ -28,8 +29,9 @@ class ReportByFormatResponseConverter extends AbstractResponseConverter implemen
     }
 
     /**
-     * @param ResponseInterface $response
-     * @return BladeFxApiResponseConversionResultTransfer
+     * @param \Psr\Http\Message\ResponseInterface $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer
      */
     public function decodeFromBase64(ResponseInterface $response): BladeFxApiResponseConversionResultTransfer
     {

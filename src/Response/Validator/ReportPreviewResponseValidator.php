@@ -19,14 +19,17 @@ class ReportPreviewResponseValidator extends AbstractResponseValidator
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
      * @return bool
      */
     protected function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
-            /** @var BladeFxGetReportPreviewResponseTransfer $responseTransfer */
-            $responseTransfer->requireUrl();
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer $bladeFxGetReportPreviewResponseTransfer */
+            $bladeFxGetReportPreviewResponseTransfer = $responseTransfer;
+
+            $bladeFxGetReportPreviewResponseTransfer->requireUrl();
         } catch (TransferPropertyRequiredException $ex) {
             return false;
         }

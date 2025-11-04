@@ -11,8 +11,9 @@ interface RequestBuilderInterface
 {
     /**
      * @param string $resource
-     * @param AbstractTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function buildRequest(
         string $resource,

@@ -19,14 +19,17 @@ class CategoriesListRequestValidator extends AbstractRequestValidator
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return bool
      */
     public function validateRequest(AbstractTransfer $requestTransfer): bool
     {
         try {
-            /** @var BladeFxGetCategoriesListRequestTransfer $requestTransfer */
-            $requestTransfer
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer $bladeFxGetCategoriesListRequestTransfer */
+            $bladeFxGetCategoriesListRequestTransfer = $requestTransfer;
+
+            $bladeFxGetCategoriesListRequestTransfer
                 ->requireAccessToken()
                 ->requireReturnType();
         } catch (TransferPropertyRequiredException $ex) {

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
+use InvalidArgumentException;
+
 class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
 {
     /**
@@ -22,7 +24,7 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
     protected array $transferPropertyNameMap = [
         'repId' => 'repId',
         'userId' => 'userId',
-        'token' => 'accessToken'
+        'token' => 'accessToken',
     ];
 
     /**
@@ -35,9 +37,10 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
 
     /**
      * @param int|null $repId
+     *
      * @return $this
      */
-    public function setRepId(?int $repId): self
+    public function setRepId(?int $repId)
     {
         $this->repId = $repId;
         $this->modifiedProperties['repId'] = true;
@@ -47,9 +50,8 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requireRepId(): self
+    public function requireRepId()
     {
         $this->assertPropertyIsSet('repId');
 
@@ -66,9 +68,10 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
 
     /**
      * @param int|null $userId
+     *
      * @return $this
      */
-    public function setUserId(?int $userId): self
+    public function setUserId(?int $userId)
     {
         $this->userId = $userId;
         $this->modifiedProperties['userId'] = true;
@@ -79,7 +82,7 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireUserId(): self
+    public function requireUserId()
     {
         $this->assertPropertyIsSet('userId');
 
@@ -100,9 +103,12 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
     /**
      * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
+     *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
-    public function fromArray(array $data, bool $ignoreMissingProperties = false): static
+    public function fromArray(array $data, bool $ignoreMissingProperties = false)
     {
         foreach ($data as $property => $value) {
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
@@ -113,11 +119,11 @@ class BladeFxSetFavoriteReportRequestTransfer extends AbstractTransfer
                 case 'accessToken':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
-                    break;
 
+                    break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }

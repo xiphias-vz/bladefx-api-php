@@ -18,57 +18,66 @@ use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 interface ResponseManagerInterface
 {
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxAuthenticationResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer
      */
     public function getAuthenticationUserResponseTransfer(?ResponseInterface $response): BladeFxAuthenticationResponseTransfer;
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxCategoriesListResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer
      */
     public function getCategoriesListResponseTransfer(?ResponseInterface $response): BladeFxCategoriesListResponseTransfer;
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxGetReportsListResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer
      */
     public function getReportsListResponseTransfer(?ResponseInterface $response): BladeFxGetReportsListResponseTransfer;
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxGetReportParamFormResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer
      */
     public function getReportParamFormResponseTransfer(?ResponseInterface $response): BladeFxGetReportParamFormResponseTransfer;
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxGetReportPreviewResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer
      */
     public function getReportPreviewResponseTransfer(?ResponseInterface $response): BladeFxGetReportPreviewResponseTransfer;
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxSetFavoriteReportResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer
      */
     public function getSetFavoriteReportResponseTransfer(?ResponseInterface $response): BladeFxSetFavoriteReportResponseTransfer;
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxCreateOrUpdateUserResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer
      */
     public function getCreateOrUpdateUserOnBladeFxResponseTransfer(?ResponseInterface $response): BladeFxCreateOrUpdateUserResponseTransfer;
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxUpdatePasswordResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer
      */
     public function getUpdatePasswordOnBladeFxRequest(?ResponseInterface $response): BladeFxUpdatePasswordResponseTransfer;
 
     /**
-     * @param ResponseInterface|null $response
+     * @param \Psr\Http\Message\ResponseInterface|null $response
      * @param string $format
-     * @return BladeFxGetReportByFormatResponseTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer
      */
     public function getReportByFormatResponseTransfer(?ResponseInterface $response, string $format): BladeFxGetReportByFormatResponseTransfer;
 }

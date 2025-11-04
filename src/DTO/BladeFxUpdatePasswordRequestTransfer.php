@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
+use InvalidArgumentException;
+
 class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
 {
     /**
@@ -47,9 +49,10 @@ class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
 
     /**
      * @param int|null $bladeFxUserId
+     *
      * @return $this
      */
-    public function setBladeFxUserId(?int $bladeFxUserId): self
+    public function setBladeFxUserId(?int $bladeFxUserId)
     {
         $this->bladeFxUserId = $bladeFxUserId;
         $this->modifiedProperties[static::BLADE_FX_USER_ID] = true;
@@ -60,7 +63,7 @@ class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireBladeFxUserId(): self
+    public function requireBladeFxUserId()
     {
         $this->assertPropertyIsSet(static::BLADE_FX_USER_ID);
 
@@ -77,9 +80,10 @@ class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $password
+     *
      * @return $this
      */
-    public function setPassword(?string $password): self
+    public function setPassword(?string $password)
     {
         $this->password = $password;
         $this->modifiedProperties[static::PASSWORD] = true;
@@ -90,7 +94,7 @@ class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requirePassword(): self
+    public function requirePassword()
     {
         $this->assertPropertyIsSet(static::PASSWORD);
 
@@ -112,9 +116,12 @@ class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
     /**
      * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
+     *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
-    public function fromArray(array $data, bool $ignoreMissingProperties = false): static
+    public function fromArray(array $data, bool $ignoreMissingProperties = false)
     {
         foreach ($data as $property => $value) {
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
@@ -124,11 +131,11 @@ class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
                 case 'password':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
-                    break;
 
+                    break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }

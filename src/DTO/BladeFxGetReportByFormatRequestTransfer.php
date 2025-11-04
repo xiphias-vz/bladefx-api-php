@@ -62,7 +62,7 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
     protected ?string $fileFormat = null;
 
     /**
-     * @var BladeFxParameterListTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxParameterListTransfer|null
      */
     protected ?BladeFxParameterListTransfer $params = null;
 
@@ -76,18 +76,20 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $returnType
+     *
      * @return $this
      */
-    public function setReturnType(?string $returnType = null): self
+    public function setReturnType(?string $returnType = null)
     {
         $this->returnType = $returnType;
+
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function requireReturnType(): self
+    public function requireReturnType()
     {
         $this->assertPropertyIsSet(static::RETURN_TYPE);
 
@@ -104,9 +106,10 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
 
     /**
      * @param int|null $repId
+     *
      * @return $this
      */
-    public function setRepId(?int $repId): self
+    public function setRepId(?int $repId)
     {
         $this->repId = $repId;
 
@@ -116,7 +119,7 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireRepId(): self
+    public function requireRepId()
     {
         $this->assertPropertyIsSet(self::REP_ID);
 
@@ -133,18 +136,20 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
 
     /**
      * @param int|null $layoutId
+     *
      * @return $this
      */
-    public function setLayoutId(?int $layoutId): self
+    public function setLayoutId(?int $layoutId)
     {
         $this->layoutId = $layoutId;
+
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function requireLayoutId(): self
+    public function requireLayoutId()
     {
         $this->assertPropertyIsSet(self::LAYOUT_ID);
 
@@ -161,18 +166,20 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $imageFormat
+     *
      * @return $this
      */
-    public function setImageFormat(?string $imageFormat = null): self
+    public function setImageFormat(?string $imageFormat = null)
     {
         $this->imageFormat = $imageFormat;
+
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function requireImageFormat(): self
+    public function requireImageFormat()
     {
         $this->assertPropertyIsSet(static::IMAGE_FORMAT);
 
@@ -189,18 +196,20 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $fileFormat
+     *
      * @return $this
      */
-    public function setFileFormat(?string $fileFormat = null): self
+    public function setFileFormat(?string $fileFormat = null)
     {
         $this->fileFormat = $fileFormat;
+
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function requireFileFormat(): self
+    public function requireFileFormat()
     {
         $this->assertPropertyIsSet(static::FILE_FORMAT);
 
@@ -208,7 +217,7 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return BladeFxParameterListTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxParameterListTransfer|null
      */
     public function getParams(): ?BladeFxParameterListTransfer
     {
@@ -216,19 +225,21 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param BladeFxParameterListTransfer|null $params
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxParameterListTransfer|null $params
+     *
      * @return $this
      */
-    public function setParams(?BladeFxParameterListTransfer $params = null): self
+    public function setParams(?BladeFxParameterListTransfer $params = null)
     {
         $this->params = $params;
+
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function requireParams(): self
+    public function requireParams()
     {
         $this->assertPropertyIsSet(static::PARAMS);
 

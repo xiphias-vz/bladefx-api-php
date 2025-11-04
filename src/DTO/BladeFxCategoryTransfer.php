@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
+use InvalidArgumentException;
+
 class BladeFxCategoryTransfer extends AbstractTransfer
 {
     /**
@@ -35,6 +37,7 @@ class BladeFxCategoryTransfer extends AbstractTransfer
      * @var string|null
      */
     protected ?string $catDescription = null;
+
     /**
      * @var int|null
      */
@@ -79,7 +82,7 @@ class BladeFxCategoryTransfer extends AbstractTransfer
        'dCreated' => 'dCreated',
        'dChanged' => 'dChanged',
        'reportCount' => 'reportCount',
-       'isActiveTree' => 'isActiveTree'
+       'isActiveTree' => 'isActiveTree',
     ];
 
     /**
@@ -92,9 +95,10 @@ class BladeFxCategoryTransfer extends AbstractTransfer
 
     /**
      * @param int|null $catId
+     *
      * @return $this
      */
-    public function setCatId(?int $catId = null): self
+    public function setCatId(?int $catId = null)
     {
         $this->catId = $catId;
         $this->modifiedProperties[self::CAT_ID] = true;
@@ -122,9 +126,10 @@ class BladeFxCategoryTransfer extends AbstractTransfer
 
     /**
      * @param int|null $companyId
+     *
      * @return $this
      */
-    public function setCompanyId(?int $companyId = null): self
+    public function setCompanyId(?int $companyId = null)
     {
         $this->companyId = $companyId;
 
@@ -141,11 +146,13 @@ class BladeFxCategoryTransfer extends AbstractTransfer
 
     /**
      * @param int|null $catParentId
+     *
      * @return $this
      */
-    public function setCatParentId(?int $catParentId = null): self
+    public function setCatParentId(?int $catParentId = null)
     {
         $this->catParentId = $catParentId;
+
         return $this;
     }
 
@@ -159,11 +166,13 @@ class BladeFxCategoryTransfer extends AbstractTransfer
 
     /**
      * @param string|null $catName
+     *
      * @return $this
      */
-    public function setCatName(?string $catName = null): self
+    public function setCatName(?string $catName = null)
     {
         $this->catName = $catName;
+
         return $this;
     }
 
@@ -177,11 +186,13 @@ class BladeFxCategoryTransfer extends AbstractTransfer
 
     /**
      * @param string|null $catDescription
+     *
      * @return $this
      */
-    public function setCatDescription(?string $catDescription = null): self
+    public function setCatDescription(?string $catDescription = null)
     {
         $this->catDescription = $catDescription;
+
         return $this;
     }
 
@@ -195,11 +206,13 @@ class BladeFxCategoryTransfer extends AbstractTransfer
 
     /**
      * @param int|null $catSort
+     *
      * @return $this
      */
-    public function setCatSort(?int $catSort = null): self
+    public function setCatSort(?int $catSort = null)
     {
         $this->catSort = $catSort;
+
         return $this;
     }
 
@@ -213,11 +226,13 @@ class BladeFxCategoryTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $catActive
+     *
      * @return $this
      */
-    public function setCatActive(?bool $catActive = null): self
+    public function setCatActive(?bool $catActive = null)
     {
         $this->catActive = $catActive;
+
         return $this;
     }
 
@@ -231,11 +246,13 @@ class BladeFxCategoryTransfer extends AbstractTransfer
 
     /**
      * @param string|null $dCreated
+     *
      * @return $this
      */
-    public function setDCreated(?string $dCreated = null): self
+    public function setDCreated(?string $dCreated = null)
     {
         $this->dCreated = $dCreated;
+
         return $this;
     }
 
@@ -249,11 +266,13 @@ class BladeFxCategoryTransfer extends AbstractTransfer
 
     /**
      * @param string|null $dChanged
+     *
      * @return $this
      */
-    public function setDChanged(?string $dChanged = null): self
+    public function setDChanged(?string $dChanged = null)
     {
         $this->dChanged = $dChanged;
+
         return $this;
     }
 
@@ -267,11 +286,13 @@ class BladeFxCategoryTransfer extends AbstractTransfer
 
     /**
      * @param int|null $reportCount
+     *
      * @return $this
      */
-    public function setReportCount(?int $reportCount = null): self
+    public function setReportCount(?int $reportCount = null)
     {
         $this->reportCount = $reportCount;
+
         return $this;
     }
 
@@ -285,11 +306,13 @@ class BladeFxCategoryTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isActiveTree
+     *
      * @return $this
      */
-    public function setIsActiveTree(?bool $isActiveTree = null): self
+    public function setIsActiveTree(?bool $isActiveTree = null)
     {
         $this->isActiveTree = $isActiveTree;
+
         return $this;
     }
 
@@ -299,26 +322,29 @@ class BladeFxCategoryTransfer extends AbstractTransfer
     public function toArray(): array
     {
         return [
-            'catId'             => $this->getCatId(),
-            'companyId'         => $this->getCompanyId(),
-            'catParentId'       => $this->getCatParentId(),
-            'catName'           => $this->getCatName(),
-            'catDescription'    => $this->getCatDescription(),
-            'catSort'           => $this->getCatSort(),
-            'catActive'         => $this->getCatActive(),
-            'dCreated'          => $this->getDCreated(),
-            'dChanged'          => $this->getDChanged(),
-            'reportCount'       => $this->getReportCount(),
-            'isActiveTree'      => $this->getIsActiveTree(),
+            'catId' => $this->getCatId(),
+            'companyId' => $this->getCompanyId(),
+            'catParentId' => $this->getCatParentId(),
+            'catName' => $this->getCatName(),
+            'catDescription' => $this->getCatDescription(),
+            'catSort' => $this->getCatSort(),
+            'catActive' => $this->getCatActive(),
+            'dCreated' => $this->getDCreated(),
+            'dChanged' => $this->getDChanged(),
+            'reportCount' => $this->getReportCount(),
+            'isActiveTree' => $this->getIsActiveTree(),
         ];
     }
 
     /**
      * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
+     *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
-    public function fromArray(array $data, bool $ignoreMissingProperties = false): static
+    public function fromArray(array $data, bool $ignoreMissingProperties = false)
     {
         foreach ($data as $property => $value) {
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
@@ -341,7 +367,7 @@ class BladeFxCategoryTransfer extends AbstractTransfer
                     break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }

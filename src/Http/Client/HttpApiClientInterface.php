@@ -10,9 +10,10 @@ use Psr\Http\Message\ResponseInterface;
 interface HttpApiClientInterface
 {
     /**
-     * @param RequestInterface $request
+     * @param \Psr\Http\Message\RequestInterface $request
      * @param array<mixed> $options
-     * @return ResponseInterface
+     *
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function sendRequest(RequestInterface $request, array $options = []): ResponseInterface;
 }

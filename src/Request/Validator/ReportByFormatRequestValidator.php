@@ -19,16 +19,17 @@ class ReportByFormatRequestValidator extends AbstractRequestValidator
     }
 
     /**
-     * @param AbstractTransfer|BladeFxGetReportByFormatRequestTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer|\Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer $requestTransfer
+     *
      * @return bool
      */
     protected function validateRequest(AbstractTransfer|BladeFxGetReportByFormatRequestTransfer $requestTransfer): bool
     {
         try {
-            /**
-             * @var BladeFxGetReportByFormatRequestTransfer $requestTransfer
-             */
-            $requestTransfer
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer $bladeFxGetReportByFormatRequestTransfer */
+            $bladeFxGetReportByFormatRequestTransfer = $requestTransfer;
+
+            $bladeFxGetReportByFormatRequestTransfer
                 ->requireAccessToken()
                 ->requireRepId()
                 ->requireReturnType();

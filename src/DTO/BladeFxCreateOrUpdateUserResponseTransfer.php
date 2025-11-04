@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
-use Xiphias\BladeFxApi\DTO;
+use InvalidArgumentException;
 
 class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
 {
@@ -137,10 +137,10 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?int $statusCode
+     * @param int|null $statusCode
      * @return $this
      */
-    public function setStatusCode(?int $statusCode): self
+    public function setStatusCode(?int $statusCode)
     {
         $this->statusCode = $statusCode;
         $this->modifiedProperties[static::STATUS_CODE] = true;
@@ -151,7 +151,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireStatusCode(): self
+    public function requireStatusCode()
     {
         $this->assertPropertyIsSet(static::STATUS_CODE);
 
@@ -168,9 +168,10 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $success
+     *
      * @return $this
      */
-    public function setSuccess(?bool $success): self
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
         $this->modifiedProperties[static::SUCCESS] = true;
@@ -181,7 +182,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireSuccess(): self
+    public function requireSuccess()
     {
         $this->assertPropertyIsSet(static::SUCCESS);
 
@@ -198,9 +199,10 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $rMessage
+     *
      * @return $this
      */
-    public function setRMessage(?string $rMessage): self
+    public function setRMessage(?string $rMessage)
     {
         $this->rMessage = $rMessage;
         $this->modifiedProperties[static::R_MESSAGE] = true;
@@ -211,7 +213,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireRMessage(): self
+    public function requireRMessage()
     {
         $this->assertPropertyIsSet(static::R_MESSAGE);
 
@@ -228,9 +230,10 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $causer
+     *
      * @return $this
      */
-    public function setCauser(?string $causer): self
+    public function setCauser(?string $causer)
     {
         $this->causer = $causer;
         $this->modifiedProperties[static::CAUSER] = true;
@@ -241,7 +244,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireCauser(): self
+    public function requireCauser()
     {
         $this->assertPropertyIsSet(static::CAUSER);
 
@@ -257,10 +260,10 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?int $id
+     * @param int|null $id
      * @return $this
      */
-    public function setId(?int $id): self
+    public function setId(?int $id)
     {
         $this->id = $id;
         $this->modifiedProperties[static::ID] = true;
@@ -271,7 +274,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireId(): self
+    public function requireId()
     {
         $this->assertPropertyIsSet(static::ID);
 
@@ -288,9 +291,10 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $areYouSure
+     *
      * @return $this
      */
-    public function setAreYouSure(?bool $areYouSure): self
+    public function setAreYouSure(?bool $areYouSure)
     {
         $this->areYouSure = $areYouSure;
         $this->modifiedProperties[static::ARE_YOU_SURE] = true;
@@ -301,7 +305,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireAreYouSure(): self
+    public function requireAreYouSure()
     {
         $this->assertPropertyIsSet(static::ARE_YOU_SURE);
 
@@ -318,9 +322,10 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $optionValue
+     *
      * @return $this
      */
-    public function setOptionValue(?string $optionValue): self
+    public function setOptionValue(?string $optionValue)
     {
         $this->optionValue = $optionValue;
         $this->modifiedProperties[static::OPTION_VALUE] = true;
@@ -331,7 +336,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireOptionValue(): self
+    public function requireOptionValue()
     {
         $this->assertPropertyIsSet(static::OPTION_VALUE);
 
@@ -348,9 +353,10 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $licenceIssue
+     *
      * @return $this
      */
-    public function setLicenceIssue(?bool $licenceIssue): self
+    public function setLicenceIssue(?bool $licenceIssue)
     {
         $this->licenceIssue = $licenceIssue;
         $this->modifiedProperties[static::LICENCE_ISSUE] = true;
@@ -361,7 +367,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireLicenceIssue(): self
+    public function requireLicenceIssue()
     {
         $this->assertPropertyIsSet(static::LICENCE_ISSUE);
 
@@ -378,9 +384,10 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $errorMessage
+     *
      * @return $this
      */
-    public function setErrorMessage(?string $errorMessage): self
+    public function setErrorMessage(?string $errorMessage)
     {
         $this->errorMessage = $errorMessage;
         $this->modifiedProperties[static::ERROR_MESSAGE] = true;
@@ -391,7 +398,7 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireErrorMessage(): self
+    public function requireErrorMessage()
     {
         $this->assertPropertyIsSet(static::ERROR_MESSAGE);
 
@@ -419,9 +426,12 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
     /**
      * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
+     *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
-    public function fromArray(array $data, bool $ignoreMissingProperties = false): static
+    public function fromArray(array $data, bool $ignoreMissingProperties = false)
     {
         foreach ($data as $property => $value) {
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
@@ -438,11 +448,11 @@ class BladeFxCreateOrUpdateUserResponseTransfer extends AbstractTransfer
                 case 'errorMessage':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
-                    break;
 
+                    break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }

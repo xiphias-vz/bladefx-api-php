@@ -19,9 +19,6 @@ class FileTokenStorage implements TokenStorageInterface
         file_put_contents($this->filePath, json_encode($token->toArray(), JSON_PRETTY_PRINT));
     }
 
-    /**
-     * @throws \DateMalformedStringException
-     */
     public function load(): ?BladeFxTokenTransfer
     {
         if (!file_exists($this->filePath)) {

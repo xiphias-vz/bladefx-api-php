@@ -19,14 +19,17 @@ class ReportsListResponseValidator extends AbstractResponseValidator
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
      * @return bool
      */
     protected function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
-            /** @var BladeFxGetReportsListResponseTransfer $responseTransfer */
-            $reportsList = $responseTransfer->getReportsList();
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer $bladeFxGetReportsListResponseTransfer */
+            $bladeFxGetReportsListResponseTransfer = $responseTransfer;
+
+            $reportsList = $bladeFxGetReportsListResponseTransfer->getReportsList();
             foreach ($reportsList as $report) {
                 $report
                     ->requireRepId()

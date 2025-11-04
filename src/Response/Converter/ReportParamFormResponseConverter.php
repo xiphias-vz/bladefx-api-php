@@ -11,9 +11,10 @@ use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 class ReportParamFormResponseConverter extends AbstractResponseConverter
 {
     /**
-     * @param BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
      * @param array<mixed> $responseData
-     * @return BladeFxApiResponseConversionResultTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer
      */
     protected function expandConversionResponseTransfer(
         BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer,
@@ -23,8 +24,9 @@ class ReportParamFormResponseConverter extends AbstractResponseConverter
     }
 
     /**
-     * @param ResponseInterface $response
-     * @return BladeFxApiResponseConversionResultTransfer
+     * @param \Psr\Http\Message\ResponseInterface $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer
      */
     public function convert(ResponseInterface $response): BladeFxApiResponseConversionResultTransfer
     {

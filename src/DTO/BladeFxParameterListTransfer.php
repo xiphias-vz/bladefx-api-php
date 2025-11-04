@@ -12,12 +12,12 @@ class BladeFxParameterListTransfer extends AbstractTransfer
     public const PARAMETER_LIST = 'parameterList';
 
     /**
-     * @var array<BladeFxParameterTransfer>|null
+     * @var array<\Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer>|null
      */
     protected ?array $parameterList = [];
 
     /**
-     * @return array<BladeFxParameterTransfer>|null
+     * @return array<\Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer>|null
      */
     public function getParameterList(): ?array
     {
@@ -25,10 +25,11 @@ class BladeFxParameterListTransfer extends AbstractTransfer
     }
 
     /**
-     * @param array<BladeFxParameterTransfer>|null $parameterList
+     * @param array<\Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer>|null $parameterList
+     *
      * @return $this
      */
-    public function setParameterList(?array $parameterList): self
+    public function setParameterList(?array $parameterList)
     {
         $this->parameterList = $parameterList;
 
@@ -37,9 +38,10 @@ class BladeFxParameterListTransfer extends AbstractTransfer
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer $bladeFxParameter
+     *
      * @return $this
      */
-    public function addBladeFxParameter(BladeFxParameterTransfer $bladeFxParameter): self
+    public function addBladeFxParameter(BladeFxParameterTransfer $bladeFxParameter)
     {
         $this->parameterList[] = $bladeFxParameter;
         $this->modifiedProperties[self::PARAMETER_LIST] = true;

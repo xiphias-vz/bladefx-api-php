@@ -26,11 +26,13 @@ class BladeFxGetCategoriesListRequestTransfer extends AbstractTransfer
 
     /**
      * @param int|null $catId
+     *
      * @return $this
      */
-    public function setCatId(?int $catId): self
+    public function setCatId(?int $catId)
     {
         $this->catId = $catId;
+
         return $this;
     }
 
@@ -44,19 +46,20 @@ class BladeFxGetCategoriesListRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $returnType
+     *
      * @return $this
      */
-    public function setReturnType(?string $returnType = null): self
+    public function setReturnType(?string $returnType = null)
     {
         $this->returnType = $returnType;
+
         return $this;
     }
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requireReturnType(): self
+    public function requireReturnType()
     {
         $this->assertPropertyIsSet('returnType');
 

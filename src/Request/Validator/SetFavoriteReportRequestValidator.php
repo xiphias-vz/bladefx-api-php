@@ -19,16 +19,17 @@ class SetFavoriteReportRequestValidator extends AbstractRequestValidator
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return bool
      */
     protected function validateRequest(AbstractTransfer $requestTransfer): bool
     {
         try {
-            /**
-             * @var BladeFxSetFavoriteReportRequestTransfer $requestTransfer
-             */
-            $requestTransfer
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer */
+            $bladeFxSetFavoriteReportRequestTransfer = $requestTransfer;
+
+            $bladeFxSetFavoriteReportRequestTransfer
                 ->requireAccessToken()
                 ->requireRepId()
                 ->requireUserId();

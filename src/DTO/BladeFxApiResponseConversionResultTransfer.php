@@ -7,52 +7,52 @@ namespace Xiphias\BladeFxApi\DTO;
 class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
 {
     /**
-     * @var BladeFxAuthenticationResponseTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer|null
      */
     private ?BladeFxAuthenticationResponseTransfer $bladeFxAuthenticationResponse = null;
 
     /**
-     * @var BladeFxCategoriesListResponseTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer|null
      */
     private ?BladeFxCategoriesListResponseTransfer $bladeFxCategoriesListResponse = null;
 
     /**
-     * @var BladeFxGetReportsListResponseTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer|null
      */
     private ?BladeFxGetReportsListResponseTransfer $bladeFxReportsListResponse = null;
 
     /**
-     * @var BladeFxGetReportParamFormResponseTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer|null
      */
     private ?BladeFxGetReportParamFormResponseTransfer $bladeFxReportParamFormResponse = null;
 
     /**
-     * @var BladeFxGetReportPreviewResponseTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer|null
      */
     private ?BladeFxGetReportPreviewResponseTransfer $bladeFxReportPreviewResponse = null;
 
     /**
-     * @var BladeFxSetFavoriteReportResponseTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer|null
      */
     private ?BladeFxSetFavoriteReportResponseTransfer $bladeFxSetFavoriteReportResponse = null;
 
     /**
-     * @var BladeFxCreateOrUpdateUserResponseTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer|null
      */
     private ?BladeFxCreateOrUpdateUserResponseTransfer $bladeFxCreateOrUpdateUserResponse = null;
 
     /**
-     * @var BladeFxUpdatePasswordResponseTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer|null
      */
     private ?BladeFxUpdatePasswordResponseTransfer $bladeFxUpdatePasswordResponse = null;
 
     /**
-     * @var BladeFxGetReportByFormatResponseTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer|null
      */
     private ?BladeFxGetReportByFormatResponseTransfer $bladeFxGetReportByFormatResponse = null;
 
     /**
-     * @return BladeFxAuthenticationResponseTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer|null
      */
     public function getBladeFxAuthenticationResponse(): ?BladeFxAuthenticationResponseTransfer
     {
@@ -60,10 +60,11 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @param BladeFxAuthenticationResponseTransfer|null $bladeFxAuthenticationResponse
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer|null $bladeFxAuthenticationResponse
+     *
      * @return $this
      */
-    public function setBladeFxAuthenticationResponse(?BladeFxAuthenticationResponseTransfer $bladeFxAuthenticationResponse): self
+    public function setBladeFxAuthenticationResponse(?BladeFxAuthenticationResponseTransfer $bladeFxAuthenticationResponse)
     {
         $this->bladeFxAuthenticationResponse = $bladeFxAuthenticationResponse;
 
@@ -71,7 +72,7 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @return BladeFxCategoriesListResponseTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer|null
      */
     public function getBladeFXCategoriesListResponse(): ?BladeFxCategoriesListResponseTransfer
     {
@@ -79,10 +80,11 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @param BladeFxCategoriesListResponseTransfer|null $bladeFxCategoriesListResponse
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer|null $bladeFxCategoriesListResponse
+     *
      * @return $this
      */
-    public function setBladeFXCategoriesListResponse(?BladeFxCategoriesListResponseTransfer $bladeFxCategoriesListResponse): self
+    public function setBladeFXCategoriesListResponse(?BladeFxCategoriesListResponseTransfer $bladeFxCategoriesListResponse)
     {
         $this->bladeFxCategoriesListResponse = $bladeFxCategoriesListResponse;
 
@@ -90,7 +92,7 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @return BladeFxGetReportsListResponseTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer|null
      */
     public function getBladeFXReportsListResponse(): ?BladeFxGetReportsListResponseTransfer
     {
@@ -98,10 +100,11 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @param BladeFxGetReportsListResponseTransfer|null $bladeFxReportsListResponse
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer|null $bladeFxReportsListResponse
+     *
      * @return $this
      */
-    public function setBladeFXReportsListResponse(?BladeFxGetReportsListResponseTransfer $bladeFxReportsListResponse): self
+    public function setBladeFXReportsListResponse(?BladeFxGetReportsListResponseTransfer $bladeFxReportsListResponse)
     {
         $this->bladeFxReportsListResponse = $bladeFxReportsListResponse;
 
@@ -109,7 +112,7 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @return BladeFxGetReportParamFormResponseTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer|null
      */
     public function getBladeFxReportParamFormResponse(): ?BladeFxGetReportParamFormResponseTransfer
     {
@@ -117,17 +120,19 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @param BladeFxGetReportParamFormResponseTransfer|null $bladeFxReportParamFormResponse
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer|null $bladeFxReportParamFormResponse
+     *
      * @return $this
      */
-    public function setBladeFxReportParamFormResponse(?BladeFxGetReportParamFormResponseTransfer $bladeFxReportParamFormResponse): self
+    public function setBladeFxReportParamFormResponse(?BladeFxGetReportParamFormResponseTransfer $bladeFxReportParamFormResponse)
     {
         $this->bladeFxReportParamFormResponse = $bladeFxReportParamFormResponse;
+
         return $this;
     }
 
     /**
-     * @return BladeFxGetReportPreviewResponseTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer|null
      */
     public function getBladeFxReportPreviewResponse(): ?BladeFxGetReportPreviewResponseTransfer
     {
@@ -135,17 +140,19 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @param BladeFxGetReportPreviewResponseTransfer|null $bladeFxReportPreviewResponse
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer|null $bladeFxReportPreviewResponse
+     *
      * @return $this
      */
-    public function setBladeFxReportPreviewResponse(?BladeFxGetReportPreviewResponseTransfer $bladeFxReportPreviewResponse): self
+    public function setBladeFxReportPreviewResponse(?BladeFxGetReportPreviewResponseTransfer $bladeFxReportPreviewResponse)
     {
         $this->bladeFxReportPreviewResponse = $bladeFxReportPreviewResponse;
+
         return $this;
     }
 
     /**
-     * @return BladeFxSetFavoriteReportResponseTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer|null
      */
     public function getBladeFxSetFavoriteReportResponse(): ?BladeFxSetFavoriteReportResponseTransfer
     {
@@ -153,17 +160,19 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @param BladeFxSetFavoriteReportResponseTransfer|null $bladeFxSetFavoriteReportResponse
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer|null $bladeFxSetFavoriteReportResponse
+     *
      * @return $this
      */
-    public function setBladeFxSetFavoriteReportResponse(?BladeFxSetFavoriteReportResponseTransfer $bladeFxSetFavoriteReportResponse): self
+    public function setBladeFxSetFavoriteReportResponse(?BladeFxSetFavoriteReportResponseTransfer $bladeFxSetFavoriteReportResponse)
     {
         $this->bladeFxSetFavoriteReportResponse = $bladeFxSetFavoriteReportResponse;
+
         return $this;
     }
 
     /**
-     * @return BladeFxCreateOrUpdateUserResponseTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer|null
      */
     public function getBladeFxCreateOrUpdateUserResponse(): ?BladeFxCreateOrUpdateUserResponseTransfer
     {
@@ -171,17 +180,19 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @param BladeFxCreateOrUpdateUserResponseTransfer|null $bladeFxCreateOrUpdateUserResponse
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer|null $bladeFxCreateOrUpdateUserResponse
+     *
      * @return $this
      */
-    public function setBladeFxCreateOrUpdateUserResponse(?BladeFxCreateOrUpdateUserResponseTransfer $bladeFxCreateOrUpdateUserResponse): self
+    public function setBladeFxCreateOrUpdateUserResponse(?BladeFxCreateOrUpdateUserResponseTransfer $bladeFxCreateOrUpdateUserResponse)
     {
         $this->bladeFxCreateOrUpdateUserResponse = $bladeFxCreateOrUpdateUserResponse;
+
         return $this;
     }
 
     /**
-     * @return BladeFxUpdatePasswordResponseTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer|null
      */
     public function getBladeFxUpdatePasswordResponse(): ?BladeFxUpdatePasswordResponseTransfer
     {
@@ -189,17 +200,19 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @param BladeFxUpdatePasswordResponseTransfer|null $bladeFxUpdatePasswordResponse
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer|null $bladeFxUpdatePasswordResponse
+     *
      * @return $this
      */
-    public function setBladeFxUpdatePasswordResponse(?BladeFxUpdatePasswordResponseTransfer $bladeFxUpdatePasswordResponse): self
+    public function setBladeFxUpdatePasswordResponse(?BladeFxUpdatePasswordResponseTransfer $bladeFxUpdatePasswordResponse)
     {
         $this->bladeFxUpdatePasswordResponse = $bladeFxUpdatePasswordResponse;
+
         return $this;
     }
 
     /**
-     * @return BladeFxGetReportByFormatResponseTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer|null
      */
     public function getBladeFxGetReportByFormatResponse(): ?BladeFxGetReportByFormatResponseTransfer
     {
@@ -207,12 +220,14 @@ class BladeFxApiResponseConversionResultTransfer extends AbstractTransfer
     }
 
     /**
-     * @param BladeFxGetReportByFormatResponseTransfer|null $bladeFxGetReportByFormatResponse
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer|null $bladeFxGetReportByFormatResponse
+     *
      * @return $this
      */
-    public function setBladeFxGetReportByFormatResponse(?BladeFxGetReportByFormatResponseTransfer $bladeFxGetReportByFormatResponse): self
+    public function setBladeFxGetReportByFormatResponse(?BladeFxGetReportByFormatResponseTransfer $bladeFxGetReportByFormatResponse)
     {
         $this->bladeFxGetReportByFormatResponse = $bladeFxGetReportByFormatResponse;
+
         return $this;
     }
 }

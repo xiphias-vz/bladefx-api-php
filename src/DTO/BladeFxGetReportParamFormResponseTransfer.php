@@ -21,9 +21,10 @@ class BladeFxGetReportParamFormResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $iframeUrl
+     *
      * @return $this
      */
-    public function setIframeUrl(?string $iframeUrl): self
+    public function setIframeUrl(?string $iframeUrl)
     {
         $this->iframeUrl = $iframeUrl;
         $this->modifiedProperties['iframeUrl'] = true;
@@ -34,7 +35,7 @@ class BladeFxGetReportParamFormResponseTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireIframeUrl(): self
+    public function requireIframeUrl()
     {
         $this->assertPropertyIsSet('iframeUrl');
 

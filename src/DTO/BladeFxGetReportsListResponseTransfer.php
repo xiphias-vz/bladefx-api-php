@@ -12,7 +12,7 @@ class BladeFxGetReportsListResponseTransfer extends AbstractTransfer
     protected ?int $statusCode = 0;
 
     /**
-     * @var array<BladeFxReportTransfer>|null
+     * @var array<\Xiphias\BladeFxApi\DTO\BladeFxReportTransfer>|null
      */
     protected ?array $reportsList = [];
 
@@ -26,9 +26,10 @@ class BladeFxGetReportsListResponseTransfer extends AbstractTransfer
 
     /**
      * @param int|null $statusCode
+     *
      * @return $this
      */
-    public function setStatusCode(?int $statusCode): self
+    public function setStatusCode(?int $statusCode)
     {
         $this->statusCode = $statusCode;
 
@@ -36,7 +37,7 @@ class BladeFxGetReportsListResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @return array<BladeFxReportTransfer>|null
+     * @return array<\Xiphias\BladeFxApi\DTO\BladeFxReportTransfer>|null
      */
     public function getReportsList(): ?array
     {
@@ -44,10 +45,11 @@ class BladeFxGetReportsListResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param array<BladeFxReportTransfer>|null $reportsList
+     * @param array<\Xiphias\BladeFxApi\DTO\BladeFxReportTransfer>|null $reportsList
+     *
      * @return $this
      */
-    public function setReportsList(?array $reportsList): self
+    public function setReportsList(?array $reportsList)
     {
         $this->reportsList = $reportsList;
 

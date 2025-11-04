@@ -19,14 +19,17 @@ class AuthenticationResponseValidator extends AbstractResponseValidator
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
      * @return bool
      */
     protected function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
-            /** @var BladeFxAuthenticationResponseTransfer $responseTransfer */
-            $responseTransfer
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer $bladeFxAuthenticationResponseTransfer */
+            $bladeFxAuthenticationResponseTransfer = $responseTransfer;
+
+            $bladeFxAuthenticationResponseTransfer
                 ->requireAccessToken()
                 ->requireUsername()
                 ->requireEmail()

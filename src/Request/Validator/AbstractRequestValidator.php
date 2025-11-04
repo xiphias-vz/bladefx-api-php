@@ -22,12 +22,12 @@ abstract class AbstractRequestValidator implements RequestValidatorInterface
     protected const LOGGER_TYPE_TRANSFER = 'transfer';
 
     /**
-     * @var LoggerInterface
+     * @var \Psr\Log\LoggerInterface
      */
     private LoggerInterface $logger;
 
     /**
-     * @param LoggerInterface $logger
+     * @param \Psr\Log\LoggerInterface $logger
      */
     public function __construct(LoggerInterface $logger)
     {
@@ -40,13 +40,17 @@ abstract class AbstractRequestValidator implements RequestValidatorInterface
     abstract protected function getRequestTransferClass(): string;
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return bool
      */
     abstract protected function validateRequest(AbstractTransfer $requestTransfer): bool;
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
+     * @throws \Xiphias\BladeFxApi\Exception\ReportsRequestException
+     *
      * @return bool
      */
     public function isRequestValid(AbstractTransfer $requestTransfer): bool
@@ -62,8 +66,9 @@ abstract class AbstractRequestValidator implements RequestValidatorInterface
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
      * @param string $className
+     *
      * @return bool
      */
     private function isRequestTransferClassCorrect(AbstractTransfer $requestTransfer, string $className): bool
@@ -72,7 +77,8 @@ abstract class AbstractRequestValidator implements RequestValidatorInterface
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return void
      */
     private function logError(AbstractTransfer $requestTransfer): void
@@ -95,8 +101,9 @@ abstract class AbstractRequestValidator implements RequestValidatorInterface
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
-     * @return AbstractTransfer[]
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
+     * @return array<\Xiphias\BladeFxApi\DTO\AbstractTransfer>
      */
     private function createTransferLogger(AbstractTransfer $requestTransfer): array
     {

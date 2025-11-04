@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
+use InvalidArgumentException;
+
 class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
 {
     /**
@@ -48,9 +50,10 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
 
     /**
      * @param string|null $fieldName
+     *
      * @return $this
      */
-    public function setFieldName(?string $fieldName = null): self
+    public function setFieldName(?string $fieldName = null)
     {
         $this->fieldName = $fieldName;
         $this->modifiedProperties[static::FIELD_NAME] = true;
@@ -61,7 +64,7 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireFieldName(): self
+    public function requireFieldName()
     {
         $this->assertPropertyIsSet(static::FIELD_NAME);
 
@@ -78,9 +81,10 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
 
     /**
      * @param string|null $fieldValue
+     *
      * @return $this
      */
-    public function setFieldValue(?string $fieldValue = null): self
+    public function setFieldValue(?string $fieldValue = null)
     {
         $this->fieldValue = $fieldValue;
         $this->modifiedProperties[static::FIELD_VALUE] = true;
@@ -91,7 +95,7 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireFieldValue(): self
+    public function requireFieldValue()
     {
         $this->assertPropertyIsSet(static::FIELD_VALUE);
 
@@ -112,9 +116,12 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
     /**
      * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
+     *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
-    public function fromArray(array $data, bool $ignoreMissingProperties = false): static
+    public function fromArray(array $data, bool $ignoreMissingProperties = false)
     {
         foreach ($data as $property => $value) {
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
@@ -124,11 +131,11 @@ class BladeFxCreateOrUpdateUserCustomFieldsTransfer extends AbstractTransfer
                 case 'fieldValue':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
-                    break;
 
+                    break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }

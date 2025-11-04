@@ -19,16 +19,17 @@ class SetFavoriteReportResponseValidator extends AbstractResponseValidator
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
      * @return bool
      */
     protected function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
-            /**
-             * @var BladeFxSetFavoriteReportResponseTransfer $responseTransfer
-             */
-            $responseTransfer->requireRMessage();
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer $bladeFxSetFavoriteReportResponseTransfer */
+            $bladeFxSetFavoriteReportResponseTransfer = $responseTransfer;
+
+            $bladeFxSetFavoriteReportResponseTransfer->requireRMessage();
         } catch (TransferPropertyRequiredException $ex) {
             return false;
         }

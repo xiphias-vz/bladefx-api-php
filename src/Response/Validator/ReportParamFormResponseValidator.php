@@ -19,14 +19,17 @@ class ReportParamFormResponseValidator extends AbstractResponseValidator
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
      * @return bool
      */
     public function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
-            /** @var BladeFxGetReportParamFormResponseTransfer $responseTransfer */
-            $responseTransfer->requireIframeUrl();
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer $bladeFxGetReportParamFormResponseTransfer */
+            $bladeFxGetReportParamFormResponseTransfer = $responseTransfer;
+
+            $bladeFxGetReportParamFormResponseTransfer->requireIframeUrl();
         } catch (TransferPropertyRequiredException $ex) {
             return false;
         }
