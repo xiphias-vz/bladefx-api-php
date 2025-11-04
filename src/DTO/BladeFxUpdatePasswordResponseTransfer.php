@@ -125,6 +125,7 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
 
     /**
      * @param int|null $statusCode
+     *
      * @return $this
      */
     public function setStatusCode(?int $statusCode)
@@ -248,6 +249,7 @@ class BladeFxUpdatePasswordResponseTransfer extends AbstractTransfer
 
     /**
      * @param int|null $id
+     *
      * @return $this
      */
     public function setId(?int $id)
