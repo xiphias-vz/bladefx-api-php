@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Request\Builder;
 
-use Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer;
 
 class SetFavoriteReportRequestBuilder extends AbstractRequestBuilder
 {
@@ -21,20 +21,22 @@ class SetFavoriteReportRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return array<string, string>
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxSetFavoriteReportRequestTransfer $requestTransfer */
+        /** @var \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer $requestTransfer */
         return $this->addAuthHeader($requestTransfer->getAccessToken());
     }
 
     /**
      * @param string $resource
-     * @param AbstractTransfer|BladeFxSetFavoriteReportRequestTransfer $requestTransfer
-     * @param BladeFxParameterTransfer|null $parameterTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer|\Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer|null $parameterTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function buildRequest(
         string $resource,
@@ -51,12 +53,13 @@ class SetFavoriteReportRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return array<mixed>
      */
     protected function getQueryParamsFromRequestTransfer(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxSetFavoriteReportRequestTransfer $requestTransfer */
+        /** @var \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer $requestTransfer */
         return [
             'rep_id' => $requestTransfer->getRepId(),
             'user_id' => $requestTransfer->getUserId(),

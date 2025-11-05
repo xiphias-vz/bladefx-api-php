@@ -10,18 +10,18 @@ use Psr\Log\LoggerInterface;
 abstract class AbstractHttpClient implements HttpApiClientInterface
 {
     /**
-     * @var ClientInterface
+     * @var \GuzzleHttp\ClientInterface
      */
     protected ClientInterface $client;
 
     /**
-     * @var LoggerInterface
+     * @var \Psr\Log\LoggerInterface
      */
     protected LoggerInterface $logger;
 
     /**
-     * @param ClientInterface $client
-     * @param LoggerInterface $logger
+     * @param \GuzzleHttp\ClientInterface $client
+     * @param \Psr\Log\LoggerInterface $logger
      */
     public function __construct(
         ClientInterface $client,

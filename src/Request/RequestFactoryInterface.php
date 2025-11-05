@@ -11,97 +11,97 @@ use Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface;
 interface RequestFactoryInterface
 {
     /**
-     * @return RequestBodyFormatterInterface
+     * @return \Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface
      */
     public function createRequestBodyFormatter(): RequestBodyFormatterInterface;
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createAuthenticationRequestBuilder(): RequestBuilderInterface;
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createAuthenticationRequestValidator(): RequestValidatorInterface;
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createCategoriesListRequestBuilder(): RequestBuilderInterface;
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createCategoriesListRequestValidator(): RequestValidatorInterface;
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createReportsListRequestBuilder(): RequestBuilderInterface;
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createReportsListRequestValidator(): RequestValidatorInterface;
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createReportParamFormRequestBuilder(): RequestBuilderInterface;
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createReportParamFormRequestValidator(): RequestValidatorInterface;
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createReportPreviewRequestBuilder(): RequestBuilderInterface;
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createReportPreviewRequestValidator(): RequestValidatorInterface;
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createSetFavoriteReportRequestBuilder(): RequestBuilderInterface;
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createSetFavoriteReportRequestValidator(): RequestValidatorInterface;
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createCreateOrUpdateUserOnBladeFxRequestBuilder(): RequestBuilderInterface;
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createCreateOrUpdateUserOnBladeFxRequestValidator(): RequestValidatorInterface;
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createUpdatePasswordOnBladeFxRequestBuilder(): RequestBuilderInterface;
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createUpdatePasswordOnBladeFxRequestValidator(): RequestValidatorInterface;
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createReportByFormatRequestBuilder(): RequestBuilderInterface;
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createReportByFormatRequestValidator(): RequestValidatorInterface;
 }

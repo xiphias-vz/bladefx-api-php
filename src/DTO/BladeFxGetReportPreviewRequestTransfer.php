@@ -32,7 +32,7 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
     protected ?string $rootUrl = null;
 
     /**
-     * @var BladeFxParameterTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer|null
      */
     protected ?BladeFxParameterTransfer $params = null;
 
@@ -46,18 +46,20 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $returnType
+     *
      * @return $this
      */
-    public function setReturnType(?string $returnType): self
+    public function setReturnType(?string $returnType)
     {
         $this->returnType = $returnType;
+
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function requireReturnType(): self
+    public function requireReturnType()
     {
         $this->assertPropertyIsSet('returnType');
 
@@ -74,18 +76,20 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
 
     /**
      * @param int|null $repId
+     *
      * @return $this
      */
-    public function setRepId(?int $repId): self
+    public function setRepId(?int $repId)
     {
         $this->repId = $repId;
+
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function requireRepId(): self
+    public function requireRepId()
     {
         $this->assertPropertyIsSet('repId');
 
@@ -102,11 +106,13 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
 
     /**
      * @param int|null $layoutId
+     *
      * @return $this
      */
-    public function setLayoutId(?int $layoutId): self
+    public function setLayoutId(?int $layoutId)
     {
         $this->layoutId = $layoutId;
+
         return $this;
     }
 
@@ -120,11 +126,13 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $imageFormat
+     *
      * @return $this
      */
-    public function setImageFormat(?string $imageFormat): self
+    public function setImageFormat(?string $imageFormat)
     {
         $this->imageFormat = $imageFormat;
+
         return $this;
     }
 
@@ -138,18 +146,20 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $rootUrl
+     *
      * @return $this
      */
-    public function setRootUrl(?string $rootUrl): self
+    public function setRootUrl(?string $rootUrl)
     {
         $this->rootUrl = $rootUrl;
+
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function requireRootUrl(): self
+    public function requireRootUrl()
     {
         $this->assertPropertyIsSet('rootUrl');
 
@@ -157,7 +167,7 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return BladeFxParameterTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer|null
      */
     public function getParams(): ?BladeFxParameterTransfer
     {
@@ -165,19 +175,21 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param BladeFxParameterTransfer|null $params
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer|null $params
+     *
      * @return $this
      */
-    public function setParams(?BladeFxParameterTransfer $params): self
+    public function setParams(?BladeFxParameterTransfer $params)
     {
         $this->params = $params;
+
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function requireParams(): self
+    public function requireParams()
     {
         $this->assertPropertyIsSet('params');
 

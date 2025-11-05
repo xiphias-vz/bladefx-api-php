@@ -40,7 +40,7 @@ class AbstractTransfer
     protected ?string $accessToken = '';
 
     /**
-     * @var BladeFxTokenTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxTokenTransfer|null
      */
     protected ?BladeFxTokenTransfer $bladeFxTokenTransfer;
 
@@ -63,6 +63,9 @@ class AbstractTransfer
 
     /**
      * @param string $property
+     *
+     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
+     *
      * @return void
      */
     protected function assertPropertyIsSet(string $property): void
@@ -86,9 +89,10 @@ class AbstractTransfer
 
     /**
      * @param string $baseUrl
+     *
      * @return $this
      */
-    public function setBaseUrl(string $baseUrl): self
+    public function setBaseUrl(string $baseUrl)
     {
         $this->baseUrl = $baseUrl;
 
@@ -105,18 +109,20 @@ class AbstractTransfer
 
     /**
      * @param string $accessToken
+     *
      * @return $this
      */
-    public function setAccessToken(string $accessToken): self
+    public function setAccessToken(string $accessToken)
     {
         $this->accessToken = $accessToken;
+
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function requireAccessToken(): self
+    public function requireAccessToken()
     {
         $this->assertPropertyIsSet(static::ACCESS_TOKEN);
 
@@ -124,7 +130,7 @@ class AbstractTransfer
     }
 
     /**
-     * @return BladeFxTokenTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxTokenTransfer|null
      */
     public function getToken(): ?BladeFxTokenTransfer
     {
@@ -132,12 +138,14 @@ class AbstractTransfer
     }
 
     /**
-     * @param BladeFxTokenTransfer|null $bladeFxTokenTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxTokenTransfer|null $bladeFxTokenTransfer
+     *
      * @return $this
      */
-    public function setToken(?BladeFxTokenTransfer $bladeFxTokenTransfer = null): self
+    public function setToken(?BladeFxTokenTransfer $bladeFxTokenTransfer = null)
     {
         $this->bladeFxTokenTransfer = $bladeFxTokenTransfer;
+
         return $this;
     }
 
@@ -147,9 +155,9 @@ class AbstractTransfer
     public function toArray(): array
     {
         return [
-            'baseUrl'       => $this->getBaseUrl(),
-            'accessToken'   => $this->getAccessToken(),
-            'token'         => $this->getToken(),
+            'baseUrl' => $this->getBaseUrl(),
+            'accessToken' => $this->getAccessToken(),
+            'token' => $this->getToken(),
         ];
     }
 }

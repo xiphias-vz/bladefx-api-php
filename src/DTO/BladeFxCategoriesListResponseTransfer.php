@@ -12,7 +12,7 @@ class BladeFxCategoriesListResponseTransfer extends AbstractTransfer
     protected ?int $statusCode = 0;
 
     /**
-     * @var array<BladeFxCategoryTransfer>|null
+     * @var array<\Xiphias\BladeFxApi\DTO\BladeFxCategoryTransfer>|null
      */
     private ?array $categoriesList = [];
 
@@ -26,9 +26,10 @@ class BladeFxCategoriesListResponseTransfer extends AbstractTransfer
 
     /**
      * @param int|null $statusCode
+     *
      * @return $this
      */
-    public function setStatusCode(?int $statusCode): self
+    public function setStatusCode(?int $statusCode)
     {
         $this->statusCode = $statusCode;
 
@@ -36,7 +37,7 @@ class BladeFxCategoriesListResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @return array<BladeFxCategoryTransfer>|null
+     * @return array<\Xiphias\BladeFxApi\DTO\BladeFxCategoryTransfer>|null
      */
     public function getCategoriesList(): ?array
     {
@@ -44,10 +45,11 @@ class BladeFxCategoriesListResponseTransfer extends AbstractTransfer
     }
 
     /**
-     * @param array<BladeFxCategoryTransfer>|null $categoriesList
+     * @param array<\Xiphias\BladeFxApi\DTO\BladeFxCategoryTransfer>|null $categoriesList
+     *
      * @return $this
      */
-    public function setCategoriesList(?array $categoriesList): self
+    public function setCategoriesList(?array $categoriesList)
     {
         $this->categoriesList = $categoriesList;
 

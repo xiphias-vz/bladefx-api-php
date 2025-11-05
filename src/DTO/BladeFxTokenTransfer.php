@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
+use DateTimeImmutable;
+use InvalidArgumentException;
+
 class BladeFxTokenTransfer
 {
     /**
@@ -34,29 +37,33 @@ class BladeFxTokenTransfer
 
     /**
      * @param string|null $accessToken
+     *
      * @return $this
      */
-    public function setAccessToken(?string $accessToken): self
+    public function setAccessToken(?string $accessToken)
     {
         $this->accessToken = $accessToken;
+
         return $this;
     }
 
     /**
      * @return \DateTimeImmutable|null
      */
-    public function getExpiresAt(): ?\DateTimeImmutable
+    public function getExpiresAt(): ?DateTimeImmutable
     {
         return $this->expiresAt;
     }
 
     /**
      * @param \DateTimeImmutable|null $expiresAt
+     *
      * @return $this
      */
-    public function setExpiresAt(\DateTimeImmutable $expiresAt = null): self
+    public function setExpiresAt(?DateTimeImmutable $expiresAt = null)
     {
         $this->expiresAt = $expiresAt;
+
         return $this;
     }
 
@@ -65,7 +72,7 @@ class BladeFxTokenTransfer
      */
     public function isExpired(): ?bool
     {
-        return $this->expiresAt !== null && $this->expiresAt <= new \DateTimeImmutable();
+        return $this->expiresAt !== null && $this->expiresAt <= new DateTimeImmutable();
     }
 
     /**
@@ -82,9 +89,10 @@ class BladeFxTokenTransfer
     /**
      * @param array<string, mixed> $data
      * @param bool $ignoreMissingProperties
-     * @return $this
+     *
      * @throws \InvalidArgumentException
-     * @throws \DateMalformedStringException
+     *
+     * @return $this
      */
     public function fromArray(array $data, bool $ignoreMissingProperties = false)
     {
@@ -93,19 +101,20 @@ class BladeFxTokenTransfer
 
             switch ($normalizedPropertyName) {
                 case 'expiresAt':
-                    $expiresAt = isset($value) && $value
-                        ? new \DateTimeImmutable($value)
+                    $expiresAt = $value !== null && $value !== ''
+                        ? new DateTimeImmutable($value)
                         : null;
 
                     $this->$normalizedPropertyName = $expiresAt;
+
                     break;
                 case 'accessToken':
                     $this->$normalizedPropertyName = $value;
-                    break;
 
+                    break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }

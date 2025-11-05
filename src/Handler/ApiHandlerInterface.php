@@ -6,10 +6,10 @@ namespace Xiphias\BladeFxApi\Handler;
 
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
@@ -26,56 +26,65 @@ use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 interface ApiHandlerInterface
 {
     /**
-     * @param BladeFxAuthenticationRequestTransfer $requestTransfer
-     * @return BladeFxAuthenticationResponseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer $requestTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer
      */
     public function authenticateUser(BladeFxAuthenticationRequestTransfer $requestTransfer): BladeFxAuthenticationResponseTransfer;
 
     /**
-     * @param BladeFxGetReportsListRequestTransfer $requestTransfer
-     * @return BladeFxGetReportsListResponseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer $requestTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer
      */
     public function getReportsList(BladeFxGetReportsListRequestTransfer $requestTransfer): BladeFxGetReportsListResponseTransfer;
 
     /**
-     * @param BladeFxGetCategoriesListRequestTransfer $requestTransfer
-     * @return BladeFxCategoriesListResponseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer $requestTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer
      */
     public function getCategoriesList(BladeFxGetCategoriesListRequestTransfer $requestTransfer): BladeFxCategoriesListResponseTransfer;
 
     /**
-     * @param BladeFxGetReportParamFormRequestTransfer $requestTransfer
-     * @return BladeFxGetReportParamFormResponseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer $requestTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer
      */
     public function getReportParamForm(BladeFxGetReportParamFormRequestTransfer $requestTransfer): BladeFxGetReportParamFormResponseTransfer;
 
     /**
-     * @param BladeFxGetReportPreviewRequestTransfer $requestTransfer
-     * @return BladeFxGetReportPreviewResponseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer $requestTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer
      */
     public function getReportPreview(BladeFxGetReportPreviewRequestTransfer $requestTransfer): BladeFxGetReportPreviewResponseTransfer;
 
     /**
-     * @param BladeFxSetFavoriteReportRequestTransfer $requestTransfer
-     * @return BladeFxSetFavoriteReportResponseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer $requestTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer
      */
     public function setFavoriteReport(BladeFxSetFavoriteReportRequestTransfer $requestTransfer): BladeFxSetFavoriteReportResponseTransfer;
 
     /**
-     * @param BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
-     * @return BladeFxCreateOrUpdateUserResponseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer
      */
     public function createOrUpdateUserOnBladeFx(BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer): BladeFxCreateOrUpdateUserResponseTransfer;
 
     /**
-     * @param BladeFxUpdatePasswordRequestTransfer $requestTransfer
-     * @return BladeFxUpdatePasswordResponseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer $requestTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer
      */
     public function sendUpdatePasswordOnBladeFx(BladeFxUpdatePasswordRequestTransfer $requestTransfer): BladeFxUpdatePasswordResponseTransfer;
 
     /**
-     * @param BladeFxGetReportByFormatRequestTransfer $requestTransfer
-     * @return BladeFxGetReportByFormatResponseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer $requestTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer
      */
     public function getReportByFormat(BladeFxGetReportByFormatRequestTransfer $requestTransfer): BladeFxGetReportByFormatResponseTransfer;
 }

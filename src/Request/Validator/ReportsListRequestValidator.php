@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Request\Validator;
 
+use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer;
 use Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException;
-use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 
 class ReportsListRequestValidator extends AbstractRequestValidator
 {
@@ -19,16 +19,17 @@ class ReportsListRequestValidator extends AbstractRequestValidator
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return bool
      */
     public function validateRequest(AbstractTransfer $requestTransfer): bool
     {
         try {
-            /**
-             * @var BladeFxGetReportsListRequestTransfer $requestTransfer
-             */
-            $requestTransfer
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer $bladeFxGetReportsListRequestTransfer */
+            $bladeFxGetReportsListRequestTransfer = $requestTransfer;
+
+            $bladeFxGetReportsListRequestTransfer
                 ->requireAccessToken()
                 ->requireReturnType();
         } catch (TransferPropertyRequiredException $ex) {

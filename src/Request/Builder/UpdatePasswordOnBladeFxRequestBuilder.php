@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Request\Builder;
 
-use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
@@ -21,43 +20,51 @@ class UpdatePasswordOnBladeFxRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return array<string, string>
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxUpdatePasswordRequestTransfer $requestTransfer */
-        return $this->addAuthHeader($requestTransfer->getAccessToken());
+        /** @var \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer */
+        $bladeFxUpdatePasswordRequestTransfer = $requestTransfer;
+
+        return $this->addAuthHeader($bladeFxUpdatePasswordRequestTransfer->getAccessToken());
     }
 
     /**
      * @param string $resource
-     * @param AbstractTransfer|BladeFxUpdatePasswordRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer|\Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function buildRequest(
         string $resource,
         AbstractTransfer|BladeFxUpdatePasswordRequestTransfer $requestTransfer
     ): RequestInterface {
-        /** @var BladeFxUpdatePasswordRequestTransfer $requestTransfer */
-        $uri = $this->buildUri($resource, $requestTransfer->getBaseUrl(), $this->getUrlParamsFromRequestTransfer($requestTransfer));
-        $headers = $this->getCombinedHeaders($requestTransfer);
-        $encodedData = $this->getEncodedData($requestTransfer);
+        /** @var \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer */
+        $bladeFxUpdatePasswordRequestTransfer = $requestTransfer;
+
+        $uri = $this->buildUri($resource, $bladeFxUpdatePasswordRequestTransfer->getBaseUrl(), $this->getUrlParamsFromRequestTransfer($bladeFxUpdatePasswordRequestTransfer));
+        $headers = $this->getCombinedHeaders($bladeFxUpdatePasswordRequestTransfer);
+        $encodedData = $this->getEncodedData($bladeFxUpdatePasswordRequestTransfer);
 
         return new Request($this->getMethodName(), $uri, $headers, $encodedData);
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
      *
      * @return array<string, mixed>
      */
     protected function getUrlParamsFromRequestTransfer(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxUpdatePasswordRequestTransfer $requestTransfer */
+        /** @var \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer */
+        $bladeFxUpdatePasswordRequestTransfer = $requestTransfer;
+
         return [
-            'user_id' => $requestTransfer->getBladeFxUserId(),
-            'password' => $requestTransfer->getPassword(),
+            'user_id' => $bladeFxUpdatePasswordRequestTransfer->getBladeFxUserId(),
+            'password' => $bladeFxUpdatePasswordRequestTransfer->getPassword(),
         ];
     }
 }

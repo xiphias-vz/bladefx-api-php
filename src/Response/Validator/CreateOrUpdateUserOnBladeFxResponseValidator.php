@@ -19,18 +19,20 @@ class CreateOrUpdateUserOnBladeFxResponseValidator extends AbstractResponseValid
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
      * @return bool
      */
     protected function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
-            /**
-             * @var BladeFxCreateOrUpdateUserResponseTransfer $responseTransfer
-             */
-            $responseTransfer->requireSuccess();
-            $responseTransfer->requireId();
-            $responseTransfer->requireLicenceIssue();
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer $bladeFxCreateOrUpdateUserResponseTransfer */
+            $bladeFxCreateOrUpdateUserResponseTransfer = $responseTransfer;
+
+            $bladeFxCreateOrUpdateUserResponseTransfer
+                ->requireSuccess()
+                ->requireId()
+                ->requireLicenceIssue();
         } catch (TransferPropertyRequiredException $ex) {
             return false;
         }

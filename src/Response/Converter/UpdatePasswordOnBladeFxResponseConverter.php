@@ -10,9 +10,10 @@ use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 class UpdatePasswordOnBladeFxResponseConverter extends AbstractResponseConverter
 {
     /**
-     * @param BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
      * @param array<mixed> $responseData
-     * @return BladeFxApiResponseConversionResultTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer
      */
     protected function expandConversionResponseTransfer(
         BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer,

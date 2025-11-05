@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
-use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserCustomFieldsTransfer;
-use Xiphias\BladeFxApi\DTO;
+use InvalidArgumentException;
 
 class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
 {
@@ -60,7 +59,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     public const CUSTOM_FIELDS = 'customFields';
 
     /**
-     * @var BladeFxTokenTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxTokenTransfer|null
      */
     protected ?BladeFxTokenTransfer $token = null;
 
@@ -151,10 +150,11 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $email
+     * @param string|null $email
+     *
      * @return $this
      */
-    public function setEmail(?string $email): self
+    public function setEmail(?string $email)
     {
         $this->email = $email;
         $this->modifiedProperties[static::EMAIL] = true;
@@ -165,7 +165,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireEmail(): self
+    public function requireEmail()
     {
         $this->assertPropertyIsSet(static::EMAIL);
 
@@ -181,10 +181,11 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $firstName
+     * @param string|null $firstName
+     *
      * @return $this
      */
-    public function setFirstName(?string $firstName): self
+    public function setFirstName(?string $firstName)
     {
         $this->firstName = $firstName;
         $this->modifiedProperties[static::FIRST_NAME] = true;
@@ -195,7 +196,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireFirstName(): self
+    public function requireFirstName()
     {
         $this->assertPropertyIsSet(static::FIRST_NAME);
 
@@ -211,10 +212,11 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $lastName
+     * @param string|null $lastName
+     *
      * @return $this
      */
-    public function setLastName(?string $lastName): self
+    public function setLastName(?string $lastName)
     {
         $this->lastName = $lastName;
         $this->modifiedProperties[static::LAST_NAME] = true;
@@ -225,7 +227,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireLastName(): self
+    public function requireLastName()
     {
         $this->assertPropertyIsSet(static::LAST_NAME);
 
@@ -241,10 +243,11 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $password
+     * @param string|null $password
+     *
      * @return $this
      */
-    public function setPassword(?string $password): self
+    public function setPassword(?string $password)
     {
         $this->password = $password;
         $this->modifiedProperties[static::PASSWORD] = true;
@@ -255,7 +258,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requirePassword(): self
+    public function requirePassword()
     {
         $this->assertPropertyIsSet(static::PASSWORD);
 
@@ -271,10 +274,11 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $roleName
+     * @param string|null $roleName
+     *
      * @return $this
      */
-    public function setRoleName(?string $roleName): self
+    public function setRoleName(?string $roleName)
     {
         $this->roleName = $roleName;
         $this->modifiedProperties[static::ROLE_NAME] = true;
@@ -285,7 +289,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireRoleName(): self
+    public function requireRoleName()
     {
         $this->assertPropertyIsSet(static::ROLE_NAME);
 
@@ -302,9 +306,10 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
 
     /**
      * @param int|null $companyId
+     *
      * @return $this
      */
-    public function setCompanyId(?int $companyId): self
+    public function setCompanyId(?int $companyId)
     {
         $this->companyId = $companyId;
         $this->modifiedProperties[static::COMPANY_ID] = true;
@@ -315,7 +320,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireCompanyId(): self
+    public function requireCompanyId()
     {
         $this->assertPropertyIsSet(static::COMPANY_ID);
 
@@ -332,9 +337,10 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
 
     /**
      * @param int|null $languageId
+     *
      * @return $this
      */
-    public function setLanguageId(?int $languageId): self
+    public function setLanguageId(?int $languageId)
     {
         $this->languageId = $languageId;
         $this->modifiedProperties[static::LANGUAGE_ID] = true;
@@ -345,7 +351,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireLanguageId(): self
+    public function requireLanguageId()
     {
         $this->assertPropertyIsSet(static::LANGUAGE_ID);
 
@@ -362,9 +368,10 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isActive
+     *
      * @return $this
      */
-    public function setIsActive(?bool $isActive): self
+    public function setIsActive(?bool $isActive)
     {
         $this->isActive = $isActive;
         $this->modifiedProperties[static::IS_ACTIVE] = true;
@@ -375,7 +382,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireIsActive(): self
+    public function requireIsActive()
     {
         $this->assertPropertyIsSet(static::IS_ACTIVE);
 
@@ -383,7 +390,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return array<BladeFxCreateOrUpdateUserCustomFieldsTransfer>|null
+     * @return array<\Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserCustomFieldsTransfer>|null
      */
     public function getCustomFields(): ?array
     {
@@ -391,10 +398,11 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @param array<BladeFxCreateOrUpdateUserCustomFieldsTransfer>|null $customFields
+     * @param array<\Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserCustomFieldsTransfer>|null $customFields
+     *
      * @return $this
      */
-    public function setCustomFields(?array $customFields): self
+    public function setCustomFields(?array $customFields)
     {
         $this->customFields = $customFields;
         $this->modifiedProperties[static::CUSTOM_FIELDS] = true;
@@ -404,9 +412,10 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserCustomFieldsTransfer $customFields
+     *
      * @return $this
      */
-    public function addCustomFields(BladeFxCreateOrUpdateUserCustomFieldsTransfer $customFields): self
+    public function addCustomFields(BladeFxCreateOrUpdateUserCustomFieldsTransfer $customFields)
     {
         $this->customFields[] = $customFields;
         $this->modifiedProperties[self::CUSTOM_FIELDS] = true;
@@ -417,7 +426,7 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireCustomFields(): self
+    public function requireCustomFields()
     {
         $this->assertPropertyIsSet(static::CUSTOM_FIELDS);
 
@@ -445,9 +454,12 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
     /**
      * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
+     *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
-    public function fromArray(array $data, bool $ignoreMissingProperties = false): static
+    public function fromArray(array $data, bool $ignoreMissingProperties = false)
     {
         foreach ($data as $property => $value) {
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
@@ -464,11 +476,11 @@ class BladeFxCreateOrUpdateUserRequestTransfer extends AbstractTransfer
                 case 'customFields':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
-                    break;
 
+                    break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }

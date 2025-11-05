@@ -19,14 +19,17 @@ class ReportParamFormRequestValidator extends AbstractRequestValidator
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return bool
      */
     public function validateRequest(AbstractTransfer $requestTransfer): bool
     {
         try {
-            /** @var BladeFxGetReportParamFormRequestTransfer $requestTransfer */
-            $requestTransfer
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer $bladeFxGetReportParamFormRequestTransfer */
+            $bladeFxGetReportParamFormRequestTransfer = $requestTransfer;
+
+            $bladeFxGetReportParamFormRequestTransfer
                 ->requireAccessToken()
                 ->requireRootUrl();
         } catch (TransferPropertyRequiredException $ex) {

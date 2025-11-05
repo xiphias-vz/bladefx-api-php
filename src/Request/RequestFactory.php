@@ -10,35 +10,35 @@ use Xiphias\BladeFxApi\Plugins\Formatter\AuthenticationRequestFieldFormatterPlug
 use Xiphias\BladeFxApi\Request\Builder\AuthenticationRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\CategoriesListRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\CreateOrUpdateUserOnBladeFxRequestBuilder;
+use Xiphias\BladeFxApi\Request\Builder\ReportByFormatRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\ReportParamFormRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\ReportPreviewRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\ReportsListRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface;
 use Xiphias\BladeFxApi\Request\Builder\SetFavoriteReportRequestBuilder;
 use Xiphias\BladeFxApi\Request\Builder\UpdatePasswordOnBladeFxRequestBuilder;
-use Xiphias\BladeFxApi\Request\Builder\ReportByFormatRequestBuilder;
 use Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatter;
+use Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface;
 use Xiphias\BladeFxApi\Request\Validator\AuthenticationRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\CategoriesListRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\CreateOrUpdateUserOnBladeFxRequestValidator;
+use Xiphias\BladeFxApi\Request\Validator\ReportByFormatRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\ReportParamFormRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\ReportPreviewRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\ReportsListRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface;
-use Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface;
 use Xiphias\BladeFxApi\Request\Validator\SetFavoriteReportRequestValidator;
 use Xiphias\BladeFxApi\Request\Validator\UpdatePasswordOnBladeFxRequestValidator;
-use Xiphias\BladeFxApi\Request\Validator\ReportByFormatRequestValidator;
 
 class RequestFactory implements RequestFactoryInterface
 {
     /**
-     * @var LoggerInterface
+     * @var \Psr\Log\LoggerInterface
      */
     private LoggerInterface $logger;
 
     /**
-     * @param LoggerInterface $logger
+     * @param \Psr\Log\LoggerInterface $logger
      */
     public function __construct(LoggerInterface $logger)
     {
@@ -46,7 +46,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createAuthenticationRequestValidator(): RequestValidatorInterface
     {
@@ -54,7 +54,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createCategoriesListRequestValidator(): RequestValidatorInterface
     {
@@ -62,7 +62,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createReportsListRequestValidator(): RequestValidatorInterface
     {
@@ -70,7 +70,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createReportParamFormRequestValidator(): RequestValidatorInterface
     {
@@ -78,7 +78,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createReportPreviewRequestValidator(): RequestValidatorInterface
     {
@@ -86,7 +86,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createSetFavoriteReportRequestValidator(): RequestValidatorInterface
     {
@@ -94,7 +94,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createCreateOrUpdateUserOnBladeFxRequestValidator(): RequestValidatorInterface
     {
@@ -102,7 +102,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createUpdatePasswordOnBladeFxRequestValidator(): RequestValidatorInterface
     {
@@ -110,7 +110,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestValidatorInterface
+     * @return \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface
      */
     public function createReportByFormatRequestValidator(): RequestValidatorInterface
     {
@@ -118,7 +118,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createAuthenticationRequestBuilder(): RequestBuilderInterface
     {
@@ -130,7 +130,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createCategoriesListRequestBuilder(): RequestBuilderInterface
     {
@@ -141,7 +141,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createReportsListRequestBuilder(): RequestBuilderInterface
     {
@@ -152,7 +152,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createReportParamFormRequestBuilder(): RequestBuilderInterface
     {
@@ -163,7 +163,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createReportPreviewRequestBuilder(): RequestBuilderInterface
     {
@@ -174,7 +174,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createSetFavoriteReportRequestBuilder(): RequestBuilderInterface
     {
@@ -185,7 +185,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createCreateOrUpdateUserOnBladeFxRequestBuilder(): RequestBuilderInterface
     {
@@ -196,7 +196,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createUpdatePasswordOnBladeFxRequestBuilder(): RequestBuilderInterface
     {
@@ -207,7 +207,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestBuilderInterface
+     * @return \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     public function createReportByFormatRequestBuilder(): RequestBuilderInterface
     {
@@ -218,7 +218,7 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return AuthenticationRequestFieldFormatterPlugin[]
+     * @return array<\Xiphias\BladeFxApi\Plugins\Formatter\AuthenticationRequestFieldFormatterPlugin>
      */
     protected function getAuthenticationRequestFormatterPlugins(): array
     {
@@ -228,17 +228,17 @@ class RequestFactory implements RequestFactoryInterface
     }
 
     /**
-     * @return RequestBodyFormatterInterface
+     * @return \Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface
      */
     public function createRequestBodyFormatter(): RequestBodyFormatterInterface
     {
         return new RequestBodyFormatter(
-            $this->getConfig()
+            $this->getConfig(),
         );
     }
 
     /**
-     * @return BladeFxApiConfig
+     * @return \Xiphias\BladeFxApi\BladeFxApiConfig
      */
     protected function getConfig(): BladeFxApiConfig
     {

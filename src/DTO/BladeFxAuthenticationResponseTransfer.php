@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
+use InvalidArgumentException;
+
 class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 {
     /**
@@ -77,9 +79,10 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $username
+     *
      * @return $this
      */
-    public function setUsername(?string $username): self
+    public function setUsername(?string $username)
     {
         $this->username = $username;
         $this->modifiedProperties['username'] = true;
@@ -89,9 +92,8 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requireUsername(): self
+    public function requireUsername()
     {
         $this->assertPropertyIsSet('username');
 
@@ -108,9 +110,10 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $fullname
+     *
      * @return $this
      */
-    public function setFullname(?string $fullname): self
+    public function setFullname(?string $fullname)
     {
         $this->fullname = $fullname;
         $this->modifiedProperties['fullname'] = true;
@@ -120,9 +123,8 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requireFullname(): self
+    public function requireFullname()
     {
         $this->assertPropertyIsSet('fullname');
 
@@ -139,9 +141,10 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $email
+     *
      * @return $this
      */
-    public function setEmail(?string $email): self
+    public function setEmail(?string $email)
     {
         $this->email = $email;
         $this->modifiedProperties['email'] = true;
@@ -151,9 +154,8 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requireEmail(): self
+    public function requireEmail()
     {
         $this->assertPropertyIsSet('email');
 
@@ -170,9 +172,10 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $avatar
+     *
      * @return $this
      */
-    public function setAvatar(?string $avatar): self
+    public function setAvatar(?string $avatar)
     {
         $this->avatar = $avatar;
         $this->modifiedProperties['avatar'] = true;
@@ -190,9 +193,10 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param int|null $idUser
+     *
      * @return $this
      */
-    public function setIdUser(?int $idUser): self
+    public function setIdUser(?int $idUser)
     {
         $this->idUser = $idUser;
         $this->modifiedProperties['idUser'] = true;
@@ -210,9 +214,10 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param int|null $idCompany
+     *
      * @return $this
      */
-    public function setIdCompany(?int $idCompany): self
+    public function setIdCompany(?int $idCompany)
     {
         $this->idCompany = $idCompany;
         $this->modifiedProperties['idCompany'] = true;
@@ -222,9 +227,8 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requireIdCompany(): self
+    public function requireIdCompany()
     {
         $this->assertPropertyIsSet('idCompany');
 
@@ -241,9 +245,10 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param int|null $idLanguage
+     *
      * @return $this
      */
-    public function setIdLanguage(?int $idLanguage): self
+    public function setIdLanguage(?int $idLanguage)
     {
         $this->idLanguage = $idLanguage;
         $this->modifiedProperties['idLanguage'] = true;
@@ -253,9 +258,8 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requireIdLanguage(): self
+    public function requireIdLanguage()
     {
         $this->assertPropertyIsSet('idLanguage');
 
@@ -272,9 +276,10 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $languageDescription
+     *
      * @return $this
      */
-    public function setLanguageDescription(?string $languageDescription): self
+    public function setLanguageDescription(?string $languageDescription)
     {
         $this->languageDescription = $languageDescription;
         $this->modifiedProperties['languageDescription'] = true;
@@ -292,9 +297,10 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $licenceExp
+     *
      * @return $this
      */
-    public function setLicenceExp(?bool $licenceExp): self
+    public function setLicenceExp(?bool $licenceExp)
     {
         $this->licenceExp = $licenceExp;
         $this->modifiedProperties['licenceExp'] = true;
@@ -305,6 +311,9 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
     /**
      * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
+     *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
     public function fromArray(array $data, bool $ignoreMissingProperties = false)
@@ -325,11 +334,11 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
                 case 'licenceExp':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
-                    break;
 
+                    break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }
@@ -339,11 +348,13 @@ class BladeFxAuthenticationResponseTransfer extends AbstractTransfer
 
     /**
      * @param array<string, string> $transferPropertyNameMap
+     *
      * @return $this
      */
-    public function setTransferPropertyNameMap(array $transferPropertyNameMap): BladeFxAuthenticationResponseTransfer
+    public function setTransferPropertyNameMap(array $transferPropertyNameMap)
     {
         $this->transferPropertyNameMap = $transferPropertyNameMap;
+
         return $this;
     }
 }

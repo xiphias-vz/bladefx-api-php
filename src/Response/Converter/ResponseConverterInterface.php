@@ -10,8 +10,9 @@ use Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer;
 interface ResponseConverterInterface
 {
     /**
-     * @param ResponseInterface $response
-     * @return BladeFxApiResponseConversionResultTransfer
+     * @param \Psr\Http\Message\ResponseInterface $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer
      */
     public function convert(ResponseInterface $response): BladeFxApiResponseConversionResultTransfer;
 }

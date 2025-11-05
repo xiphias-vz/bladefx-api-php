@@ -9,7 +9,8 @@ use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 interface RequestValidatorInterface
 {
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return bool
      */
     public function isRequestValid(AbstractTransfer $requestTransfer): bool;

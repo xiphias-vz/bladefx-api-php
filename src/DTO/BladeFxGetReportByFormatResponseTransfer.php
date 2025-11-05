@@ -36,9 +36,10 @@ class BladeFxGetReportByFormatResponseTransfer extends AbstractTransfer
 
     /**
      * @param int|null $statusCode
+     *
      * @return $this
      */
-    public function setStatusCode(?int $statusCode): self
+    public function setStatusCode(?int $statusCode)
     {
         $this->statusCode = $statusCode;
 
@@ -48,7 +49,7 @@ class BladeFxGetReportByFormatResponseTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireStatusCode(): self
+    public function requireStatusCode()
     {
         $this->assertPropertyIsSet(self::STATUS_CODE);
 
@@ -65,18 +66,20 @@ class BladeFxGetReportByFormatResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $report
+     *
      * @return $this
      */
-    public function setReport(?string $report = null): self
+    public function setReport(?string $report = null)
     {
         $this->report = $report;
+
         return $this;
     }
 
     /**
      * @return $this
      */
-    public function requireReport(): self
+    public function requireReport()
     {
         $this->assertPropertyIsSet(static::REPORT);
 

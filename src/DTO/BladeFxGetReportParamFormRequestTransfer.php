@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
+use InvalidArgumentException;
+
 class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
 {
     /**
@@ -22,7 +24,7 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
     protected array $transferPropertyNameMap = [
         'token' => 'accessToken',
         'rep_id' => 'rep_id',
-        'rootUrl' => 'rootUrl'
+        'rootUrl' => 'rootUrl',
     ];
 
     /**
@@ -35,9 +37,10 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
 
     /**
      * @param int|null $rep_id
+     *
      * @return $this
      */
-    public function setReportId(?int $rep_id): self
+    public function setReportId(?int $rep_id)
     {
         $this->rep_id = $rep_id;
         $this->modifiedProperties['rep_id'] = true;
@@ -55,9 +58,10 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $rootUrl
+     *
      * @return $this
      */
-    public function setRootUrl(?string $rootUrl): self
+    public function setRootUrl(?string $rootUrl)
     {
         $this->rootUrl = $rootUrl;
         $this->modifiedProperties['rootUrl'] = true;
@@ -68,7 +72,7 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireRootUrl(): self
+    public function requireRootUrl()
     {
         $this->assertPropertyIsSet('rootUrl');
 
@@ -90,9 +94,12 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
     /**
      * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
+     *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
-    public function fromArray(array $data, bool $ignoreMissingProperties = false): static
+    public function fromArray(array $data, bool $ignoreMissingProperties = false)
     {
         foreach ($data as $property => $value) {
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
@@ -103,11 +110,11 @@ class BladeFxGetReportParamFormRequestTransfer extends AbstractTransfer
                 case 'rootUrl':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
-                    break;
 
+                    break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }

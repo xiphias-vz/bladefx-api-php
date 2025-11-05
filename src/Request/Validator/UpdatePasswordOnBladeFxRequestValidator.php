@@ -19,16 +19,17 @@ class UpdatePasswordOnBladeFxRequestValidator extends AbstractRequestValidator
     }
 
     /**
-     * @param AbstractTransfer|BladeFxUpdatePasswordRequestTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer|\Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer $requestTransfer
+     *
      * @return bool
      */
     protected function validateRequest(AbstractTransfer|BladeFxUpdatePasswordRequestTransfer $requestTransfer): bool
     {
         try {
-            /**
-             * @var BladeFxUpdatePasswordRequestTransfer $requestTransfer
-             */
-            $requestTransfer
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer */
+            $bladeFxUpdatePasswordRequestTransfer = $requestTransfer;
+
+            $bladeFxUpdatePasswordRequestTransfer
                 ->requireAccessToken()
                 ->requirePassword()
                 ->requireBladeFxUserId();

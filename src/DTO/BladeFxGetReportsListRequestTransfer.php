@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
-use Xiphias\BladeFxApi\DTO\AbstractTransfer;
+use InvalidArgumentException;
 
 class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
 {
@@ -49,11 +49,13 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
 
     /**
      * @param int|null $catId
+     *
      * @return $this
      */
-    public function setCatId(?int $catId): self
+    public function setCatId(?int $catId)
     {
         $this->catId = $catId;
+
         return $this;
     }
 
@@ -67,9 +69,10 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $search
+     *
      * @return $this
      */
-    public function setSearch(?string $search): self
+    public function setSearch(?string $search)
     {
         $this->search = $search;
         $this->modifiedProperties['search'] = true;
@@ -87,9 +90,10 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $attribute
+     *
      * @return $this
      */
-    public function setAttribute(?string $attribute): self
+    public function setAttribute(?string $attribute)
     {
         $this->attribute = $attribute;
         $this->modifiedProperties['attribute'] = true;
@@ -107,9 +111,10 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $returnType
+     *
      * @return $this
      */
-    public function setReturnType(?string $returnType): self
+    public function setReturnType(?string $returnType)
     {
         $this->returnType = $returnType;
         $this->modifiedProperties['returnType'] = true;
@@ -120,7 +125,7 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireReturnType(): self
+    public function requireReturnType()
     {
         $this->assertPropertyIsSet('returnType');
 
@@ -144,9 +149,12 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
     /**
      * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
+     *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
-    public function fromArray(array $data, bool $ignoreMissingProperties = false): static
+    public function fromArray(array $data, bool $ignoreMissingProperties = false)
     {
         foreach ($data as $property => $value) {
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
@@ -159,11 +167,11 @@ class BladeFxGetReportsListRequestTransfer extends AbstractTransfer
                 case 'returnType':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
-                    break;
 
+                    break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }

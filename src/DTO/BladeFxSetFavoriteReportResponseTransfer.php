@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
+use InvalidArgumentException;
+
 class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 {
     /**
@@ -19,12 +21,12 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
     /**
      * @var string|null
      */
-    protected ?string $rMessage = "";
+    protected ?string $rMessage = '';
 
     /**
      * @var string|null
      */
-    protected ?string $causer = "";
+    protected ?string $causer = '';
 
     /**
      * @var int|null
@@ -39,7 +41,7 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
     /**
      * @var string|null
      */
-    protected ?string $optionValue = "";
+    protected ?string $optionValue = '';
 
     /**
      * @var bool|null
@@ -70,9 +72,10 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param int|null $statusCode
+     *
      * @return $this
      */
-    public function setStatusCode(?int $statusCode): self
+    public function setStatusCode(?int $statusCode)
     {
         $this->statusCode = $statusCode;
 
@@ -89,9 +92,10 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $success
+     *
      * @return $this
      */
-    public function setSuccess(?bool $success): self
+    public function setSuccess(?bool $success)
     {
         $this->success = $success;
         $this->modifiedProperties['success'] = true;
@@ -109,9 +113,10 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $rMessage
+     *
      * @return $this
      */
-    public function setRMessage(?string $rMessage): self
+    public function setRMessage(?string $rMessage)
     {
         $this->rMessage = $rMessage;
         $this->modifiedProperties['rMessage'] = true;
@@ -121,11 +126,11 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requireRMessage(): self
+    public function requireRMessage()
     {
         $this->assertPropertyIsSet('rMessage');
+
         return $this;
     }
 
@@ -139,9 +144,10 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $causer
+     *
      * @return $this
      */
-    public function setCauser(?string $causer): self
+    public function setCauser(?string $causer)
     {
         $this->causer = $causer;
         $this->modifiedProperties['causer'] = true;
@@ -159,9 +165,10 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $areYouSure
+     *
      * @return $this
      */
-    public function setAreYouSure(?bool $areYouSure): self
+    public function setAreYouSure(?bool $areYouSure)
     {
         $this->areYouSure = $areYouSure;
         $this->modifiedProperties['areYouSure'] = true;
@@ -179,9 +186,10 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param string|null $optionValue
-     * @return self
+     *
+     * @return $this
      */
-    public function setOptionValue(?string $optionValue): self
+    public function setOptionValue(?string $optionValue)
     {
         $this->optionValue = $optionValue;
         $this->modifiedProperties['optionValue'] = true;
@@ -199,9 +207,10 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $licenceIssue
+     *
      * @return $this
      */
-    public function setLicenceIssue(?bool $licenceIssue): self
+    public function setLicenceIssue(?bool $licenceIssue)
     {
         $this->licenceIssue = $licenceIssue;
         $this->modifiedProperties['licenceIssue'] = true;
@@ -212,6 +221,9 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
     /**
      * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
+     *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
     public function fromArray(array $data, bool $ignoreMissingProperties = false)
@@ -230,11 +242,11 @@ class BladeFxSetFavoriteReportResponseTransfer extends AbstractTransfer
                 case 'licenceIssue':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
-                    break;
 
+                    break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }

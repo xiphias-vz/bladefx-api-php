@@ -19,16 +19,17 @@ class ReportPreviewRequestValidator extends AbstractRequestValidator implements 
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return bool
      */
     public function validateRequest(AbstractTransfer $requestTransfer): bool
     {
         try {
-            /**
-             * @var BladeFxGetReportPreviewRequestTransfer $requestTransfer
-             */
-            $requestTransfer
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer $bladeFxGetReportPreviewRequestTransfer */
+            $bladeFxGetReportPreviewRequestTransfer = $requestTransfer;
+
+            $bladeFxGetReportPreviewRequestTransfer
                 ->requireRootUrl()
                 ->requireAccessToken()
                 ->requireRepId()

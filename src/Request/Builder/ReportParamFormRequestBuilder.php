@@ -7,7 +7,6 @@ namespace Xiphias\BladeFxApi\Request\Builder;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
 
 class ReportParamFormRequestBuilder extends AbstractRequestBuilder
 {
@@ -17,7 +16,7 @@ class ReportParamFormRequestBuilder extends AbstractRequestBuilder
     protected const PARAM_ROOT_URL = 'rootUrl';
 
     /**
-     *
+     * @var string
      */
     protected const PARAM_REP_ID = 'rep_id';
 
@@ -30,19 +29,21 @@ class ReportParamFormRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return array<string, string>
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxGetReportParamFormRequestTransfer $requestTransfer */
+        /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer $requestTransfer */
         return $this->addAuthHeader($requestTransfer->getAccessToken());
     }
 
     /**
      * @param string $resource
-     * @param AbstractTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function buildRequest(
         string $resource,
@@ -56,12 +57,13 @@ class ReportParamFormRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return array<string, string>
      */
     protected function getUrlParamsFromRequestTransfer(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxGetReportParamFormRequestTransfer $requestTransfer */
+        /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer $requestTransfer */
         return [
             static::PARAM_ROOT_URL => $requestTransfer->getRootUrl(),
             static::PARAM_REP_ID => $requestTransfer->getReportId(),

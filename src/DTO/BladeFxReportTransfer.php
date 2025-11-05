@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
+use InvalidArgumentException;
+
 class BladeFxReportTransfer extends AbstractTransfer
 {
     /**
@@ -242,9 +244,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param int|null $repId
+     *
      * @return $this
      */
-    public function setRepId(?int $repId): self
+    public function setRepId(?int $repId)
     {
         $this->repId = $repId;
         $this->modifiedProperties['repId'] = true;
@@ -255,14 +258,14 @@ class BladeFxReportTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireRepId(): self
+    public function requireRepId()
     {
         $this->assertPropertyIsSet('repId');
 
         return $this;
     }
 
-    /***
+    /**
      * @return string|null
      */
     public function getRepName(): ?string
@@ -272,9 +275,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $repName
-     * @return self
+     *
+     * @return $this
      */
-    public function setRepName(?string $repName): self
+    public function setRepName(?string $repName)
     {
         $this->repName = $repName;
         $this->modifiedProperties[static::REP_NAME] = true;
@@ -285,7 +289,7 @@ class BladeFxReportTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireRepName(): self
+    public function requireRepName()
     {
         $this->assertPropertyIsSet(static::REP_NAME);
 
@@ -302,9 +306,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $repHashCode
-     * @return self
+     *
+     * @return $this
      */
-    public function setRepHashCode(?string $repHashCode): self
+    public function setRepHashCode(?string $repHashCode)
     {
         $this->repHashCode = $repHashCode;
         $this->modifiedProperties['repHashCode'] = true;
@@ -315,7 +320,7 @@ class BladeFxReportTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireRepHashCode(): self
+    public function requireRepHashCode()
     {
         $this->assertPropertyIsSet('repHashCode');
 
@@ -332,9 +337,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $repDesc
-     * @return self
+     *
+     * @return $this
      */
-    public function setRepDesc(?string $repDesc): self
+    public function setRepDesc(?string $repDesc)
     {
         $this->repDesc = $repDesc;
         $this->modifiedProperties['repDesc'] = true;
@@ -345,7 +351,7 @@ class BladeFxReportTransfer extends AbstractTransfer
     /**
      * @return $this
      */
-    public function requireRepDesc(): self
+    public function requireRepDesc()
     {
         $this->assertPropertyIsSet('repDesc');
 
@@ -362,9 +368,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $catName
-     * @return self
+     *
+     * @return $this
      */
-    public function setCatName(?string $catName): self
+    public function setCatName(?string $catName)
     {
         $this->catName = $catName;
         $this->modifiedProperties['catName'] = true;
@@ -382,9 +389,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isActive
-     * @return self
+     *
+     * @return $this
      */
-    public function setIsActive(?bool $isActive): self
+    public function setIsActive(?bool $isActive)
     {
         $this->isActive = $isActive;
         $this->modifiedProperties['isActive'] = true;
@@ -402,9 +410,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isDrilldown
-     * @return self
+     *
+     * @return $this
      */
-    public function setIsDrilldown(?bool $isDrilldown): self
+    public function setIsDrilldown(?bool $isDrilldown)
     {
         $this->isDrilldown = $isDrilldown;
         $this->modifiedProperties['isDrilldown'] = true;
@@ -422,9 +431,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isWebservice
-     * @return self
+     *
+     * @return $this
      */
-    public function setIsWebservice(?bool $isWebservice): self
+    public function setIsWebservice(?bool $isWebservice)
     {
         $this->isWebservice = $isWebservice;
         $this->modifiedProperties['isWebservice'] = true;
@@ -442,9 +452,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isErrorReport
-     * @return self
+     *
+     * @return $this
      */
-    public function setIsErrorReport(?bool $isErrorReport): self
+    public function setIsErrorReport(?bool $isErrorReport)
     {
         $this->isErrorReport = $isErrorReport;
         $this->modifiedProperties['isErrorReport'] = true;
@@ -462,9 +473,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isDef
-     * @return self
+     *
+     * @return $this
      */
-    public function setIsDef(?bool $isDef): self
+    public function setIsDef(?bool $isDef)
     {
         $this->isDef = $isDef;
         $this->modifiedProperties['isDef'] = true;
@@ -482,9 +494,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isMetro
-     * @return self
+     *
+     * @return $this
      */
-    public function setIsMetro(?bool $isMetro): self
+    public function setIsMetro(?bool $isMetro)
     {
         $this->isMetro = $isMetro;
         $this->modifiedProperties['isMetro'] = true;
@@ -502,9 +515,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $logExecution
-     * @return self
+     *
+     * @return $this
      */
-    public function setLogExecution(?bool $logExecution): self
+    public function setLogExecution(?bool $logExecution)
     {
         $this->logExecution = $logExecution;
         $this->modifiedProperties['logExecution'] = true;
@@ -522,9 +536,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $logHistory
-     * @return self
+     *
+     * @return $this
      */
-    public function setLogHistory(?bool $logHistory): self
+    public function setLogHistory(?bool $logHistory)
     {
         $this->logHistory = $logHistory;
         $this->modifiedProperties['logHistory'] = true;
@@ -542,9 +557,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $isFavorite
-     * @return self
+     *
+     * @return $this
      */
-    public function setIsFavorite(?bool $isFavorite): self
+    public function setIsFavorite(?bool $isFavorite)
     {
         $this->isFavorite = $isFavorite;
         $this->modifiedProperties[static::IS_FAVORITE] = true;
@@ -562,9 +578,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $uCreated
-     * @return self
+     *
+     * @return $this
      */
-    public function setUCreated(?string $uCreated): self
+    public function setUCreated(?string $uCreated)
     {
         $this->uCreated = $uCreated;
         $this->modifiedProperties['uCreated'] = true;
@@ -582,9 +599,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $dCreated
-     * @return self
+     *
+     * @return $this
      */
-    public function setDCreated(?string $dCreated): self
+    public function setDCreated(?string $dCreated)
     {
         $this->dCreated = $dCreated;
         $this->modifiedProperties['dCreated'] = true;
@@ -602,9 +620,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $uChanged
-     * @return self
+     *
+     * @return $this
      */
-    public function setUChanged(?string $uChanged): self
+    public function setUChanged(?string $uChanged)
     {
         $this->uChanged = $uChanged;
         $this->modifiedProperties['uChanged'] = true;
@@ -622,9 +641,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param string|null $dChanged
-     * @return self
+     *
+     * @return $this
      */
-    public function setDChanged(?string $dChanged): self
+    public function setDChanged(?string $dChanged)
     {
         $this->dChanged = $dChanged;
         $this->modifiedProperties['dChanged'] = true;
@@ -642,9 +662,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $mobileLayout
-     * @return self
+     *
+     * @return $this
      */
-    public function setMobileLayout(?bool $mobileLayout): self
+    public function setMobileLayout(?bool $mobileLayout)
     {
         $this->mobileLayout = $mobileLayout;
         $this->modifiedProperties['mobileLayout'] = true;
@@ -662,9 +683,10 @@ class BladeFxReportTransfer extends AbstractTransfer
 
     /**
      * @param int|null $attribute
-     * @return self
+     *
+     * @return $this
      */
-    public function setAttribute(?int $attribute): self
+    public function setAttribute(?int $attribute)
     {
         $this->attribute = $attribute;
         $this->modifiedProperties['attribute'] = true;
@@ -704,8 +726,10 @@ class BladeFxReportTransfer extends AbstractTransfer
     /**
      * @param array<string, mixed> $data
      * @param bool $ignoreMissingProperties
-     * @return $this
+     *
      * @throws \InvalidArgumentException
+     *
+     * @return $this
      */
     public function fromArray(array $data, bool $ignoreMissingProperties = false)
     {
@@ -735,11 +759,11 @@ class BladeFxReportTransfer extends AbstractTransfer
                 case 'attribute':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
-                    break;
 
+                    break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }

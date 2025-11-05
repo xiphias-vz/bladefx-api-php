@@ -19,16 +19,17 @@ class ReportByFormatResponseValidator extends AbstractResponseValidator
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
      * @return bool
      */
     protected function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
-            /**
-             * @var BladeFxGetReportByFormatResponseTransfer $responseTransfer
-             */
-            $responseTransfer->requireReport();
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer $bladeFxGetReportByFormatResponseTransfer */
+            $bladeFxGetReportByFormatResponseTransfer = $responseTransfer;
+
+            $bladeFxGetReportByFormatResponseTransfer->requireReport();
         } catch (TransferPropertyRequiredException $ex) {
             return false;
         }

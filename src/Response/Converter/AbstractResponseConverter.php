@@ -35,8 +35,9 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
     }
 
     /**
-     * @param ResponseInterface $response
-     * @return BladeFxApiResponseConversionResultTransfer
+     * @param \Psr\Http\Message\ResponseInterface $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer
      */
     public function convert(ResponseInterface $response): BladeFxApiResponseConversionResultTransfer
     {
@@ -51,9 +52,10 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
     }
 
     /**
-     * @param BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer
      * @param array<mixed> $responseData
-     * @return BladeFxApiResponseConversionResultTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer
      */
     abstract protected function expandConversionResponseTransfer(
         BladeFxApiResponseConversionResultTransfer $apiResponseConversionResultTransfer,
@@ -61,13 +63,14 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
     ): BladeFxApiResponseConversionResultTransfer;
 
     /**
-     * @param ResponseInterface $response
+     * @param \Psr\Http\Message\ResponseInterface $response
      * @param bool $assoc
      * @param int|null $depth
      * @param int|null $options
+     *
      * @return array<mixed>|string|null
      */
-    private function decodeResponse(ResponseInterface $response, bool $assoc = false, int $depth = null, int $options = null): array|string|null
+    private function decodeResponse(ResponseInterface $response, bool $assoc = false, ?int $depth = null, ?int $options = null): array|string|null
     {
         $bodyContent = $response->getBody()->getContents();
         if (!$bodyContent) {
@@ -92,7 +95,8 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
 
     /**
      * @param string $errorMessage
-     * @param ResponseInterface $response
+     * @param \Psr\Http\Message\ResponseInterface $response
+     *
      * @return void
      */
     protected function logError(string $errorMessage, ResponseInterface $response): void
@@ -117,8 +121,9 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
     }
 
     /**
-     * @param ResponseInterface $response
-     * @return ResponseInterface[]
+     * @param \Psr\Http\Message\ResponseInterface $response
+     *
+     * @return array<\Psr\Http\Message\ResponseInterface>
      */
     private function createArrayWithResponseData(ResponseInterface $response): array
     {
@@ -128,7 +133,7 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
     }
 
     /**
-     * @return BladeFxApiResponseConversionResultTransfer
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxApiResponseConversionResultTransfer
      */
     protected function createConversionResultTransfer(): BladeFxApiResponseConversionResultTransfer
     {

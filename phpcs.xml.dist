@@ -2,7 +2,6 @@
 <ruleset name="BladeFxApiClient Coding Standard">
     <rule ref="PSR12"/>
 
-    <!-- Override sniff definition-->
     <rule ref="Generic.Files.LineLength">
         <properties>
             <property name="lineLimit" value="180"/>
@@ -10,13 +9,10 @@
         </properties>
     </rule>
 
-    <!-- Directories to scan -->
     <file>src</file>
 
-    <!-- Report formatting -->
     <arg name="report" value="full"/>
     <arg name="report-width" value="180"/>
 
-    <!-- Excluded vendor directory and js files-->
     <exclude-pattern>vendor/*</exclude-pattern>
 </ruleset>

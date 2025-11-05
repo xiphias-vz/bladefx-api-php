@@ -8,6 +8,8 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Log\LoggerInterface;
 use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer;
@@ -18,8 +20,6 @@ use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer;
 use Xiphias\BladeFxApi\Exception\ReportsRequestException;
 use Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface;
 use Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface;
-use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer;
-use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer;
 
 class RequestManager implements RequestManagerInterface
 {
@@ -34,23 +34,23 @@ class RequestManager implements RequestManagerInterface
     protected const LOGGER_TYPE_TRANSFER = 'transfer';
 
     /**
-     * @var RequestBuilderInterface
+     * @var \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface
      */
     private RequestBuilderInterface $requestBuilder;
 
     /**
-     * @var RequestFactoryInterface
+     * @var \Xiphias\BladeFxApi\Request\RequestFactoryInterface
      */
     private RequestFactoryInterface $requestFactory;
 
     /**
-     * @var LoggerInterface
+     * @var \Psr\Log\LoggerInterface
      */
     private LoggerInterface $logger;
 
     /**
-     * @param RequestFactoryInterface $requestFactory
-     * @param LoggerInterface $logger
+     * @param \Xiphias\BladeFxApi\Request\RequestFactoryInterface $requestFactory
+     * @param \Psr\Log\LoggerInterface $logger
      */
     public function __construct(
         RequestFactoryInterface $requestFactory,
@@ -62,8 +62,9 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxAuthenticationRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getAuthenticateUserRequest(
         string $resource,
@@ -77,8 +78,9 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxGetCategoriesListRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getCategoriesListRequest(
         string $resource,
@@ -92,8 +94,9 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxGetReportsListRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getReportsListRequest(
         string $resource,
@@ -107,8 +110,9 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxGetReportParamFormRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getReportParamFormRequest(
         string $resource,
@@ -122,8 +126,9 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxGetReportPreviewRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getReportPreview(
         string $resource,
@@ -137,8 +142,9 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxSetFavoriteReportRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getSetFavoriteReportRequest(
         string $resource,
@@ -152,8 +158,9 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getCreateOrUpdateUserOnBladeFxRequest(string $resource, BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer): RequestInterface
     {
@@ -165,8 +172,9 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxUpdatePasswordRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getUpdatePasswordOnBladeFxRequest(string $resource, BladeFxUpdatePasswordRequestTransfer $requestTransfer): RequestInterface
     {
@@ -178,8 +186,9 @@ class RequestManager implements RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxGetReportByFormatRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getReportByFormatRequest(
         string $resource,
@@ -192,8 +201,11 @@ class RequestManager implements RequestManagerInterface
     }
 
     /**
-     * @param RequestValidatorInterface $validator
-     * @param AbstractTransfer $request
+     * @param \Xiphias\BladeFxApi\Request\Validator\RequestValidatorInterface $validator
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $request
+     *
+     * @throws \Xiphias\BladeFxApi\Exception\ReportsRequestException
+     *
      * @return void
      */
     private function validateRequest(RequestValidatorInterface $validator, AbstractTransfer $request): void
@@ -206,7 +218,8 @@ class RequestManager implements RequestManagerInterface
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return void
      */
     private function logError(AbstractTransfer $requestTransfer): void
@@ -229,8 +242,9 @@ class RequestManager implements RequestManagerInterface
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
-     * @return AbstractTransfer[]
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
+     * @return array<\Xiphias\BladeFxApi\DTO\AbstractTransfer>
      */
     private function createArrayWithTransferData(AbstractTransfer $requestTransfer): array
     {
@@ -240,7 +254,8 @@ class RequestManager implements RequestManagerInterface
     }
 
     /**
-     * @param RequestBuilderInterface $requestBuilder
+     * @param \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface $requestBuilder
+     *
      * @return void
      */
     public function setRequestBuilder(RequestBuilderInterface $requestBuilder): void

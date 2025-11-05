@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\DTO;
 
+use InvalidArgumentException;
+
 class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
 {
     /**
@@ -40,9 +42,10 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $username
+     *
      * @return $this
      */
-    public function setUsername(?string $username): self
+    public function setUsername(?string $username)
     {
         $this->username = $username;
         $this->modifiedProperties['username'] = true;
@@ -52,9 +55,8 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requireUsername(): self
+    public function requireUsername()
     {
         $this->assertPropertyIsSet('username');
 
@@ -71,9 +73,10 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
 
     /**
      * @param string|null $password
+     *
      * @return $this
      */
-    public function setPassword(?string $password): self
+    public function setPassword(?string $password)
     {
         $this->password = $password;
         $this->modifiedProperties['password'] = true;
@@ -83,9 +86,8 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
 
     /**
      * @return $this
-     * @throws \Xiphias\BladeFxApi\Exception\TransferPropertyRequiredException
      */
-    public function requirePassword(): self
+    public function requirePassword()
     {
         $this->assertPropertyIsSet('password');
 
@@ -102,9 +104,10 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
 
     /**
      * @param bool|null $licenceExp
+     *
      * @return $this
      */
-    public function setLicenceExp(?bool $licenceExp): self
+    public function setLicenceExp(?bool $licenceExp)
     {
         $this->licenceExp = $licenceExp;
         $this->modifiedProperties['licenceExp'] = true;
@@ -127,6 +130,9 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
     /**
      * @param array<mixed> $data
      * @param bool $ignoreMissingProperties
+     *
+     * @throws \InvalidArgumentException
+     *
      * @return $this
      */
     public function fromArray(array $data, bool $ignoreMissingProperties = false)
@@ -140,11 +146,11 @@ class BladeFxAuthenticationRequestTransfer extends AbstractTransfer
                 case 'licenceExp':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
-                    break;
 
+                    break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new \InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
                     }
             }
         }

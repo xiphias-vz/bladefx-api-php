@@ -36,9 +36,10 @@ class BladeFxParameterTransfer extends AbstractTransfer
 
     /**
      * @param int|null $reportId
+     *
      * @return $this
      */
-    public function setReportId(?int $reportId): self
+    public function setReportId(?int $reportId)
     {
         $this->reportId = $reportId;
 
@@ -55,9 +56,10 @@ class BladeFxParameterTransfer extends AbstractTransfer
 
     /**
      * @param string|null $paramName
+     *
      * @return $this
      */
-    public function setParamName(?string $paramName): self
+    public function setParamName(?string $paramName)
     {
         $this->paramName = $paramName;
 
@@ -65,7 +67,7 @@ class BladeFxParameterTransfer extends AbstractTransfer
     }
 
     /**
-     * @return ?string
+     * @return string|null
      */
     public function getParamValue(): ?string
     {
@@ -73,10 +75,11 @@ class BladeFxParameterTransfer extends AbstractTransfer
     }
 
     /**
-     * @param ?string $paramValue
+     * @param string|null $paramValue
+     *
      * @return $this
      */
-    public function setParamValue(?string $paramValue): self
+    public function setParamValue(?string $paramValue)
     {
         $this->paramValue = $paramValue;
 
@@ -93,9 +96,10 @@ class BladeFxParameterTransfer extends AbstractTransfer
 
     /**
      * @param string|null $sqlDbType
+     *
      * @return $this
      */
-    public function setSqlDbType(?string $sqlDbType): self
+    public function setSqlDbType(?string $sqlDbType)
     {
         $this->sqlDbType = $sqlDbType;
 

@@ -19,16 +19,17 @@ class AuthenticationRequestValidator extends AbstractRequestValidator
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return bool
      */
     protected function validateRequest(AbstractTransfer $requestTransfer): bool
     {
         try {
-            /**
-             * @var BladeFxAuthenticationRequestTransfer $requestTransfer
-             */
-            $requestTransfer
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer $bladeFxAuthenticationRequestTransfer */
+            $bladeFxAuthenticationRequestTransfer = $requestTransfer;
+
+            $bladeFxAuthenticationRequestTransfer
                 ->requireUsername()
                 ->requirePassword();
         } catch (TransferPropertyRequiredException $ex) {

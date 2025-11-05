@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Response;
 
+use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer;
@@ -18,8 +20,6 @@ use Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer;
 use Xiphias\BladeFxApi\Response\Exception\ReportsResponseException;
 use Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface;
-use Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer;
-use Psr\Http\Message\ResponseInterface;
 
 class ResponseManager implements ResponseManagerInterface
 {
@@ -34,18 +34,18 @@ class ResponseManager implements ResponseManagerInterface
     private const LOG_MESSAGE_PREFIX = 'BladeFxAPIClient: ';
 
     /**
-     * @var LoggerInterface
+     * @var \Psr\Log\LoggerInterface
      */
     private LoggerInterface $logger;
 
     /**
-     * @var ResponseFactoryInterface
+     * @var \Xiphias\BladeFxApi\Response\ResponseFactoryInterface
      */
     private ResponseFactoryInterface $responseFactory;
 
     /**
-     * @param LoggerInterface $logger
-     * @param ResponseFactoryInterface $responseFactory
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param \Xiphias\BladeFxApi\Response\ResponseFactoryInterface $responseFactory
      */
     public function __construct(
         LoggerInterface $logger,
@@ -56,8 +56,9 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxAuthenticationResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer
      */
     public function getAuthenticationUserResponseTransfer(?ResponseInterface $response): BladeFxAuthenticationResponseTransfer
     {
@@ -74,8 +75,9 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxCategoriesListResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer
      */
     public function getCategoriesListResponseTransfer(?ResponseInterface $response): BladeFxCategoriesListResponseTransfer
     {
@@ -92,8 +94,9 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxGetReportsListResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer
      */
     public function getReportsListResponseTransfer(?ResponseInterface $response): BladeFxGetReportsListResponseTransfer
     {
@@ -106,8 +109,9 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxGetReportParamFormResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer
      */
     public function getReportParamFormResponseTransfer(?ResponseInterface $response): BladeFxGetReportParamFormResponseTransfer
     {
@@ -120,8 +124,9 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxGetReportPreviewResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer
      */
     public function getReportPreviewResponseTransfer(?ResponseInterface $response): BladeFxGetReportPreviewResponseTransfer
     {
@@ -134,8 +139,9 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxSetFavoriteReportResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer
      */
     public function getSetFavoriteReportResponseTransfer(?ResponseInterface $response): BladeFxSetFavoriteReportResponseTransfer
     {
@@ -153,8 +159,9 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxCreateOrUpdateUserResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer
      */
     public function getCreateOrUpdateUserOnBladeFxResponseTransfer(?ResponseInterface $response): BladeFxCreateOrUpdateUserResponseTransfer
     {
@@ -175,8 +182,9 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param ResponseInterface|null $response
-     * @return BladeFxUpdatePasswordResponseTransfer
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer
      */
     public function getUpdatePasswordOnBladeFxRequest(?ResponseInterface $response): BladeFxUpdatePasswordResponseTransfer
     {
@@ -190,9 +198,10 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param ResponseInterface|null $response
+     * @param \Psr\Http\Message\ResponseInterface|null $response
      * @param string $format
-     * @return BladeFxGetReportByFormatResponseTransfer
+     *
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer
      */
     public function getReportByFormatResponseTransfer(?ResponseInterface $response, string $format): BladeFxGetReportByFormatResponseTransfer
     {
@@ -205,7 +214,8 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param ResponseInterface|null $response
+     * @param \Psr\Http\Message\ResponseInterface|null $response
+     *
      * @return void
      */
     protected function validateRawResponse(?ResponseInterface $response): void
@@ -219,8 +229,11 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param ResponseValidatorInterface $validator
-     * @param AbstractTransfer $response
+     * @param \Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface $validator
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $response
+     *
+     * @throws \Xiphias\BladeFxApi\Response\Exception\ReportsResponseException
+     *
      * @return void
      */
     private function validateResponse(ResponseValidatorInterface $validator, AbstractTransfer $response): void
@@ -234,7 +247,8 @@ class ResponseManager implements ResponseManagerInterface
 
     /**
      * @param string $errorMessage
-     * @param AbstractTransfer $response
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $response
+     *
      * @return void
      */
     protected function logError(string $errorMessage, AbstractTransfer $response): void
@@ -247,7 +261,8 @@ class ResponseManager implements ResponseManagerInterface
 
     /**
      * @param string $errorMessage
-     * @param ResponseInterface $rawResponse
+     * @param \Psr\Http\Message\ResponseInterface $rawResponse
+     *
      * @return void
      */
     protected function logRawDataError(string $errorMessage, ResponseInterface $rawResponse): void
@@ -272,8 +287,9 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param AbstractTransfer $response
-     * @return AbstractTransfer[]
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $response
+     *
+     * @return array<\Xiphias\BladeFxApi\DTO\AbstractTransfer>
      */
     private function createArrayWithResponseData(AbstractTransfer $response): array
     {
@@ -283,8 +299,9 @@ class ResponseManager implements ResponseManagerInterface
     }
 
     /**
-     * @param ResponseInterface $rawResponse
-     * @return ResponseInterface[]
+     * @param \Psr\Http\Message\ResponseInterface $rawResponse
+     *
+     * @return array<\Psr\Http\Message\ResponseInterface>
      */
     private function createArrayWithRawResponseData(ResponseInterface $rawResponse): array
     {

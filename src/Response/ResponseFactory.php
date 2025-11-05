@@ -7,25 +7,25 @@ namespace Xiphias\BladeFxApi\Response;
 use Psr\Log\LoggerInterface;
 use Xiphias\BladeFxApi\Response\Converter\AuthenticationResponseConverter;
 use Xiphias\BladeFxApi\Response\Converter\CategoriesListResponseConverter;
+use Xiphias\BladeFxApi\Response\Converter\CreateOrUpdateUserOnBladeFxResponseConverter;
+use Xiphias\BladeFxApi\Response\Converter\ReportByFormatResponseConverter;
 use Xiphias\BladeFxApi\Response\Converter\ReportByFormatResponseConverterInterface;
 use Xiphias\BladeFxApi\Response\Converter\ReportParamFormResponseConverter;
 use Xiphias\BladeFxApi\Response\Converter\ReportPreviewResponseConverter;
 use Xiphias\BladeFxApi\Response\Converter\ReportsListResponseConverter;
 use Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface;
 use Xiphias\BladeFxApi\Response\Converter\SetFavoriteReportResponseConverter;
-use Xiphias\BladeFxApi\Response\Converter\CreateOrUpdateUserOnBladeFxResponseConverter;
 use Xiphias\BladeFxApi\Response\Converter\UpdatePasswordOnBladeFxResponseConverter;
-use Xiphias\BladeFxApi\Response\Converter\ReportByFormatResponseConverter;
 use Xiphias\BladeFxApi\Response\Validator\AuthenticationResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\CategoriesListResponseValidator;
+use Xiphias\BladeFxApi\Response\Validator\CreateOrUpdateUserOnBladeFxResponseValidator;
+use Xiphias\BladeFxApi\Response\Validator\ReportByFormatResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\ReportParamFormResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\ReportPreviewResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\ReportsListResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface;
 use Xiphias\BladeFxApi\Response\Validator\SetFavoriteReportResponseValidator;
-use Xiphias\BladeFxApi\Response\Validator\CreateOrUpdateUserOnBladeFxResponseValidator;
 use Xiphias\BladeFxApi\Response\Validator\UpdatePasswordOnBladeFxResponseValidator;
-use Xiphias\BladeFxApi\Response\Validator\ReportByFormatResponseValidator;
 
 class ResponseFactory implements ResponseFactoryInterface
 {
@@ -37,7 +37,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseConverterInterface
+     * @return \Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface
      */
     public function createAuthenticationResponseConverter(): ResponseConverterInterface
     {
@@ -45,7 +45,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseValidatorInterface
+     * @return \Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface
      */
     public function createAuthenticationResponseValidator(): ResponseValidatorInterface
     {
@@ -53,7 +53,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseConverterInterface
+     * @return \Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface
      */
     public function createCategoriesListResponseConverter(): ResponseConverterInterface
     {
@@ -61,7 +61,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseValidatorInterface
+     * @return \Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface
      */
     public function createCategoriesListResponseValidator(): ResponseValidatorInterface
     {
@@ -69,7 +69,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseConverterInterface
+     * @return \Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface
      */
     public function createReportsListResponseConverter(): ResponseConverterInterface
     {
@@ -77,7 +77,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseValidatorInterface
+     * @return \Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface
      */
     public function createReportsListResponseValidator(): ResponseValidatorInterface
     {
@@ -85,7 +85,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseConverterInterface
+     * @return \Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface
      */
     public function createReportParamFormRequestConverter(): ResponseConverterInterface
     {
@@ -93,7 +93,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseValidatorInterface
+     * @return \Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface
      */
     public function createReportParamFormResponseValidator(): ResponseValidatorInterface
     {
@@ -101,7 +101,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseConverterInterface
+     * @return \Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface
      */
     public function createReportPreviewResponseConverter(): ResponseConverterInterface
     {
@@ -109,7 +109,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseValidatorInterface
+     * @return \Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface
      */
     public function createResponsePreviewValidator(): ResponseValidatorInterface
     {
@@ -117,7 +117,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseConverterInterface
+     * @return \Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface
      */
     public function createSetFavoriteReportResponseConverter(): ResponseConverterInterface
     {
@@ -125,7 +125,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseValidatorInterface
+     * @return \Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface
      */
     public function createSetFavoriteReportResponseValidator(): ResponseValidatorInterface
     {
@@ -133,7 +133,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseConverterInterface
+     * @return \Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface
      */
     public function createCreateOrUpdateUserOnBfxResponseConverter(): ResponseConverterInterface
     {
@@ -141,7 +141,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseValidatorInterface
+     * @return \Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface
      */
     public function createCreateOrUpdateUserOnBfxResponseValidator(): ResponseValidatorInterface
     {
@@ -149,7 +149,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseConverterInterface
+     * @return \Xiphias\BladeFxApi\Response\Converter\ResponseConverterInterface
      */
     public function createUpdatePasswordOnBladeFxResponseConverter(): ResponseConverterInterface
     {
@@ -157,7 +157,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseValidatorInterface
+     * @return \Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface
      */
     public function createUpdatePasswordOnBladeFxResponseValidator(): ResponseValidatorInterface
     {
@@ -165,7 +165,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ReportByFormatResponseConverterInterface
+     * @return \Xiphias\BladeFxApi\Response\Converter\ReportByFormatResponseConverterInterface
      */
     public function createReportByFormatResponseConverter(): ReportByFormatResponseConverterInterface
     {
@@ -173,7 +173,7 @@ class ResponseFactory implements ResponseFactoryInterface
     }
 
     /**
-     * @return ResponseValidatorInterface
+     * @return \Xiphias\BladeFxApi\Response\Validator\ResponseValidatorInterface
      */
     public function createReportByFormatResponseValidator(): ResponseValidatorInterface
     {

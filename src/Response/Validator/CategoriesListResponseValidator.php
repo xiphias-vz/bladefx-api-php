@@ -19,14 +19,17 @@ class CategoriesListResponseValidator extends AbstractResponseValidator
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
      * @return bool
      */
     protected function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
-            /** @var BladeFxCategoriesListResponseTransfer $responseTransfer */
-            $categoriesList = $responseTransfer->getCategoriesList();
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer $bladeFxCategoriesListResponseTransfer */
+            $bladeFxCategoriesListResponseTransfer = $responseTransfer;
+
+            $categoriesList = $bladeFxCategoriesListResponseTransfer->getCategoriesList();
             foreach ($categoriesList as $category) {
                 $category
                     ->requireCatId();

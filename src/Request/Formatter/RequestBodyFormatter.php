@@ -5,27 +5,27 @@ declare(strict_types=1);
 namespace Xiphias\BladeFxApi\Request\Formatter;
 
 use Xiphias\BladeFxApi\BladeFxApiConfig;
-use Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer;
 
 class RequestBodyFormatter implements RequestBodyFormatterInterface
 {
     /**
-     * @var BladeFxApiConfig
+     * @var \Xiphias\BladeFxApi\BladeFxApiConfig
      */
     protected BladeFxApiConfig $config;
 
     /**
-     * @param BladeFxApiConfig $config
+     * @param \Xiphias\BladeFxApi\BladeFxApiConfig $config
      */
-    public function __construct(
-        BladeFxApiConfig $config,
-    ) {
+    public function __construct(BladeFxApiConfig $config)
+    {
         $this->config = $config;
     }
 
     /**
-     * @param BladeFxGetReportPreviewRequestTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer $requestTransfer
+     *
      * @return array<mixed>
      */
     public function formatDataBeforeEncoding(BladeFxGetReportPreviewRequestTransfer $requestTransfer): array
@@ -40,9 +40,9 @@ class RequestBodyFormatter implements RequestBodyFormatterInterface
         return $data;
     }
 
-
     /**
-     * @param BladeFxParameterTransfer|null $parameterTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer|null $parameterTransfer
+     *
      * @return bool
      */
     public function parameterTransferIsValid(?BladeFxParameterTransfer $parameterTransfer): bool
@@ -58,7 +58,8 @@ class RequestBodyFormatter implements RequestBodyFormatterInterface
 
     /**
      * @param array<mixed> $data
-     * @param BladeFxParameterTransfer|null $parameterTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer|null $parameterTransfer
+     *
      * @return array<mixed>
      */
     public function mergeParametersWithData(array $data, ?BladeFxParameterTransfer $parameterTransfer): array

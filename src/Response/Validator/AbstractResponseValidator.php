@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Response\Validator;
 
-use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Psr\Log\LoggerInterface;
+use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\Response\Exception\ReportsResponseException;
 
 abstract class AbstractResponseValidator implements ResponseValidatorInterface
@@ -21,7 +21,7 @@ abstract class AbstractResponseValidator implements ResponseValidatorInterface
     private const LOG_MESSAGE_PREFIX = 'BladeFxAPIClient: ';
 
     /**
-     * @var LoggerInterface
+     * @var \Psr\Log\LoggerInterface
      */
     private LoggerInterface $logger;
 
@@ -31,7 +31,10 @@ abstract class AbstractResponseValidator implements ResponseValidatorInterface
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
+     * @throws \Xiphias\BladeFxApi\Response\Exception\ReportsResponseException
+     *
      * @return bool
      */
     public function isResponseValid(AbstractTransfer $responseTransfer): bool
@@ -47,7 +50,8 @@ abstract class AbstractResponseValidator implements ResponseValidatorInterface
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
      * @return bool
      */
     abstract protected function validateResponse(AbstractTransfer $responseTransfer): bool;
@@ -58,8 +62,9 @@ abstract class AbstractResponseValidator implements ResponseValidatorInterface
     abstract protected function getResponseTransferClass(): string;
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
      * @param string $className
+     *
      * @return bool
      */
     private function isResponseTransferClassCorrect(AbstractTransfer $responseTransfer, string $className): bool
@@ -68,7 +73,8 @@ abstract class AbstractResponseValidator implements ResponseValidatorInterface
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
      * @return void
      */
     private function logError(AbstractTransfer $responseTransfer): void
@@ -91,8 +97,9 @@ abstract class AbstractResponseValidator implements ResponseValidatorInterface
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
-     * @return AbstractTransfer[]
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
+     * @return array<\Xiphias\BladeFxApi\DTO\AbstractTransfer>
      */
     private function createTransferLogger(AbstractTransfer $responseTransfer): array
     {

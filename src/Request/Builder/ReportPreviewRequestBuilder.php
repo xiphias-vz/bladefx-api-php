@@ -6,24 +6,22 @@ namespace Xiphias\BladeFxApi\Request\Builder;
 
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
-use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\BladeFxApiConfig;
-use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
+use Xiphias\BladeFxApi\DTO\AbstractTransfer;
 use Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface;
-use Xiphias\Shared\Reports\ReportsConstants;
 
 class ReportPreviewRequestBuilder extends AbstractRequestBuilder
 {
     protected RequestBodyFormatterInterface $bodyFormatter;
 
     /**
-     * @var BladeFxApiConfig
+     * @var \Xiphias\BladeFxApi\BladeFxApiConfig
      */
     protected BladeFxApiConfig $config;
 
     /**
-     * @param RequestBodyFormatterInterface $bodyFormatter
-     * @param BladeFxApiConfig $config
+     * @param \Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface $bodyFormatter
+     * @param \Xiphias\BladeFxApi\BladeFxApiConfig $config
      */
     public function __construct(
         RequestBodyFormatterInterface $bodyFormatter,
@@ -44,19 +42,21 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return array<string, string>
      */
     public function getAdditionalHeaders(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxGetReportPreviewRequestTransfer $requestTransfer */
+        /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer $requestTransfer */
         return $this->addAuthHeader($requestTransfer->getAccessToken());
     }
 
     /**
      * @param string $resource
-     * @param AbstractTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function buildRequest(
         string $resource,
@@ -67,7 +67,7 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
             $requestTransfer->getBaseUrl(),
             $this->getQueryParamsFromRequestTransfer(
                 $requestTransfer,
-            )
+            ),
         );
         $headers = $this->getCombinedHeaders($requestTransfer);
         $encodedData = $this->getEncodedData($requestTransfer);
@@ -76,17 +76,21 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return string
      */
     protected function getEncodedData(AbstractTransfer $requestTransfer): string
     {
-        /** @var BladeFxGetReportPreviewRequestTransfer $requestTransfer */
+        /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer $bladeFxGetReportPreviewRequestTransfer */
+        $bladeFxGetReportPreviewRequestTransfer = $requestTransfer;
+
         $data = $this->bodyFormatter->formatDataBeforeEncoding(
-            $requestTransfer,
+            $bladeFxGetReportPreviewRequestTransfer,
         );
 
-        $data = $this->cleanDataOfUnneededParameters($requestTransfer->getParams()->getParamValue());
+        $data = $this->cleanDataOfUnneededParameters($bladeFxGetReportPreviewRequestTransfer->getParams()->getParamValue());
+
         return $this->encodeJson($data);
     }
 
@@ -94,9 +98,10 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
      * @param array<mixed> $value
      * @param int|null $options
      * @param int|null $depth
+     *
      * @return string|null
      */
-    protected function encodeJson(array $value, int $options = null, int $depth = null): ?string
+    protected function encodeJson(array $value, ?int $options = null, ?int $depth = null): ?string
     {
         if ($options === null) {
             $options = static::DEFAULT_OPTIONS;
@@ -113,20 +118,22 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
 
     /**
      * @param string $paramValue
+     *
      * @return array<mixed>
      */
     protected function cleanDataOfUnneededParameters(string $paramValue): array
     {
-        return ["entryText" => $paramValue];
+        return ['entryText' => $paramValue];
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return array<string, string>
      */
     protected function getQueryParamsFromRequestTransfer(AbstractTransfer $requestTransfer): array
     {
-        /** @var BladeFxGetReportPreviewRequestTransfer $requestTransfer */
+        /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer $requestTransfer */
         return [
             'rootUrl' => $requestTransfer->getRootUrl(),
         ];

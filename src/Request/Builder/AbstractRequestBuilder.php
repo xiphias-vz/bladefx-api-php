@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Xiphias\BladeFxApi\Request\Builder;
 
+use ArrayObject;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Uri;
 use Psr\Http\Message\RequestInterface;
@@ -46,18 +47,18 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     private const FULL_URL_PATTERN = '{{baseUri}}{{resource}}/';
 
     /**
-     * @var BladeFxApiConfig
+     * @var \Xiphias\BladeFxApi\BladeFxApiConfig
      */
     private BladeFxApiConfig $apiClientConfig;
 
     /**
-     * @var RequestBodyFormatterInterface
+     * @var \Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface
      */
     protected RequestBodyFormatterInterface $requestBodyFormatter;
 
     /**
-     * @param BladeFxApiConfig $apiClientConfig
-     * @param RequestBodyFormatterInterface $requestBodyFormatter
+     * @param \Xiphias\BladeFxApi\BladeFxApiConfig $apiClientConfig
+     * @param \Xiphias\BladeFxApi\Request\Formatter\RequestBodyFormatterInterface $requestBodyFormatter
      */
     public function __construct(
         BladeFxApiConfig $apiClientConfig,
@@ -73,15 +74,17 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     abstract protected function getMethodName(): string;
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return array<string, string>
      */
     abstract protected function getAdditionalHeaders(AbstractTransfer $requestTransfer): array;
 
     /**
      * @param string $resource
-     * @param AbstractTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function buildRequest(
         string $resource,
@@ -98,7 +101,8 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
      * @param string $resource
      * @param string $baseUrl
      * @param array<mixed> $queryParams
-     * @return Uri
+     *
+     * @return \GuzzleHttp\Psr7\Uri
      */
     protected function buildUri(string $resource, string $baseUrl, array $queryParams = []): Uri
     {
@@ -111,6 +115,7 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
      * @param string $resource
      * @param string $baseUrl
      * @param array<mixed> $queryParams
+     *
      * @return string
      */
     private function buildFullRequestUrl(string $resource, string $baseUrl, array $queryParams = []): string
@@ -135,7 +140,8 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return array<mixed>
      */
     public function getCombinedHeaders(AbstractTransfer $requestTransfer): array
@@ -147,7 +153,8 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return string
      */
     protected function getEncodedData(AbstractTransfer $requestTransfer): string
@@ -161,9 +168,10 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
      * @param array<mixed> $value
      * @param int|null $options
      * @param int|null $depth
+     *
      * @return string|null
      */
-    protected function encodeJson(array $value, int $options = null, int $depth = null): ?string
+    protected function encodeJson(array $value, ?int $options = null, ?int $depth = null): ?string
     {
         if ($options === null) {
             $options = static::DEFAULT_OPTIONS;
@@ -182,11 +190,12 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
 
     /**
      * @param mixed $data
+     *
      * @return mixed
      */
     protected function normalizeData(mixed $data): mixed
     {
-        if ($data instanceof \ArrayObject) {
+        if ($data instanceof ArrayObject) {
             $data = $data->getArrayCopy();
         }
 
@@ -208,7 +217,7 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
     }
 
     /**
-     * @return BladeFxApiConfig
+     * @return \Xiphias\BladeFxApi\BladeFxApiConfig
      */
     protected function getConfig(): BladeFxApiConfig
     {
@@ -217,7 +226,8 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
 
     /**
      * @param string $token
-     * @return string[]
+     *
+     * @return array<string>
      */
     protected function addAuthHeader(string $token): array
     {

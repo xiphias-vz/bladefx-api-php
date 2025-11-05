@@ -19,16 +19,17 @@ class UpdatePasswordOnBladeFxResponseValidator extends AbstractResponseValidator
     }
 
     /**
-     * @param AbstractTransfer $responseTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $responseTransfer
+     *
      * @return bool
      */
     protected function validateResponse(AbstractTransfer $responseTransfer): bool
     {
         try {
-            /**
-             * @var BladeFxUpdatePasswordResponseTransfer $responseTransfer
-             */
-            $responseTransfer->requireSuccess();
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer $bladeFxUpdatePasswordResponseTransfer */
+            $bladeFxUpdatePasswordResponseTransfer = $responseTransfer;
+
+            $bladeFxUpdatePasswordResponseTransfer->requireSuccess();
         } catch (TransferPropertyRequiredException $ex) {
             return false;
         }

@@ -19,17 +19,17 @@ class CreateOrUpdateUserOnBladeFxRequestValidator extends AbstractRequestValidat
     }
 
     /**
-     * @param AbstractTransfer $requestTransfer
+     * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     *
      * @return bool
      */
     protected function validateRequest(AbstractTransfer $requestTransfer): bool
     {
         try {
-            /**
-             * @var BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
-             */
-            $requestTransfer
-                ->requireAccessToken();
+            /** @var \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer */
+            $bladeFxCreateOrUpdateUserRequestTransfer = $requestTransfer;
+
+            $bladeFxCreateOrUpdateUserRequestTransfer->requireAccessToken();
         } catch (TransferPropertyRequiredException $ex) {
             return false;
         }

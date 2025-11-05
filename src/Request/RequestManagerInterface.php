@@ -19,15 +19,17 @@ use Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface;
 interface RequestManagerInterface
 {
     /**
-     * @param RequestBuilderInterface $requestBuilder
+     * @param \Xiphias\BladeFxApi\Request\Builder\RequestBuilderInterface $requestBuilder
+     *
      * @return void
      */
     public function setRequestBuilder(RequestBuilderInterface $requestBuilder): void;
 
     /**
      * @param string $resource
-     * @param BladeFxAuthenticationRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getAuthenticateUserRequest(
         string $resource,
@@ -36,8 +38,9 @@ interface RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxGetCategoriesListRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getCategoriesListRequest(
         string $resource,
@@ -46,8 +49,9 @@ interface RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxGetReportsListRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getReportsListRequest(
         string $resource,
@@ -56,8 +60,9 @@ interface RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxGetReportParamFormRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getReportParamFormRequest(
         string $resource,
@@ -66,8 +71,9 @@ interface RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxGetReportPreviewRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getReportPreview(
         string $resource,
@@ -76,8 +82,9 @@ interface RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxSetFavoriteReportRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getSetFavoriteReportRequest(
         string $resource,
@@ -86,8 +93,9 @@ interface RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getCreateOrUpdateUserOnBladeFxRequest(
         string $resource,
@@ -96,8 +104,9 @@ interface RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxUpdatePasswordRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getUpdatePasswordOnBladeFxRequest(
         string $resource,
@@ -106,8 +115,9 @@ interface RequestManagerInterface
 
     /**
      * @param string $resource
-     * @param BladeFxGetReportByFormatRequestTransfer $requestTransfer
-     * @return RequestInterface
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer $requestTransfer
+     *
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function getReportByFormatRequest(
         string $resource,
