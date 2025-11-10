@@ -60,7 +60,7 @@ class BladeFxApiClient implements BladeFxApiClientInterface
         protected string $bladeFxBaseUrl,
         protected string $bladeFxUsername,
         protected string $bladeFxPassword,
-        protected ?LoggerInterface $logger = null,
+        protected ?LoggerInterface $logger = null
     ) {
         $this->logger ??= new StdoutLogger();
         $this->apiHandler = $this->createApiHandler();
@@ -96,10 +96,17 @@ class BladeFxApiClient implements BladeFxApiClientInterface
         ?BladeFxAuthenticationRequestTransfer $bladeFxAuthenticationRequestTransfer
     ): ?BladeFxAuthenticationResponseTransfer {
         $authRequestTransfer = new BladeFxAuthenticationRequestTransfer();
-        $authRequestTransfer->setUsername($bladeFxAuthenticationRequestTransfer?->getUsername() ?: $this->bladeFxUsername);
-        $authRequestTransfer->setPassword($bladeFxAuthenticationRequestTransfer?->getPassword() ?: $this->bladeFxPassword);
-        $authRequestTransfer->setBaseUrl($this->bladeFxBaseUrl);
-        $authRequestTransfer->setLicenceExp(true);
+        $username = $this->bladeFxUsername;
+        $password = $this->bladeFxPassword;
+        if ($bladeFxAuthenticationRequestTransfer) {
+            $username = $bladeFxAuthenticationRequestTransfer->getUsername();
+            $password = $bladeFxAuthenticationRequestTransfer->getPassword();
+        }
+        $authRequestTransfer
+            ->setUsername($username)
+            ->setPassword($password)
+            ->setBaseUrl($this->bladeFxBaseUrl)
+            ->setLicenceExp(true);
 
         return $this->apiHandler->authenticateUser($authRequestTransfer);
     }

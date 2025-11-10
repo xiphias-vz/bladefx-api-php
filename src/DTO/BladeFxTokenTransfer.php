@@ -82,7 +82,7 @@ class BladeFxTokenTransfer
     {
         return [
             'accessToken' => $this->getAccessToken(),
-            'expiresAt' => $this->getExpiresAt()?->format(DATE_ATOM),
+            'expiresAt' => $this->getExpiresAt() !== null ? $this->getExpiresAt()->format(DATE_ATOM) : null,
         ];
     }
 

@@ -29,6 +29,9 @@ abstract class AbstractResponseConverter implements ResponseConverterInterface
 
     private LoggerInterface $logger;
 
+    /**
+     * @param \Psr\Log\LoggerInterface $logger
+     */
     public function __construct(LoggerInterface $logger)
     {
         $this->logger = $logger;

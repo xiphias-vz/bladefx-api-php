@@ -31,6 +31,9 @@ class ResponseFactory implements ResponseFactoryInterface
 {
     private LoggerInterface $logger;
 
+    /**
+     * @param \Psr\Log\LoggerInterface $logger
+     */
     public function __construct(LoggerInterface $logger)
     {
         $this->logger = $logger;
