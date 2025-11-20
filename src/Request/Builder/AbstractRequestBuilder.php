@@ -182,7 +182,6 @@ abstract class AbstractRequestBuilder implements RequestBuilderInterface
         }
 
         $value = $this->normalizeData($value);
-
         $json = json_encode($value, $options, $depth);
 
         return $json !== false ? $json : null;

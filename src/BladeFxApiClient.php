@@ -69,11 +69,13 @@ class BladeFxApiClient implements BladeFxApiClientInterface
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer|null $bladeFxAuthenticationRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer|null
      */
     public function sendAuthenticateUserRequest(
-        ?BladeFxAuthenticationRequestTransfer $bladeFxAuthenticationRequestTransfer
+        ?BladeFxAuthenticationRequestTransfer $bladeFxAuthenticationRequestTransfer,
+        bool $fromSpryker = false
     ): ?BladeFxAuthenticationResponseTransfer {
         $expiresAt = (new DateTimeImmutable())->modify(BladeFxApiConfig::AUTH_TOKEN_EXPIRES_AT_SECONDS_DURATION);
         $authenticationResponseTransfer = $this->callAuthenticateUserApi($bladeFxAuthenticationRequestTransfer);
@@ -139,125 +141,145 @@ class BladeFxApiClient implements BladeFxApiClientInterface
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer|null $reportsListRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer
      */
     public function sendGetReportsListRequest(
-        ?BladeFxGetReportsListRequestTransfer $reportsListRequestTransfer = (new BladeFxGetReportsListRequestTransfer())
+        ?BladeFxGetReportsListRequestTransfer $reportsListRequestTransfer = (new BladeFxGetReportsListRequestTransfer()),
+        bool $fromSpryker = false
     ): BladeFxGetReportsListResponseTransfer {
         /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer $reportsListRequestTransfer */
-        $reportsListRequestTransfer = $this->prepareRequest($reportsListRequestTransfer);
+        $reportsListRequestTransfer = $this->prepareRequest($reportsListRequestTransfer, $fromSpryker);
 
         return $this->apiHandler->getReportsList($reportsListRequestTransfer);
     }
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer|null $categoriesListRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer
      */
     public function sendGetCategoriesListRequest(
-        ?BladeFxGetCategoriesListRequestTransfer $categoriesListRequestTransfer = (new BladeFxGetCategoriesListRequestTransfer())
+        ?BladeFxGetCategoriesListRequestTransfer $categoriesListRequestTransfer = (new BladeFxGetCategoriesListRequestTransfer()),
+        bool $fromSpryker = false
     ): BladeFxCategoriesListResponseTransfer {
         /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer $categoriesListRequestTransfer */
-        $categoriesListRequestTransfer = $this->prepareRequest($categoriesListRequestTransfer);
+        $categoriesListRequestTransfer = $this->prepareRequest($categoriesListRequestTransfer, $fromSpryker);
 
         return $this->apiHandler->getCategoriesList($categoriesListRequestTransfer);
     }
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer|null $reportsParamFormRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer
      */
     public function sendGetReportParamFormRequest(
-        ?BladeFxGetReportParamFormRequestTransfer $reportsParamFormRequestTransfer = (new BladeFxGetReportParamFormRequestTransfer())
+        ?BladeFxGetReportParamFormRequestTransfer $reportsParamFormRequestTransfer = (new BladeFxGetReportParamFormRequestTransfer()),
+        bool $fromSpryker = false
     ): BladeFxGetReportParamFormResponseTransfer {
         /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer $reportsParamFormRequestTransfer */
-        $reportsParamFormRequestTransfer = $this->prepareRequest($reportsParamFormRequestTransfer);
+        $reportsParamFormRequestTransfer = $this->prepareRequest($reportsParamFormRequestTransfer, $fromSpryker);
 
         return $this->apiHandler->getReportParamForm($reportsParamFormRequestTransfer);
     }
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer
      */
     public function sendGetReportPreviewRequest(
-        BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
+        BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer,
+        bool $fromSpryker = false
     ): BladeFxGetReportPreviewResponseTransfer {
         /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer */
-        $bladeFxReportPreviewRequestTransfer = $this->prepareRequest($bladeFxReportPreviewRequestTransfer);
+        $bladeFxReportPreviewRequestTransfer = $this->prepareRequest($bladeFxReportPreviewRequestTransfer, $fromSpryker);
 
         return $this->apiHandler->getReportPreview($bladeFxReportPreviewRequestTransfer);
     }
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer|null $bladeFxSetFavoriteReportRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer
      */
     public function sendSetFavoriteReportRequest(
-        ?BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer
+        ?BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer,
+        bool $fromSpryker = false
     ): BladeFxSetFavoriteReportResponseTransfer {
         /** @var \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer */
-        $bladeFxSetFavoriteReportRequestTransfer = $this->prepareRequest($bladeFxSetFavoriteReportRequestTransfer);
+        $bladeFxSetFavoriteReportRequestTransfer = $this->prepareRequest($bladeFxSetFavoriteReportRequestTransfer, $fromSpryker);
 
         return $this->apiHandler->setFavoriteReport($bladeFxSetFavoriteReportRequestTransfer);
     }
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer
      */
     public function sendCreateOrUpdateUserOnBfxRequest(
-        BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer
+        BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer,
+        bool $fromSpryker = false
     ): BladeFxCreateOrUpdateUserResponseTransfer {
         /** @var \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer */
-        $bladeFxCreateOrUpdateUserRequestTransfer = $this->prepareRequest($bladeFxCreateOrUpdateUserRequestTransfer);
+        $bladeFxCreateOrUpdateUserRequestTransfer = $this->prepareRequest($bladeFxCreateOrUpdateUserRequestTransfer, $fromSpryker);
 
         return $this->apiHandler->createOrUpdateUserOnBladeFx($bladeFxCreateOrUpdateUserRequestTransfer);
     }
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer
      */
     public function sendUpdatePasswordOnBladeFxRequest(
-        BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer
+        BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer,
+        bool $fromSpryker = false
     ): BladeFxUpdatePasswordResponseTransfer {
         /** @var \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer */
-        $bladeFxUpdatePasswordRequestTransfer = $this->prepareRequest($bladeFxUpdatePasswordRequestTransfer);
+        $bladeFxUpdatePasswordRequestTransfer = $this->prepareRequest($bladeFxUpdatePasswordRequestTransfer, $fromSpryker);
 
         return $this->apiHandler->sendUpdatePasswordOnBladeFx($bladeFxUpdatePasswordRequestTransfer);
     }
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer $bladeFxGetReportByFormatRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer
      */
     public function sendGetReportByFormatRequest(
-        BladeFxGetReportByFormatRequestTransfer $bladeFxGetReportByFormatRequestTransfer
+        BladeFxGetReportByFormatRequestTransfer $bladeFxGetReportByFormatRequestTransfer,
+        bool $fromSpryker = false
     ): BladeFxGetReportByFormatResponseTransfer {
         /** @var \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer $bladeFxGetReportByFormatRequestTransfer */
-        $bladeFxGetReportByFormatRequestTransfer = $this->prepareRequest($bladeFxGetReportByFormatRequestTransfer);
+        $bladeFxGetReportByFormatRequestTransfer = $this->prepareRequest($bladeFxGetReportByFormatRequestTransfer, $fromSpryker);
 
         return $this->apiHandler->getReportByFormat($bladeFxGetReportByFormatRequestTransfer);
     }
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\AbstractTransfer $requestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\AbstractTransfer
      */
-    protected function prepareRequest(AbstractTransfer $requestTransfer): AbstractTransfer
+    protected function prepareRequest(AbstractTransfer $requestTransfer, bool $fromSpryker): AbstractTransfer
     {
-        $bladeFxRequestTransfer = $this->getAuthorizationToken($requestTransfer);
+        $bladeFxRequestTransfer = $requestTransfer;
         $bladeFxRequestTransfer->setBaseUrl($this->bladeFxBaseUrl);
+        if (!$fromSpryker) {
+            $bladeFxRequestTransfer = $this->getAuthorizationToken($requestTransfer);
+        }
 
         return $bladeFxRequestTransfer;
     }
