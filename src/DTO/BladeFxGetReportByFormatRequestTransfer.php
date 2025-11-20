@@ -257,7 +257,6 @@ class BladeFxGetReportByFormatRequestTransfer extends AbstractTransfer
             'layoutId' => $this->getLayoutId(),
             'imageFormat' => $this->getImageFormat(),
             'fileFormat' => $this->getFileFormat(),
-            'token' => $this->getToken(),
             'params' => $this->getParams()->toArray(),
         ];
     }

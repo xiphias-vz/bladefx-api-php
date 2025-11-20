@@ -27,84 +27,104 @@ interface BladeFxApiClientInterface
 {
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationRequestTransfer $bladeFxAuthenticationRequestTransfer
+     * @param bool $fromSpryker
      *
      * @throws \DateMalformedStringException
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxAuthenticationResponseTransfer|null
      */
     public function sendAuthenticateUserRequest(
-        BladeFxAuthenticationRequestTransfer $bladeFxAuthenticationRequestTransfer
+        BladeFxAuthenticationRequestTransfer $bladeFxAuthenticationRequestTransfer,
+        bool $fromSpryker
     ): ?BladeFxAuthenticationResponseTransfer;
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxGetCategoriesListRequestTransfer|null $categoriesListRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxCategoriesListResponseTransfer
      */
     public function sendGetCategoriesListRequest(
-        ?BladeFxGetCategoriesListRequestTransfer $categoriesListRequestTransfer
+        ?BladeFxGetCategoriesListRequestTransfer $categoriesListRequestTransfer,
+        bool $fromSpryker = false
     ): BladeFxCategoriesListResponseTransfer;
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListRequestTransfer|null $reportsListRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportsListResponseTransfer
      */
-    public function sendGetReportsListRequest(?BladeFxGetReportsListRequestTransfer $reportsListRequestTransfer): BladeFxGetReportsListResponseTransfer;
+    public function sendGetReportsListRequest(
+        ?BladeFxGetReportsListRequestTransfer $reportsListRequestTransfer,
+        bool $fromSpryker = false
+    ): BladeFxGetReportsListResponseTransfer;
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportRequestTransfer|null $bladeFxSetFavoriteReportRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxSetFavoriteReportResponseTransfer
      */
     public function sendSetFavoriteReportRequest(
-        ?BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer
+        ?BladeFxSetFavoriteReportRequestTransfer $bladeFxSetFavoriteReportRequestTransfer,
+        bool $fromSpryker = false
     ): BladeFxSetFavoriteReportResponseTransfer;
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormRequestTransfer|null $reportsParamFormRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportParamFormResponseTransfer
      */
     public function sendGetReportParamFormRequest(
-        ?BladeFxGetReportParamFormRequestTransfer $reportsParamFormRequestTransfer
+        ?BladeFxGetReportParamFormRequestTransfer $reportsParamFormRequestTransfer,
+        bool $fromSpryker = false
     ): BladeFxGetReportParamFormResponseTransfer;
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewResponseTransfer
      */
     public function sendGetReportPreviewRequest(
-        BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer
+        BladeFxGetReportPreviewRequestTransfer $bladeFxReportPreviewRequestTransfer,
+        bool $fromSpryker = false
     ): BladeFxGetReportPreviewResponseTransfer;
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxCreateOrUpdateUserResponseTransfer
      */
     public function sendCreateOrUpdateUserOnBfxRequest(
-        BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer
+        BladeFxCreateOrUpdateUserRequestTransfer $bladeFxCreateOrUpdateUserRequestTransfer,
+        bool $fromSpryker = false
     ): BladeFxCreateOrUpdateUserResponseTransfer;
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer
+     * @param bool $fromSpryker
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxUpdatePasswordResponseTransfer
      */
     public function sendUpdatePasswordOnBladeFxRequest(
-        BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer
+        BladeFxUpdatePasswordRequestTransfer $bladeFxUpdatePasswordRequestTransfer,
+        bool $fromSpryker = false
     ): BladeFxUpdatePasswordResponseTransfer;
 
     /**
      * @param \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatRequestTransfer $bladeFxGetReportByFormatRequestTransfer
+     * @param bool $fromSpryker
      *
      * @throws \DateMalformedStringException
      *
      * @return \Xiphias\BladeFxApi\DTO\BladeFxGetReportByFormatResponseTransfer
      */
     public function sendGetReportByFormatRequest(
-        BladeFxGetReportByFormatRequestTransfer $bladeFxGetReportByFormatRequestTransfer
+        BladeFxGetReportByFormatRequestTransfer $bladeFxGetReportByFormatRequestTransfer,
+        bool $fromSpryker = false
     ): BladeFxGetReportByFormatResponseTransfer;
 }
