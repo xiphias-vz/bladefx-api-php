@@ -109,7 +109,6 @@ class BladeFxUpdatePasswordRequestTransfer extends AbstractTransfer
         return [
             'bladeFxUserId' => $this->getBladeFxUserId(),
             'password' => $this->getPassword(),
-            'token' => $this->getToken(),
         ];
     }
 

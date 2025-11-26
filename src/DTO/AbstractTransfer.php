@@ -157,7 +157,6 @@ class AbstractTransfer
         return [
             'baseUrl' => $this->getBaseUrl(),
             'accessToken' => $this->getAccessToken(),
-            'token' => $this->getToken(),
         ];
     }
 }
