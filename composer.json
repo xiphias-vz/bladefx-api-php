@@ -22,7 +22,6 @@
         "symfony/http-kernel": "^6.4 || ^7.0",
         "symfony/config": "^6.4 || ^7.0"
     },
-    "minimum-stability": "dev",
     "prefer-stable": true,
     "require-dev": {
         "phpstan/phpstan-symfony": "^2.0",
