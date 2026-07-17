@@ -6,6 +6,7 @@ namespace Xiphias\BladeFxApi\Request\Formatter;
 
 use Xiphias\BladeFxApi\BladeFxApiConfig;
 use Xiphias\BladeFxApi\DTO\BladeFxGetReportPreviewRequestTransfer;
+use Xiphias\BladeFxApi\DTO\BladeFxParameterListTransfer;
 use Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer;
 
 class RequestBodyFormatter implements RequestBodyFormatterInterface
@@ -33,11 +34,29 @@ class RequestBodyFormatter implements RequestBodyFormatterInterface
         $data = $requestTransfer->toArray();
 
         $data = $this->changeArrayFromCamelCaseToSnakeCase($data);
-        if ($this->parameterTransferIsValid($requestTransfer->getParams())) {
+        if ($this->parameterListTransferIsValid($requestTransfer->getParams())) {
             return $this->mergeParametersWithData($data, $requestTransfer->getParams());
         }
 
         return $data;
+    }
+
+    /**
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxParameterListTransfer|null $parameterTransfer
+     *
+     * @return bool
+     */
+    public function parameterListTransferIsValid(?BladeFxParameterListTransfer $parameterListTransfer): bool
+    {
+        if ($parameterListTransfer) {
+            foreach ($parameterListTransfer->getParameterList() as $parameterTransfer) {
+                if ($parameterTransfer->getParamName() && $parameterTransfer->getParamValue()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -58,14 +77,19 @@ class RequestBodyFormatter implements RequestBodyFormatterInterface
 
     /**
      * @param array<mixed> $data
-     * @param \Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer|null $parameterTransfer
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxParameterListTransfer|null $parameterListTransfer
      *
      * @return array<mixed>
      */
-    public function mergeParametersWithData(array $data, ?BladeFxParameterTransfer $parameterTransfer): array
+    public function mergeParametersWithData(array $data, ?BladeFxParameterListTransfer $parameterListTransfer): array
     {
-        $params = $parameterTransfer->toArray();
-        $data['params'] = [$this->changeArrayFromCamelCaseToSnakeCase($params)];
+        $data['params'] = [];
+
+        foreach ($parameterListTransfer->getParameterList() as $parameterTransfer) {
+            $params = $parameterTransfer->toArray();
+            $data['params'][] = $this->changeArrayFromCamelCaseToSnakeCase($params);
+        }
+
         $data['imageFormat'] = '';
 
         return $data;

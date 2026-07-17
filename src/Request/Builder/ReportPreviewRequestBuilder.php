@@ -89,8 +89,6 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
             $bladeFxGetReportPreviewRequestTransfer,
         );
 
-        $data = $this->cleanDataOfUnneededParameters($bladeFxGetReportPreviewRequestTransfer->getParams()->getParamValue());
-
         return $this->encodeJson($data);
     }
 
@@ -114,16 +112,6 @@ class ReportPreviewRequestBuilder extends AbstractRequestBuilder
         $encodedValue = json_encode($value, $options, $depth);
 
         return $encodedValue !== false ? $encodedValue : null;
-    }
-
-    /**
-     * @param string $paramValue
-     *
-     * @return array<mixed>
-     */
-    protected function cleanDataOfUnneededParameters(string $paramValue): array
-    {
-        return ['entryText' => $paramValue];
     }
 
     /**

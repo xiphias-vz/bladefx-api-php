@@ -44,7 +44,7 @@ class BladeFxApiConfig
     /**
      * @var string
      */
-    public const GET_REPORT_PREVIEW_API_RESOURCE = '/api/ReportData/GetEncryptedData';
+    public const GET_REPORT_PREVIEW_API_RESOURCE = '/api/ReportData/GetReportPreviewUrl';
 
     /**
      * @var string
