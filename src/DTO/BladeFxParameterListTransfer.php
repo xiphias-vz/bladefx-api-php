@@ -12,9 +12,70 @@ class BladeFxParameterListTransfer extends AbstractTransfer
     public const PARAMETER_LIST = 'parameterList';
 
     /**
+     * @var string
+     */
+    public const REPORT_ID = 'reportId';
+
+    /**
+     * @var string
+     */
+    public const SQL_DB_TYPE = 'sqlDbType';
+
+    /**
+     * @var int|null
+     */
+    protected ?int $reportId = null;
+
+    /**
+     * @var string|null
+     */
+    protected ?string $sqlDbType = null;
+
+    /**
      * @var array<\Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer>|null
      */
     protected ?array $parameterList = [];
+
+    /**
+     * @return int|null
+     */
+    public function getReportId(): ?int
+    {
+        return $this->reportId;
+    }
+
+    /**
+     * @param int|null $reportId
+     *
+     * @return $this
+     */
+    public function setReportId(?int $reportId)
+    {
+        $this->reportId = $reportId;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSqlDbType(): ?string
+    {
+        return $this->sqlDbType;
+    }
+
+    /**
+     * @param string|null $sqlDbType
+     *
+     * @return $this
+     */
+    public function setSqlDbType(?string $sqlDbType)
+    {
+        $this->sqlDbType = $sqlDbType;
+
+        return $this;
+    }
+
 
     /**
      * @return array<\Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer>|null
@@ -61,6 +122,8 @@ class BladeFxParameterListTransfer extends AbstractTransfer
 
         return [
             static::PARAMETER_LIST => $transfers,
+            static::REPORT_ID => $this->getReportId(),
+            static::SQL_DB_TYPE => $this->getSqlDbType(),
         ];
     }
 }

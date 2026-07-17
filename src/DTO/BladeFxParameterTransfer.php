@@ -19,7 +19,7 @@ class BladeFxParameterTransfer extends AbstractTransfer
     /**
      * @var string|null
      */
-    protected ?string $paramValue = null;
+    protected string|int|null $paramValue = null;
 
     /**
      * @var string|null
@@ -67,19 +67,19 @@ class BladeFxParameterTransfer extends AbstractTransfer
     }
 
     /**
-     * @return string|null
+     * @return string|int|null
      */
-    public function getParamValue(): ?string
+    public function getParamValue(): string|int|null
     {
         return $this->paramValue;
     }
 
     /**
-     * @param string|null $paramValue
+     * @param string|int|null $paramValue
      *
      * @return $this
      */
-    public function setParamValue(?string $paramValue)
+    public function setParamValue(string|int|null $paramValue)
     {
         $this->paramValue = $paramValue;
 

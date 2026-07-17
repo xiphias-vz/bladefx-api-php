@@ -32,9 +32,9 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
     protected ?string $rootUrl = null;
 
     /**
-     * @var \Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer|null
+     * @var \Xiphias\BladeFxApi\DTO\BladeFxParameterListTransfer|null
      */
-    protected ?BladeFxParameterTransfer $params = null;
+    protected ?BladeFxParameterListTransfer $params = null;
 
     /**
      * @return string|null
@@ -167,19 +167,19 @@ class BladeFxGetReportPreviewRequestTransfer extends AbstractTransfer
     }
 
     /**
-     * @return \Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer|null
+     * @return \Xiphias\BladeFxApi\DTO\BladeFxParameterListTransfer|null
      */
-    public function getParams(): ?BladeFxParameterTransfer
+    public function getParams(): ?BladeFxParameterListTransfer
     {
         return $this->params;
     }
 
     /**
-     * @param \Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer|null $params
+     * @param \Xiphias\BladeFxApi\DTO\BladeFxParameterListTransfer|null $params
      *
      * @return $this
      */
-    public function setParams(?BladeFxParameterTransfer $params)
+    public function setParams(?BladeFxParameterListTransfer $params)
     {
         $this->params = $params;
 
