@@ -8,310 +8,348 @@ use InvalidArgumentException;
 
 class BladeFxCategoryTransfer extends AbstractTransfer
 {
-    /**
-     * @var string
-     */
-    public const CAT_ID = 'catId';
+    public const ID = 'id';
 
-    /**
-     * @var int|null
-     */
-    protected ?int $catId = null;
+    protected ?int $id = null;
 
-    /**
-     * @var int|null
-     */
-    protected ?int $companyId = null;
+    protected ?string $idString = null;
 
-    /**
-     * @var int|null
-     */
-    protected ?int $catParentId = null;
+    protected ?int $idParent = null;
 
-    /**
-     * @var string|null
-     */
-    protected ?string $catName = null;
+    protected ?int $sort = null;
 
-    /**
-     * @var string|null
-     */
-    protected ?string $catDescription = null;
+    protected ?string $name = null;
 
-    /**
-     * @var int|null
-     */
-    protected ?int $catSort = null;
+    protected ?bool $isSelected = null;
 
-    /**
-     * @var bool|null
-     */
-    protected ?bool $catActive = null;
+    protected ?string $typeName = null;
 
-    /**
-     * @var string|null
-     */
-    protected ?string $dCreated = null;
+    protected ?int $idControl = null;
 
-    /**
-     * @var string|null
-     */
-    protected ?string $dChanged = null;
+    protected ?bool $isDefault = null;
 
-    /**
-     * @var int|null
-     */
-    protected ?int $reportCount = null;
+    protected ?bool $isDefaultReportLayout = null;
 
-    /**
-     * @var bool|null
-     */
-    protected ?bool $isActiveTree = null;
+    protected ?string $layoutVisibleOn = null;
+
+    protected ?string $caption = null;
+
+    protected ?string $defValue = null;
+
+    protected ?int $connId = null;
+
+    protected ?string $sqlValue = null;
+
+    protected ?int $idValLiItem = null;
+
+    protected ?bool $isVisible = null;
+
+    protected ?string $value = null;
+
+    protected ?int $maxCombo = null;
+
+    protected ?int $groupParentId = null;
+
+    protected ?string $mtypeName = null;
+
+    protected ?string $regEx = null;
 
     /**
      * @var array<string, string>
      */
     protected array $transferPropertyNameMap = [
-       'cat_id' => 'catId',
-       'company_id' => 'companyId',
-       'cat_parent_id' => 'catParentId',
-       'cat_name' => 'catName',
-       'cat_description' => 'catDescription',
-       'cat_sort' => 'catSort',
-       'cat_active' => 'catActive',
-       'dCreated' => 'dCreated',
-       'dChanged' => 'dChanged',
-       'reportCount' => 'reportCount',
-       'isActiveTree' => 'isActiveTree',
+        'id' => 'id',
+        'idString' => 'idString',
+        'idParent' => 'idParent',
+        'sort' => 'sort',
+        'name' => 'name',
+        'isSelected' => 'isSelected',
+        'typeName' => 'typeName',
+        'idControl' => 'idControl',
+        'isDefault' => 'isDefault',
+        'isDefaultReportLayout' => 'isDefaultReportLayout',
+        'layoutVisibleOn' => 'layoutVisibleOn',
+        'caption' => 'caption',
+        'defValue' => 'defValue',
+        'conn_id' => 'connId',
+        'sqlValue' => 'sqlValue',
+        'idValLiItem' => 'idValLiItem',
+        'isVisible' => 'isVisible',
+        'value' => 'value',
+        'maxCombo' => 'maxCombo',
+        'group_parent_id' => 'groupParentId',
+        'mtype_name' => 'mtypeName',
+        'regEx' => 'regEx',
     ];
 
-    /**
-     * @return int|null
-     */
-    public function getCatId(): ?int
+    public function getId(): ?int
     {
-        return $this->catId;
+        return $this->id;
     }
 
-    /**
-     * @param int|null $catId
-     *
-     * @return $this
-     */
-    public function setCatId(?int $catId = null)
+    public function setId(?int $id = null)
     {
-        $this->catId = $catId;
-        $this->modifiedProperties[self::CAT_ID] = true;
+        $this->id = $id;
+        $this->modifiedProperties[self::ID] = true;
 
         return $this;
     }
 
-    /**
-     * @return $this
-     */
-    public function requireCatId()
+    public function requireId()
     {
-        $this->assertPropertyIsSet(self::CAT_ID);
+        $this->assertPropertyIsSet(self::ID);
 
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getCompanyId(): ?int
+    public function getIdString(): ?string
     {
-        return $this->companyId;
+        return $this->idString;
     }
 
-    /**
-     * @param int|null $companyId
-     *
-     * @return $this
-     */
-    public function setCompanyId(?int $companyId = null)
+    public function setIdString(?string $idString = null)
     {
-        $this->companyId = $companyId;
+        $this->idString = $idString;
 
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getCatParentId(): ?int
+    public function getIdParent(): ?int
     {
-        return $this->catParentId;
+        return $this->idParent;
     }
 
-    /**
-     * @param int|null $catParentId
-     *
-     * @return $this
-     */
-    public function setCatParentId(?int $catParentId = null)
+    public function setIdParent(?int $idParent = null)
     {
-        $this->catParentId = $catParentId;
+        $this->idParent = $idParent;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getCatName(): ?string
+    public function getSort(): ?int
     {
-        return $this->catName;
+        return $this->sort;
     }
 
-    /**
-     * @param string|null $catName
-     *
-     * @return $this
-     */
-    public function setCatName(?string $catName = null)
+    public function setSort(?int $sort = null)
     {
-        $this->catName = $catName;
+        $this->sort = $sort;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getCatDescription(): ?string
+    public function getName(): ?string
     {
-        return $this->catDescription;
+        return $this->name;
     }
 
-    /**
-     * @param string|null $catDescription
-     *
-     * @return $this
-     */
-    public function setCatDescription(?string $catDescription = null)
+    public function setName(?string $name = null)
     {
-        $this->catDescription = $catDescription;
+        $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getCatSort(): ?int
+    public function getIsSelected(): ?bool
     {
-        return $this->catSort;
+        return $this->isSelected;
     }
 
-    /**
-     * @param int|null $catSort
-     *
-     * @return $this
-     */
-    public function setCatSort(?int $catSort = null)
+    public function setIsSelected(?bool $isSelected = null)
     {
-        $this->catSort = $catSort;
+        $this->isSelected = $isSelected;
 
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
-    public function getCatActive(): ?bool
+    public function getTypeName(): ?string
     {
-        return $this->catActive;
+        return $this->typeName;
     }
 
-    /**
-     * @param bool|null $catActive
-     *
-     * @return $this
-     */
-    public function setCatActive(?bool $catActive = null)
+    public function setTypeName(?string $typeName = null)
     {
-        $this->catActive = $catActive;
+        $this->typeName = $typeName;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getDCreated(): ?string
+    public function getIdControl(): ?int
     {
-        return $this->dCreated;
+        return $this->idControl;
     }
 
-    /**
-     * @param string|null $dCreated
-     *
-     * @return $this
-     */
-    public function setDCreated(?string $dCreated = null)
+    public function setIdControl(?int $idControl = null)
     {
-        $this->dCreated = $dCreated;
+        $this->idControl = $idControl;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getDChanged(): ?string
+    public function getIsDefault(): ?bool
     {
-        return $this->dChanged;
+        return $this->isDefault;
     }
 
-    /**
-     * @param string|null $dChanged
-     *
-     * @return $this
-     */
-    public function setDChanged(?string $dChanged = null)
+    public function setIsDefault(?bool $isDefault = null)
     {
-        $this->dChanged = $dChanged;
+        $this->isDefault = $isDefault;
 
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getReportCount(): ?int
+    public function getIsDefaultReportLayout(): ?bool
     {
-        return $this->reportCount;
+        return $this->isDefaultReportLayout;
     }
 
-    /**
-     * @param int|null $reportCount
-     *
-     * @return $this
-     */
-    public function setReportCount(?int $reportCount = null)
+    public function setIsDefaultReportLayout(?bool $isDefaultReportLayout = null)
     {
-        $this->reportCount = $reportCount;
+        $this->isDefaultReportLayout = $isDefaultReportLayout;
 
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
-    public function getIsActiveTree(): ?bool
+    public function getLayoutVisibleOn(): ?string
     {
-        return $this->isActiveTree;
+        return $this->layoutVisibleOn;
     }
 
-    /**
-     * @param bool|null $isActiveTree
-     *
-     * @return $this
-     */
-    public function setIsActiveTree(?bool $isActiveTree = null)
+    public function setLayoutVisibleOn(?string $layoutVisibleOn = null)
     {
-        $this->isActiveTree = $isActiveTree;
+        $this->layoutVisibleOn = $layoutVisibleOn;
+
+        return $this;
+    }
+
+    public function getCaption(): ?string
+    {
+        return $this->caption;
+    }
+
+    public function setCaption(?string $caption = null)
+    {
+        $this->caption = $caption;
+
+        return $this;
+    }
+
+    public function getDefValue(): ?string
+    {
+        return $this->defValue;
+    }
+
+    public function setDefValue(?string $defValue = null)
+    {
+        $this->defValue = $defValue;
+
+        return $this;
+    }
+
+    public function getConnId(): ?int
+    {
+        return $this->connId;
+    }
+
+    public function setConnId(?int $connId = null)
+    {
+        $this->connId = $connId;
+
+        return $this;
+    }
+
+    public function getSqlValue(): ?string
+    {
+        return $this->sqlValue;
+    }
+
+    public function setSqlValue(?string $sqlValue = null)
+    {
+        $this->sqlValue = $sqlValue;
+
+        return $this;
+    }
+
+    public function getIdValLiItem(): ?int
+    {
+        return $this->idValLiItem;
+    }
+
+    public function setIdValLiItem(?int $idValLiItem = null)
+    {
+        $this->idValLiItem = $idValLiItem;
+
+        return $this;
+    }
+
+    public function getIsVisible(): ?bool
+    {
+        return $this->isVisible;
+    }
+
+    public function setIsVisible(?bool $isVisible = null)
+    {
+        $this->isVisible = $isVisible;
+
+        return $this;
+    }
+
+    public function getValue(): ?string
+    {
+        return $this->value;
+    }
+
+    public function setValue(?string $value = null)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    public function getMaxCombo(): ?int
+    {
+        return $this->maxCombo;
+    }
+
+    public function setMaxCombo(?int $maxCombo = null)
+    {
+        $this->maxCombo = $maxCombo;
+
+        return $this;
+    }
+
+    public function getGroupParentId(): ?int
+    {
+        return $this->groupParentId;
+    }
+
+    public function setGroupParentId(?int $groupParentId = null)
+    {
+        $this->groupParentId = $groupParentId;
+
+        return $this;
+    }
+
+    public function getMtypeName(): ?string
+    {
+        return $this->mtypeName;
+    }
+
+    public function setMtypeName(?string $mtypeName = null)
+    {
+        $this->mtypeName = $mtypeName;
+
+        return $this;
+    }
+
+    public function getRegEx(): ?string
+    {
+        return $this->regEx;
+    }
+
+    public function setRegEx(?string $regEx = null)
+    {
+        $this->regEx = $regEx;
 
         return $this;
     }
@@ -322,17 +360,28 @@ class BladeFxCategoryTransfer extends AbstractTransfer
     public function toArray(): array
     {
         return [
-            'catId' => $this->getCatId(),
-            'companyId' => $this->getCompanyId(),
-            'catParentId' => $this->getCatParentId(),
-            'catName' => $this->getCatName(),
-            'catDescription' => $this->getCatDescription(),
-            'catSort' => $this->getCatSort(),
-            'catActive' => $this->getCatActive(),
-            'dCreated' => $this->getDCreated(),
-            'dChanged' => $this->getDChanged(),
-            'reportCount' => $this->getReportCount(),
-            'isActiveTree' => $this->getIsActiveTree(),
+            'id' => $this->getId(),
+            'idString' => $this->getIdString(),
+            'idParent' => $this->getIdParent(),
+            'sort' => $this->getSort(),
+            'name' => $this->getName(),
+            'isSelected' => $this->getIsSelected(),
+            'typeName' => $this->getTypeName(),
+            'idControl' => $this->getIdControl(),
+            'isDefault' => $this->getIsDefault(),
+            'isDefaultReportLayout' => $this->getIsDefaultReportLayout(),
+            'layoutVisibleOn' => $this->getLayoutVisibleOn(),
+            'caption' => $this->getCaption(),
+            'defValue' => $this->getDefValue(),
+            'connId' => $this->getConnId(),
+            'sqlValue' => $this->getSqlValue(),
+            'idValLiItem' => $this->getIdValLiItem(),
+            'isVisible' => $this->getIsVisible(),
+            'value' => $this->getValue(),
+            'maxCombo' => $this->getMaxCombo(),
+            'groupParentId' => $this->getGroupParentId(),
+            'mtypeName' => $this->getMtypeName(),
+            'regEx' => $this->getRegEx(),
         ];
     }
 
@@ -350,24 +399,37 @@ class BladeFxCategoryTransfer extends AbstractTransfer
             $normalizedPropertyName = $this->transferPropertyNameMap[$property] ?? null;
 
             switch ($normalizedPropertyName) {
-                case 'catId':
-                case 'companyId':
-                case 'catParentId':
-                case 'catName':
-                case 'catDescription':
-                case 'catSort':
-                case 'catActive':
-                case 'dCreated':
-                case 'dChanged':
-                case 'reportCount':
-                case 'isActiveTree':
+                case 'id':
+                case 'idString':
+                case 'idParent':
+                case 'sort':
+                case 'name':
+                case 'isSelected':
+                case 'typeName':
+                case 'idControl':
+                case 'isDefault':
+                case 'isDefaultReportLayout':
+                case 'layoutVisibleOn':
+                case 'caption':
+                case 'defValue':
+                case 'connId':
+                case 'sqlValue':
+                case 'idValLiItem':
+                case 'isVisible':
+                case 'value':
+                case 'maxCombo':
+                case 'groupParentId':
+                case 'mtypeName':
+                case 'regEx':
                     $this->$normalizedPropertyName = $value;
                     $this->modifiedProperties[$normalizedPropertyName] = true;
 
                     break;
                 default:
                     if (!$ignoreMissingProperties) {
-                        throw new InvalidArgumentException(sprintf('Missing property `%s` in `%s`', $property, static::class));
+                        throw new InvalidArgumentException(
+                            sprintf('Missing property `%s` in `%s`', $property, static::class),
+                        );
                     }
             }
         }

@@ -75,7 +75,7 @@ class BladeFxParameterTransfer extends AbstractTransfer
     }
 
     /**
-     * @param string|int|null $paramValue
+     * @param string|int $paramValue
      *
      * @return $this
      */

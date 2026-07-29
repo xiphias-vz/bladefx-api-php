@@ -32,7 +32,7 @@ class CategoriesListResponseValidator extends AbstractResponseValidator
             $categoriesList = $bladeFxCategoriesListResponseTransfer->getCategoriesList();
             foreach ($categoriesList as $category) {
                 $category
-                    ->requireCatId();
+                    ->requireId();
             }
         } catch (TransferPropertyRequiredException $ex) {
             return false;
