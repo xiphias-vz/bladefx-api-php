@@ -76,7 +76,6 @@ class BladeFxParameterListTransfer extends AbstractTransfer
         return $this;
     }
 
-
     /**
      * @return array<\Xiphias\BladeFxApi\DTO\BladeFxParameterTransfer>|null
      */
