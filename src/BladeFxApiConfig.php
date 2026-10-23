@@ -34,7 +34,7 @@ class BladeFxApiConfig
     /**
      * @var string
      */
-    public const GET_CATEGORIES_LIST_API_RESOURCE = '/api/ReportData/GetCategoryList';
+    public const GET_CATEGORIES_LIST_API_RESOURCE = '/api/ReportData/GetUserCategoryList';
 
     /**
      * @var string
